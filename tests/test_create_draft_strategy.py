@@ -119,3 +119,20 @@ class CreateDraftStrategyScriptTests(unittest.TestCase):
             )
             self.assertNotEqual(result.returncode, 0)
             self.assertIn("--questionnaire-json item 0 must be an object", result.stderr)
+
+    def test_espn_simulation_requires_reverse_round_flag(self):
+        with tempfile.TemporaryDirectory() as directory:
+            state_root = Path(directory) / "state"
+            result = self.run_script(
+                "--state-root",
+                str(state_root),
+                "--league-id",
+                "league-1",
+                "--season",
+                "2026",
+                "--draft-style",
+                "espn_snake",
+                "--simulate",
+            )
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("third-round reversal", result.stderr)

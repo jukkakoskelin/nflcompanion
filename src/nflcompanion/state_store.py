@@ -28,9 +28,9 @@ SUPPORTED_DRAFT_STYLES = {
         "platform": "espn",
         "draft_type": "snake",
         "supports_reverse_round": True,
-        "context_bucket": "espn",
+        "context_bucket": "espn_snake",
         "default_teams": 16,
-        "context_files": ("draft-context/espn/opfg_espn_2026_settings.pdf",),
+        "context_files": ("draft-context/espn_snake/opfg_espn_2026_settings.pdf",),
     },
 }
 _MISSING = object()
@@ -664,7 +664,7 @@ def retire_draft_strategy(
         _strategy_log_path(state_root, str(session_config["draft_style"])),
         {
             "event": "retired",
-            "created_at": retired_at,
+            "retired_at": retired_at,
             "league_id": session_config["league_id"],
             "season": session_config["season"],
             "draft_style": session_config["draft_style"],
@@ -687,6 +687,8 @@ def simulate_draft_strategy(
 ) -> dict[str, Any]:
     if draft_style not in SUPPORTED_DRAFT_STYLES:
         raise ValueError(f"Unsupported draft style: {draft_style}")
+    if draft_style == "espn_snake" and not reverse_round:
+        raise ValueError("Built-in ESPN simulation presets assume third-round reversal")
     choices = _SIMULATED_STRATEGIES[draft_style]
     selection = deepcopy(random.Random(seed).choice(choices))
     return save_draft_strategy(

@@ -575,6 +575,7 @@ class StateStoreTests(unittest.TestCase):
             self.assertFalse(reloaded["strategies"][0]["in_effect"])
             log_entries = load_strategy_creation_log(state_root, draft_style="espn_snake")
             self.assertEqual([entry["event"] for entry in log_entries], ["created", "retired"])
+            self.assertIn("retired_at", log_entries[1])
 
     def test_validate_strategy_flags_early_kicker_and_simulation_stays_clean(self):
         warnings = validate_draft_strategy(

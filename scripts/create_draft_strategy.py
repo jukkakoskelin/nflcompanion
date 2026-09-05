@@ -48,47 +48,50 @@ def main() -> int:
     parser.add_argument("--validation-feedback-json")
     args = parser.parse_args()
 
-    if args.simulate:
-        strategy = simulate_draft_strategy(
-            args.state_root,
-            league_id=args.league_id,
-            season=args.season,
-            draft_style=args.draft_style,
-            reverse_round=args.reverse_round,
-            seed=args.seed,
-        )
-    else:
-        if not args.name:
-            parser.error("--name is required unless --simulate is used")
-        if not args.strategy_json:
-            parser.error("--strategy-json is required unless --simulate is used")
-        strategy_payload = _json_argument(args.strategy_json, argument_name="--strategy-json")
-        questionnaire = []
-        if args.questionnaire_json:
-            questionnaire = _validate_questionnaire(
-                _json_argument(args.questionnaire_json, argument_name="--questionnaire-json")
+    try:
+        if args.simulate:
+            strategy = simulate_draft_strategy(
+                args.state_root,
+                league_id=args.league_id,
+                season=args.season,
+                draft_style=args.draft_style,
+                reverse_round=args.reverse_round,
+                seed=args.seed,
             )
-        validation_feedback = None
-        if args.validation_feedback_json:
-            validation_feedback = _json_argument(
-                args.validation_feedback_json,
-                argument_name="--validation-feedback-json",
+        else:
+            if not args.name:
+                parser.error("--name is required unless --simulate is used")
+            if not args.strategy_json:
+                parser.error("--strategy-json is required unless --simulate is used")
+            strategy_payload = _json_argument(args.strategy_json, argument_name="--strategy-json")
+            questionnaire = []
+            if args.questionnaire_json:
+                questionnaire = _validate_questionnaire(
+                    _json_argument(args.questionnaire_json, argument_name="--questionnaire-json")
+                )
+            validation_feedback = None
+            if args.validation_feedback_json:
+                validation_feedback = _json_argument(
+                    args.validation_feedback_json,
+                    argument_name="--validation-feedback-json",
+                )
+            if not isinstance(strategy_payload, dict):
+                parser.error("--strategy-json must decode to an object")
+            if validation_feedback is not None and not isinstance(validation_feedback, list):
+                parser.error("--validation-feedback-json must decode to a list")
+            strategy = save_draft_strategy(
+                args.state_root,
+                league_id=args.league_id,
+                season=args.season,
+                draft_style=args.draft_style,
+                reverse_round=args.reverse_round,
+                name=args.name,
+                strategy=strategy_payload,
+                questionnaire=questionnaire,
+                validation_feedback=validation_feedback,
             )
-        if not isinstance(strategy_payload, dict):
-            parser.error("--strategy-json must decode to an object")
-        if validation_feedback is not None and not isinstance(validation_feedback, list):
-            parser.error("--validation-feedback-json must decode to a list")
-        strategy = save_draft_strategy(
-            args.state_root,
-            league_id=args.league_id,
-            season=args.season,
-            draft_style=args.draft_style,
-            reverse_round=args.reverse_round,
-            name=args.name,
-            strategy=strategy_payload,
-            questionnaire=questionnaire,
-            validation_feedback=validation_feedback,
-        )
+    except ValueError as exc:
+        parser.error(str(exc))
 
     print(json.dumps(strategy, indent=2, sort_keys=True))
     return 0

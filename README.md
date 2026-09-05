@@ -23,7 +23,7 @@ Draft strategies now persist in two places:
 - `state/strategies/strategies.json` keeps the indexed session view keyed by
   league id and season.
 - `draft-context/sleeper_dynasty/strategies/` and
-  `draft-context/espn/strategies/` keep the user-editable Markdown strategy
+  `draft-context/espn_snake/strategies/` keep the user-editable Markdown strategy
   files plus append-only creation logs under `logs/`.
 
 Use `python scripts/create_draft_strategy.py --simulate ...` to generate a

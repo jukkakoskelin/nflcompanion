@@ -14,7 +14,7 @@
 - Treat draft-strategy work as a three-role flow: interviewer, validator, and
   writer.
 - Read the relevant league context from `draft-context/sleeper_dynasty/` or
-  `draft-context/espn/` before proposing a strategy.
+  `draft-context/espn_snake/` before proposing a strategy.
 - Persist final strategies through `scripts/create_draft_strategy.py` or the
   matching `nflcompanion.state_store` helpers so the Markdown strategy file and
   append-only creation log stay in sync.
