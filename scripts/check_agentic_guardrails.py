@@ -35,7 +35,7 @@ def changed_files(base_ref: str, head_ref: str) -> list[str]:
             command = ["git", "ls-tree", "-r", "--name-only", head_ref]
             result = subprocess.run(command, check=True, capture_output=True, text=True)
             return [line for line in result.stdout.splitlines() if line]
-    command = ["git", "diff", "--name-only", base_ref, head_ref]
+    command = ["git", "diff", "--name-only", f"{base_ref}..{head_ref}"]
     result = subprocess.run(command, check=True, capture_output=True, text=True)
     return [line for line in result.stdout.splitlines() if line]
 
