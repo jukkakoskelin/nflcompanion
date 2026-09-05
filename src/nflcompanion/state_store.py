@@ -655,6 +655,7 @@ def retire_draft_strategy(
     if updated_strategy is None:
         raise KeyError(f"Unknown strategy_id: {strategy_id}")
     season_node["strategies"] = strategies
+    path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(state, indent=2, sort_keys=True), encoding="utf-8")
     draft_context_path = _workspace_root(state_root) / str(updated_strategy["draft_context_file"])
     _write_strategy_markdown(draft_context_path, updated_strategy, session_config)

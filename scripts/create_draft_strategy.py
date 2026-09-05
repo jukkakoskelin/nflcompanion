@@ -58,6 +58,8 @@ def main() -> int:
     parser.add_argument("--questionnaire-json")
     parser.add_argument("--validation-feedback-json")
     args = parser.parse_args()
+    if args.draft_style == "sleeper_dynasty" and args.reverse_round:
+        parser.error("--reverse-round is only supported for espn_snake")
 
     try:
         if args.simulate:

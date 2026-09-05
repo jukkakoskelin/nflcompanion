@@ -148,6 +148,24 @@ class CreateDraftStrategyScriptTests(unittest.TestCase):
             self.assertNotEqual(result.returncode, 0)
             self.assertIn("--validation-feedback-json item 1 must be a string", result.stderr)
 
+    def test_sleeper_reverse_round_flag_is_rejected_by_cli(self):
+        with tempfile.TemporaryDirectory() as directory:
+            state_root = Path(directory) / "state"
+            result = self.run_script(
+                "--state-root",
+                str(state_root),
+                "--league-id",
+                "league-1",
+                "--season",
+                "2026",
+                "--draft-style",
+                "sleeper_dynasty",
+                "--simulate",
+                "--reverse-round",
+            )
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("--reverse-round is only supported for espn_snake", result.stderr)
+
     def test_espn_simulation_supports_both_reverse_round_modes(self):
         with tempfile.TemporaryDirectory() as directory:
             state_root = Path(directory) / "state"
