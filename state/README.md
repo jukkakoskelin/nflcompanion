@@ -45,8 +45,12 @@ query that local snapshot directly with the same filters as
 
 Draft-strategy creation now uses a shared three-role workflow:
 
-1. an interviewer agent captures questionnaire answers;
-2. a validator agent checks for obvious player-data mistakes such as early
+1. an orchestrator agent drives the session and assigns handoffs;
+2. an interviewer agent captures questionnaire answers;
+3. a validator agent checks for obvious player-data mistakes such as early
    kicker/defense plans;
-3. a writer agent updates the Markdown strategy file and appends the creation
+4. a writer agent updates the Markdown strategy file and appends the creation
    transcript to the durable log so future mock drafts can review the outcome.
+
+Tracked prompt contracts for those agents are kept in
+`docs/draft-strategy-agents/*.md`.

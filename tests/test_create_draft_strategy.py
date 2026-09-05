@@ -38,6 +38,8 @@ class CreateDraftStrategyScriptTests(unittest.TestCase):
             payload = json.loads(result.stdout)
             self.assertEqual(payload["creation_mode"], "simulation")
             self.assertTrue((state_root.parent / payload["draft_context_file"]).exists())
+            self.assertEqual(payload["agent_workflow"]["orchestrator"]["role"], "orchestrator")
+            self.assertEqual(payload["agent_workflow"]["orchestrator"]["prompt_file"], "docs/draft-strategy-agents/orchestrator.md")
 
     def test_interactive_flow_requires_valid_strategy_json(self):
         with tempfile.TemporaryDirectory() as directory:

@@ -315,6 +315,9 @@ Next:
    draft-context Markdown strategies, retirement metadata, and append-only
    creation logs, including a reviewer-friendly Markdown log mirror, with a
    non-interactive simulation entry point for testing.
+2a. Track explicit orchestrator/interviewer/validator/writer prompt contracts in
+    repository Markdown and surface them in saved strategy workflow metadata so
+    reviewable multi-agent orchestration is part of the durable state.
 3. Add deterministic candidate scoring and a temporary canvas view.
 4. Add an agent instruction contract that requires citations and confirmation
    before state mutation.

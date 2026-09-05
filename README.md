@@ -33,3 +33,12 @@ Use `python scripts/create_draft_strategy.py --simulate ...` to generate a
 sample strategy/log pair for non-interactive testing, or pass
 `--strategy-json`/`--questionnaire-json` from an interactive Copilot chat flow
 after the interviewer, validator, and writer agents agree on the final plan.
+
+The tracked agent prompt contracts for that flow live under
+`/home/runner/work/nflcompanion/nflcompanion/docs/draft-strategy-agents/` and
+cover:
+
+- orchestrator
+- interviewer
+- validator
+- writer

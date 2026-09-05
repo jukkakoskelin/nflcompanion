@@ -36,9 +36,16 @@ SUPPORTED_DRAFT_STYLES = {
 _MISSING = object()
 _EARLY_ROUND_RED_FLAGS = {"K", "DST"}
 _DEFAULT_AGENT_ROLES = {
+    "orchestrator": "draft-strategy-orchestrator",
     "interviewer": "draft-strategy-interviewer",
     "validator": "draft-strategy-validator",
     "writer": "draft-strategy-writer",
+}
+_DEFAULT_AGENT_PROMPT_FILES = {
+    "orchestrator": "docs/draft-strategy-agents/orchestrator.md",
+    "interviewer": "docs/draft-strategy-agents/interviewer.md",
+    "validator": "docs/draft-strategy-agents/validator.md",
+    "writer": "docs/draft-strategy-agents/writer.md",
 }
 _SIMULATED_STRATEGIES = {
     "sleeper_dynasty": [
@@ -167,6 +174,35 @@ def _strategy_markdown_log_path(state_root: Path, draft_style: str) -> Path:
     return _draft_context_root(state_root, draft_style) / "logs" / "strategy-creation-log.md"
 
 
+def _agent_workflow(session_config: dict[str, Any], collaborating_agents: dict[str, str]) -> dict[str, Any]:
+    ordered_roles = ["orchestrator", "interviewer", "validator", "writer"]
+    workflow = {
+        "orchestrator": {
+            "role": "orchestrator",
+            "agent": collaborating_agents.get("orchestrator", _DEFAULT_AGENT_ROLES["orchestrator"]),
+            "prompt_file": _DEFAULT_AGENT_PROMPT_FILES["orchestrator"],
+            "responsibility": "Drive the session, assign handoffs, and decide when the strategy is ready to save.",
+        },
+        "agents": [],
+    }
+    for role in ordered_roles[1:]:
+        workflow["agents"].append(
+            {
+                "role": role,
+                "agent": collaborating_agents.get(role, _DEFAULT_AGENT_ROLES[role]),
+                "prompt_file": _DEFAULT_AGENT_PROMPT_FILES[role],
+                "responsibility": {
+                    "interviewer": "Collect the user's draft preferences and clarify tradeoffs.",
+                    "validator": "Check the evolving plan against league context, player data, and obvious red flags.",
+                    "writer": "Persist the final strategy, metadata, and audit trail once the orchestrator approves it.",
+                }[role],
+            }
+        )
+    workflow["league_context_files"] = list(SUPPORTED_DRAFT_STYLES[str(session_config["draft_style"])]["context_files"])
+    workflow["reverse_round"] = bool(session_config.get("reverse_round", False))
+    return workflow
+
+
 def _serialize_front_matter(metadata: dict[str, Any]) -> str:
     lines = ["---"]
     for key, value in metadata.items():
@@ -293,6 +329,7 @@ def _write_strategy_markdown(path: Path, strategy_record: dict[str, Any], sessio
             "questionnaire": strategy_record["questionnaire"],
             "validation_feedback": strategy_record["validation_feedback"],
             "collaborating_agents": strategy_record["collaborating_agents"],
+            "agent_workflow": strategy_record["agent_workflow"],
         }
     )
     body = [
@@ -314,6 +351,14 @@ def _write_strategy_markdown(path: Path, strategy_record: dict[str, Any], sessio
         _render_questionnaire(strategy_record["questionnaire"]),
         "## Validator feedback",
         _render_list(strategy_record["validation_feedback"], fallback="No validator warnings were recorded."),
+        "## Agent workflow",
+        f"- orchestrator: {strategy_record['agent_workflow']['orchestrator']['agent']} "
+        f"({strategy_record['agent_workflow']['orchestrator']['prompt_file']})",
+        *[
+            f"- {item['role']}: {item['agent']} ({item['prompt_file']})"
+            for item in strategy_record["agent_workflow"]["agents"]
+        ],
+        "",
         "## Collaboration handoff",
         _render_list(
             [f"{role}: {agent}" for role, agent in strategy_record["collaborating_agents"].items()],
@@ -554,6 +599,7 @@ def save_draft_strategy(
             suffix = strategy_id.removeprefix("strategy-")
             next_id = max(next_id, int(suffix) + 1)
     created_at = datetime.now(UTC).isoformat()
+    agent_workflow = _agent_workflow(session_config, collaborating_agents)
     strategy_record = {
         "strategy_id": f"strategy-{next_id}",
         "strategy_number": next_id,
@@ -567,6 +613,7 @@ def save_draft_strategy(
         "questionnaire": questionnaire,
         "validation_feedback": deepcopy(validation_feedback),
         "collaborating_agents": collaborating_agents,
+        "agent_workflow": agent_workflow,
         "context_files": list(style["context_files"]),
         "strategy": deepcopy(strategy),
     }
@@ -607,6 +654,7 @@ def save_draft_strategy(
             "questionnaire": strategy_record["questionnaire"],
             "validation_feedback": strategy_record["validation_feedback"],
             "collaborating_agents": strategy_record["collaborating_agents"],
+            "agent_workflow": strategy_record["agent_workflow"],
             "strategy": strategy_record["strategy"],
             "draft_context_file": strategy_record["draft_context_file"],
         },
@@ -626,6 +674,7 @@ def save_draft_strategy(
             "draft_context_file": strategy_record["draft_context_file"],
             "validation_feedback": strategy_record["validation_feedback"],
             "questionnaire": strategy_record["questionnaire"],
+            "agent_workflow": strategy_record["agent_workflow"],
         },
     )
     return deepcopy(strategy_record)
@@ -675,6 +724,7 @@ def _overlay_markdown_strategy(state_root: Path, strategy_record: dict[str, Any]
         "questionnaire",
         "validation_feedback",
         "collaborating_agents",
+        "agent_workflow",
     ):
         if key in metadata:
             strategy_record[key] = deepcopy(metadata[key])
@@ -687,6 +737,7 @@ def _refresh_derived_strategy_fields(
     draft_style = str(session_config["draft_style"])
     style = SUPPORTED_DRAFT_STYLES[draft_style]
     strategy_record["context_files"] = list(style["context_files"])
+    strategy_record["agent_workflow"] = _agent_workflow(session_config, strategy_record["collaborating_agents"])
     strategy_record["creation_log_file"] = _strategy_log_path(state_root, draft_style).relative_to(
         _workspace_root(state_root)
     ).as_posix()

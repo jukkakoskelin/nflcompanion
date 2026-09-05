@@ -508,11 +508,17 @@ class StateStoreTests(unittest.TestCase):
             strategy_text = strategy_file.read_text(encoding="utf-8")
             self.assertIn("Agent rating:", strategy_text)
             self.assertIn("Sleeper_scoring.md", strategy_text)
+            self.assertIn("## Agent workflow", strategy_text)
+            self.assertIn("draft-strategy-orchestrator", strategy_text)
+            self.assertIn("docs/draft-strategy-agents/orchestrator.md", strategy_text)
+            self.assertEqual(saved["collaborating_agents"]["orchestrator"], "draft-strategy-orchestrator")
+            self.assertEqual(saved["agent_workflow"]["orchestrator"]["prompt_file"], "docs/draft-strategy-agents/orchestrator.md")
 
             log_entries = load_strategy_creation_log(state_root, draft_style="sleeper_dynasty")
             self.assertEqual(len(log_entries), 1)
             self.assertEqual(log_entries[0]["strategy_id"], saved["strategy_id"])
             self.assertEqual(log_entries[0]["questionnaire"][0]["answer"], "WR anchor")
+            self.assertEqual(log_entries[0]["agent_workflow"]["orchestrator"]["agent"], "draft-strategy-orchestrator")
             self.assertEqual(load_strategy_creation_log(state_root, draft_style="sleeper_dynasty", limit=0), [])
             review_log = (state_root / saved["creation_review_log_file"]).read_text(encoding="utf-8")
             self.assertIn("# Draft strategy creation log", review_log)
@@ -623,6 +629,7 @@ class StateStoreTests(unittest.TestCase):
             self.assertEqual(simulated["creation_mode"], "simulation")
             self.assertEqual(simulated["validation_feedback"], [])
             self.assertGreaterEqual(simulated["agent_rating"], 80)
+            self.assertEqual(simulated["agent_workflow"]["agents"][0]["role"], "interviewer")
 
     def test_session_identity_must_match_league_and_season_bucket(self):
         with tempfile.TemporaryDirectory() as directory:

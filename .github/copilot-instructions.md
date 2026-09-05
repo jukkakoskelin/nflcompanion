@@ -11,8 +11,8 @@
 
 ## Draft strategy creation
 
-- Treat draft-strategy work as a three-role flow: interviewer, validator, and
-  writer.
+- Treat draft-strategy work as a four-role flow: orchestrator, interviewer,
+  validator, and writer.
 - Read the relevant league context from `draft-context/sleeper_dynasty/` or
   `draft-context/espn_snake/` before proposing a strategy.
 - Persist final strategies through `scripts/create_draft_strategy.py` or the
@@ -20,3 +20,5 @@
   append-only creation log stay in sync.
 - Validator feedback must call out obvious red flags such as early kicker or
   defense plans before the writer saves the strategy.
+- Keep the tracked role contracts in `docs/draft-strategy-agents/*.md` aligned
+  with the saved workflow metadata.
