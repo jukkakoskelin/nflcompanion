@@ -5,8 +5,11 @@ companion. Provider snapshots are immutable; later fetches create new files.
 
 - `players/raw/`: complete provider responses, never hand-edited.
 - `players/*.md`: provenance manifests for raw snapshots.
-- `leagues/`, `strategies/`, `rosters/`, and `drafts/`: user decisions and
-  append-only draft state to be added next.
+- `strategies/strategies.json`: draft strategy sets grouped by league and season,
+  including session draft style (`sleeper_dynasty` or `espn_snake`) and ESPN
+  reverse-round mode when relevant.
+- `leagues/`, `rosters/`, and `drafts/`: user decisions and append-only draft
+  state to be added next.
 
 Temporary canvas query examples:
 
