@@ -20,3 +20,7 @@ Gemfile.lock
 # Generated provider snapshots are reproducible and may be large.
 /state/players/raw/*.json
 /state/players/sleeper-players-*.md
+
+# Python bytecode
+__pycache__/
+*.py[cod]
