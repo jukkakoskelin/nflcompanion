@@ -280,6 +280,34 @@ The project extension follows the same boundary: it checks the repository's
 ignored `state/players/` snapshots first, fetches only when absent or explicitly
 refreshed, and returns the snapshot update timestamp with every query.
 
+### Trending player context at session start
+
+Sleeper's `/players/nfl/trending/<add|drop>` endpoint (see
+https://docs.sleeper.com/#trending-players) reports rostership add/drop
+activity that changes constantly, which is directly useful when building or
+revising a draft strategy. This is now wired in as durable, local-only state:
+
+- `scripts/fetch_sleeper_trending.py` fetches both the `add` and `drop`
+  trending lists and writes an immutable, dated raw JSON snapshot plus a
+  Markdown provenance manifest under `state/players/trending/`, using the same
+  atomic-write approach as the player snapshot fetcher.
+- `src/nflcompanion/state_store.py` gained `latest_trending_snapshot`,
+  `load_trending`, and `query_trending_players`, which enrich raw
+  `player_id`/`count` entries with names/positions/teams from the latest
+  player snapshot when one is available.
+- `scripts/query_trending_players.py` is the CLI/canvas-facing query
+  interface, mirroring `scripts/query_players.py`.
+- `.github/extensions/sleeper-player-data/extension.mjs` now registers an
+  `onSessionStart` hook that fetches a fresh trending snapshot every time an
+  agent session starts or resumes (falling back to the last cached snapshot if
+  the fetch fails) and injects a short summary of the top trending adds/drops
+  as hidden context. It also adds a `sleeper_query_trending_players` tool and
+  a matching canvas action so both human and agentic users can query the
+  local snapshot directly.
+- Like player snapshots, trending snapshots and manifests are ignored by git
+  (`state/players/trending/raw/*.json`, `state/players/trending/sleeper-trending-*.md`)
+  because they are provider data that should be fetched locally, not versioned.
+
 Next:
 
 1. Add cheat-sheet import parsing and ambiguity reports.

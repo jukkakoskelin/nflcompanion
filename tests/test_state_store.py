@@ -5,8 +5,11 @@ from pathlib import Path
 
 from nflcompanion.state_store import (
     SUPPORTED_DRAFT_STYLES,
+    latest_trending_snapshot,
     load_players,
+    load_trending,
     query_players,
+    query_trending_players,
     save_draft_strategy,
     strategies_for_session,
 )
@@ -35,6 +38,63 @@ class StateStoreTests(unittest.TestCase):
             [player["provider_id"] for player in query_players(players, name="alpha", team="aaa")],
             ["1"],
         )
+
+    def test_latest_trending_snapshot_picks_newest_file(self):
+        with tempfile.TemporaryDirectory() as directory:
+            state_root = Path(directory)
+            raw_dir = state_root / "players" / "trending" / "raw"
+            raw_dir.mkdir(parents=True)
+            older = raw_dir / "sleeper-trending-2026-01-01T000000000Z.json"
+            newer = raw_dir / "sleeper-trending-2026-01-02T000000000Z.json"
+            older.write_text(json.dumps({"add": [], "drop": []}), encoding="utf-8")
+            newer.write_text(json.dumps({"add": [], "drop": []}), encoding="utf-8")
+            self.assertEqual(latest_trending_snapshot(state_root), newer)
+
+    def test_latest_trending_snapshot_raises_when_missing(self):
+        with tempfile.TemporaryDirectory() as directory:
+            with self.assertRaises(FileNotFoundError):
+                latest_trending_snapshot(Path(directory))
+
+    def test_load_trending_requires_add_and_drop_lists(self):
+        with tempfile.TemporaryDirectory() as directory:
+            snapshot = Path(directory) / "trending.json"
+            snapshot.write_text(json.dumps({"add": []}), encoding="utf-8")
+            with self.assertRaises(ValueError):
+                load_trending(snapshot)
+
+    def test_query_trending_players_enriches_and_filters(self):
+        trending = {
+            "add": [
+                {"player_id": "1", "count": 500},
+                {"player_id": "2", "count": 300},
+                {"player_id": "3", "count": 100},
+            ],
+            "drop": [{"player_id": "2", "count": 50}],
+        }
+        players = [
+            {"provider_id": "1", "full_name": "Alpha Runner",
+             "fantasy_positions": ["RB"], "team": "AAA"},
+            {"provider_id": "2", "full_name": "Beta Wideout",
+             "fantasy_positions": ["WR"], "team": "BBB"},
+        ]
+        add_results = query_trending_players(trending, players, direction="add", limit=2)
+        self.assertEqual([entry["provider_id"] for entry in add_results], ["1", "2"])
+        self.assertEqual(add_results[0]["full_name"], "Alpha Runner")
+        self.assertEqual(add_results[0]["count"], 500)
+        # An unmatched provider id (no player snapshot entry) still appears,
+        # with name/team fields left unresolved.
+        self.assertEqual(
+            [entry["provider_id"] for entry in query_trending_players(trending, players, direction="add", limit=10)],
+            ["1", "2", "3"],
+        )
+        rb_only = query_trending_players(trending, players, direction="add", position="rb")
+        self.assertEqual([entry["provider_id"] for entry in rb_only], ["1"])
+        drop_results = query_trending_players(trending, players, direction="drop")
+        self.assertEqual([entry["provider_id"] for entry in drop_results], ["2"])
+
+    def test_query_trending_players_rejects_invalid_direction(self):
+        with self.assertRaises(ValueError):
+            query_trending_players({"add": [], "drop": []}, direction="sideways")
 
     def test_save_and_load_multiple_strategies_for_league_season(self):
         with tempfile.TemporaryDirectory() as directory:
