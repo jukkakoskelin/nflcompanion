@@ -3,11 +3,11 @@
 from __future__ import annotations
 
 import argparse
-import fnmatch
 import subprocess
 from pathlib import Path
 
-IMPLEMENTATION_PATTERNS = ("src/**", "scripts/**", "pyproject.toml")
+IMPLEMENTATION_PREFIXES = ("src/", "scripts/")
+IMPLEMENTATION_FILES = {"pyproject.toml"}
 IMPLEMENTATION_EXEMPTIONS = {"scripts/check_agentic_guardrails.py"}
 ZERO_SHA = "0" * 40
 
@@ -16,8 +16,9 @@ def normalize_git_path(path: Path | str) -> str:
     return Path(path).as_posix().removeprefix("./")
 
 
-def file_matches(path: str, patterns: tuple[str, ...]) -> bool:
-    return any(fnmatch.fnmatch(path, pattern) for pattern in patterns)
+def is_implementation_file(path: str) -> bool:
+    normalized_path = normalize_git_path(path)
+    return normalized_path in IMPLEMENTATION_FILES or normalized_path.startswith(IMPLEMENTATION_PREFIXES)
 
 
 def changed_files(base_ref: str, head_ref: str) -> list[str]:
@@ -58,7 +59,7 @@ def verify_guardrails(base_ref: str, head_ref: str, plan_path: Path) -> list[str
     implementation_files = [
         path
         for path in files
-        if file_matches(path, IMPLEMENTATION_PATTERNS) and path not in IMPLEMENTATION_EXEMPTIONS
+        if is_implementation_file(path) and path not in IMPLEMENTATION_EXEMPTIONS
     ]
     if implementation_files and normalized_plan_path not in files:
         violations.append(
