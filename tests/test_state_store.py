@@ -514,6 +514,10 @@ class StateStoreTests(unittest.TestCase):
             self.assertEqual(log_entries[0]["strategy_id"], saved["strategy_id"])
             self.assertEqual(log_entries[0]["questionnaire"][0]["answer"], "WR anchor")
             self.assertEqual(load_strategy_creation_log(state_root, draft_style="sleeper_dynasty", limit=0), [])
+            review_log = (state_root / saved["creation_review_log_file"]).read_text(encoding="utf-8")
+            self.assertIn("# Draft strategy creation log", review_log)
+            self.assertIn("## Created: WR Anchor", review_log)
+            self.assertIn("### Questionnaire", review_log)
 
     def test_manual_markdown_retirement_is_loaded_from_draft_context(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -576,6 +580,9 @@ class StateStoreTests(unittest.TestCase):
             log_entries = load_strategy_creation_log(state_root, draft_style="espn_snake")
             self.assertEqual([entry["event"] for entry in log_entries], ["created", "retired"])
             self.assertIn("retired_at", log_entries[1])
+            review_log = (state_root / retired["creation_review_log_file"]).read_text(encoding="utf-8")
+            self.assertIn("## Retired: Third-Round Reversal WR Anchor", review_log)
+            self.assertIn("Retirement reason: Outperformed by later mock drafts", review_log)
 
     def test_validate_strategy_flags_early_kicker_and_simulation_stays_clean(self):
         warnings = validate_draft_strategy(

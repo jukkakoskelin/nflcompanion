@@ -15,8 +15,9 @@ companion. Provider snapshots are immutable; later fetches create new files.
   reverse-round mode when relevant. Each saved strategy record includes
   `created_at`, `agent_rating`, `in_effect`, and pointers into the matching
   draft-context bucket (`draft-context/sleeper_dynasty/` or
-  `draft-context/espn_snake/`) plus the append-only creation log under each
-  bucket's `logs/strategy-creation-log.jsonl`.
+  `draft-context/espn_snake/`) plus both append-only creation logs under each
+  bucket's `logs/strategy-creation-log.jsonl` and
+  `logs/strategy-creation-log.md`.
 - `leagues/`, `rosters/`, and `drafts/`: user decisions and append-only draft
   state to be added next.
 

@@ -163,6 +163,10 @@ def _strategy_log_path(state_root: Path, draft_style: str) -> Path:
     return _draft_context_root(state_root, draft_style) / "logs" / "strategy-creation-log.jsonl"
 
 
+def _strategy_markdown_log_path(state_root: Path, draft_style: str) -> Path:
+    return _draft_context_root(state_root, draft_style) / "logs" / "strategy-creation-log.md"
+
+
 def _serialize_front_matter(metadata: dict[str, Any]) -> str:
     lines = ["---"]
     for key, value in metadata.items():
@@ -195,6 +199,59 @@ def _append_jsonl(path: Path, payload: dict[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("a", encoding="utf-8", newline="\n") as handle:
         handle.write(json.dumps(payload, sort_keys=True, ensure_ascii=False) + "\n")
+
+
+def _append_markdown_log(path: Path, payload: dict[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    if path.exists():
+        existing = path.read_text(encoding="utf-8")
+    else:
+        existing = "# Draft strategy creation log\n"
+    lines = []
+    if existing.rstrip():
+        lines.append(existing.rstrip())
+    else:
+        lines.append("# Draft strategy creation log")
+    event = str(payload.get("event") or "event").replace("_", " ").title()
+    timestamp = payload.get("created_at") or payload.get("retired_at") or "unknown time"
+    lines.extend(
+        [
+            "",
+            f"## {event}: {payload.get('name', 'Unnamed strategy')}",
+            "",
+            f"- Time: {timestamp}",
+            f"- League: {payload.get('league_id', 'unknown')} ({payload.get('draft_style', 'unknown')})",
+            f"- Season: {payload.get('season', 'unknown')}",
+            f"- Strategy ID: {payload.get('strategy_id', 'unknown')}",
+        ]
+    )
+    if "agent_rating" in payload:
+        lines.append(f"- Agent rating: {payload['agent_rating']}/100")
+    if "creation_mode" in payload:
+        lines.append(f"- Mode: {payload['creation_mode']}")
+    if payload.get("draft_context_file"):
+        lines.append(f"- Strategy file: {payload['draft_context_file']}")
+    if payload.get("retired_reason"):
+        lines.append(f"- Retirement reason: {payload['retired_reason']}")
+    validation_feedback = payload.get("validation_feedback")
+    if isinstance(validation_feedback, list):
+        lines.append("")
+        lines.append("### Validator feedback")
+        if validation_feedback:
+            lines.extend(f"- {item}" for item in validation_feedback)
+        else:
+            lines.append("- No validator warnings recorded.")
+    questionnaire = payload.get("questionnaire")
+    if isinstance(questionnaire, list):
+        lines.append("")
+        lines.append("### Questionnaire")
+        if questionnaire:
+            for item in questionnaire:
+                lines.append(f"- Q: {item.get('question', '')}")
+                lines.append(f"  - A: {item.get('answer', '')}")
+        else:
+            lines.append("- No questionnaire transcript recorded.")
+    path.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
 
 
 def _render_questionnaire(questionnaire: list[dict[str, Any]]) -> str:
@@ -518,6 +575,9 @@ def save_draft_strategy(
     workspace_root = _workspace_root(state_root)
     strategy_record["draft_context_file"] = strategy_path.relative_to(workspace_root).as_posix()
     strategy_record["creation_log_file"] = log_path.relative_to(workspace_root).as_posix()
+    strategy_record["creation_review_log_file"] = _strategy_markdown_log_path(
+        state_root, draft_style
+    ).relative_to(workspace_root).as_posix()
     strategies.append(strategy_record)
     season_node["session"] = session_config
     season_node["strategies"] = strategies
@@ -549,6 +609,23 @@ def save_draft_strategy(
             "collaborating_agents": strategy_record["collaborating_agents"],
             "strategy": strategy_record["strategy"],
             "draft_context_file": strategy_record["draft_context_file"],
+        },
+    )
+    _append_markdown_log(
+        _strategy_markdown_log_path(state_root, draft_style),
+        {
+            "event": "created",
+            "created_at": created_at,
+            "league_id": session_config["league_id"],
+            "season": session_config["season"],
+            "draft_style": session_config["draft_style"],
+            "strategy_id": strategy_record["strategy_id"],
+            "name": strategy_record["name"],
+            "agent_rating": strategy_record["agent_rating"],
+            "creation_mode": strategy_record["creation_mode"],
+            "draft_context_file": strategy_record["draft_context_file"],
+            "validation_feedback": strategy_record["validation_feedback"],
+            "questionnaire": strategy_record["questionnaire"],
         },
     )
     return deepcopy(strategy_record)
@@ -613,6 +690,9 @@ def _refresh_derived_strategy_fields(
     strategy_record["creation_log_file"] = _strategy_log_path(state_root, draft_style).relative_to(
         _workspace_root(state_root)
     ).as_posix()
+    strategy_record["creation_review_log_file"] = _strategy_markdown_log_path(
+        state_root, draft_style
+    ).relative_to(_workspace_root(state_root)).as_posix()
     return strategy_record
 
 
@@ -707,6 +787,20 @@ def retire_draft_strategy(
             "strategy_id": updated_strategy["strategy_id"],
             "name": updated_strategy["name"],
             "retired_reason": reason,
+        },
+    )
+    _append_markdown_log(
+        _strategy_markdown_log_path(state_root, str(session_config["draft_style"])),
+        {
+            "event": "retired",
+            "retired_at": retired_at,
+            "league_id": session_config["league_id"],
+            "season": session_config["season"],
+            "draft_style": session_config["draft_style"],
+            "strategy_id": updated_strategy["strategy_id"],
+            "name": updated_strategy["name"],
+            "retired_reason": reason,
+            "draft_context_file": markdown_strategy["draft_context_file"],
         },
     )
     return deepcopy(markdown_strategy)

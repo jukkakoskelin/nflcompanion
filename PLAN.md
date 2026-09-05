@@ -313,7 +313,8 @@ Next:
 1. Add cheat-sheet import parsing and ambiguity reports.
 2. Expand the strategy slice so interviewer/validator/writer agents can persist
    draft-context Markdown strategies, retirement metadata, and append-only
-   creation logs, with a non-interactive simulation entry point for testing.
+   creation logs, including a reviewer-friendly Markdown log mirror, with a
+   non-interactive simulation entry point for testing.
 3. Add deterministic candidate scoring and a temporary canvas view.
 4. Add an agent instruction contract that requires citations and confirmation
    before state mutation.

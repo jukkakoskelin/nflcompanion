@@ -25,6 +25,9 @@ Draft strategies now persist in two places:
 - `draft-context/sleeper_dynasty/strategies/` and
   `draft-context/espn_snake/strategies/` keep the user-editable Markdown strategy
   files plus append-only creation logs under `logs/`.
+- Each draft-context log bucket now contains both a structured
+  `strategy-creation-log.jsonl` file for code and a reviewer-friendly
+  `strategy-creation-log.md` mirror for easier chat/session review.
 
 Use `python scripts/create_draft_strategy.py --simulate ...` to generate a
 sample strategy/log pair for non-interactive testing, or pass
