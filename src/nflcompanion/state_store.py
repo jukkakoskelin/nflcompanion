@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import random
 import re
+from collections import deque
 from copy import deepcopy
 from datetime import UTC, datetime
 from pathlib import Path
@@ -556,10 +557,14 @@ def load_strategy_creation_log(
     path = _strategy_log_path(state_root, draft_style)
     if not path.exists():
         return []
-    entries = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
-    if limit is not None:
-        return entries[-max(0, limit) :]
-    return entries
+    if limit is None:
+        return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+    tail: deque[dict[str, Any]] = deque(maxlen=max(0, limit))
+    with path.open(encoding="utf-8") as handle:
+        for line in handle:
+            if line.strip():
+                tail.append(json.loads(line))
+    return list(tail)
 
 
 def _overlay_markdown_strategy(state_root: Path, strategy_record: dict[str, Any]) -> dict[str, Any]:
@@ -639,7 +644,7 @@ def retire_draft_strategy(
             raise ValueError("Draft strategy records must be objects")
         if str(strategy.get("strategy_id")) != strategy_id:
             continue
-        updated_strategy = deepcopy(strategy)
+        updated_strategy = _overlay_markdown_strategy(state_root, deepcopy(strategy))
         updated_strategy["in_effect"] = False
         updated_strategy["retired_at"] = retired_at
         updated_strategy["retired_reason"] = reason
