@@ -32,12 +32,15 @@ jobs:
         run: |
           if [ "$EVENT_NAME" = "pull_request" ]; then
             BASE_SHA="$PR_BASE_SHA"
+            DIFF_MODE="merge-base"
           else
             BASE_SHA="$PUSH_BASE_SHA"
+            DIFF_MODE="range"
           fi
           python scripts/check_agentic_guardrails.py \
             --base-ref "$BASE_SHA" \
-            --head-ref "$HEAD_SHA"
+            --head-ref "$HEAD_SHA" \
+            --diff-mode "$DIFF_MODE"
 
   tests:
     runs-on: ubuntu-latest

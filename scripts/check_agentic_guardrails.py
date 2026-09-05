@@ -21,7 +21,7 @@ def is_implementation_file(path: str) -> bool:
     return normalized_path in IMPLEMENTATION_FILES or normalized_path.startswith(IMPLEMENTATION_PREFIXES)
 
 
-def changed_files(base_ref: str, head_ref: str) -> list[str]:
+def changed_files(base_ref: str, head_ref: str, diff_mode: str) -> list[str]:
     if not base_ref or base_ref == ZERO_SHA:
         parent_result = subprocess.run(
             ["git", "rev-list", "--max-count=1", "--parents", head_ref],
@@ -36,7 +36,8 @@ def changed_files(base_ref: str, head_ref: str) -> list[str]:
             command = ["git", "ls-tree", "-r", "--name-only", head_ref]
             result = subprocess.run(command, check=True, capture_output=True, text=True)
             return [line for line in result.stdout.splitlines() if line]
-    command = ["git", "diff", "--name-only", f"{base_ref}..{head_ref}"]
+    revision_range = f"{base_ref}...{head_ref}" if diff_mode == "merge-base" else f"{base_ref}..{head_ref}"
+    command = ["git", "diff", "--name-only", revision_range]
     result = subprocess.run(command, check=True, capture_output=True, text=True)
     return [line for line in result.stdout.splitlines() if line]
 
@@ -52,9 +53,9 @@ def verify_plan(plan_path: Path) -> list[str]:
     return violations
 
 
-def verify_guardrails(base_ref: str, head_ref: str, plan_path: Path) -> list[str]:
+def verify_guardrails(base_ref: str, head_ref: str, plan_path: Path, diff_mode: str) -> list[str]:
     violations = verify_plan(plan_path)
-    files = changed_files(base_ref, head_ref)
+    files = changed_files(base_ref, head_ref, diff_mode)
     normalized_plan_path = normalize_git_path(plan_path)
     implementation_files = [
         path
@@ -73,9 +74,10 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--base-ref", default="")
     parser.add_argument("--head-ref", default="HEAD")
+    parser.add_argument("--diff-mode", choices=("range", "merge-base"), default="range")
     parser.add_argument("--plan-path", type=Path, default=Path("PLAN.md"))
     args = parser.parse_args()
-    violations = verify_guardrails(args.base_ref, args.head_ref, args.plan_path)
+    violations = verify_guardrails(args.base_ref, args.head_ref, args.plan_path, args.diff_mode)
     if violations:
         for violation in violations:
             print(violation)

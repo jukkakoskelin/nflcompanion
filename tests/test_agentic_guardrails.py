@@ -21,7 +21,13 @@ class AgenticGuardrailTests(unittest.TestCase):
         subprocess.run(["git", "commit", "-m", "initial"], cwd=directory, check=True, capture_output=True, text=True)
         return directory
 
-    def run_guardrail(self, repo: Path, *, base_sha: str | None = None) -> subprocess.CompletedProcess[str]:
+    def run_guardrail(
+        self,
+        repo: Path,
+        *,
+        base_sha: str | None = None,
+        diff_mode: str = "range",
+    ) -> subprocess.CompletedProcess[str]:
         head_sha = subprocess.run(
             ["git", "rev-parse", "HEAD"], cwd=repo, check=True, capture_output=True, text=True
         ).stdout.strip()
@@ -30,7 +36,16 @@ class AgenticGuardrailTests(unittest.TestCase):
                 ["git", "rev-parse", "HEAD^"], cwd=repo, check=True, capture_output=True, text=True
             ).stdout.strip()
         return subprocess.run(
-            ["python", str(SCRIPT_PATH), "--base-ref", base_sha, "--head-ref", head_sha],
+            [
+                "python",
+                str(SCRIPT_PATH),
+                "--base-ref",
+                base_sha,
+                "--head-ref",
+                head_sha,
+                "--diff-mode",
+                diff_mode,
+            ],
             cwd=repo,
             capture_output=True,
             text=True,
@@ -91,3 +106,23 @@ class AgenticGuardrailTests(unittest.TestCase):
         result = self.run_guardrail(repo, base_sha="0" * 40)
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("Implementation changes require a matching PLAN.md update", result.stdout)
+
+    def test_merge_base_diff_ignores_base_branch_only_changes(self):
+        repo = self.create_repo()
+        initial_sha = subprocess.run(
+            ["git", "rev-parse", "HEAD"], cwd=repo, check=True, capture_output=True, text=True
+        ).stdout.strip()
+        subprocess.run(["git", "checkout", "-b", "feature"], cwd=repo, check=True, capture_output=True, text=True)
+        subprocess.run(["git", "checkout", "-b", "base-branch", initial_sha], cwd=repo, check=True, capture_output=True, text=True)
+        (repo / "src" / "module.py").write_text("VALUE = 3\n", encoding="utf-8")
+        subprocess.run(["git", "commit", "-am", "base branch code"], cwd=repo, check=True, capture_output=True, text=True)
+        base_sha = subprocess.run(
+            ["git", "rev-parse", "HEAD"], cwd=repo, check=True, capture_output=True, text=True
+        ).stdout.strip()
+        subprocess.run(["git", "checkout", "feature"], cwd=repo, check=True, capture_output=True, text=True)
+        (repo / "docs.txt").write_text("notes\n", encoding="utf-8")
+        subprocess.run(["git", "add", "docs.txt"], cwd=repo, check=True, capture_output=True, text=True)
+        subprocess.run(["git", "commit", "-m", "feature docs"], cwd=repo, check=True, capture_output=True, text=True)
+        result = self.run_guardrail(repo, base_sha=base_sha, diff_mode="merge-base")
+        self.assertEqual(result.returncode, 0)
+        self.assertIn("Agentic guardrails verified.", result.stdout)
