@@ -1,0 +1,336 @@
+{
+  "ambiguous": [
+    {
+      "input": "Lemon",
+      "matches": [
+        {
+          "full_name": "Kyle Monangai",
+          "position": "RB",
+          "provider_id": "12534",
+          "team": "CHI"
+        },
+        {
+          "full_name": "Orie Lemon",
+          "position": "LB",
+          "provider_id": "1279",
+          "team": null
+        },
+        {
+          "full_name": "Virgil Lemons",
+          "position": "DB",
+          "provider_id": "13178",
+          "team": null
+        },
+        {
+          "full_name": "Montana Lemonious-Craig",
+          "position": "WR",
+          "provider_id": "13222",
+          "team": null
+        },
+        {
+          "full_name": "Makai Lemon",
+          "position": "WR",
+          "provider_id": "13294",
+          "team": "PHI"
+        },
+        {
+          "full_name": "Corey Lemonier",
+          "position": "DE",
+          "provider_id": "1586",
+          "team": null
+        },
+        {
+          "full_name": "Shawn Lemon",
+          "position": "OLB",
+          "provider_id": "2797",
+          "team": null
+        },
+        {
+          "full_name": "Cyril Lemon",
+          "position": "G",
+          "provider_id": "3047",
+          "team": null
+        },
+        {
+          "full_name": "Chris Clemons",
+          "position": "FS",
+          "provider_id": "337",
+          "team": null
+        },
+        {
+          "full_name": "Josh Harvey-Clemons",
+          "position": "LB",
+          "provider_id": "4286",
+          "team": null
+        },
+        {
+          "full_name": "Chris Clemons",
+          "position": "DE",
+          "provider_id": "696",
+          "team": null
+        },
+        {
+          "full_name": "Rodney Clemons",
+          "position": "DB",
+          "provider_id": "7304",
+          "team": null
+        },
+        {
+          "full_name": "Jessie Lemonier",
+          "position": "LB",
+          "provider_id": "7324",
+          "team": null
+        },
+        {
+          "full_name": "Micheal Clemons",
+          "position": "DL",
+          "provider_id": "8316",
+          "team": "IND"
+        }
+      ]
+    }
+  ],
+  "generated_at": "2026-09-05T16:41:56.574791+00:00",
+  "recommendations": [
+    {
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "positional_need": 30,
+        "strategy_fit": 25,
+        "trend_signal": 0
+      },
+      "full_name": "Blake Corum",
+      "position": "RB",
+      "provider_id": "11586",
+      "rank": 1,
+      "rationale": "Fits the rb priority.",
+      "score": 75,
+      "team": "LAR"
+    },
+    {
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "positional_need": 30,
+        "strategy_fit": 25,
+        "trend_signal": 0
+      },
+      "full_name": "Josh Downs",
+      "position": "WR",
+      "provider_id": "9500",
+      "rank": 2,
+      "rationale": "Fits the wr priority.",
+      "score": 75,
+      "team": "IND"
+    },
+    {
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "positional_need": 30,
+        "strategy_fit": 25,
+        "trend_signal": 0
+      },
+      "full_name": "Khalil Shakir",
+      "position": "WR",
+      "provider_id": "8134",
+      "rank": 3,
+      "rationale": "Fits the wr priority.",
+      "score": 75,
+      "team": "BUF"
+    }
+  ],
+  "resolved": [
+    {
+      "active": true,
+      "age": 25,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "2001-08-12",
+      "birth_state": null,
+      "college": "North Carolina",
+      "competitions": [],
+      "depth_chart_order": 2,
+      "depth_chart_position": "SWR",
+      "espn_id": null,
+      "fantasy_data_id": 24145,
+      "fantasy_positions": [
+        "WR"
+      ],
+      "first_name": "Josh",
+      "full_name": "Josh Downs",
+      "gsis_id": null,
+      "hashtag": "#joshdowns-NFL-IND-2",
+      "height": "69",
+      "high_school": "North Gwinnett (GA)",
+      "injury_body_part": "Undisclosed",
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": "Questionable",
+      "kalshi_id": "61429e9a-e398-4b02-9f3f-90aa8b27c0e2",
+      "last_name": "Downs",
+      "metadata": {
+        "channel_id": "1113708781897805824",
+        "genius_id": "1399008",
+        "rookie_year": "2023"
+      },
+      "news_updated": 1788297321715,
+      "number": 2,
+      "oddsjam_id": "ABFB4947D508",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "9500",
+      "player_shard": "8",
+      "position": "WR",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "9500",
+      "rotowire_id": 16689,
+      "rotoworld_id": null,
+      "search_first_name": "josh",
+      "search_full_name": "joshdowns",
+      "search_last_name": "downs",
+      "search_rank": 111,
+      "sport": "nfl",
+      "sportradar_id": "dd227f4a-0785-482d-a28b-f231c7f3b73f",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1215077,
+      "team": "IND",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "171",
+      "yahoo_id": null,
+      "years_exp": 3
+    },
+    {
+      "active": true,
+      "age": 26,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "2000-02-03",
+      "birth_state": null,
+      "college": "Boise State",
+      "competitions": [],
+      "depth_chart_order": 2,
+      "depth_chart_position": "SWR",
+      "espn_id": null,
+      "fantasy_data_id": 23227,
+      "fantasy_positions": [
+        "WR"
+      ],
+      "first_name": "Khalil",
+      "full_name": "Khalil Shakir",
+      "gsis_id": null,
+      "hashtag": "#khalilshakir-NFL-BUF-10",
+      "height": "72",
+      "high_school": "Vista Murrieta (CA)",
+      "injury_body_part": "Undisclosed",
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": "Questionable",
+      "kalshi_id": "af843ffa-5c39-43cd-93f0-3fd0ab144e3e",
+      "last_name": "Shakir",
+      "metadata": {
+        "channel_id": "1113708754202816512",
+        "genius_id": "1084036",
+        "rookie_year": "2022"
+      },
+      "news_updated": 1788384333173,
+      "number": 10,
+      "oddsjam_id": "889707CDEC24",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "8134",
+      "player_shard": "6",
+      "position": "WR",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "8134",
+      "rotowire_id": 15892,
+      "rotoworld_id": null,
+      "search_first_name": "khalil",
+      "search_full_name": "khalilshakir",
+      "search_last_name": "shakir",
+      "search_rank": 120,
+      "sport": "nfl",
+      "sportradar_id": "0ce9ddce-bdf6-469c-8a32-9cf0ed3714a4",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1130603,
+      "team": "BUF",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "190",
+      "yahoo_id": null,
+      "years_exp": 4
+    },
+    {
+      "active": true,
+      "age": 25,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "2000-11-25",
+      "birth_state": null,
+      "college": "Michigan",
+      "competitions": [],
+      "depth_chart_order": 2,
+      "depth_chart_position": "RB",
+      "espn_id": null,
+      "fantasy_data_id": 24116,
+      "fantasy_positions": [
+        "RB"
+      ],
+      "first_name": "Blake",
+      "full_name": "Blake Corum",
+      "gsis_id": null,
+      "hashtag": "#blakecorum-NFL-LAR-24",
+      "height": "68",
+      "high_school": "Saint Frances Academy (MD)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "6949b063-c2c0-4b57-a531-98a4548fadf8",
+      "last_name": "Corum",
+      "metadata": {
+        "channel_id": "1113708704265433088",
+        "genius_id": "1463727",
+        "rookie_year": "2024"
+      },
+      "news_updated": 1788372931363,
+      "number": 24,
+      "oddsjam_id": "F443223E322F",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "11586",
+      "player_shard": "3",
+      "position": "RB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "11586",
+      "rotowire_id": 17690,
+      "rotoworld_id": null,
+      "search_first_name": "blake",
+      "search_full_name": "blakecorum",
+      "search_last_name": "corum",
+      "search_rank": 68,
+      "sport": "nfl",
+      "sportradar_id": "93ba1da2-3679-4ddc-9687-0802349f9ee2",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1229540,
+      "team": "LAR",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "202",
+      "yahoo_id": null,
+      "years_exp": 2
+    }
+  ],
+  "unknown": []
+}

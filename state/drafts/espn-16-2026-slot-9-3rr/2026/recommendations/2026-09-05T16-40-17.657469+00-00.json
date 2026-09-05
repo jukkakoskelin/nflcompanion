@@ -1,0 +1,496 @@
+{
+  "ambiguous": [
+    {
+      "input": "Brooks",
+      "matches": [
+        {
+          "full_name": "Ron Brooks",
+          "position": "CB",
+          "provider_id": "1041",
+          "team": null
+        },
+        {
+          "full_name": "Brandon Brooks",
+          "position": "G",
+          "provider_id": "1098",
+          "team": "PHI"
+        },
+        {
+          "full_name": "Karl Brooks",
+          "position": "DT",
+          "provider_id": "11009",
+          "team": "GB"
+        },
+        {
+          "full_name": "Jalen Brooks",
+          "position": "WR",
+          "provider_id": "11034",
+          "team": "ARI"
+        },
+        {
+          "full_name": "Mason Brooks",
+          "position": "OL",
+          "provider_id": "11071",
+          "team": null
+        },
+        {
+          "full_name": "Kendell Brooks",
+          "position": "DB",
+          "provider_id": "11185",
+          "team": null
+        },
+        {
+          "full_name": "Larry Brooks",
+          "position": "DB",
+          "provider_id": "11246",
+          "team": null
+        },
+        {
+          "full_name": "Chris Brooks",
+          "position": "RB",
+          "provider_id": "11370",
+          "team": "GB"
+        },
+        {
+          "full_name": "Natrone Brooks",
+          "position": "CB",
+          "provider_id": "11481",
+          "team": null
+        },
+        {
+          "full_name": "Myles Brooks",
+          "position": "CB",
+          "provider_id": "11515",
+          "team": null
+        },
+        {
+          "full_name": "Jonathon Brooks",
+          "position": "RB",
+          "provider_id": "11583",
+          "team": "CAR"
+        },
+        {
+          "full_name": "British Brooks",
+          "position": "RB",
+          "provider_id": "12171",
+          "team": "HOU"
+        },
+        {
+          "full_name": "Phillip Brooks",
+          "position": "WR",
+          "provider_id": "12254",
+          "team": null
+        },
+        {
+          "full_name": "Ja'Corey Brooks",
+          "position": "WR",
+          "provider_id": "12532",
+          "team": null
+        },
+        {
+          "full_name": "Tahj Brooks",
+          "position": "RB",
+          "provider_id": "12543",
+          "team": "CIN"
+        },
+        {
+          "full_name": "Will Brooks",
+          "position": "DB",
+          "provider_id": "13115",
+          "team": null
+        },
+        {
+          "full_name": "Terrence Brooks",
+          "position": "DB",
+          "provider_id": "1864",
+          "team": null
+        },
+        {
+          "full_name": "Lavelle Westbrooks",
+          "position": "CB",
+          "provider_id": "1896",
+          "team": null
+        },
+        {
+          "full_name": "Ethan Westbrooks",
+          "position": "DT",
+          "provider_id": "2237",
+          "team": "NO"
+        },
+        {
+          "full_name": "Cariel Brooks",
+          "position": "CB",
+          "provider_id": "2664",
+          "team": null
+        },
+        {
+          "full_name": "Zac Brooks",
+          "position": "RB",
+          "provider_id": "3402",
+          "team": null
+        },
+        {
+          "full_name": "Ahmad Brooks",
+          "position": "LB",
+          "provider_id": "44",
+          "team": null
+        },
+        {
+          "full_name": "Brooks Ellis",
+          "position": "OLB",
+          "provider_id": "4419",
+          "team": null
+        },
+        {
+          "full_name": "Corin Brooks",
+          "position": "G",
+          "provider_id": "4818",
+          "team": null
+        },
+        {
+          "full_name": "Tony Brooks-James",
+          "position": "RB",
+          "provider_id": "6585",
+          "team": null
+        },
+        {
+          "full_name": "Nate Brooks",
+          "position": "DB",
+          "provider_id": "6634",
+          "team": null
+        },
+        {
+          "full_name": "Antoine Brooks",
+          "position": "DB",
+          "provider_id": "6917",
+          "team": null
+        },
+        {
+          "full_name": "Jordyn Brooks",
+          "position": "LB",
+          "provider_id": "6949",
+          "team": "MIA"
+        },
+        {
+          "full_name": "Shannon Brooks",
+          "position": "RB",
+          "provider_id": "7104",
+          "team": null
+        },
+        {
+          "full_name": "Chris Claybrooks",
+          "position": "DB",
+          "provider_id": "7138",
+          "team": null
+        },
+        {
+          "full_name": "Kennedy Brooks",
+          "position": "RB",
+          "provider_id": "8152",
+          "team": null
+        },
+        {
+          "full_name": "Curtis Brooks",
+          "position": "DT",
+          "provider_id": "8490",
+          "team": null
+        },
+        {
+          "full_name": "Brooks Reed",
+          "position": "LB",
+          "provider_id": "855",
+          "team": null
+        },
+        {
+          "full_name": "Ellis Brooks",
+          "position": "LB",
+          "provider_id": "8600",
+          "team": null
+        }
+      ]
+    },
+    {
+      "input": "Diggs",
+      "matches": [
+        {
+          "full_name": "Fadil Diggs",
+          "position": "DL",
+          "provider_id": "12609",
+          "team": "NO"
+        },
+        {
+          "full_name": "Stefon Diggs",
+          "position": "WR",
+          "provider_id": "2449",
+          "team": "WAS"
+        },
+        {
+          "full_name": "Quandre Diggs",
+          "position": "DB",
+          "provider_id": "2501",
+          "team": null
+        },
+        {
+          "full_name": "Reggie Diggs",
+          "position": "WR",
+          "provider_id": "3655",
+          "team": null
+        },
+        {
+          "full_name": "Vontae Diggs",
+          "position": "OLB",
+          "provider_id": "5720",
+          "team": null
+        },
+        {
+          "full_name": "Trevon Diggs",
+          "position": "CB",
+          "provider_id": "6809",
+          "team": "SEA"
+        }
+      ]
+    },
+    {
+      "input": "Pierce",
+      "matches": [
+        {
+          "full_name": "Bernard Pierce",
+          "position": "RB",
+          "provider_id": "1263",
+          "team": null
+        },
+        {
+          "full_name": "Hollin Pierce",
+          "position": "OT",
+          "provider_id": "12869",
+          "team": null
+        },
+        {
+          "full_name": "Casey Pierce",
+          "position": "TE",
+          "provider_id": "2637",
+          "team": null
+        },
+        {
+          "full_name": "Markus Pierce-Brewster",
+          "position": "DE",
+          "provider_id": "2852",
+          "team": null
+        },
+        {
+          "full_name": "Michael Pierce",
+          "position": "DT",
+          "provider_id": "3681",
+          "team": null
+        },
+        {
+          "full_name": "Artavis Pierce",
+          "position": "RB",
+          "provider_id": "7227",
+          "team": null
+        },
+        {
+          "full_name": "Dameon Pierce",
+          "position": "RB",
+          "provider_id": "8129",
+          "team": "PHI"
+        },
+        {
+          "full_name": "Alec Pierce",
+          "position": "WR",
+          "provider_id": "8142",
+          "team": "IND"
+        },
+        {
+          "full_name": "Chris Pierce",
+          "position": "TE",
+          "provider_id": "8634",
+          "team": null
+        }
+      ]
+    },
+    {
+      "input": "Hunter",
+      "matches": [
+        {
+          "full_name": "Hunter Luepke",
+          "position": "FB",
+          "provider_id": "11510",
+          "team": "DAL"
+        },
+        {
+          "full_name": "Jarquez Hunter",
+          "position": "RB",
+          "provider_id": "11569",
+          "team": null
+        },
+        {
+          "full_name": "Hunter Nourzad",
+          "position": "OL",
+          "provider_id": "11756",
+          "team": "KC"
+        },
+        {
+          "full_name": "Jontrey Hunter",
+          "position": "LB",
+          "provider_id": "12117",
+          "team": null
+        },
+        {
+          "full_name": "Travis Hunter",
+          "position": "DB",
+          "provider_id": "12530",
+          "team": "JAX"
+        },
+        {
+          "full_name": "Hunter Wohler",
+          "position": "DB",
+          "provider_id": "12723",
+          "team": "IND"
+        },
+        {
+          "full_name": "Hunter Dekkers",
+          "position": "QB",
+          "provider_id": "13217",
+          "team": null
+        },
+        {
+          "full_name": "Lee Hunter",
+          "position": "DL",
+          "provider_id": "13362",
+          "team": "CAR"
+        },
+        {
+          "full_name": "Erick Hunter",
+          "position": "LB",
+          "provider_id": "13739",
+          "team": "NE"
+        },
+        {
+          "full_name": "Hunter Peck",
+          "position": "DE",
+          "provider_id": "14015",
+          "team": null
+        },
+        {
+          "full_name": "Justin Hunter",
+          "position": "WR",
+          "provider_id": "1418",
+          "team": null
+        },
+        {
+          "full_name": "Danielle Hunter",
+          "position": "DE",
+          "provider_id": "2393",
+          "team": "HOU"
+        },
+        {
+          "full_name": "Hunter Henry",
+          "position": "TE",
+          "provider_id": "3214",
+          "team": "NE"
+        },
+        {
+          "full_name": "Hunter Sharp",
+          "position": "WR",
+          "provider_id": "3517",
+          "team": null
+        },
+        {
+          "full_name": "Michael Hunter",
+          "position": "CB",
+          "provider_id": "3766",
+          "team": null
+        },
+        {
+          "full_name": "Montario Hunter",
+          "position": "WR",
+          "provider_id": "3922",
+          "team": null
+        },
+        {
+          "full_name": "Hunter Dimick",
+          "position": "OLB",
+          "provider_id": "4625",
+          "team": null
+        },
+        {
+          "full_name": "Hunter Bradley",
+          "position": "LS",
+          "provider_id": "5321",
+          "team": null
+        },
+        {
+          "full_name": "Reggie Hunter",
+          "position": "LB",
+          "provider_id": "5477",
+          "team": null
+        },
+        {
+          "full_name": "Ryan Hunter",
+          "position": "G",
+          "provider_id": "5577",
+          "team": null
+        },
+        {
+          "full_name": "Hunter Renfrow",
+          "position": "WR",
+          "provider_id": "5955",
+          "team": null
+        },
+        {
+          "full_name": "Hunter Bryant",
+          "position": "TE",
+          "provider_id": "6846",
+          "team": null
+        },
+        {
+          "full_name": "Hunter Atkinson",
+          "position": "OT",
+          "provider_id": "7178",
+          "team": null
+        },
+        {
+          "full_name": "Hunter Watts",
+          "position": "OT",
+          "provider_id": "7256",
+          "team": null
+        },
+        {
+          "full_name": "Hunter Niswander",
+          "position": "P",
+          "provider_id": "7516",
+          "team": "DAL"
+        },
+        {
+          "full_name": "Hunter Thedford",
+          "position": "TE",
+          "provider_id": "7522",
+          "team": null
+        },
+        {
+          "full_name": "Hunter Long",
+          "position": "TE",
+          "provider_id": "7535",
+          "team": "ARI"
+        },
+        {
+          "full_name": "Hunter Kampmoyer",
+          "position": "TE",
+          "provider_id": "7938",
+          "team": null
+        },
+        {
+          "full_name": "Kendall Hunter",
+          "position": "RB",
+          "provider_id": "978",
+          "team": null
+        }
+      ]
+    }
+  ],
+  "generated_at": "2026-09-05T16:40:17.657469+00:00",
+  "recommendations": [],
+  "resolved": [],
+  "unknown": []
+}

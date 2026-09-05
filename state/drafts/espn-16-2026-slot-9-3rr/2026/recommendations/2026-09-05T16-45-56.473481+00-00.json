@@ -1,0 +1,255 @@
+{
+  "ambiguous": [
+    {
+      "input": "GB",
+      "matches": [
+        {
+          "full_name": "Justin Eboigbe",
+          "position": "DL",
+          "provider_id": "11743",
+          "team": "LAC"
+        },
+        {
+          "full_name": "Yvandy Rigby",
+          "position": "LB",
+          "provider_id": "11977",
+          "team": null
+        },
+        {
+          "full_name": "David Ugwoegbu",
+          "position": "DE",
+          "provider_id": "12379",
+          "team": null
+        },
+        {
+          "full_name": "Emeka Egbuka",
+          "position": "WR",
+          "provider_id": "12514",
+          "team": "TB"
+        },
+        {
+          "full_name": "Tommy Akingbesote",
+          "position": "DT",
+          "provider_id": "12739",
+          "team": null
+        },
+        {
+          "full_name": "Desmond Igbinosun",
+          "position": "DB",
+          "provider_id": "13021",
+          "team": null
+        },
+        {
+          "full_name": "David Gbenda",
+          "position": "LB",
+          "provider_id": "13056",
+          "team": null
+        },
+        {
+          "full_name": "Davison Igbinosun",
+          "position": "CB",
+          "provider_id": "13454",
+          "team": "BUF"
+        },
+        {
+          "full_name": "Chigbo Anunoby",
+          "position": "NT",
+          "provider_id": "1714",
+          "team": null
+        },
+        {
+          "full_name": "Cedric Ogbuehi",
+          "position": "T",
+          "provider_id": "2326",
+          "team": null
+        },
+        {
+          "full_name": "Owamagbe Odighizuwa",
+          "position": "DE",
+          "provider_id": "2379",
+          "team": null
+        },
+        {
+          "full_name": "James Ihedigbo",
+          "position": "SS",
+          "provider_id": "255",
+          "team": null
+        },
+        {
+          "full_name": "Ikponmwosa Igbinosun",
+          "position": "DE",
+          "provider_id": "2738",
+          "team": null
+        },
+        {
+          "full_name": "Joshua Stangby",
+          "position": "WR",
+          "provider_id": "2912",
+          "team": null
+        },
+        {
+          "full_name": "Emmanuel Ogbah",
+          "position": "DE",
+          "provider_id": "3197",
+          "team": "KC"
+        },
+        {
+          "full_name": "Tyler Higbee",
+          "position": "TE",
+          "provider_id": "3271",
+          "team": "LAR"
+        },
+        {
+          "full_name": "Sterling Bailey",
+          "position": "DE",
+          "provider_id": "3421",
+          "team": null
+        },
+        {
+          "full_name": "Ifeadi Odenigbo",
+          "position": "DE",
+          "provider_id": "4256",
+          "team": null
+        },
+        {
+          "full_name": "Chris Ogbonnaya",
+          "position": "RB",
+          "provider_id": "454",
+          "team": null
+        },
+        {
+          "full_name": "Kenneth Olugbode",
+          "position": "ILB",
+          "provider_id": "4565",
+          "team": null
+        },
+        {
+          "full_name": "Ogbo Okoronkwo",
+          "position": "LB",
+          "provider_id": "5075",
+          "team": "SF"
+        },
+        {
+          "full_name": "Joel Iyiegbuniwe",
+          "position": "LB",
+          "provider_id": "5303",
+          "team": null
+        },
+        {
+          "full_name": "Emeke Egbule",
+          "position": "LB",
+          "provider_id": "5978",
+          "team": null
+        },
+        {
+          "full_name": "Devine Ozigbo",
+          "position": "RB",
+          "provider_id": "6068",
+          "team": null
+        },
+        {
+          "full_name": "Michael Dogbe",
+          "position": "DE",
+          "provider_id": "6304",
+          "team": null
+        },
+        {
+          "full_name": "Tito Odenigbo",
+          "position": "DT",
+          "provider_id": "6382",
+          "team": null
+        },
+        {
+          "full_name": "Dare Odeyingbo",
+          "position": "DE",
+          "provider_id": "6649",
+          "team": null
+        },
+        {
+          "full_name": "Jonathan Kongbo",
+          "position": "DE",
+          "provider_id": "6760",
+          "team": null
+        },
+        {
+          "full_name": "Noah Igbinoghene",
+          "position": "CB",
+          "provider_id": "6817",
+          "team": "CLE"
+        },
+        {
+          "full_name": "Albert Okwuegbunam",
+          "position": "TE",
+          "provider_id": "6843",
+          "team": null
+        },
+        {
+          "full_name": "Essang Bassey",
+          "position": "CB",
+          "provider_id": "6925",
+          "team": null
+        },
+        {
+          "full_name": "Tyler Higby",
+          "position": "OL",
+          "provider_id": "7007",
+          "team": null
+        },
+        {
+          "full_name": "Dayo Odeyingbo",
+          "position": "DE",
+          "provider_id": "7649",
+          "team": "CHI"
+        },
+        {
+          "full_name": "Amen Ogbongbemiga",
+          "position": "LB",
+          "provider_id": "7936",
+          "team": "DET"
+        },
+        {
+          "full_name": "Greg Bell",
+          "position": "RB",
+          "provider_id": "8226",
+          "team": null
+        },
+        {
+          "full_name": "Otito Ogbonnia",
+          "position": "DL",
+          "provider_id": "8331",
+          "team": "DAL"
+        },
+        {
+          "full_name": "Kingsley Enagbare",
+          "position": "DL",
+          "provider_id": "8382",
+          "team": "NYJ"
+        },
+        {
+          "full_name": "Alex Akingbulu",
+          "position": "OL",
+          "provider_id": "8918",
+          "team": null
+        },
+        {
+          "full_name": "Jaxon Smith-Njigba",
+          "position": "WR",
+          "provider_id": "9488",
+          "team": "SEA"
+        },
+        {
+          "full_name": "Doug Baldwin",
+          "position": "WR",
+          "provider_id": "988",
+          "team": null
+        }
+      ]
+    }
+  ],
+  "generated_at": "2026-09-05T16:45:56.473481+00:00",
+  "recommendations": [],
+  "resolved": [],
+  "unknown": [
+    "Green Bay"
+  ]
+}

@@ -1,0 +1,239 @@
+{
+  "ambiguous": [
+    {
+      "input": "Lamb",
+      "matches": [
+        {
+          "full_name": "KeAndre Lambert-Smith",
+          "position": "WR",
+          "provider_id": "12670",
+          "team": "LAC"
+        },
+        {
+          "full_name": "Josh Lambo",
+          "position": "K",
+          "provider_id": "2671",
+          "team": null
+        },
+        {
+          "full_name": "Keenan Lambert",
+          "position": "S",
+          "provider_id": "2896",
+          "team": null
+        },
+        {
+          "full_name": "DaVonte Lambert",
+          "position": "DT",
+          "provider_id": "3597",
+          "team": null
+        },
+        {
+          "full_name": "Jordan Williams-Lambert",
+          "position": "WR",
+          "provider_id": "3621",
+          "team": null
+        },
+        {
+          "full_name": "Matt Galambos",
+          "position": "ILB",
+          "provider_id": "4724",
+          "team": null
+        },
+        {
+          "full_name": "Peter Kalambayi",
+          "position": "LB",
+          "provider_id": "5325",
+          "team": "GB"
+        },
+        {
+          "full_name": "CeeDee Lamb",
+          "position": "WR",
+          "provider_id": "6786",
+          "team": "DAL"
+        }
+      ]
+    },
+    {
+      "input": "Jefferson",
+      "matches": [
+        {
+          "full_name": "Jordan Jefferson",
+          "position": "DT",
+          "provider_id": "11736",
+          "team": "LAC"
+        },
+        {
+          "full_name": "Ramon Jefferson",
+          "position": "RB",
+          "provider_id": "12402",
+          "team": null
+        },
+        {
+          "full_name": "Justin Jefferson",
+          "position": "LB",
+          "provider_id": "13524",
+          "team": "CLE"
+        },
+        {
+          "full_name": "Tony Jefferson",
+          "position": "DB",
+          "provider_id": "1686",
+          "team": "LAC"
+        },
+        {
+          "full_name": "Willie Jefferson",
+          "position": "OLB",
+          "provider_id": "1732",
+          "team": null
+        },
+        {
+          "full_name": "Anthony Jefferson",
+          "position": "S",
+          "provider_id": "2705",
+          "team": null
+        },
+        {
+          "full_name": "Cameron Jefferson",
+          "position": "G",
+          "provider_id": "2998",
+          "team": null
+        },
+        {
+          "full_name": "Quinton Jefferson",
+          "position": "DT",
+          "provider_id": "3304",
+          "team": null
+        },
+        {
+          "full_name": "Rickey Jefferson",
+          "position": "SS",
+          "provider_id": "4447",
+          "team": null
+        },
+        {
+          "full_name": "A.J. Jefferson",
+          "position": "DE",
+          "provider_id": "4732",
+          "team": null
+        },
+        {
+          "full_name": "Malik Jefferson",
+          "position": "LB",
+          "provider_id": "5016",
+          "team": null
+        },
+        {
+          "full_name": "Cece Jefferson",
+          "position": "OLB",
+          "provider_id": "6035",
+          "team": null
+        },
+        {
+          "full_name": "Justin Jefferson",
+          "position": "WR",
+          "provider_id": "6794",
+          "team": "MIN"
+        },
+        {
+          "full_name": "Van Jefferson",
+          "position": "WR",
+          "provider_id": "6853",
+          "team": null
+        },
+        {
+          "full_name": "Jermar Jefferson",
+          "position": "RB",
+          "provider_id": "7599",
+          "team": "MIN"
+        }
+      ]
+    }
+  ],
+  "generated_at": "2026-09-05T17:59:24.980927+00:00",
+  "recommendations": [
+    {
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 20,
+        "positional_need": 30,
+        "strategy_fit": 25,
+        "trend_signal": 0
+      },
+      "full_name": "De'Von Achane",
+      "position": "RB",
+      "provider_id": "9226",
+      "rank": 1,
+      "rationale": "Fits the rb priority.",
+      "score": 85,
+      "team": "MIA"
+    }
+  ],
+  "resolved": [
+    {
+      "active": true,
+      "age": 24,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "2001-10-13",
+      "birth_state": null,
+      "college": "Texas A&M",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "RB",
+      "espn_id": null,
+      "fantasy_data_id": 24179,
+      "fantasy_positions": [
+        "RB"
+      ],
+      "first_name": "De'Von",
+      "full_name": "De'Von Achane",
+      "gsis_id": null,
+      "hashtag": "#devonachane-NFL-MIA-28",
+      "height": "69",
+      "high_school": "Thurgood Marshall (TX)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "46fc0292-2206-4060-a04a-0111e548a398",
+      "last_name": "Achane",
+      "metadata": {
+        "channel_id": "1113708739082350592",
+        "genius_id": "1399017",
+        "rookie_year": "2023"
+      },
+      "news_updated": 1788494716951,
+      "number": 28,
+      "oddsjam_id": "0C6DD4D59DE2",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "9226",
+      "player_shard": "2",
+      "position": "RB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "9226",
+      "rotowire_id": 16661,
+      "rotoworld_id": null,
+      "search_first_name": "devon",
+      "search_full_name": "devonachane",
+      "search_last_name": "achane",
+      "search_rank": 8,
+      "sport": "nfl",
+      "sportradar_id": "a4ef921b-8767-4b4f-a651-7675c00f9af0",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1231820,
+      "team": "MIA",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "195",
+      "yahoo_id": null,
+      "years_exp": 3
+    }
+  ],
+  "unknown": [
+    "Cook III"
+  ]
+}

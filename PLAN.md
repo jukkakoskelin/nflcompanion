@@ -1,6 +1,6 @@
 # NFL Fantasy Draft Companion Plan
 
-Status: in progress  
+Status: in progress - evaluating mock-3 feedback, visual hierarchy, and planning local draft UI  
 Priority: draft-ready MVP for the Sleeper dynasty draft and ESPN 16-team snake
 draft in the next few days
 
@@ -60,6 +60,181 @@ first-class data, not a cache that can be silently replaced.
   event for an accidental selection.
 - Consider a persistent web/Tauri UI only after the Markdown/canvas workflow is
   proven during a real draft.
+
+## Post-mock findings and follow-up
+
+The ESPN 16-team, slot-9, third-round-reversal mock received an ESPN draft
+grade of `C`. The roster's relative strength was bench depth; its main
+weaknesses were tight end and defense. The mock used a 30-second decision
+window and advanced much faster than a real draft, so response latency is a
+draft-readiness requirement rather than a cosmetic UX concern.
+
+### First mock enhancement priorities
+
+The first mock also exposed gaps in the recommendation path itself. The saved
+recommendations repeatedly tied candidates at `75` or `85`, assigned `high`
+confidence without enough differentiating evidence, surfaced unresolved names
+alongside ranked candidates, and failed to resolve common display labels such
+as `Packers DEF`. The next implementation work should therefore be ordered as
+follows:
+
+1. **P0: make recommendations discriminating and trustworthy.** Add tier or
+  ranking evidence, roster-state penalties, positional scarcity, and injury or
+  availability risk to the scorecard. Confidence must be derived from match
+  quality and evidence completeness; unresolved or ambiguous inputs must stop
+  ranking for that candidate rather than appear as a normal recommendation.
+2. **P0: enforce endgame roster coverage.** Add a remaining-picks checkpoint
+  that distinguishes starter quality from merely filling a position. It must
+  flag a weak TE or DEF tier, protect the required minimum roster, and compare
+  the replacement value of a late specialist with an RB/WR upside pick.
+3. **P1: harden fantasy identity resolution.** Normalize provider and display
+  aliases (`DEF`/`D/ST`, team name plus position, punctuation, and common
+  abbreviations), retain the original input, and return a short clarification
+  choice when multiple players remain. Add fixtures for `St. Brown`, `Brooks`,
+  and `Packers DEF`.
+4. **P1: make the fast lane usable under draft pressure.** Measure each
+  recommendation from submission through first actionable output, keep the
+  session context warm, and return a bounded provisional answer before deeper
+  evidence or refresh work. Test against a 30-second decision window as well
+  as the existing 15-second hard budget.
+5. **P1: close the mock feedback loop.** Persist the mock grade, roster-quality
+  notes, recommendation record, and post-draft review as linked artifacts so a
+  later strategy revision can tell whether a weakness came from strategy,
+  player valuation, identity matching, or unavailable data.
+
+### Second mock findings and follow-up (2026-09-05)
+
+The second ESPN 16-team 3RR mock draft (session `espn-16-2026-mock-2`) received an
+ESPN draft grade of `C`. Bench depth was scored as a strength, but QB was a
+noted weakness, and three of the top five selections shared the same NFL bye
+week. Additionally, interactive command execution prompted repeatedly for user
+approval, hindering the fast-lane draft experience.
+
+The following priorities are added to the refactoring roadmap:
+
+1. **P0: Pre-draft bye-week analysis and conflict avoidance.**
+   - Import and persist NFL team 2026 bye weeks in player snapshot metadata.
+   - Run a pre-draft bye week distribution analysis at draft-session start so the
+     user is alerted to key bye week concentrations before round 1 begins.
+   - Introduce a bye-week penalty to `recommend_candidates` when a candidate
+     shares a bye week with existing core starters at the same or flex position.
+   - Surface bye-week tags in candidate scorecards and next-pick previews.
+
+2. **P0: Safe script pre-approval and frictionless agent-state interaction.**
+   - Enable safe, pre-approved execution of draft companion commands by
+     configuring Antigravity command allowlists / permission grants for
+     `python scripts/draft_companion.py*`.
+   - Promote direct MCP server integration (`src/nflcompanion/mcp_server.py`) as
+     the preferred runtime path for `draft_recommend_candidates`,
+     `draft_next_pick_preview`, and `draft_record_pick`, avoiding raw shell
+     execution overhead and confirmation prompts.
+   - Maintain strict safety boundaries: read-only evaluation and recommendations
+     execute seamlessly without approval prompts, while pick commits continue
+     to enforce an explicit human confirmation gate (`confirmed: true`).
+
+Acceptance checks for the next slice: materially different candidates no
+longer receive identical scores without an evidence-based tie; `high`
+confidence is impossible for unresolved or stale inputs; `Packers DEF` resolves
+to the canonical provider record; a late roster review identifies TE/DEF
+quality risk separately from positional count; bye-week conflicts are flagged
+before selection; and the first actionable result is measured in a local,
+offline fixture.
+
+### Third mock findings and follow-up (2026-09-05)
+
+The third ESPN 16-team 3RR mock draft (session `espn-16-2026-mock-3`) executed
+the RB Anchor, WR Complement, Value Round 3 blueprint, but again received an
+ESPN draft grade of `C`. Key insights and friction points:
+
+1. **Information Density & Cognitive Overload**:
+   - In a fast 30-second live draft window, verbose Markdown tables and lengthy
+     factor breakdowns create too much cognitive burden.
+   - The user needs immediate, high-salience visual hierarchy:
+     - **Primary Round Focus**: Prominently emphasize the exact target position
+       (e.g., `TARGET: WR1`) at each round.
+     - **Top 1-2 Recommended Picks**: Surface only the top 1-2 candidates with
+       bold, glanceable tags (bye week, role, rank).
+     - **Secondary Deeper Details**: Place detailed factor math and multi-player
+       fallbacks into lower-emphasis or expandable sections so they do not
+       distract unless the user has spare time to review them.
+
+2. **Runtime Execution Verification (MCP vs. Python Scripts)**:
+   - Python scripts (`scripts/draft_companion.py`) were executed rather than
+     native MCP tools (`draft_recommend_candidates`, `draft_record_pick`, etc.)
+     because the `nflcompanion` MCP server was not registered in the active
+     Antigravity host toolset for the session.
+   - For frictionless draft execution without command prompts, verify
+     Antigravity MCP server discovery (`~/.gemini/config/mcp_config.json` and
+     `.agents/mcp_config.json`) so native MCP tools are injected at session start.
+
+3. **Roadmap Addition: Local Draft UI (Web / Canvas Dashboard)**:
+   - Live drafting demands a dedicated, visual canvas rather than relying solely
+     on conversational chat scrolling.
+   - Plan a lightweight local web dashboard (`http://localhost:...` or Canvas UI)
+     that displays:
+     - Prominent round/pick counter and target position banner.
+     - Visual draft board with glanceable roster needs and bye-week flags.
+     - Live candidate cards (top 1-2 highlighted) with instant one-click or
+       agent-synced selection confirmation.
+   - Detailed technical design to be planned in the upcoming milestone before
+     implementation.
+
+### Draft response-time optimization
+
+- Measure recommendation latency from candidate submission to the first
+  actionable answer, including state reads and player/trending lookups.
+- Keep the active session context, current roster, position counts, injury
+  flags, strategy, and latest trend snapshot ready for reuse instead of
+  rebuilding them for every pick.
+- Return a short provisional recommendation immediately, then attach evidence
+  and deeper comparison details without blocking the decision window.
+- Define a draft-mode response budget and test it with representative 16-team
+  ESPN candidate sets; surface stale or unavailable data instead of waiting
+  indefinitely for a refresh.
+- Add a post-mock latency review so response-time regressions are visible along
+  with recommendation-quality regressions.
+
+### Roster summaries and pick records
+
+- Every recommendation response and post-pick summary must list all players
+  selected by the user, grouped or labeled by position, including current
+  position counts and remaining roster needs.
+- Include the selected player's position in every human-readable pick
+  confirmation, event record, and canvas view; normalize `DEF`/`DST` to the
+  league's display label without losing the provider value.
+- Add tests that verify roster summaries remain correct after user picks and
+  observed opponent picks, including the ESPN 14-player target.
+
+### Injury and availability context
+
+- Preserve and normalize Sleeper fields such as `injury_status`,
+  `injury_body_part`, `injury_notes`, and practice/injury metadata when
+  importing the player snapshot.
+- Show a concise availability warning beside each candidate and in the
+  watchlist when a player is questionable, out, injured, or otherwise carries
+  a non-clear status; do not silently treat missing status as healthy.
+- Include injury status in deterministic candidate scoring as a visible risk
+  factor, with the strategy and user able to override the default weighting.
+- Add fixtures and tests for healthy, questionable, out, missing-status, and
+  stale injury data.
+
+### Session-start trend capture
+
+- Fetch the Sleeper trending add/drop snapshot at draft-session start and save
+  its timestamp, lookback window, source, and raw immutable payload with the
+  session provenance.
+- Use that session-start snapshot as the baseline trend signal for the first
+  recommendation, then allow an explicit refresh that creates a new dated
+  snapshot rather than overwriting the baseline.
+- Include trend direction and count in candidate evidence and use it as a
+  tiebreaker after roster need, player value, availability, and strategy fit;
+  trends must not override obvious injury or role risk without showing the
+  tradeoff.
+- Define an offline/fetch-failure path that keeps the draft usable, labels the
+  trend data stale or unavailable, and reduces confidence instead of
+  fabricating a trend signal.
+- Add tests proving that session initialization records the trend snapshot and
+  that recommendations use the captured add/drop data consistently.
 
 ## Data-fetch and data-management plan (first implementation)
 
@@ -142,6 +317,18 @@ mutate state. A user confirmation is required before appending a selection.
   scoring.
 - Canvas data model and rendering.
 - Tests and fixtures for all of the above.
+
+### Strategy creation agents
+
+- Use the orchestrated multi-agent workflow plus the ESPN strategy agent prompt
+  to interview for first-round anchor, second-round complement, QB timing, and
+  TE timing.
+- Keep domain validation separate from workflow evaluation: validator agents
+  check football risks, while evaluator agents check completeness, evidence,
+  and success criteria before the writer runs.
+- Every completed interactive ESPN strategy session creates a new strategy
+  record, Markdown file, and append-only creation-log entry; existing
+  strategies are never overwritten.
 
 ### Copilot custom agent/instructions
 
@@ -308,6 +495,144 @@ revising a draft strategy. This is now wired in as durable, local-only state:
   (`state/players/trending/raw/*.json`, `state/players/trending/sleeper-trending-*.md`)
   because they are provider data that should be fetched locally, not versioned.
 
+## Actual draft companion runtime plan
+
+The draft runtime is a human-controlled, two-speed workflow. Deterministic
+application code owns draft math, identity matching, filtering, scoring, and
+state writes. Agents explain the result and prepare context; they must not
+invent rankings or record a pick without explicit confirmation.
+
+### Draft session state
+
+Create one durable session per league and season under
+`state/drafts/<league-id>/`:
+
+- `session.md`: league settings, draft order, team/pick position, 90-second
+  decision-window setting, active strategy, lifecycle (`planned`, `active`, or
+  `completed`), and source freshness.
+- `events.md`: append-only events for user-confirmed picks, observed opponent
+  picks, candidate submissions, recommendation results, and corrections.
+- `living-strategy.md`: the mutable working strategy for this draft, including
+  selected players, roster slots remaining, strategy adjustments, next-round
+  targets, availability estimates, and unresolved questions.
+- `recommendations/`: immutable JSON/Markdown recommendation records linked to
+  the event that produced them.
+
+The existing saved strategy remains an immutable baseline. The living strategy
+is a session view derived from that baseline plus confirmed draft events; it is
+saved as the final session strategy only when the user ends the draft. A pick
+submission always has an explicit confirmation step and an idempotency key so
+retries cannot duplicate it.
+
+### Two-speed agent workflow
+
+Use an orchestrator with separate fast and slow lanes rather than putting all
+agents in a serial chain during the 90-second window.
+
+**Fast lane: candidate decision**
+
+1. The user submits 2-4 surnames, optionally with first name, position, or
+   team, plus the current pick if it is not already in session state.
+2. A deterministic resolver matches each input to the local player snapshot.
+   Exact provider id or unambiguous normalized name wins; ambiguous matches are
+   returned immediately for clarification and are never silently ranked.
+3. A stateless recommendation worker loads the living strategy, roster, draft
+   position, current events, and latest local snapshots. It filters drafted or
+   ineligible players and scores the candidates by need, strategy fit, tier or
+   value, scarcity, production, risk, and available trend evidence.
+4. The analyst agent receives only the structured scorecard and returns the
+   ordered list, one short sentence per player, confidence, and source
+   timestamps. The response must be bounded to the submitted candidates.
+5. The user chooses whether to record a pick. The agent records nothing merely
+   because it recommended a player.
+
+Target: return the structured ranking in 5 seconds or less from local data,
+with a hard response budget of 15 seconds. No network refresh, broad player
+search, mock draft, or next-round forecast may block this lane.
+
+**Slow lane: next-round preparation**
+
+After a confirmed pick, enqueue a background preparation job. It computes the
+next user pick using centralized snake-draft math, then queries player and
+trending snapshots for the positions and tiers the active strategy prefers.
+It returns:
+
+- next pick number, round, and number of selections before the user picks;
+- recommended positions and the reason they are priorities now;
+- a watch list of specific players grouped by tier;
+- an availability estimate based on draft position, observed picks, and a
+  configurable ADP or ranking source, clearly labeled as an estimate;
+- fallback positions and players if a positional run occurs;
+- data freshness, missing-data warnings, and confidence.
+
+This result updates `living-strategy.md` only as a generated proposal. The
+user may accept or edit it, and the accepted version is recorded as an event.
+The slow lane may take longer and may refresh approved read-only sources, but
+it must never delay the next fast-lane decision.
+
+### Agent roles and contracts
+
+- **Draft orchestrator:** validates session state, routes fast or slow work,
+  enforces deadlines and human gates, and exposes partial results.
+- **Candidate resolver/scorer:** deterministic code, not an LLM; resolves
+  surnames, removes unavailable players, calculates factor scores, and emits
+  evidence IDs.
+- **Fast draft analyst:** ranks only supplied candidates and writes concise
+  rationale from the scorecard. It cannot call external sources or mutate
+  state.
+- **Roster and strategy validator:** checks roster legality, strategy drift,
+  early kicker/defense red flags, and whether the recommendation conflicts with
+  a confirmed user preference.
+- **Next-pick forecaster:** runs in the slow lane and produces tiered watch
+  lists and availability ranges, never a claim of certainty.
+- **Session writer:** the only state-mutating role; appends confirmed events,
+  rebuilds the living strategy, and finalizes it after the draft.
+
+Fast-lane handoff output should be a typed object containing session id,
+candidate resolutions, ordered recommendations, factor scores, one-sentence
+rationales, confidence, evidence references, and an expiration timestamp.
+Slow-lane output should contain the next-pick calculation, watch lists,
+availability assumptions, freshness, and proposed living-strategy changes.
+
+### Snake-draft rules
+
+Implement and unit-test one provider-neutral function for overall pick and the
+next user pick. For `N` teams, a normal snake draft gives pick `p` in round
+`r = floor((p - 1) / N) + 1`; the within-round slot is forward in odd rounds
+and reversed in even rounds. Keep third-round reversal as an explicit league
+rule, not a hidden ESPN assumption. The session stores the exact draft order,
+team count, first pick, reversal rule, and any platform-specific exception so
+forecasts are reproducible.
+
+### Delivery order and acceptance tests
+
+1. **Implemented:** add session schema, append-only event writer,
+  living-strategy projection, idempotency, and snake-pick math.
+2. **Implemented:** add surname/partial-name resolution and deterministic 2-4
+  candidate scoring with fixture data and ambiguity tests.
+3. Add the fast analyst contract and a canvas/command that enforces the 15
+   second response budget and confirmation gate.
+4. **Implemented locally:** add the slow next-pick forecaster using
+  player/trending snapshots, observed picks, priority ordering, and explicit
+  heuristic availability labels. Tier/ADP source integration remains.
+5. Add session finalization that saves the living strategy and links its event
+   history to the original strategy baseline.
+6. Add end-to-end fixtures for normal snake and third-round reversal drafts.
+
+The minimum draft-ready checks are: four candidates rank deterministically;
+ambiguous surnames stop for clarification; a drafted player cannot be ranked;
+the same confirmed pick cannot be appended twice; the next pick is correct at
+round boundaries and reversal points; fast results do not depend on network
+availability; every rationale cites local evidence; and finalization preserves
+the full event history and accepted living strategy.
+
+The implemented slice lives in `src/nflcompanion/draft_companion.py` and
+`scripts/draft_companion.py`. It persists sessions under
+`state/drafts/<league-id>/<season>/`, keeps recommendations offline and bounded
+to submitted candidates, and provides a local next-pick watch list. Tier/ADP
+source integration and the Copilot analyst prompt contract remain next-slice
+work.
+
 Next:
 
 1. Add cheat-sheet import parsing and ambiguity reports.
@@ -318,6 +643,36 @@ Next:
 2a. Track explicit orchestrator/interviewer/validator/writer prompt contracts in
     repository Markdown and surface them in saved strategy workflow metadata so
     reviewable multi-agent orchestration is part of the durable state.
-3. Add deterministic candidate scoring and a temporary canvas view.
+3. Add the fast analyst contract and a temporary canvas view on top of the
+  deterministic candidate scoring now implemented.
 4. Add an agent instruction contract that requires citations and confirmation
    before state mutation.
+5. Plan a local draft UI (lightweight local web dashboard / canvas view)
+   prioritizing glanceable visual hierarchy, high-contrast round target focus,
+   and simplified 1-2 candidate cards for fast 30-second draft decision windows.
+
+## Dual Copilot and Antigravity agentic support
+
+The agentic capabilities are now dual-compatible across both GitHub Copilot and
+Google Antigravity:
+
+- Standard zero-dependency Python MCP server in `src/nflcompanion/mcp_server.py`
+  and `scripts/mcp_server.py` exposing player state, query, draft session,
+  recommendation, pick recording, opponent pick observing, and preview tools.
+- MCP-first draft agent interaction: live draft and mock draft workflows run
+  exclusively through native MCP tools (`draft_get_session`, `draft_init_session`,
+  `draft_recommend_candidates`, `draft_record_pick`, `draft_record_observed_pick`,
+  `draft_next_pick_preview`, `draft_update_strategy`), eliminating terminal shell
+  confirmation friction and subprocess overhead while maintaining strict human
+  confirmation gates (`confirmed: true`) for user pick commits.
+- Dual MCP configuration in `.agents/plugins/nflcompanion/mcp_config.json`,
+  `.agents/mcp_config.json`, and `.vscode/mcp.json`.
+- Unified agent rules in `AGENTS.md` and `.github/copilot-instructions.md`.
+- Antigravity lifecycle hooks in `.agents/hooks.json` for PreInvocation trending
+  injection and Stop-time plan guardrail checks.
+- Antigravity skills in `.agents/skills/draft-strategy/` and
+  `.agents/skills/draft-companion/`.
+- Existing GitHub Copilot extension and canvas UI in `.github/extensions/`
+  remain intact and backwards-compatible.
+
+

@@ -8,6 +8,8 @@
 - Install the package with `python -m pip install -e .` before running tests.
 - Run tests with `python -m unittest discover -s tests -v`.
 - Keep generated player snapshots under `state/players/` out of commits.
+- Never record or commit a draft pick without explicit user confirmation.
+- Refer to `AGENTS.md` for shared repository-wide guidelines.
 
 ## Draft strategy creation
 
@@ -22,3 +24,13 @@
   defense plans before the writer saves the strategy.
 - Keep the tracked role contracts in `docs/draft-strategy-agents/*.md` aligned
   with the saved workflow metadata.
+
+## Live draft companion
+
+- Execute all draft state interactions through native MCP tools (`draft_get_session`, `draft_init_session`, `draft_recommend_candidates`, `draft_record_pick`, `draft_record_observed_pick`, `draft_next_pick_preview`, `draft_update_strategy`) rather than running shell scripts.
+- Keep recommendation responses fast and bounded to the requested candidates
+  within the 15-second budget (targeting <5s from local data).
+- Ranks are deterministic; synthesize and explain factor scores without inventing
+  rankings or certainty.
+- Always require user confirmation (`confirmed: true`) before recording a pick.
+

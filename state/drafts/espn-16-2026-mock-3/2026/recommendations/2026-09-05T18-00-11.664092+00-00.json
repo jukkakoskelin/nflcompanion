@@ -1,0 +1,812 @@
+{
+  "ambiguous": [
+    {
+      "input": "Rice",
+      "matches": [
+        {
+          "full_name": "Rashee Rice",
+          "position": "WR",
+          "provider_id": "10229",
+          "team": "KC"
+        },
+        {
+          "full_name": "Cory Trice",
+          "position": "CB",
+          "provider_id": "11037",
+          "team": null
+        },
+        {
+          "full_name": "Audric Estime",
+          "position": "RB",
+          "provider_id": "11579",
+          "team": "NO"
+        },
+        {
+          "full_name": "Brenden Rice",
+          "position": "WR",
+          "provider_id": "11621",
+          "team": null
+        },
+        {
+          "full_name": "Bralen Trice",
+          "position": "DE",
+          "provider_id": "11721",
+          "team": "ATL"
+        },
+        {
+          "full_name": "Tyrice Knight",
+          "position": "LB",
+          "provider_id": "11734",
+          "team": "SEA"
+        },
+        {
+          "full_name": "Morice Norris",
+          "position": "DB",
+          "provider_id": "12160",
+          "team": null
+        },
+        {
+          "full_name": "Jayden Price",
+          "position": "CB",
+          "provider_id": "12196",
+          "team": "NO"
+        },
+        {
+          "full_name": "Torricelli Simpkins",
+          "position": "OL",
+          "provider_id": "13030",
+          "team": "CAR"
+        },
+        {
+          "full_name": "Myles Price",
+          "position": "WR",
+          "provider_id": "13075",
+          "team": "MIN"
+        },
+        {
+          "full_name": "Jadarian Price",
+          "position": "RB",
+          "provider_id": "13286",
+          "team": "SEA"
+        },
+        {
+          "full_name": "Sidney Rice",
+          "position": "WR",
+          "provider_id": "14",
+          "team": null
+        },
+        {
+          "full_name": "Cam Rice",
+          "position": "DL",
+          "provider_id": "14081",
+          "team": null
+        },
+        {
+          "full_name": "Sheldon Price",
+          "position": "CB",
+          "provider_id": "1434",
+          "team": null
+        },
+        {
+          "full_name": "Brice Butler",
+          "position": "WR",
+          "provider_id": "1471",
+          "team": null
+        },
+        {
+          "full_name": "Ray Rice",
+          "position": "RB",
+          "provider_id": "16",
+          "team": null
+        },
+        {
+          "full_name": "Marion Grice",
+          "position": "RB",
+          "provider_id": "2048",
+          "team": null
+        },
+        {
+          "full_name": "Eric Ebron",
+          "position": "TE",
+          "provider_id": "2118",
+          "team": "PIT"
+        },
+        {
+          "full_name": "Jabari Price",
+          "position": "CB",
+          "provider_id": "2162",
+          "team": null
+        },
+        {
+          "full_name": "Maurice Alexander",
+          "position": "LB",
+          "provider_id": "2224",
+          "team": null
+        },
+        {
+          "full_name": "Denzel Rice",
+          "position": "CB",
+          "provider_id": "2761",
+          "team": null
+        },
+        {
+          "full_name": "Maurice Jones-Drew",
+          "position": "RB",
+          "provider_id": "293",
+          "team": null
+        },
+        {
+          "full_name": "Maurice Canady",
+          "position": "CB",
+          "provider_id": "3364",
+          "team": null
+        },
+        {
+          "full_name": "Givens Price",
+          "position": "G",
+          "provider_id": "3610",
+          "team": null
+        },
+        {
+          "full_name": "Maurice Harris",
+          "position": "WR",
+          "provider_id": "3650",
+          "team": null
+        },
+        {
+          "full_name": "Kentrell Brice",
+          "position": "FS",
+          "provider_id": "3716",
+          "team": null
+        },
+        {
+          "full_name": "Brian Price",
+          "position": "DT",
+          "provider_id": "3728",
+          "team": null
+        },
+        {
+          "full_name": "Norman Price",
+          "position": "OT",
+          "provider_id": "3796",
+          "team": null
+        },
+        {
+          "full_name": "Chase Price",
+          "position": "RB",
+          "provider_id": "3940",
+          "team": null
+        },
+        {
+          "full_name": "Ejuan Price",
+          "position": "OLB",
+          "provider_id": "4249",
+          "team": null
+        },
+        {
+          "full_name": "Maurice Smith",
+          "position": "DB",
+          "provider_id": "4400",
+          "team": null
+        },
+        {
+          "full_name": "Josiah Price",
+          "position": "TE",
+          "provider_id": "4409",
+          "team": null
+        },
+        {
+          "full_name": "Kevin Maurice",
+          "position": "DT",
+          "provider_id": "4695",
+          "team": null
+        },
+        {
+          "full_name": "Maurice Swain",
+          "position": "DT",
+          "provider_id": "4808",
+          "team": null
+        },
+        {
+          "full_name": "Andrew Price",
+          "position": "TE",
+          "provider_id": "4832",
+          "team": null
+        },
+        {
+          "full_name": "Simeon Rice",
+          "position": "DE",
+          "provider_id": "4855",
+          "team": null
+        },
+        {
+          "full_name": "Billy Price",
+          "position": "OL",
+          "provider_id": "4947",
+          "team": null
+        },
+        {
+          "full_name": "Maurice Hurst",
+          "position": "DT",
+          "provider_id": "5002",
+          "team": null
+        },
+        {
+          "full_name": "Daurice Fountain",
+          "position": "WR",
+          "provider_id": "5102",
+          "team": null
+        },
+        {
+          "full_name": "Tyrice Beverette",
+          "position": "FS",
+          "provider_id": "5712",
+          "team": null
+        },
+        {
+          "full_name": "Brice McCain",
+          "position": "CB",
+          "provider_id": "709",
+          "team": null
+        },
+        {
+          "full_name": "Maurice Ffrench",
+          "position": "WR",
+          "provider_id": "7234",
+          "team": null
+        },
+        {
+          "full_name": "Bobby Price",
+          "position": "DB",
+          "provider_id": "7259",
+          "team": null
+        },
+        {
+          "full_name": "Jared Rice",
+          "position": "TE",
+          "provider_id": "7317",
+          "team": null
+        },
+        {
+          "full_name": "Monty Rice",
+          "position": "LB",
+          "provider_id": "7683",
+          "team": null
+        },
+        {
+          "full_name": "Landon Rice",
+          "position": "TE",
+          "provider_id": "8026",
+          "team": null
+        },
+        {
+          "full_name": "D'Vonte Price",
+          "position": "RB",
+          "provider_id": "8184",
+          "team": null
+        },
+        {
+          "full_name": "Tyrion Davis-Price",
+          "position": "RB",
+          "provider_id": "8211",
+          "team": null
+        },
+        {
+          "full_name": "Caliph Brice",
+          "position": "LB",
+          "provider_id": "8599",
+          "team": null
+        },
+        {
+          "full_name": "Maurice Alexander",
+          "position": "WR",
+          "provider_id": "8921",
+          "team": null
+        }
+      ]
+    },
+    {
+      "input": "Allen",
+      "matches": [
+        {
+          "full_name": "Davis Allen",
+          "position": "TE",
+          "provider_id": "10214",
+          "team": "LAR"
+        },
+        {
+          "full_name": "Dwayne Allen",
+          "position": "TE",
+          "provider_id": "1105",
+          "team": null
+        },
+        {
+          "full_name": "Kazmeir Allen",
+          "position": "WR",
+          "provider_id": "11070",
+          "team": null
+        },
+        {
+          "full_name": "Brevin Allen",
+          "position": "LB",
+          "provider_id": "11118",
+          "team": null
+        },
+        {
+          "full_name": "Jeff Allen",
+          "position": "G",
+          "provider_id": "1129",
+          "team": null
+        },
+        {
+          "full_name": "Braelon Allen",
+          "position": "RB",
+          "provider_id": "11576",
+          "team": "NYJ"
+        },
+        {
+          "full_name": "Jaylon Allen",
+          "position": "DL",
+          "provider_id": "12078",
+          "team": null
+        },
+        {
+          "full_name": "Cam Allen",
+          "position": "DB",
+          "provider_id": "12394",
+          "team": null
+        },
+        {
+          "full_name": "LeQuint Allen",
+          "position": "RB",
+          "provider_id": "12544",
+          "team": "JAX"
+        },
+        {
+          "full_name": "Antonio Allen",
+          "position": "FS",
+          "provider_id": "1286",
+          "team": null
+        },
+        {
+          "full_name": "CJ Allen",
+          "position": "LB",
+          "provider_id": "13388",
+          "team": "IND"
+        },
+        {
+          "full_name": "Kaytron Allen",
+          "position": "RB",
+          "provider_id": "13405",
+          "team": "WAS"
+        },
+        {
+          "full_name": "Cyrus Allen",
+          "position": "WR",
+          "provider_id": "13413",
+          "team": "KC"
+        },
+        {
+          "full_name": "Dallen Bentley",
+          "position": "TE",
+          "provider_id": "13577",
+          "team": "DEN"
+        },
+        {
+          "full_name": "Marcus Allen",
+          "position": "CB",
+          "provider_id": "13611",
+          "team": "MIN"
+        },
+        {
+          "full_name": "Carlos Allen",
+          "position": "DT",
+          "provider_id": "13701",
+          "team": "ATL"
+        },
+        {
+          "full_name": "Keenan Allen",
+          "position": "WR",
+          "provider_id": "1479",
+          "team": "IND"
+        },
+        {
+          "full_name": "Ryan Allen",
+          "position": "P",
+          "provider_id": "1694",
+          "team": null
+        },
+        {
+          "full_name": "Beau Allen",
+          "position": "NT",
+          "provider_id": "1788",
+          "team": null
+        },
+        {
+          "full_name": "Lonnie Ballentine",
+          "position": "FS",
+          "provider_id": "1942",
+          "team": null
+        },
+        {
+          "full_name": "Allen Hurns",
+          "position": "WR",
+          "provider_id": "1984",
+          "team": "MIA"
+        },
+        {
+          "full_name": "Allen Robinson",
+          "position": "WR",
+          "provider_id": "1992",
+          "team": null
+        },
+        {
+          "full_name": "Jared Allen",
+          "position": "DE",
+          "provider_id": "20",
+          "team": null
+        },
+        {
+          "full_name": "Torrence Allen",
+          "position": "WR",
+          "provider_id": "2041",
+          "team": null
+        },
+        {
+          "full_name": "Ricardo Allen",
+          "position": "DB",
+          "provider_id": "2167",
+          "team": "CIN"
+        },
+        {
+          "full_name": "Josh Allen",
+          "position": "G",
+          "provider_id": "2212",
+          "team": null
+        },
+        {
+          "full_name": "Rashaun Allen",
+          "position": "TE",
+          "provider_id": "2268",
+          "team": null
+        },
+        {
+          "full_name": "Javorius Allen",
+          "position": "RB",
+          "provider_id": "2430",
+          "team": null
+        },
+        {
+          "full_name": "Brandon Allen",
+          "position": "QB",
+          "provider_id": "3357",
+          "team": null
+        },
+        {
+          "full_name": "Jack Allen",
+          "position": "C",
+          "provider_id": "3477",
+          "team": null
+        },
+        {
+          "full_name": "Jonathan Allen",
+          "position": "DT",
+          "provider_id": "4032",
+          "team": "CIN"
+        },
+        {
+          "full_name": "Bruce Allen",
+          "position": null,
+          "provider_id": "4043",
+          "team": null
+        },
+        {
+          "full_name": "Brian Allen",
+          "position": "CB",
+          "provider_id": "4215",
+          "team": null
+        },
+        {
+          "full_name": "Kenny Allen",
+          "position": "P",
+          "provider_id": "4343",
+          "team": null
+        },
+        {
+          "full_name": "Chase Allen",
+          "position": "OLB",
+          "provider_id": "4389",
+          "team": null
+        },
+        {
+          "full_name": "Randy Allen",
+          "position": "OLB",
+          "provider_id": "4682",
+          "team": null
+        },
+        {
+          "full_name": "Josh Allen",
+          "position": "QB",
+          "provider_id": "4984",
+          "team": "BUF"
+        },
+        {
+          "full_name": "Kyle Allen",
+          "position": "QB",
+          "provider_id": "5127",
+          "team": "BUF"
+        },
+        {
+          "full_name": "Allen Lazard",
+          "position": "WR",
+          "provider_id": "5185",
+          "team": null
+        },
+        {
+          "full_name": "Austin Allen",
+          "position": "QB",
+          "provider_id": "5286",
+          "team": null
+        },
+        {
+          "full_name": "Brian Allen",
+          "position": "OL",
+          "provider_id": "5304",
+          "team": null
+        },
+        {
+          "full_name": "Marcus Allen",
+          "position": "LB",
+          "provider_id": "5360",
+          "team": null
+        },
+        {
+          "full_name": "Julian Allen",
+          "position": "FB",
+          "provider_id": "5566",
+          "team": null
+        },
+        {
+          "full_name": "Nick Callender",
+          "position": "G",
+          "provider_id": "5584",
+          "team": null
+        },
+        {
+          "full_name": "Dejon Allen",
+          "position": "G",
+          "provider_id": "5631",
+          "team": null
+        },
+        {
+          "full_name": "Nate Allen",
+          "position": "FS",
+          "provider_id": "580",
+          "team": null
+        },
+        {
+          "full_name": "Allenzae Staggers",
+          "position": "WR",
+          "provider_id": "5802",
+          "team": null
+        },
+        {
+          "full_name": "Josh Hines-Allen",
+          "position": "DE",
+          "provider_id": "5840",
+          "team": "JAX"
+        },
+        {
+          "full_name": "Zach Allen",
+          "position": "DE",
+          "provider_id": "5871",
+          "team": "DEN"
+        },
+        {
+          "full_name": "Dakota Allen",
+          "position": "LB",
+          "provider_id": "5993",
+          "team": null
+        },
+        {
+          "full_name": "Dennis Allen",
+          "position": null,
+          "provider_id": "6117",
+          "team": null
+        },
+        {
+          "full_name": "Corey Ballentine",
+          "position": "CB",
+          "provider_id": "6283",
+          "team": null
+        },
+        {
+          "full_name": "Larry Allen Jr.",
+          "position": "G",
+          "provider_id": "6471",
+          "team": null
+        },
+        {
+          "full_name": "Will Allen",
+          "position": "SS",
+          "provider_id": "664",
+          "team": null
+        },
+        {
+          "full_name": "Floyd Allen",
+          "position": "WR",
+          "provider_id": "6697",
+          "team": null
+        },
+        {
+          "full_name": "Larry Allen",
+          "position": "G",
+          "provider_id": "6719",
+          "team": null
+        },
+        {
+          "full_name": "Bryson Allen-Williams",
+          "position": "OLB",
+          "provider_id": "6748",
+          "team": null
+        },
+        {
+          "full_name": "Chase Allen",
+          "position": "TE",
+          "provider_id": "8182",
+          "team": null
+        },
+        {
+          "full_name": "Austin Allen",
+          "position": "TE",
+          "provider_id": "8215",
+          "team": null
+        },
+        {
+          "full_name": "Christopher Allen",
+          "position": "LB",
+          "provider_id": "8277",
+          "team": null
+        },
+        {
+          "full_name": "Cortez Allen",
+          "position": "CB",
+          "provider_id": "839",
+          "team": null
+        },
+        {
+          "full_name": "Devon Allen",
+          "position": "WR",
+          "provider_id": "8411",
+          "team": null
+        },
+        {
+          "full_name": "Allen Bailey",
+          "position": "DE",
+          "provider_id": "875",
+          "team": null
+        },
+        {
+          "full_name": "Allen Reisner",
+          "position": "TE",
+          "provider_id": "942",
+          "team": null
+        },
+        {
+          "full_name": "Allen Bradford",
+          "position": "LB",
+          "provider_id": "960",
+          "team": null
+        },
+        {
+          "full_name": "Allen Barbre",
+          "position": "G",
+          "provider_id": "99",
+          "team": null
+        }
+      ]
+    },
+    {
+      "input": "Pickens",
+      "matches": [
+        {
+          "full_name": "Zacch Pickens",
+          "position": "DL",
+          "provider_id": "10924",
+          "team": null
+        },
+        {
+          "full_name": "George Pickens",
+          "position": "WR",
+          "provider_id": "8137",
+          "team": "DAL"
+        }
+      ]
+    }
+  ],
+  "generated_at": "2026-09-05T18:00:11.664092+00:00",
+  "recommendations": [
+    {
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 20,
+        "positional_need": 30,
+        "strategy_fit": 25,
+        "trend_signal": 0
+      },
+      "full_name": "Chris Olave",
+      "position": "WR",
+      "provider_id": "8144",
+      "rank": 1,
+      "rationale": "Fits the wr priority.",
+      "score": 85,
+      "team": "NO"
+    }
+  ],
+  "resolved": [
+    {
+      "active": true,
+      "age": 26,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "2000-06-27",
+      "birth_state": null,
+      "college": "Ohio State",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "LWR",
+      "espn_id": null,
+      "fantasy_data_id": 22565,
+      "fantasy_positions": [
+        "WR"
+      ],
+      "first_name": "Chris",
+      "full_name": "Chris Olave",
+      "gsis_id": null,
+      "hashtag": "#chrisolave-NFL-NO-12",
+      "height": "72",
+      "high_school": "Mission Hills (CA)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "1b3022d0-cfdd-4d1b-a153-6d03dad60513",
+      "last_name": "Olave",
+      "metadata": {
+        "channel_id": "1113708682526355457",
+        "genius_id": "1075390",
+        "rookie_year": "2022"
+      },
+      "news_updated": 1788560723476,
+      "number": 12,
+      "oddsjam_id": "016969998F62",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "8144",
+      "player_shard": "1",
+      "position": "WR",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "8144",
+      "rotowire_id": 15895,
+      "rotoworld_id": null,
+      "search_first_name": "chris",
+      "search_full_name": "chrisolave",
+      "search_last_name": "olave",
+      "search_rank": 30,
+      "sport": "nfl",
+      "sportradar_id": "2375d572-a36c-4365-bb3f-87e156526e2f",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1122592,
+      "team": "NO",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "187",
+      "yahoo_id": null,
+      "years_exp": 4
+    }
+  ],
+  "unknown": []
+}

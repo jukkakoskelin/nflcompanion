@@ -1,0 +1,20 @@
+{
+  "trending-context-injector": {
+    "PreInvocation": [
+      {
+        "type": "command",
+        "command": "python scripts/hooks/pre_invocation_trending.py",
+        "timeout": 15
+      }
+    ]
+  },
+  "guardrails-checker": {
+    "Stop": [
+      {
+        "type": "command",
+        "command": "python scripts/hooks/check_guardrails_stop.py",
+        "timeout": 10
+      }
+    ]
+  }
+}
