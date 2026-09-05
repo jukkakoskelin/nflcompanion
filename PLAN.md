@@ -255,12 +255,18 @@ The initial vertical slice is implemented in this repository:
   querying the latest local state snapshot.
 - `state/README.md` documents the durable state boundary.
 - `tests/test_state_store.py` covers normalization and filtering.
+- `.github/extensions/sleeper-player-data/extension.mjs` provides agent tools
+  that ensure/query local state and a canvas for testing those queries.
 
 The fetch MCP is intentionally an agent/environment tool, not a hidden
 dependency inside application code. Copilot can use it to retrieve public
 content and save an approved snapshot; the local adapter also supports direct
 read-only retrieval for repeatable CLI operation and offline use. This split
 keeps provider access observable and lets the draft continue from stored state.
+
+The project extension follows the same boundary: it checks the repository's
+ignored `state/players/` snapshots first, fetches only when absent or explicitly
+refreshed, and returns the snapshot update timestamp with every query.
 
 Next:
 

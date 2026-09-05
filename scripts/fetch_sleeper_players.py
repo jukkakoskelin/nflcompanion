@@ -43,7 +43,10 @@ def fetch_players(url: str = URL, timeout: int = 30) -> dict[str, Any]:
 
 
 def save_snapshot(payload: dict[str, Any], state_root: Path, retrieved_at: datetime) -> Path:
-    stamp = retrieved_at.strftime("%Y-%m-%dT%H%M%SZ")
+    stamp = (
+        retrieved_at.strftime("%Y-%m-%dT%H%M%S")
+        + f"{retrieved_at.microsecond // 1000:03d}Z"
+    )
     raw_path = state_root / "players" / "raw" / f"sleeper-players-{stamp}.json"
     manifest_path = state_root / "players" / f"sleeper-players-{stamp}.md"
     atomic_write(raw_path, json.dumps(payload, indent=2, sort_keys=True, ensure_ascii=False) + "\n")
@@ -65,7 +68,7 @@ def main() -> int:
     parser.add_argument("--url", default=URL, help=argparse.SUPPRESS)
     parser.add_argument("--timeout", type=int, default=30)
     args = parser.parse_args()
-    retrieved_at = datetime.now(timezone.utc).replace(microsecond=0)
+    retrieved_at = datetime.now(timezone.utc)
     payload = fetch_players(args.url, args.timeout)
     path = save_snapshot(payload, args.state_root, retrieved_at)
     print(json.dumps({"snapshot": str(path), "record_count": len(payload)}))
