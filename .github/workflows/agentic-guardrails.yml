@@ -23,7 +23,7 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Verify plan artefacts for implementation changes
+      - name: Verify plan artifacts for implementation changes
         env:
           EVENT_NAME: ${{ github.event_name }}
           PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}

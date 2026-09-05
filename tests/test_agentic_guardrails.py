@@ -58,4 +58,4 @@ class AgenticGuardrailTests(unittest.TestCase):
         subprocess.run(["git", "commit", "-m", "remove plan"], cwd=repo, check=True, capture_output=True, text=True)
         result = self.run_guardrail(repo)
         self.assertNotEqual(result.returncode, 0)
-        self.assertIn("Missing required plan artefact", result.stdout)
+        self.assertIn("Missing required plan artifact", result.stdout)
