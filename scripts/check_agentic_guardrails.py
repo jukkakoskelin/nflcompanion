@@ -59,8 +59,8 @@ def verify_plan(plan_path: Path) -> list[str]:
     normalized_plan_path = normalize_git_path(plan_path)
     if not plan_path.exists():
         return [f"Missing required plan artifact: {normalized_plan_path}"]
-    plan_text = plan_path.read_text(encoding="utf-8")
-    if "Status:" not in plan_text:
+    plan_lines = plan_path.read_text(encoding="utf-8").splitlines()
+    if not any(line.lstrip().startswith("Status:") for line in plan_lines):
         violations.append(f"Plan artifact {normalized_plan_path} must include a Status line")
     return violations
 

@@ -1,4 +1,5 @@
 import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -9,7 +10,9 @@ SCRIPT_PATH = Path(__file__).resolve().parent.parent / "scripts" / "check_agenti
 
 class AgenticGuardrailTests(unittest.TestCase):
     def create_repo(self) -> Path:
-        directory = Path(tempfile.mkdtemp())
+        temporary_directory = tempfile.TemporaryDirectory()
+        self.addCleanup(temporary_directory.cleanup)
+        directory = Path(temporary_directory.name)
         subprocess.run(["git", "init"], cwd=directory, check=True, capture_output=True, text=True)
         subprocess.run(["git", "config", "user.name", "Test User"], cwd=directory, check=True, capture_output=True, text=True)
         subprocess.run(["git", "config", "user.email", "test@example.com"], cwd=directory, check=True, capture_output=True, text=True)
@@ -37,7 +40,7 @@ class AgenticGuardrailTests(unittest.TestCase):
             ).stdout.strip()
         return subprocess.run(
             [
-                "python",
+                sys.executable,
                 str(SCRIPT_PATH),
                 "--base-ref",
                 base_sha,
@@ -93,7 +96,7 @@ class AgenticGuardrailTests(unittest.TestCase):
 
     def test_rejects_plan_without_status_line(self):
         repo = self.create_repo()
-        (repo / "PLAN.md").write_text("# Plan\n\nNo status here.\n", encoding="utf-8")
+        (repo / "PLAN.md").write_text("# Plan\n\nNo Status: line here.\n", encoding="utf-8")
         subprocess.run(["git", "commit", "-am", "bad plan"], cwd=repo, check=True, capture_output=True, text=True)
         result = self.run_guardrail(repo)
         self.assertNotEqual(result.returncode, 0)
