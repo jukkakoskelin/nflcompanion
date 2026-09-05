@@ -192,6 +192,18 @@ study exercise:
 - **Guardrails:** no silent merges, no fabricated player data, no unconfirmed
   picks, and no external writes in the first release.
 
+## Agentic guardrails
+
+To keep implementation changes tied to an inspectable plan, this repository
+uses the following lightweight guardrails:
+
+- `PLAN.md` remains the required planning artefact for implementation changes.
+- GitHub Actions verifies that changes under `src/`,
+  `scripts/fetch_sleeper_players.py`, `scripts/query_players.py`, or
+  `pyproject.toml` are accompanied by a `PLAN.md` update.
+- GitHub Actions runs the existing `unittest` suite so implementation changes
+  are verified against tests in pull requests and on `main`.
+
 ## MCP and app configuration
 
 Configure only what is needed:
