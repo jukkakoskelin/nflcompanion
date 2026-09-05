@@ -534,12 +534,17 @@ class StateStoreTests(unittest.TestCase):
                 strategy_file.read_text(encoding="utf-8")
                 .replace("in_effect: true", "in_effect: false")
                 .replace("retired_reason: null", 'retired_reason: "User retired via markdown"')
-                .replace("retired_at: null", 'retired_at: "2026-09-05T14:24:02+00:00"'),
+                .replace("retired_at: null", 'retired_at: "2026-09-05T14:24:02+00:00"')
+                .replace(
+                    'creation_log_file: "draft-context/sleeper_dynasty/logs/strategy-creation-log.jsonl"',
+                    'creation_log_file: "draft-context/sleeper_dynasty/logs/custom-log.jsonl"',
+                ),
                 encoding="utf-8",
             )
             reloaded = strategies_for_session(state_root, league_id="league-1", season=2026)
             self.assertFalse(reloaded["strategies"][0]["in_effect"])
             self.assertEqual(reloaded["strategies"][0]["retired_reason"], "User retired via markdown")
+            self.assertEqual(reloaded["strategies"][0]["creation_log_file"], "draft-context/sleeper_dynasty/logs/custom-log.jsonl")
 
     def test_retire_draft_strategy_updates_state_and_appends_log(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -580,6 +585,15 @@ class StateStoreTests(unittest.TestCase):
             "sleeper_dynasty",
         )
         self.assertTrue(any("should not prioritize K" in warning for warning in warnings))
+        late_warning = validate_draft_strategy(
+            {
+                "priority_positions": ["WR", "RB"],
+                "avoid_early": ["K", "DST"],
+                "round_plan": [{"rounds": "1-8", "targets": ["WR", "RB", "WR", "RB", "QB", "TE", "WR", "K"]}],
+            },
+            "sleeper_dynasty",
+        )
+        self.assertFalse(any("should not prioritize K" in warning for warning in late_warning))
 
         with tempfile.TemporaryDirectory() as directory:
             state_root = Path(directory)

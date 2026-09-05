@@ -92,3 +92,30 @@ class CreateDraftStrategyScriptTests(unittest.TestCase):
             self.assertEqual(payload["questionnaire"][0]["answer"], "WR")
             self.assertTrue((state_root.parent / payload["draft_context_file"]).exists())
 
+    def test_interactive_flow_rejects_malformed_questionnaire_items(self):
+        with tempfile.TemporaryDirectory() as directory:
+            state_root = Path(directory) / "state"
+            result = self.run_script(
+                "--state-root",
+                str(state_root),
+                "--league-id",
+                "league-1",
+                "--season",
+                "2026",
+                "--draft-style",
+                "sleeper_dynasty",
+                "--name",
+                "Broken questionnaire",
+                "--strategy-json",
+                json.dumps(
+                    {
+                        "priority_positions": ["WR", "RB"],
+                        "avoid_early": ["K", "DST"],
+                        "round_plan": [{"rounds": "1-3", "targets": ["WR", "WR", "RB"]}],
+                    }
+                ),
+                "--questionnaire-json",
+                json.dumps(["just text"]),
+            )
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("--questionnaire-json item 0 must be an object", result.stderr)

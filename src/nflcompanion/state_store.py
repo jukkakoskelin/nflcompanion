@@ -316,7 +316,9 @@ def validate_draft_strategy(strategy: dict[str, Any], draft_style: str) -> list[
             start_round, end_round = _round_range(step.get("rounds"))
             if start_round is None or start_round > 5 or (end_round is not None and end_round < 1):
                 continue
-            early_targets = _collect_positions(step.get("targets"))
+            raw_targets = step.get("targets") if isinstance(step.get("targets"), list) else []
+            early_window = 1 if end_round is None else max(0, min(end_round, 5) - start_round + 1)
+            early_targets = _collect_positions(raw_targets[:early_window] if early_window else raw_targets)
             flagged = sorted(_EARLY_ROUND_RED_FLAGS.intersection(early_targets))
             if flagged:
                 warnings.append(
@@ -586,6 +588,8 @@ def _overlay_markdown_strategy(state_root: Path, strategy_record: dict[str, Any]
         "questionnaire",
         "validation_feedback",
         "collaborating_agents",
+        "context_files",
+        "creation_log_file",
     ):
         if key in metadata:
             strategy_record[key] = deepcopy(metadata[key])

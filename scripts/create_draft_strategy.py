@@ -16,6 +16,23 @@ def _json_argument(value: str, *, argument_name: str) -> object:
         raise SystemExit(f"{argument_name} must be valid JSON: {exc}") from exc
 
 
+def _validate_questionnaire(value: object) -> list[dict[str, str]]:
+    if not isinstance(value, list):
+        raise SystemExit("--questionnaire-json must decode to a list")
+    questionnaire: list[dict[str, str]] = []
+    for index, item in enumerate(value):
+        if not isinstance(item, dict):
+            raise SystemExit(f"--questionnaire-json item {index} must be an object")
+        question = item.get("question")
+        answer = item.get("answer")
+        if not isinstance(question, str) or not question.strip():
+            raise SystemExit(f"--questionnaire-json item {index} must include a non-empty string question")
+        if not isinstance(answer, str) or not answer.strip():
+            raise SystemExit(f"--questionnaire-json item {index} must include a non-empty string answer")
+        questionnaire.append({"question": question, "answer": answer})
+    return questionnaire
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--state-root", type=Path, default=Path("state"))
@@ -48,7 +65,9 @@ def main() -> int:
         strategy_payload = _json_argument(args.strategy_json, argument_name="--strategy-json")
         questionnaire = []
         if args.questionnaire_json:
-            questionnaire = _json_argument(args.questionnaire_json, argument_name="--questionnaire-json")
+            questionnaire = _validate_questionnaire(
+                _json_argument(args.questionnaire_json, argument_name="--questionnaire-json")
+            )
         validation_feedback = None
         if args.validation_feedback_json:
             validation_feedback = _json_argument(
@@ -57,8 +76,6 @@ def main() -> int:
             )
         if not isinstance(strategy_payload, dict):
             parser.error("--strategy-json must decode to an object")
-        if not isinstance(questionnaire, list):
-            parser.error("--questionnaire-json must decode to a list")
         if validation_feedback is not None and not isinstance(validation_feedback, list):
             parser.error("--validation-feedback-json must decode to a list")
         strategy = save_draft_strategy(
