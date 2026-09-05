@@ -13,7 +13,11 @@ companion. Provider snapshots are immutable; later fetches create new files.
 - `strategies/strategies.json`: draft strategy sets grouped by league and season,
   including session draft style (`sleeper_dynasty` or `espn_snake`) and ESPN
   reverse-round mode when relevant. Each saved strategy record includes
-  `created_at` as a UTC ISO-8601 timestamp.
+  `created_at`, `agent_rating`, `in_effect`, and pointers into the matching
+  draft-context bucket (`draft-context/sleeper_dynasty/` or
+  `draft-context/espn_snake/`) plus both append-only creation logs under each
+  bucket's `logs/strategy-creation-log.jsonl` and
+  `logs/strategy-creation-log.md`.
 - `leagues/`, `rosters/`, and `drafts/`: user decisions and append-only draft
   state to be added next.
 
@@ -38,3 +42,15 @@ draft-strategy and mock-draft conversations automatically see current
 add/drop activity. The `sleeper_query_trending_players` tool lets an agent
 query that local snapshot directly with the same filters as
 `query_trending_players.py`.
+
+Draft-strategy creation now uses a shared three-role workflow:
+
+1. an orchestrator agent drives the session and assigns handoffs;
+2. an interviewer agent captures questionnaire answers;
+3. a validator agent checks for obvious player-data mistakes such as early
+   kicker/defense plans;
+4. a writer agent updates the Markdown strategy file and appends the creation
+   transcript to the durable log so future mock drafts can review the outcome.
+
+Tracked prompt contracts for those agents are kept in
+`docs/draft-strategy-agents/*.md`.
