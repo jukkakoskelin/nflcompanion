@@ -562,6 +562,8 @@ def load_strategy_creation_log(
     path = _strategy_log_path(state_root, draft_style)
     if not path.exists():
         return []
+    if limit == 0:
+        return []
     if limit is None:
         entries: list[dict[str, Any]] = []
         with path.open(encoding="utf-8") as handle:
@@ -602,6 +604,18 @@ def _overlay_markdown_strategy(state_root: Path, strategy_record: dict[str, Any]
     return strategy_record
 
 
+def _refresh_derived_strategy_fields(
+    state_root: Path, session_config: dict[str, Any], strategy_record: dict[str, Any]
+) -> dict[str, Any]:
+    draft_style = str(session_config["draft_style"])
+    style = SUPPORTED_DRAFT_STYLES[draft_style]
+    strategy_record["context_files"] = list(style["context_files"])
+    strategy_record["creation_log_file"] = _strategy_log_path(state_root, draft_style).relative_to(
+        _workspace_root(state_root)
+    ).as_posix()
+    return strategy_record
+
+
 def strategies_for_session(state_root: Path, *, league_id: str, season: int) -> dict[str, Any]:
     path = _strategies_path(state_root)
     state = _read_strategy_state(path)
@@ -624,7 +638,14 @@ def strategies_for_session(state_root: Path, *, league_id: str, season: int) -> 
             raise ValueError("Draft strategy records must be objects")
     _validate_session_config(session_config)
     _validate_session_identity(session_config, league_id, season)
-    hydrated = [_overlay_markdown_strategy(state_root, deepcopy(strategy)) for strategy in strategies]
+    hydrated = [
+        _refresh_derived_strategy_fields(
+            state_root,
+            session_config,
+            _overlay_markdown_strategy(state_root, deepcopy(strategy)),
+        )
+        for strategy in strategies
+    ]
     return {"session": deepcopy(session_config), "strategies": hydrated}
 
 
@@ -654,7 +675,7 @@ def retire_draft_strategy(
             raise ValueError("Draft strategy records must be objects")
         if str(strategy.get("strategy_id")) != strategy_id:
             continue
-        updated_strategy = _overlay_markdown_strategy(state_root, deepcopy(strategy))
+        updated_strategy = deepcopy(strategy)
         updated_strategy["in_effect"] = False
         updated_strategy["retired_at"] = retired_at
         updated_strategy["retired_reason"] = reason
@@ -665,8 +686,16 @@ def retire_draft_strategy(
     season_node["strategies"] = strategies
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(state, indent=2, sort_keys=True), encoding="utf-8")
-    draft_context_path = _workspace_root(state_root) / str(updated_strategy["draft_context_file"])
-    _write_strategy_markdown(draft_context_path, updated_strategy, session_config)
+    markdown_strategy = _refresh_derived_strategy_fields(
+        state_root,
+        session_config,
+        _overlay_markdown_strategy(state_root, deepcopy(updated_strategy)),
+    )
+    markdown_strategy["in_effect"] = False
+    markdown_strategy["retired_at"] = retired_at
+    markdown_strategy["retired_reason"] = reason
+    draft_context_path = _workspace_root(state_root) / str(markdown_strategy["draft_context_file"])
+    _write_strategy_markdown(draft_context_path, markdown_strategy, session_config)
     _append_jsonl(
         _strategy_log_path(state_root, str(session_config["draft_style"])),
         {
@@ -680,7 +709,7 @@ def retire_draft_strategy(
             "retired_reason": reason,
         },
     )
-    return deepcopy(updated_strategy)
+    return deepcopy(markdown_strategy)
 
 
 def simulate_draft_strategy(

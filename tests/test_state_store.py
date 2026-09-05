@@ -513,6 +513,7 @@ class StateStoreTests(unittest.TestCase):
             self.assertEqual(len(log_entries), 1)
             self.assertEqual(log_entries[0]["strategy_id"], saved["strategy_id"])
             self.assertEqual(log_entries[0]["questionnaire"][0]["answer"], "WR anchor")
+            self.assertEqual(load_strategy_creation_log(state_root, draft_style="sleeper_dynasty", limit=0), [])
 
     def test_manual_markdown_retirement_is_loaded_from_draft_context(self):
         with tempfile.TemporaryDirectory() as directory:
