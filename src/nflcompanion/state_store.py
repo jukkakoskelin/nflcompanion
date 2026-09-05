@@ -94,6 +94,7 @@ _SIMULATED_STRATEGIES = {
     "espn_snake": [
         {
             "name": "Third-Round Reversal WR Anchor",
+            "reverse_round": True,
             "questionnaire": [
                 {"question": "Opening preference", "answer": "Use the long wheel created by third-round reversal to lock WR value early."},
                 {"question": "Quarterback timing", "answer": "Wait on QB unless a clear elite option falls past ADP."},
@@ -115,6 +116,7 @@ _SIMULATED_STRATEGIES = {
         },
         {
             "name": "Hero RB with Late QB",
+            "reverse_round": False,
             "questionnaire": [
                 {"question": "Opening preference", "answer": "Secure one anchor RB, then flood WR and flex depth."},
                 {"question": "League adjustment", "answer": "Treat a 16-team room as a scarcity problem, especially at WR3/flex."},
@@ -234,8 +236,6 @@ def _write_strategy_markdown(path: Path, strategy_record: dict[str, Any], sessio
             "questionnaire": strategy_record["questionnaire"],
             "validation_feedback": strategy_record["validation_feedback"],
             "collaborating_agents": strategy_record["collaborating_agents"],
-            "context_files": strategy_record["context_files"],
-            "creation_log_file": strategy_record["creation_log_file"],
         }
     )
     body = [
@@ -588,8 +588,6 @@ def _overlay_markdown_strategy(state_root: Path, strategy_record: dict[str, Any]
         "questionnaire",
         "validation_feedback",
         "collaborating_agents",
-        "context_files",
-        "creation_log_file",
     ):
         if key in metadata:
             strategy_record[key] = deepcopy(metadata[key])
@@ -687,9 +685,13 @@ def simulate_draft_strategy(
 ) -> dict[str, Any]:
     if draft_style not in SUPPORTED_DRAFT_STYLES:
         raise ValueError(f"Unsupported draft style: {draft_style}")
-    if draft_style == "espn_snake" and not reverse_round:
-        raise ValueError("Built-in ESPN simulation presets assume third-round reversal")
     choices = _SIMULATED_STRATEGIES[draft_style]
+    if draft_style == "espn_snake":
+        choices = [
+            choice for choice in choices if bool(choice.get("reverse_round", False)) == bool(reverse_round)
+        ]
+        if not choices:
+            raise ValueError(f"No simulated {draft_style} presets match reverse_round={reverse_round}")
     selection = deepcopy(random.Random(seed).choice(choices))
     return save_draft_strategy(
         state_root,

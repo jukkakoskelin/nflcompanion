@@ -33,6 +33,17 @@ def _validate_questionnaire(value: object) -> list[dict[str, str]]:
     return questionnaire
 
 
+def _validate_string_list(value: object, *, argument_name: str) -> list[str]:
+    if not isinstance(value, list):
+        raise SystemExit(f"{argument_name} must decode to a list")
+    items: list[str] = []
+    for index, item in enumerate(value):
+        if not isinstance(item, str):
+            raise SystemExit(f"{argument_name} item {index} must be a string")
+        items.append(item)
+    return items
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--state-root", type=Path, default=Path("state"))
@@ -71,14 +82,15 @@ def main() -> int:
                 )
             validation_feedback = None
             if args.validation_feedback_json:
-                validation_feedback = _json_argument(
-                    args.validation_feedback_json,
+                validation_feedback = _validate_string_list(
+                    _json_argument(
+                        args.validation_feedback_json,
+                        argument_name="--validation-feedback-json",
+                    ),
                     argument_name="--validation-feedback-json",
                 )
             if not isinstance(strategy_payload, dict):
                 parser.error("--strategy-json must decode to an object")
-            if validation_feedback is not None and not isinstance(validation_feedback, list):
-                parser.error("--validation-feedback-json must decode to a list")
             strategy = save_draft_strategy(
                 args.state_root,
                 league_id=args.league_id,

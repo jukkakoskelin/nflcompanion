@@ -120,7 +120,7 @@ class CreateDraftStrategyScriptTests(unittest.TestCase):
             self.assertNotEqual(result.returncode, 0)
             self.assertIn("--questionnaire-json item 0 must be an object", result.stderr)
 
-    def test_espn_simulation_requires_reverse_round_flag(self):
+    def test_interactive_flow_rejects_non_string_validation_feedback(self):
         with tempfile.TemporaryDirectory() as directory:
             state_root = Path(directory) / "state"
             result = self.run_script(
@@ -131,8 +131,50 @@ class CreateDraftStrategyScriptTests(unittest.TestCase):
                 "--season",
                 "2026",
                 "--draft-style",
+                "sleeper_dynasty",
+                "--name",
+                "Broken feedback",
+                "--strategy-json",
+                json.dumps(
+                    {
+                        "priority_positions": ["WR", "RB"],
+                        "avoid_early": ["K", "DST"],
+                        "round_plan": [{"rounds": "1-3", "targets": ["WR", "WR", "RB"]}],
+                    }
+                ),
+                "--validation-feedback-json",
+                json.dumps(["good", 2]),
+            )
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("--validation-feedback-json item 1 must be a string", result.stderr)
+
+    def test_espn_simulation_supports_both_reverse_round_modes(self):
+        with tempfile.TemporaryDirectory() as directory:
+            state_root = Path(directory) / "state"
+            default_result = self.run_script(
+                "--state-root",
+                str(state_root),
+                "--league-id",
+                "league-1",
+                "--season",
+                "2026",
+                "--draft-style",
                 "espn_snake",
                 "--simulate",
             )
-            self.assertNotEqual(result.returncode, 0)
-            self.assertIn("third-round reversal", result.stderr)
+            reverse_round_result = self.run_script(
+                "--state-root",
+                str(state_root),
+                "--league-id",
+                "league-2",
+                "--season",
+                "2026",
+                "--draft-style",
+                "espn_snake",
+                "--simulate",
+                "--reverse-round",
+            )
+            self.assertEqual(default_result.returncode, 0, default_result.stderr)
+            self.assertEqual(reverse_round_result.returncode, 0, reverse_round_result.stderr)
+            self.assertEqual(json.loads(default_result.stdout)["name"], "Hero RB with Late QB")
+            self.assertEqual(json.loads(reverse_round_result.stdout)["name"], "Third-Round Reversal WR Anchor")
