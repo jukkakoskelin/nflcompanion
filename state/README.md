@@ -14,3 +14,8 @@ Temporary canvas query examples:
 python scripts/query_players.py --name "McCaffrey" --limit 3
 python scripts/query_players.py --position WR --active-only
 ```
+
+The `sleeper-player-data` project extension uses the same state directory. Its
+agent tool and canvas report `retrieved_at` from the selected snapshot's
+filesystem update time and preserve older snapshots when a refresh creates a
+new dated file.
