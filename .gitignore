@@ -21,6 +21,10 @@ Gemfile.lock
 /state/players/raw/*.json
 /state/players/sleeper-players-*.md
 
+# Trending add/drop snapshots change constantly and must stay local only.
+/state/players/trending/raw/*.json
+/state/players/trending/sleeper-trending-*.md
+
 # Python bytecode
 __pycache__/
 *.py[cod]

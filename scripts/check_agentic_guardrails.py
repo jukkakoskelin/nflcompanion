@@ -11,6 +11,8 @@ IMPLEMENTATION_FILES = {
     "pyproject.toml",
     "scripts/fetch_sleeper_players.py",
     "scripts/query_players.py",
+    "scripts/fetch_sleeper_trending.py",
+    "scripts/query_trending_players.py",
 }
 ZERO_SHA = "0" * 40
 

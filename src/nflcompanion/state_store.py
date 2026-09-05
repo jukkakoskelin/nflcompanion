@@ -179,6 +179,73 @@ def strategies_for_session(state_root: Path, *, league_id: str, season: int) -> 
     return {"session": deepcopy(session_config), "strategies": deepcopy(strategies)}
 
 
+def latest_trending_snapshot(state_root: Path, provider: str = "sleeper") -> Path:
+    snapshots = sorted(
+        (state_root / "players" / "trending" / "raw").glob(f"{provider}-trending-*.json"),
+        reverse=True,
+    )
+    if not snapshots:
+        raise FileNotFoundError(
+            f"No {provider} trending snapshot found under "
+            f"{state_root / 'players' / 'trending' / 'raw'}"
+        )
+    return snapshots[0]
+
+
+def load_trending(snapshot: Path) -> dict[str, Any]:
+    payload = json.loads(snapshot.read_text(encoding="utf-8"))
+    if not isinstance(payload, dict) or not isinstance(payload.get("add"), list) or not isinstance(
+        payload.get("drop"), list
+    ):
+        raise ValueError("Trending snapshot must include 'add' and 'drop' lists")
+    return payload
+
+
+def query_trending_players(
+    trending: dict[str, Any],
+    players: Iterable[dict[str, Any]] | None = None,
+    *,
+    direction: str = "add",
+    position: str | None = None,
+    team: str | None = None,
+    limit: int = 25,
+) -> list[dict[str, Any]]:
+    if direction not in ("add", "drop"):
+        raise ValueError("direction must be 'add' or 'drop'")
+    entries = trending.get(direction) or []
+    player_index: dict[str, dict[str, Any]] = {}
+    for player in players or []:
+        provider_id = player.get("provider_id")
+        if provider_id is not None:
+            player_index[str(provider_id)] = player
+    position_filter = position.upper() if position else None
+    team_filter = team.upper() if team else None
+    results = []
+    for entry in entries:
+        if not isinstance(entry, dict) or "player_id" not in entry:
+            raise ValueError("Trending entries must be objects with a 'player_id' field")
+        provider_id = str(entry["player_id"])
+        player = player_index.get(provider_id, {})
+        fantasy_positions = {str(value).upper() for value in player.get("fantasy_positions") or []}
+        if position_filter and position_filter not in fantasy_positions:
+            continue
+        team_value = str(player.get("team") or "").upper()
+        if team_filter and team_value != team_filter:
+            continue
+        results.append(
+            {
+                "provider_id": provider_id,
+                "count": entry.get("count"),
+                "full_name": player.get("full_name"),
+                "position": player.get("position"),
+                "fantasy_positions": sorted(fantasy_positions),
+                "team": player.get("team"),
+                "status": player.get("status"),
+            }
+        )
+    return results[: max(0, limit)]
+
+
 def latest_snapshot(state_root: Path, provider: str = "sleeper") -> Path:
     snapshots = sorted(
         (state_root / "players" / "raw").glob(f"{provider}-players-*.json"),
