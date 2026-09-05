@@ -21,13 +21,14 @@ class AgenticGuardrailTests(unittest.TestCase):
         subprocess.run(["git", "commit", "-m", "initial"], cwd=directory, check=True, capture_output=True, text=True)
         return directory
 
-    def run_guardrail(self, repo: Path) -> subprocess.CompletedProcess[str]:
+    def run_guardrail(self, repo: Path, *, base_sha: str | None = None) -> subprocess.CompletedProcess[str]:
         head_sha = subprocess.run(
             ["git", "rev-parse", "HEAD"], cwd=repo, check=True, capture_output=True, text=True
         ).stdout.strip()
-        base_sha = subprocess.run(
-            ["git", "rev-parse", "HEAD^"], cwd=repo, check=True, capture_output=True, text=True
-        ).stdout.strip()
+        if base_sha is None:
+            base_sha = subprocess.run(
+                ["git", "rev-parse", "HEAD^"], cwd=repo, check=True, capture_output=True, text=True
+            ).stdout.strip()
         return subprocess.run(
             ["python", str(SCRIPT_PATH), "--base-ref", base_sha, "--head-ref", head_sha],
             cwd=repo,
@@ -82,3 +83,11 @@ class AgenticGuardrailTests(unittest.TestCase):
         result = self.run_guardrail(repo)
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("must include a Status line", result.stdout)
+
+    def test_zero_sha_base_still_checks_latest_commit(self):
+        repo = self.create_repo()
+        (repo / "src" / "module.py").write_text("VALUE = 2\n", encoding="utf-8")
+        subprocess.run(["git", "commit", "-am", "code only"], cwd=repo, check=True, capture_output=True, text=True)
+        result = self.run_guardrail(repo, base_sha="0" * 40)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("Implementation changes require a matching PLAN.md update", result.stdout)
