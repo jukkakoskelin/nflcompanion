@@ -1,6 +1,6 @@
 # NFL Fantasy Draft Companion Plan
 
-Status: planning  
+Status: in progress  
 Priority: draft-ready MVP for the Sleeper dynasty draft and ESPN 16-team snake
 draft in the next few days
 
@@ -311,7 +311,9 @@ revising a draft strategy. This is now wired in as durable, local-only state:
 Next:
 
 1. Add cheat-sheet import parsing and ambiguity reports.
-2. Add league, strategy, roster, and append-only draft event Markdown schemas.
+2. Expand the strategy slice so interviewer/validator/writer agents can persist
+   draft-context Markdown strategies, retirement metadata, and append-only
+   creation logs, with a non-interactive simulation entry point for testing.
 3. Add deterministic candidate scoring and a temporary canvas view.
 4. Add an agent instruction contract that requires citations and confirmation
    before state mutation.

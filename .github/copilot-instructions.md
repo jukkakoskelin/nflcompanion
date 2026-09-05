@@ -8,3 +8,15 @@
 - Install the package with `python -m pip install -e .` before running tests.
 - Run tests with `python -m unittest discover -s tests -v`.
 - Keep generated player snapshots under `state/players/` out of commits.
+
+## Draft strategy creation
+
+- Treat draft-strategy work as a three-role flow: interviewer, validator, and
+  writer.
+- Read the relevant league context from `draft-context/sleeper_dynasty/` or
+  `draft-context/espn/` before proposing a strategy.
+- Persist final strategies through `scripts/create_draft_strategy.py` or the
+  matching `nflcompanion.state_store` helpers so the Markdown strategy file and
+  append-only creation log stay in sync.
+- Validator feedback must call out obvious red flags such as early kicker or
+  defense plans before the writer saves the strategy.

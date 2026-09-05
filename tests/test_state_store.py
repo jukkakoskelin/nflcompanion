@@ -7,11 +7,15 @@ from nflcompanion.state_store import (
     SUPPORTED_DRAFT_STYLES,
     latest_trending_snapshot,
     load_players,
+    load_strategy_creation_log,
     load_trending,
     query_players,
     query_trending_players,
+    retire_draft_strategy,
     save_draft_strategy,
+    simulate_draft_strategy,
     strategies_for_session,
+    validate_draft_strategy,
 )
 
 
@@ -481,6 +485,114 @@ class StateStoreTests(unittest.TestCase):
             saved["strategy"]["priorities"].append("QB")
             reloaded = strategies_for_session(state_root, league_id="league-1", season=2026)
             self.assertEqual(reloaded["strategies"][0]["strategy"]["priorities"], ["RB"])
+
+    def test_save_creates_draft_context_strategy_file_and_log(self):
+        with tempfile.TemporaryDirectory() as directory:
+            state_root = Path(directory)
+            saved = save_draft_strategy(
+                state_root,
+                league_id="league-1",
+                season=2026,
+                draft_style="sleeper_dynasty",
+                name="WR Anchor",
+                strategy={
+                    "summary": "Start WR-heavy, then pivot into RB/QB value.",
+                    "priority_positions": ["WR", "RB", "QB"],
+                    "avoid_early": ["K", "DST"],
+                    "round_plan": [{"rounds": "1-3", "targets": ["WR", "WR", "RB"]}],
+                },
+                questionnaire=[{"question": "Foundation", "answer": "WR anchor"}],
+            )
+            strategy_file = state_root / saved["draft_context_file"]
+            self.assertTrue(strategy_file.exists())
+            strategy_text = strategy_file.read_text(encoding="utf-8")
+            self.assertIn("Agent rating:", strategy_text)
+            self.assertIn("Sleeper_scoring.md", strategy_text)
+
+            log_entries = load_strategy_creation_log(state_root, draft_style="sleeper_dynasty")
+            self.assertEqual(len(log_entries), 1)
+            self.assertEqual(log_entries[0]["strategy_id"], saved["strategy_id"])
+            self.assertEqual(log_entries[0]["questionnaire"][0]["answer"], "WR anchor")
+
+    def test_manual_markdown_retirement_is_loaded_from_draft_context(self):
+        with tempfile.TemporaryDirectory() as directory:
+            state_root = Path(directory)
+            saved = save_draft_strategy(
+                state_root,
+                league_id="league-1",
+                season=2026,
+                draft_style="sleeper_dynasty",
+                name="WR Anchor",
+                strategy={
+                    "priority_positions": ["WR", "RB"],
+                    "avoid_early": ["K", "DST"],
+                    "round_plan": [{"rounds": "1-2", "targets": ["WR", "RB"]}],
+                },
+            )
+            strategy_file = state_root / saved["draft_context_file"]
+            strategy_file.write_text(
+                strategy_file.read_text(encoding="utf-8")
+                .replace("in_effect: true", "in_effect: false")
+                .replace("retired_reason: null", 'retired_reason: "User retired via markdown"')
+                .replace("retired_at: null", 'retired_at: "2026-09-05T14:24:02+00:00"'),
+                encoding="utf-8",
+            )
+            reloaded = strategies_for_session(state_root, league_id="league-1", season=2026)
+            self.assertFalse(reloaded["strategies"][0]["in_effect"])
+            self.assertEqual(reloaded["strategies"][0]["retired_reason"], "User retired via markdown")
+
+    def test_retire_draft_strategy_updates_state_and_appends_log(self):
+        with tempfile.TemporaryDirectory() as directory:
+            state_root = Path(directory)
+            saved = save_draft_strategy(
+                state_root,
+                league_id="league-1",
+                season=2026,
+                draft_style="espn_snake",
+                reverse_round=True,
+                name="Third-Round Reversal WR Anchor",
+                strategy={
+                    "priority_positions": ["WR", "RB"],
+                    "avoid_early": ["K", "DST"],
+                    "round_plan": [{"rounds": "1-3", "targets": ["WR", "WR", "RB"]}],
+                },
+            )
+            retired = retire_draft_strategy(
+                state_root,
+                league_id="league-1",
+                season=2026,
+                strategy_id=saved["strategy_id"],
+                reason="Outperformed by later mock drafts",
+            )
+            self.assertFalse(retired["in_effect"])
+            self.assertEqual(retired["retired_reason"], "Outperformed by later mock drafts")
+            reloaded = strategies_for_session(state_root, league_id="league-1", season=2026)
+            self.assertFalse(reloaded["strategies"][0]["in_effect"])
+            log_entries = load_strategy_creation_log(state_root, draft_style="espn_snake")
+            self.assertEqual([entry["event"] for entry in log_entries], ["created", "retired"])
+
+    def test_validate_strategy_flags_early_kicker_and_simulation_stays_clean(self):
+        warnings = validate_draft_strategy(
+            {
+                "priority_positions": ["WR"],
+                "round_plan": [{"rounds": "1-4", "targets": ["WR", "K"]}],
+            },
+            "sleeper_dynasty",
+        )
+        self.assertTrue(any("should not prioritize K" in warning for warning in warnings))
+
+        with tempfile.TemporaryDirectory() as directory:
+            state_root = Path(directory)
+            simulated = simulate_draft_strategy(
+                state_root,
+                league_id="league-1",
+                season=2026,
+                draft_style="sleeper_dynasty",
+                seed=1,
+            )
+            self.assertEqual(simulated["creation_mode"], "simulation")
+            self.assertEqual(simulated["validation_feedback"], [])
+            self.assertGreaterEqual(simulated["agent_rating"], 80)
 
     def test_session_identity_must_match_league_and_season_bucket(self):
         with tempfile.TemporaryDirectory() as directory:
