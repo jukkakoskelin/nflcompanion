@@ -24,3 +24,6 @@ Gemfile.lock
 # Python bytecode
 __pycache__/
 *.py[cod]
+
+# Editable install metadata
+*.egg-info/
