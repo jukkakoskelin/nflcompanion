@@ -6,9 +6,12 @@ import argparse
 import subprocess
 from pathlib import Path
 
-IMPLEMENTATION_PREFIXES = ("src/", "scripts/")
-IMPLEMENTATION_FILES = {"pyproject.toml"}
-IMPLEMENTATION_EXEMPTIONS = {"scripts/check_agentic_guardrails.py"}
+IMPLEMENTATION_PREFIXES = ("src/",)
+IMPLEMENTATION_FILES = {
+    "pyproject.toml",
+    "scripts/fetch_sleeper_players.py",
+    "scripts/query_players.py",
+}
 ZERO_SHA = "0" * 40
 
 
@@ -36,7 +39,16 @@ def changed_files(base_ref: str, head_ref: str, diff_mode: str) -> list[str]:
             command = ["git", "ls-tree", "-r", "--name-only", head_ref]
             result = subprocess.run(command, check=True, capture_output=True, text=True)
             return [line for line in result.stdout.splitlines() if line]
-    revision_range = f"{base_ref}...{head_ref}" if diff_mode == "merge-base" else f"{base_ref}..{head_ref}"
+    if diff_mode == "merge-base":
+        merge_base = subprocess.run(
+            ["git", "merge-base", base_ref, head_ref],
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+        revision_range = f"{merge_base}..{head_ref}"
+    else:
+        revision_range = f"{base_ref}..{head_ref}"
     command = ["git", "diff", "--name-only", revision_range]
     result = subprocess.run(command, check=True, capture_output=True, text=True)
     return [line for line in result.stdout.splitlines() if line]
@@ -60,7 +72,7 @@ def verify_guardrails(base_ref: str, head_ref: str, plan_path: Path, diff_mode: 
     implementation_files = [
         path
         for path in files
-        if is_implementation_file(path) and path not in IMPLEMENTATION_EXEMPTIONS
+        if is_implementation_file(path)
     ]
     if implementation_files and normalized_plan_path not in files:
         violations.append(

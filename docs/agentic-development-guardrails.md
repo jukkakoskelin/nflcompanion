@@ -5,8 +5,9 @@ This repository now uses three lightweight guardrails for agentic development:
 1. **Plan verification for implementation changes**  
    `.github/workflows/agentic-guardrails.yml` runs
    `scripts/check_agentic_guardrails.py` to ensure `PLAN.md` exists and that
-   implementation changes under `src/`, `scripts/`, or `pyproject.toml` are
-   accompanied by an update to `PLAN.md`.
+   implementation changes under `src/`, `scripts/fetch_sleeper_players.py`,
+   `scripts/query_players.py`, or `pyproject.toml` are accompanied by an update
+   to `PLAN.md`.
 2. **Automated test verification**  
    The same workflow runs `python -m unittest discover -s tests -v` so proposed
    changes continue to satisfy the repository's existing unit tests.
