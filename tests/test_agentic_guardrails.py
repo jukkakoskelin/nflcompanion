@@ -54,7 +54,6 @@ class AgenticGuardrailTests(unittest.TestCase):
 
     def test_rejects_missing_plan_artifact(self):
         repo = self.create_repo()
-        (repo / "PLAN.md").unlink()
         subprocess.run(["git", "rm", "PLAN.md"], cwd=repo, check=True, capture_output=True, text=True)
         subprocess.run(["git", "commit", "-m", "remove plan"], cwd=repo, check=True, capture_output=True, text=True)
         result = self.run_guardrail(repo)

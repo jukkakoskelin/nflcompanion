@@ -19,7 +19,7 @@ This repository now uses three lightweight guardrails for agentic development:
 
 | Best practice | Selected? | Why |
 | --- | --- | --- |
-| Keep a repository plan artefact that is reviewed alongside code changes. | Yes | This repository already keeps `/home/runner/work/nflcompanion/nflcompanion/PLAN.md`, so requiring implementation changes to update it is a low-cost way to keep agent work tied to an explicit plan. |
+| Keep a repository plan artefact that is reviewed alongside code changes. | Yes | This repository already keeps `PLAN.md`, so requiring implementation changes to update it is a low-cost way to keep agent work tied to an explicit plan. |
 | Validate implementation changes in CI with the repository's existing test suite. | Yes | The project already has a small `unittest` suite, so running it in GitHub Actions adds a direct correctness check without changing the test stack. |
 | Put repository-specific agent instructions in `.github/copilot-instructions.md`. | Yes | This is a direct GitHub best practice for improving agent reliability, and it lets this repository encode the exact plan and test workflow agents should follow. |
 | Keep automation least-privilege and read-only unless a write is necessary. | Yes | The new workflow only checks out the repository, runs a local script, installs the package, and executes tests; it does not need extra tokens or deployment permissions. |

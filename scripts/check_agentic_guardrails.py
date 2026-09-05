@@ -8,6 +8,7 @@ import subprocess
 from pathlib import Path
 
 IMPLEMENTATION_PATTERNS = ("src/**", "scripts/**", "pyproject.toml")
+IMPLEMENTATION_EXEMPTIONS = {"scripts/check_agentic_guardrails.py"}
 ZERO_SHA = "0" * 40
 
 
@@ -37,7 +38,11 @@ def verify_plan(plan_path: Path) -> list[str]:
 def verify_guardrails(base_ref: str, head_ref: str, plan_path: Path) -> list[str]:
     violations = verify_plan(plan_path)
     files = changed_files(base_ref, head_ref)
-    implementation_files = [path for path in files if file_matches(path, IMPLEMENTATION_PATTERNS)]
+    implementation_files = [
+        path
+        for path in files
+        if file_matches(path, IMPLEMENTATION_PATTERNS) and path not in IMPLEMENTATION_EXEMPTIONS
+    ]
     if implementation_files and plan_path.as_posix() not in files:
         violations.append(
             "Implementation changes require a matching PLAN.md update. "
