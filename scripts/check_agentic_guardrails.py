@@ -22,9 +22,8 @@ def file_matches(path: str, patterns: tuple[str, ...]) -> bool:
 
 def changed_files(base_ref: str, head_ref: str) -> list[str]:
     if not base_ref or base_ref == ZERO_SHA:
-        command = ["git", "ls-tree", "-r", "--name-only", head_ref]
-    else:
-        command = ["git", "diff", "--name-only", base_ref, head_ref]
+        return []
+    command = ["git", "diff", "--name-only", base_ref, head_ref]
     result = subprocess.run(command, check=True, capture_output=True, text=True)
     return [line for line in result.stdout.splitlines() if line]
 
