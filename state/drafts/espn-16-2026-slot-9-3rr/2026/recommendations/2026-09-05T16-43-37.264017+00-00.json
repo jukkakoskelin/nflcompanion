@@ -1,0 +1,187 @@
+{
+  "ambiguous": [
+    {
+      "input": "Sampson",
+      "matches": [
+        {
+          "full_name": "Caleb Sampson",
+          "position": "DT",
+          "provider_id": "11294",
+          "team": null
+        },
+        {
+          "full_name": "Dylan Sampson",
+          "position": "RB",
+          "provider_id": "12469",
+          "team": "CLE"
+        }
+      ]
+    }
+  ],
+  "generated_at": "2026-09-05T16:43:37.264017+00:00",
+  "recommendations": [
+    {
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "positional_need": 30,
+        "strategy_fit": 25,
+        "trend_signal": 0
+      },
+      "full_name": "T.J. Hockenson",
+      "position": "TE",
+      "provider_id": "5844",
+      "rank": 1,
+      "rationale": "Fits the te priority.",
+      "score": 75,
+      "team": "MIN"
+    },
+    {
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "positional_need": 30,
+        "strategy_fit": 25,
+        "trend_signal": 0
+      },
+      "full_name": "Tyler Allgeier",
+      "position": "RB",
+      "provider_id": "8132",
+      "rank": 2,
+      "rationale": "Fits the rb priority.",
+      "score": 75,
+      "team": "ARI"
+    }
+  ],
+  "resolved": [
+    {
+      "active": true,
+      "age": 26,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "2000-04-15",
+      "birth_state": null,
+      "college": "BYU",
+      "competitions": [],
+      "depth_chart_order": 2,
+      "depth_chart_position": "RB",
+      "espn_id": null,
+      "fantasy_data_id": 23250,
+      "fantasy_positions": [
+        "RB"
+      ],
+      "first_name": "Tyler",
+      "full_name": "Tyler Allgeier",
+      "gsis_id": null,
+      "hashtag": "#tylerallgeier-NFL-ARI-22",
+      "height": "70",
+      "high_school": "Henry J. Kaiser (CA)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "64ed6124-fc45-4267-95a7-0dd3c3751adf",
+      "last_name": "Allgeier",
+      "metadata": {
+        "channel_id": "1113708864999550976",
+        "genius_id": "1080504",
+        "rookie_year": "2022"
+      },
+      "news_updated": 1788581413828,
+      "number": 22,
+      "oddsjam_id": "1E940316EDB9",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "8132",
+      "player_shard": "6",
+      "position": "RB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "8132",
+      "rotowire_id": 15976,
+      "rotoworld_id": null,
+      "search_first_name": "tyler",
+      "search_full_name": "tylerallgeier",
+      "search_last_name": "allgeier",
+      "search_rank": 89,
+      "sport": "nfl",
+      "sportradar_id": "f4529909-1a02-4f4b-a1f3-315cad100683",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1131198,
+      "team": "ARI",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "225",
+      "yahoo_id": null,
+      "years_exp": 4
+    },
+    {
+      "active": true,
+      "age": 29,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1997-07-03",
+      "birth_state": null,
+      "college": "Iowa",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "TE",
+      "espn_id": 4036133,
+      "fantasy_data_id": 20805,
+      "fantasy_positions": [
+        "TE"
+      ],
+      "first_name": "T.J.",
+      "full_name": "T.J. Hockenson",
+      "gsis_id": " 00-0035229",
+      "hashtag": "#tjhockenson-NFL-MIN-87",
+      "height": "77",
+      "high_school": "Chariton (IA)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "a470c622-ee15-43a1-971a-68ed960e4f9f",
+      "last_name": "Hockenson",
+      "metadata": {
+        "channel_id": "1113708711928426496",
+        "genius_id": "1006960",
+        "rookie_year": "2019"
+      },
+      "news_updated": 1788447641695,
+      "number": 87,
+      "oddsjam_id": "B33E7A0D7428",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "5844",
+      "player_shard": "0",
+      "position": "TE",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "5844",
+      "rotowire_id": 13610,
+      "rotoworld_id": 14051,
+      "search_first_name": "tj",
+      "search_full_name": "tjhockenson",
+      "search_last_name": "hockenson",
+      "search_rank": 128,
+      "sport": "nfl",
+      "sportradar_id": "bd1120b6-38b3-4225-a4b0-20660a149d0d",
+      "stats_id": 923915,
+      "status": "Active",
+      "swish_id": 923915,
+      "team": "MIN",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "248",
+      "yahoo_id": 31840,
+      "years_exp": 7
+    }
+  ],
+  "unknown": [
+    "Washington Jr"
+  ]
+}

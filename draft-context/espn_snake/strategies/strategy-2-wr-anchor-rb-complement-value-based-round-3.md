@@ -1,0 +1,169 @@
+---
+strategy_id: "strategy-2"
+strategy_number: 2
+name: "WR Anchor, RB Complement, Value-Based Round 3"
+league_id: "espn-16-team-snake-2026"
+season: 2026
+draft_style: "espn_snake"
+platform: "espn"
+draft_type: "snake"
+reverse_round: true
+created_at: "2026-09-05T16:13:46.278595+00:00"
+agent_rating: 95
+in_effect: true
+retired_at: null
+retired_reason: null
+creation_mode: "interactive"
+strategy: {"anchor_position": "WR", "avoid_early": ["K", "DST"], "conditional_pivots": ["At pick 9, take a top-tier WR with elite target volume and weekly role.", "At pick 24, prefer a reliable RB; take a second WR only when the WR tier is clearly superior and an early RB recovery plan is available.", "At pick 40, choose the best remaining RB/WR tier rather than forcing a position.", "Take QB at pick 40 only for a clear top-tier faller; otherwise target a stable middle-tier starter later.", "Take TE at pick 40 only when an elite option falls below expected cost; otherwise preserve RB/WR depth."], "mock_draft_review": ["Did the WR at pick 9 have elite volume and a stable weekly role?", "Was the RB at pick 24 strong enough to support the flex and 16-team replacement value?", "At pick 40, did the selected RB/WR reflect the strongest remaining tier?", "Was any early QB or TE selection justified by a clear elite-tier discount?", "Did the roster finish with at least 2 QB, 2 RB, 2 WR, 1 TE, 1 DEF, and 1 K?"], "notes": ["The third-round reversal creates a long wait from pick 24 to pick 40, so preserve flexibility rather than projecting a specific player to survive.", "The WR-anchor start requires an intentional RB selection by pick 24 unless the board presents an unusually strong two-WR opening.", "Use available player data and tiers as the primary evidence; use Sleeper search_rank only as a tiebreaker, not as guaranteed ESPN ADP.", "Keep the final RB/WR split flexible at 4/5 or 5/4 based on value.", "Do not draft a second TE, DEF, or K before the minimum core is secure."], "priority_positions": ["WR", "RB", "QB", "TE"], "quarterback_plan": "Wait on QB through the first two rounds. At pick 40, select an elite faller only when the value is substantial; otherwise target a stable starter in the middle rounds and secure QB2 before the roster is finished.", "roster_target": {"DEF": 1, "K": 1, "QB": 2, "RB": 5, "TE": 1, "WR": 4}, "round_plan": [{"focus": "Secure an elite WR with target volume, route participation, and a stable weekly role at pick 9.", "rounds": "1", "targets": ["WR"]}, {"focus": "Add the best reliable RB at pick 24 to protect against thin replacement value in a 16-team league; pivot to WR only for a clear tier advantage.", "rounds": "2", "targets": ["RB", "WR"]}, {"focus": "Use pick 40 as a tier-based decision between RB and WR; take QB or TE only for a major elite-tier fall.", "rounds": "3", "targets": ["RB", "WR", "QB", "TE"]}, {"focus": "Complete the starting RB/WR core, take a value-based QB and one TE, and monitor positional runs without sacrificing flex depth.", "rounds": "4-7", "targets": ["RB", "WR", "QB", "TE"]}, {"focus": "Finish the roster with upside RB/WR bench depth, QB2, then DEF and K late according to remaining needs.", "rounds": "8+", "targets": ["RB", "WR", "QB", "TE", "DST", "K"]}], "second_round_plan": "Prioritize an RB at pick 24 to avoid thin 16-team replacement value; take a second elite WR only if the RB tier collapses and the later-RB recovery plan remains viable.", "summary": "Start with an elite WR at pick 9, secure an RB at pick 24, and use the third-round reversal pick 40 for the strongest remaining RB/WR tier while waiting on QB and TE unless a clear value falls.", "tight_end_plan": "Wait on TE through the first two rounds. Take an elite TE at pick 40 only at a clear discount; otherwise draft one middle-tier starter later and do not add TE2 before the RB/WR depth plan is complete."}
+questionnaire: [{"answer": "Take an elite WR at pick 9.", "question": "What is the first-round anchor?"}, {"answer": "Prioritize an RB at pick 24; take a second WR only if the RB tier collapses and the later-RB plan remains viable.", "question": "What is the second-round complement?"}, {"answer": "Wait through the first two rounds; take a top-tier faller at pick 40 only at a clear discount, otherwise target a stable middle-tier starter later.", "question": "What is the QB timing preference?"}, {"answer": "Wait through the first two rounds; take an elite TE at pick 40 only at a clear discount, otherwise take one later.", "question": "What is the TE timing preference?"}, {"answer": "Use pick 40 for the strongest remaining RB/WR tier, with QB or TE allowed only for a major elite-tier fall.", "question": "How should round 3 work?"}, {"answer": "Slot 9 in a 16-team ESPN snake draft with third-round reversal; picks are 9, 24, and 40.", "question": "What is the draft slot and reversal rule?"}]
+validation_feedback: []
+collaborating_agents: {"evaluator": "draft-strategy-evaluator", "interviewer": "draft-strategy-interviewer", "orchestrator": "draft-strategy-orchestrator", "strategy_agent": "espn-snake-strategy-agent", "validator": "draft-strategy-validator", "writer": "draft-strategy-writer"}
+agent_workflow: {"agents": [{"agent": "draft-strategy-interviewer", "prompt_file": "docs/draft-strategy-agents/interviewer.md", "responsibility": "Collect the user's draft preferences and clarify tradeoffs.", "role": "interviewer"}, {"agent": "espn-snake-strategy-agent", "prompt_file": "docs/draft-strategy-agents/espn-strategy-agent.md", "responsibility": "Turn the user's answers into a new ESPN strategy candidate without overwriting prior strategies.", "role": "strategy_agent"}, {"agent": "draft-strategy-validator", "prompt_file": "docs/draft-strategy-agents/validator.md", "responsibility": "Check the evolving plan against league context, player data, and obvious red flags.", "role": "validator"}, {"agent": "draft-strategy-evaluator", "prompt_file": "docs/draft-strategy-agents/evaluator.md", "responsibility": "Score completeness, traceability, and readiness against the workflow success criteria.", "role": "evaluator"}, {"agent": "draft-strategy-writer", "prompt_file": "docs/draft-strategy-agents/writer.md", "responsibility": "Persist the final strategy, metadata, and audit trail once the orchestrator approves it.", "role": "writer"}], "handoff_contract": {"input": "league context, current strategies, and questionnaire state", "output": "typed strategy candidate, warnings, evaluation, and persistence decision", "trace": "questionnaire, handoff summaries, validator feedback, evaluator score, and writer result"}, "human_gate": "user_confirmation_before_persistence", "league_context_files": ["draft-context/espn_snake/opfg_espn_2026_settings.pdf"], "memory": {"continuity_rule": "read current state at session start and append a new strategy at completion", "external_context": "linked league settings, scoring, and imported player snapshots", "long_term": "state/strategies/strategies.json and draft-context strategy Markdown files", "short_term": "current questionnaire answers and unresolved decisions"}, "orchestrator": {"agent": "draft-strategy-orchestrator", "prompt_file": "docs/draft-strategy-agents/orchestrator.md", "responsibility": "Drive the session, assign handoffs, and decide when the strategy is ready to save.", "role": "orchestrator"}, "pattern": "orchestrated_sequential_pipeline", "quality_gates": ["no early kicker or defense recommendation", "no silent invention of player data or unanswered preferences", "no overwrite of an existing strategy file"], "reverse_round": true, "success_criteria": ["all required ESPN preference questions are answered or explicitly left open", "the strategy contains an anchor, second-round complement, QB plan, TE plan, and round plan", "validator warnings are resolved or shown to the user", "the user confirms persistence and a new Markdown strategy file is created"]}
+---
+
+# WR Anchor, RB Complement, Value-Based Round 3
+
+Agent rating: 95/100
+In effect: yes
+
+## League context
+- draft-context/espn_snake/opfg_espn_2026_settings.pdf
+
+## Strategy payload
+```json
+{
+  "anchor_position": "WR",
+  "avoid_early": [
+    "K",
+    "DST"
+  ],
+  "conditional_pivots": [
+    "At pick 9, take a top-tier WR with elite target volume and weekly role.",
+    "At pick 24, prefer a reliable RB; take a second WR only when the WR tier is clearly superior and an early RB recovery plan is available.",
+    "At pick 40, choose the best remaining RB/WR tier rather than forcing a position.",
+    "Take QB at pick 40 only for a clear top-tier faller; otherwise target a stable middle-tier starter later.",
+    "Take TE at pick 40 only when an elite option falls below expected cost; otherwise preserve RB/WR depth."
+  ],
+  "mock_draft_review": [
+    "Did the WR at pick 9 have elite volume and a stable weekly role?",
+    "Was the RB at pick 24 strong enough to support the flex and 16-team replacement value?",
+    "At pick 40, did the selected RB/WR reflect the strongest remaining tier?",
+    "Was any early QB or TE selection justified by a clear elite-tier discount?",
+    "Did the roster finish with at least 2 QB, 2 RB, 2 WR, 1 TE, 1 DEF, and 1 K?"
+  ],
+  "notes": [
+    "The third-round reversal creates a long wait from pick 24 to pick 40, so preserve flexibility rather than projecting a specific player to survive.",
+    "The WR-anchor start requires an intentional RB selection by pick 24 unless the board presents an unusually strong two-WR opening.",
+    "Use available player data and tiers as the primary evidence; use Sleeper search_rank only as a tiebreaker, not as guaranteed ESPN ADP.",
+    "Keep the final RB/WR split flexible at 4/5 or 5/4 based on value.",
+    "Do not draft a second TE, DEF, or K before the minimum core is secure."
+  ],
+  "priority_positions": [
+    "WR",
+    "RB",
+    "QB",
+    "TE"
+  ],
+  "quarterback_plan": "Wait on QB through the first two rounds. At pick 40, select an elite faller only when the value is substantial; otherwise target a stable starter in the middle rounds and secure QB2 before the roster is finished.",
+  "roster_target": {
+    "DEF": 1,
+    "K": 1,
+    "QB": 2,
+    "RB": 5,
+    "TE": 1,
+    "WR": 4
+  },
+  "round_plan": [
+    {
+      "focus": "Secure an elite WR with target volume, route participation, and a stable weekly role at pick 9.",
+      "rounds": "1",
+      "targets": [
+        "WR"
+      ]
+    },
+    {
+      "focus": "Add the best reliable RB at pick 24 to protect against thin replacement value in a 16-team league; pivot to WR only for a clear tier advantage.",
+      "rounds": "2",
+      "targets": [
+        "RB",
+        "WR"
+      ]
+    },
+    {
+      "focus": "Use pick 40 as a tier-based decision between RB and WR; take QB or TE only for a major elite-tier fall.",
+      "rounds": "3",
+      "targets": [
+        "RB",
+        "WR",
+        "QB",
+        "TE"
+      ]
+    },
+    {
+      "focus": "Complete the starting RB/WR core, take a value-based QB and one TE, and monitor positional runs without sacrificing flex depth.",
+      "rounds": "4-7",
+      "targets": [
+        "RB",
+        "WR",
+        "QB",
+        "TE"
+      ]
+    },
+    {
+      "focus": "Finish the roster with upside RB/WR bench depth, QB2, then DEF and K late according to remaining needs.",
+      "rounds": "8+",
+      "targets": [
+        "RB",
+        "WR",
+        "QB",
+        "TE",
+        "DST",
+        "K"
+      ]
+    }
+  ],
+  "second_round_plan": "Prioritize an RB at pick 24 to avoid thin 16-team replacement value; take a second elite WR only if the RB tier collapses and the later-RB recovery plan remains viable.",
+  "summary": "Start with an elite WR at pick 9, secure an RB at pick 24, and use the third-round reversal pick 40 for the strongest remaining RB/WR tier while waiting on QB and TE unless a clear value falls.",
+  "tight_end_plan": "Wait on TE through the first two rounds. Take an elite TE at pick 40 only at a clear discount; otherwise draft one middle-tier starter later and do not add TE2 before the RB/WR depth plan is complete."
+}
+```
+
+## Questionnaire transcript
+- Q: What is the first-round anchor?
+  A: Take an elite WR at pick 9.
+- Q: What is the second-round complement?
+  A: Prioritize an RB at pick 24; take a second WR only if the RB tier collapses and the later-RB plan remains viable.
+- Q: What is the QB timing preference?
+  A: Wait through the first two rounds; take a top-tier faller at pick 40 only at a clear discount, otherwise target a stable middle-tier starter later.
+- Q: What is the TE timing preference?
+  A: Wait through the first two rounds; take an elite TE at pick 40 only at a clear discount, otherwise take one later.
+- Q: How should round 3 work?
+  A: Use pick 40 for the strongest remaining RB/WR tier, with QB or TE allowed only for a major elite-tier fall.
+- Q: What is the draft slot and reversal rule?
+  A: Slot 9 in a 16-team ESPN snake draft with third-round reversal; picks are 9, 24, and 40.
+
+## Validator feedback
+No validator warnings were recorded.
+
+## Agent workflow
+- orchestrator: draft-strategy-orchestrator (docs/draft-strategy-agents/orchestrator.md)
+- interviewer: draft-strategy-interviewer (docs/draft-strategy-agents/interviewer.md)
+- strategy_agent: espn-snake-strategy-agent (docs/draft-strategy-agents/espn-strategy-agent.md)
+- validator: draft-strategy-validator (docs/draft-strategy-agents/validator.md)
+- evaluator: draft-strategy-evaluator (docs/draft-strategy-agents/evaluator.md)
+- writer: draft-strategy-writer (docs/draft-strategy-agents/writer.md)
+
+## Collaboration handoff
+- orchestrator: draft-strategy-orchestrator
+- interviewer: draft-strategy-interviewer
+- strategy_agent: espn-snake-strategy-agent
+- validator: draft-strategy-validator
+- evaluator: draft-strategy-evaluator
+- writer: draft-strategy-writer
+
+## Mock-draft review prompts
+- Did the WR at pick 9 have elite volume and a stable weekly role?
+- Was the RB at pick 24 strong enough to support the flex and 16-team replacement value?
+- At pick 40, did the selected RB/WR reflect the strongest remaining tier?
+- Was any early QB or TE selection justified by a clear elite-tier discount?
+- Did the roster finish with at least 2 QB, 2 RB, 2 WR, 1 TE, 1 DEF, and 1 K?

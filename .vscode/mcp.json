@@ -1,6 +1,12 @@
 {
   "mcp": {
     "servers": {
+      "nflcompanion": {
+        "command": "python",
+        "args": [
+          "scripts/mcp_server.py"
+        ]
+      },
       "fetch": {
         "command": "uvx",
         "args": [

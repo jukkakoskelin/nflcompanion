@@ -1,0 +1,194 @@
+{
+  "ambiguous": [
+    {
+      "input": "Golden WR",
+      "matches": [
+        {
+          "full_name": "Matthew Golden",
+          "position": "WR",
+          "provider_id": "12501",
+          "team": "GB"
+        },
+        {
+          "full_name": "Brittan Golden",
+          "position": "WR",
+          "provider_id": "1743",
+          "team": null
+        },
+        {
+          "full_name": "Golden Tate",
+          "position": "WR",
+          "provider_id": "642",
+          "team": null
+        }
+      ]
+    }
+  ],
+  "generated_at": "2026-09-05T16:41:08.699004+00:00",
+  "recommendations": [
+    {
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "positional_need": 30,
+        "strategy_fit": 25,
+        "trend_signal": 0
+      },
+      "full_name": "J.K. Dobbins",
+      "position": "RB",
+      "provider_id": "6806",
+      "rank": 1,
+      "rationale": "Fits the rb priority.",
+      "score": 75,
+      "team": "DEN"
+    },
+    {
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "positional_need": 30,
+        "strategy_fit": 25,
+        "trend_signal": 0
+      },
+      "full_name": "Rachaad White",
+      "position": "RB",
+      "provider_id": "8136",
+      "rank": 2,
+      "rationale": "Fits the rb priority.",
+      "score": 75,
+      "team": "WAS"
+    }
+  ],
+  "resolved": [
+    {
+      "active": true,
+      "age": 27,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1999-01-12",
+      "birth_state": null,
+      "college": "Arizona State",
+      "competitions": [],
+      "depth_chart_order": 2,
+      "depth_chart_position": "RB",
+      "espn_id": null,
+      "fantasy_data_id": 23217,
+      "fantasy_positions": [
+        "RB"
+      ],
+      "first_name": "Rachaad",
+      "full_name": "Rachaad White",
+      "gsis_id": null,
+      "hashtag": "#rachaadwhite-NFL-WAS-1",
+      "height": "72",
+      "high_school": "Center (MO)",
+      "injury_body_part": "Undisclosed",
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": "Questionable",
+      "kalshi_id": "42395444-c38e-4ed9-9b5c-5073bf3713b9",
+      "last_name": "White",
+      "metadata": {
+        "channel_id": "1113708728990855168",
+        "genius_id": "1343505",
+        "rookie_year": "2022"
+      },
+      "news_updated": 1787955639316,
+      "number": 1,
+      "oddsjam_id": "2820805E8162",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "8136",
+      "player_shard": "1",
+      "position": "RB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "8136",
+      "rotowire_id": 15802,
+      "rotoworld_id": null,
+      "search_first_name": "rachaad",
+      "search_full_name": "rachaadwhite",
+      "search_last_name": "white",
+      "search_rank": 124,
+      "sport": "nfl",
+      "sportradar_id": "4d3f2f57-215c-4cb4-bf75-a7ecdcdded70",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1229343,
+      "team": "WAS",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "214",
+      "yahoo_id": null,
+      "years_exp": 4
+    },
+    {
+      "active": true,
+      "age": 27,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1998-12-17",
+      "birth_state": null,
+      "college": "Ohio State",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "RB",
+      "espn_id": 4241985,
+      "fantasy_data_id": 21674,
+      "fantasy_positions": [
+        "RB"
+      ],
+      "first_name": "J.K.",
+      "full_name": "J.K. Dobbins",
+      "gsis_id": null,
+      "hashtag": "#jkdobbins-NFL-DEN-27",
+      "height": "70",
+      "high_school": "La Grange (TX)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "8d717b20-c941-4438-9afe-b6452601d62f",
+      "last_name": "Dobbins",
+      "metadata": {
+        "channel_id": "1113708692374581248",
+        "genius_id": "1005289",
+        "injury_override_regular_2024_13": "IR",
+        "rookie_year": "2020"
+      },
+      "news_updated": 1788582015575,
+      "number": 27,
+      "oddsjam_id": "7DF78280F623",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "6806",
+      "player_shard": "4",
+      "position": "RB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "6806",
+      "rotowire_id": 14418,
+      "rotoworld_id": null,
+      "search_first_name": "jk",
+      "search_full_name": "jkdobbins",
+      "search_last_name": "dobbins",
+      "search_rank": 68,
+      "sport": "nfl",
+      "sportradar_id": "a57b9914-4315-4295-98b4-9b348c52d6a1",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 976513,
+      "team": "DEN",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "212",
+      "yahoo_id": 32725,
+      "years_exp": 6
+    }
+  ],
+  "unknown": [
+    "Brian Thomas Jr WR"
+  ]
+}

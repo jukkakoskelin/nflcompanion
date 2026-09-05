@@ -1,0 +1,295 @@
+{
+  "ambiguous": [
+    {
+      "input": "Mason",
+      "matches": [
+        {
+          "full_name": "Mason Brooks",
+          "position": "OL",
+          "provider_id": "11071",
+          "team": null
+        },
+        {
+          "full_name": "Mason McCormick",
+          "position": "OL",
+          "provider_id": "11733",
+          "team": "PIT"
+        },
+        {
+          "full_name": "Micheal Mason",
+          "position": "DL",
+          "provider_id": "11868",
+          "team": null
+        },
+        {
+          "full_name": "Mason Tipton",
+          "position": "WR",
+          "provider_id": "11895",
+          "team": "NO"
+        },
+        {
+          "full_name": "Mason Pline",
+          "position": "TE",
+          "provider_id": "12068",
+          "team": null
+        },
+        {
+          "full_name": "Mason Fairchild",
+          "position": "TE",
+          "provider_id": "12260",
+          "team": null
+        },
+        {
+          "full_name": "Mason Taylor",
+          "position": "TE",
+          "provider_id": "12498",
+          "team": "NYJ"
+        },
+        {
+          "full_name": "Mason Graham",
+          "position": "DL",
+          "provider_id": "12573",
+          "team": "CLE"
+        },
+        {
+          "full_name": "Mason Richman",
+          "position": "OL",
+          "provider_id": "12719",
+          "team": "SEA"
+        },
+        {
+          "full_name": "Mason Miller",
+          "position": "OL",
+          "provider_id": "12936",
+          "team": "DET"
+        },
+        {
+          "full_name": "Mason Narcisse",
+          "position": "DL",
+          "provider_id": "13133",
+          "team": null
+        },
+        {
+          "full_name": "Lance Mason",
+          "position": "TE",
+          "provider_id": "13357",
+          "team": null
+        },
+        {
+          "full_name": "R Mason Thomas",
+          "position": "DL",
+          "provider_id": "13372",
+          "team": "KC"
+        },
+        {
+          "full_name": "Mason Reiger",
+          "position": "DE",
+          "provider_id": "13598",
+          "team": "PHI"
+        },
+        {
+          "full_name": "Mason Shipley",
+          "position": "K",
+          "provider_id": "13644",
+          "team": null
+        },
+        {
+          "full_name": "Mason Murphy",
+          "position": "OT",
+          "provider_id": "13944",
+          "team": "NO"
+        },
+        {
+          "full_name": "Tre Mason",
+          "position": "RB",
+          "provider_id": "2231",
+          "team": null
+        },
+        {
+          "full_name": "Shaq Mason",
+          "position": "OL",
+          "provider_id": "2435",
+          "team": null
+        },
+        {
+          "full_name": "Danny Mason",
+          "position": "OLB",
+          "provider_id": "2693",
+          "team": null
+        },
+        {
+          "full_name": "Hutson Mason",
+          "position": null,
+          "provider_id": "2902",
+          "team": null
+        },
+        {
+          "full_name": "Mason Schreck",
+          "position": "TE",
+          "provider_id": "4229",
+          "team": null
+        },
+        {
+          "full_name": "Mason Rudolph",
+          "position": "QB",
+          "provider_id": "4972",
+          "team": "PIT"
+        },
+        {
+          "full_name": "Mason Cole",
+          "position": "OL",
+          "provider_id": "5062",
+          "team": null
+        },
+        {
+          "full_name": "Mason McKenrick",
+          "position": "LB",
+          "provider_id": "5459",
+          "team": null
+        },
+        {
+          "full_name": "Mason Gentry",
+          "position": "G",
+          "provider_id": "5621",
+          "team": null
+        },
+        {
+          "full_name": "Mason Crosby",
+          "position": "K",
+          "provider_id": "59",
+          "team": null
+        },
+        {
+          "full_name": "Mason Fine",
+          "position": "QB",
+          "provider_id": "7102",
+          "team": null
+        },
+        {
+          "full_name": "Mason Kinsey",
+          "position": "WR",
+          "provider_id": "7436",
+          "team": null
+        },
+        {
+          "full_name": "Ben Mason",
+          "position": "FB",
+          "provider_id": "7808",
+          "team": null
+        },
+        {
+          "full_name": "Mason Stokke",
+          "position": "FB",
+          "provider_id": "7868",
+          "team": "CAR"
+        },
+        {
+          "full_name": "Jordan Mason",
+          "position": "RB",
+          "provider_id": "8408",
+          "team": "MIN"
+        },
+        {
+          "full_name": "Trevon Mason",
+          "position": "DT",
+          "provider_id": "8894",
+          "team": null
+        },
+        {
+          "full_name": "Mason Foster",
+          "position": "LB",
+          "provider_id": "962",
+          "team": null
+        }
+      ]
+    }
+  ],
+  "generated_at": "2026-09-05T16:42:46.315718+00:00",
+  "recommendations": [
+    {
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "positional_need": 30,
+        "strategy_fit": 25,
+        "trend_signal": 0
+      },
+      "full_name": "Jared Goff",
+      "position": "QB",
+      "provider_id": "3163",
+      "rank": 1,
+      "rationale": "Fits the qb priority.",
+      "score": 75,
+      "team": "DET"
+    }
+  ],
+  "resolved": [
+    {
+      "active": true,
+      "age": 31,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1994-10-14",
+      "birth_state": null,
+      "college": "California",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "QB",
+      "espn_id": 3046779,
+      "fantasy_data_id": 17922,
+      "fantasy_positions": [
+        "QB"
+      ],
+      "first_name": "Jared",
+      "full_name": "Jared Goff",
+      "gsis_id": "00-0033106",
+      "hashtag": "#jaredgoff-NFL-DET-16",
+      "height": "76",
+      "high_school": "Marin Catholic (CA)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "d1f282ff-3046-419a-b154-eb7b1dec7698",
+      "last_name": "Goff",
+      "metadata": {
+        "channel_id": "1113708813946482688",
+        "genius_id": "941508",
+        "rookie_year": "2016"
+      },
+      "news_updated": 1788573024252,
+      "number": 16,
+      "oddsjam_id": "5E6B582A3879",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "3163",
+      "player_shard": "6",
+      "position": "QB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "3163",
+      "rotowire_id": 10729,
+      "rotoworld_id": 11205,
+      "search_first_name": "jared",
+      "search_full_name": "jaredgoff",
+      "search_last_name": "goff",
+      "search_rank": 63,
+      "sport": "nfl",
+      "sportradar_id": "aba8f925-ffbf-4654-bfa7-a25d3d237494",
+      "stats_id": 727837,
+      "status": "Active",
+      "swish_id": 727837,
+      "team": "DET",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "217",
+      "yahoo_id": 29235,
+      "years_exp": 10
+    }
+  ],
+  "unknown": [
+    "Though",
+    "Samue sr"
+  ]
+}

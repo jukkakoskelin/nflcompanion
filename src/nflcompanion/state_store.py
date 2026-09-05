@@ -38,13 +38,17 @@ _EARLY_ROUND_RED_FLAGS = {"K", "DST"}
 _DEFAULT_AGENT_ROLES = {
     "orchestrator": "draft-strategy-orchestrator",
     "interviewer": "draft-strategy-interviewer",
+    "strategy_agent": "espn-snake-strategy-agent",
     "validator": "draft-strategy-validator",
+    "evaluator": "draft-strategy-evaluator",
     "writer": "draft-strategy-writer",
 }
 _DEFAULT_AGENT_PROMPT_FILES = {
     "orchestrator": "docs/draft-strategy-agents/orchestrator.md",
     "interviewer": "docs/draft-strategy-agents/interviewer.md",
+    "strategy_agent": "docs/draft-strategy-agents/espn-strategy-agent.md",
     "validator": "docs/draft-strategy-agents/validator.md",
+    "evaluator": "docs/draft-strategy-agents/evaluator.md",
     "writer": "docs/draft-strategy-agents/writer.md",
 }
 _SIMULATED_STRATEGIES = {
@@ -175,8 +179,10 @@ def _strategy_markdown_log_path(state_root: Path, draft_style: str) -> Path:
 
 
 def _agent_workflow(session_config: dict[str, Any], collaborating_agents: dict[str, str]) -> dict[str, Any]:
-    ordered_roles = ["orchestrator", "interviewer", "validator", "writer"]
+    ordered_roles = ["orchestrator", "interviewer", "strategy_agent", "validator", "evaluator", "writer"]
     workflow = {
+        "pattern": "orchestrated_sequential_pipeline",
+        "human_gate": "user_confirmation_before_persistence",
         "orchestrator": {
             "role": "orchestrator",
             "agent": collaborating_agents.get("orchestrator", _DEFAULT_AGENT_ROLES["orchestrator"]),
@@ -184,6 +190,28 @@ def _agent_workflow(session_config: dict[str, Any], collaborating_agents: dict[s
             "responsibility": "Drive the session, assign handoffs, and decide when the strategy is ready to save.",
         },
         "agents": [],
+        "handoff_contract": {
+            "input": "league context, current strategies, and questionnaire state",
+            "output": "typed strategy candidate, warnings, evaluation, and persistence decision",
+            "trace": "questionnaire, handoff summaries, validator feedback, evaluator score, and writer result",
+        },
+        "memory": {
+            "short_term": "current questionnaire answers and unresolved decisions",
+            "long_term": "state/strategies/strategies.json and draft-context strategy Markdown files",
+            "external_context": "linked league settings, scoring, and imported player snapshots",
+            "continuity_rule": "read current state at session start and append a new strategy at completion",
+        },
+        "success_criteria": [
+            "all required ESPN preference questions are answered or explicitly left open",
+            "the strategy contains an anchor, second-round complement, QB plan, TE plan, and round plan",
+            "validator warnings are resolved or shown to the user",
+            "the user confirms persistence and a new Markdown strategy file is created",
+        ],
+        "quality_gates": [
+            "no early kicker or defense recommendation",
+            "no silent invention of player data or unanswered preferences",
+            "no overwrite of an existing strategy file",
+        ],
     }
     for role in ordered_roles[1:]:
         workflow["agents"].append(
@@ -193,7 +221,9 @@ def _agent_workflow(session_config: dict[str, Any], collaborating_agents: dict[s
                 "prompt_file": _DEFAULT_AGENT_PROMPT_FILES[role],
                 "responsibility": {
                     "interviewer": "Collect the user's draft preferences and clarify tradeoffs.",
+                    "strategy_agent": "Turn the user's answers into a new ESPN strategy candidate without overwriting prior strategies.",
                     "validator": "Check the evolving plan against league context, player data, and obvious red flags.",
+                    "evaluator": "Score completeness, traceability, and readiness against the workflow success criteria.",
                     "writer": "Persist the final strategy, metadata, and audit trail once the orchestrator approves it.",
                 }[role],
             }
