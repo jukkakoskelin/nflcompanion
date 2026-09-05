@@ -296,9 +296,12 @@ def _collect_positions(value: Any) -> set[str]:
 
 
 def _round_range(value: Any) -> tuple[int | None, int | None]:
-    matches = [int(match) for match in re.findall(r"\d+", str(value or ""))]
+    text = str(value or "")
+    matches = [int(match) for match in re.findall(r"\d+", text)]
     if not matches:
         return (None, None)
+    if "+" in text and len(matches) == 1:
+        return (matches[0], None)
     return (matches[0], matches[-1])
 
 
@@ -317,7 +320,7 @@ def validate_draft_strategy(strategy: dict[str, Any], draft_style: str) -> list[
             if start_round is None or start_round > 5 or (end_round is not None and end_round < 1):
                 continue
             raw_targets = step.get("targets") if isinstance(step.get("targets"), list) else []
-            early_window = 1 if end_round is None else max(0, min(end_round, 5) - start_round + 1)
+            early_window = max(0, 5 - start_round + 1) if end_round is None else max(0, min(end_round, 5) - start_round + 1)
             early_targets = _collect_positions(raw_targets[:early_window] if early_window else raw_targets)
             flagged = sorted(_EARLY_ROUND_RED_FLAGS.intersection(early_targets))
             if flagged:
@@ -560,7 +563,12 @@ def load_strategy_creation_log(
     if not path.exists():
         return []
     if limit is None:
-        return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+        entries: list[dict[str, Any]] = []
+        with path.open(encoding="utf-8") as handle:
+            for line in handle:
+                if line.strip():
+                    entries.append(json.loads(line))
+        return entries
     tail: deque[dict[str, Any]] = deque(maxlen=max(0, limit))
     with path.open(encoding="utf-8") as handle:
         for line in handle:

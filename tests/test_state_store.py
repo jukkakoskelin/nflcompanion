@@ -594,6 +594,14 @@ class StateStoreTests(unittest.TestCase):
             "sleeper_dynasty",
         )
         self.assertFalse(any("should not prioritize K" in warning for warning in late_warning))
+        open_ended_warning = validate_draft_strategy(
+            {
+                "priority_positions": ["WR", "RB"],
+                "round_plan": [{"rounds": "1+", "targets": ["WR", "RB", "WR", "QB", "K"]}],
+            },
+            "sleeper_dynasty",
+        )
+        self.assertTrue(any("should not prioritize K" in warning for warning in open_ended_warning))
 
         with tempfile.TemporaryDirectory() as directory:
             state_root = Path(directory)
