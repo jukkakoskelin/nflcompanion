@@ -38,6 +38,7 @@ class AgenticGuardrailTests(unittest.TestCase):
             base_sha = subprocess.run(
                 ["git", "rev-parse", "HEAD^"], cwd=repo, check=True, capture_output=True, text=True
             ).stdout.strip()
+        import sys
         return subprocess.run(
             [
                 sys.executable,
