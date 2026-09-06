@@ -145,6 +145,14 @@ def save_trending_snapshot(
     return raw_path
 
 
+def _sleeper_api_get(url: str, timeout: int = 30) -> Any:
+    request = urllib.request.Request(
+        url, headers={"Accept": "application/json", "User-Agent": "nflcompanion/0.1"}
+    )
+    with urllib.request.urlopen(request, timeout=timeout) as response:
+        return json.load(response)
+
+
 TOOLS: list[dict[str, Any]] = [
     {
         "name": "sleeper_ensure_player_state",
@@ -352,6 +360,41 @@ TOOLS: list[dict[str, Any]] = [
             },
         },
     },
+    {
+        "name": "sleeper_get_user_drafts",
+        "description": "Fetch all draft rooms for a user, season, and sport.",
+        "inputSchema": {
+            "type": "object",
+            "required": ["user_id", "season"],
+            "properties": {
+                "user_id": {"type": "string", "description": "Sleeper user ID."},
+                "season": {"type": "string", "description": "Season year (e.g., '2026')."},
+                "sport": {"type": "string", "description": "Sport (e.g., 'nfl').", "default": "nfl"}
+            }
+        }
+    },
+    {
+        "name": "sleeper_get_draft",
+        "description": "Fetch the core settings of a specific draft.",
+        "inputSchema": {
+            "type": "object",
+            "required": ["draft_id"],
+            "properties": {
+                "draft_id": {"type": "string", "description": "Sleeper draft ID."}
+            }
+        }
+    },
+    {
+        "name": "sleeper_get_draft_picks",
+        "description": "Fetch the full list of picks made in a specific draft.",
+        "inputSchema": {
+            "type": "object",
+            "required": ["draft_id"],
+            "properties": {
+                "draft_id": {"type": "string", "description": "Sleeper draft ID."}
+            }
+        }
+    },
 ]
 
 
@@ -514,6 +557,7 @@ def execute_tool(name: str, arguments: dict[str, Any]) -> dict[str, Any]:
             strategy=loaded["living_strategy"],
             drafted_provider_ids=drafted_ids,
             trending=trending,
+            selected_players=loaded["session"].get("selected_players", []),
         )
         result["roster_summary"] = calculate_roster_summary(loaded["session"].get("selected_players", []))
         recommendation_dir = state_root / "drafts" / arguments["league_id"] / str(arguments["season"]) / "recommendations"
@@ -650,6 +694,22 @@ def execute_tool(name: str, arguments: dict[str, Any]) -> dict[str, Any]:
             notes=arguments.get("notes"),
         )
 
+    if name == "sleeper_get_user_drafts":
+        user_id = arguments["user_id"]
+        season = arguments["season"]
+        sport = arguments.get("sport", "nfl")
+        url = f"https://api.sleeper.app/v1/user/{user_id}/drafts/{sport}/{season}"
+        return {"drafts": _sleeper_api_get(url)}
+
+    if name == "sleeper_get_draft":
+        draft_id = arguments["draft_id"]
+        url = f"https://api.sleeper.app/v1/draft/{draft_id}"
+        return _sleeper_api_get(url)
+
+    if name == "sleeper_get_draft_picks":
+        draft_id = arguments["draft_id"]
+        url = f"https://api.sleeper.app/v1/draft/{draft_id}/picks"
+        return {"picks": _sleeper_api_get(url)}
 
     raise ValueError(f"Unknown tool: {name}")
 

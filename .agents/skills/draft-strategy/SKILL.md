@@ -60,6 +60,9 @@ When running interactively, the orchestrator can invoke or define subagents usin
 - Define `evaluator` to score completeness and quality gates.
 - Require explicit confirmation from the user before invoking the writer step.
 
+> [!NOTE]
+> During live execution (such as `draft_next_pick_preview`), if the draft format is Sleeper Dynasty and round >= 15, the draft companion will natively fetch up to 14 data-driven rookie suggestions (5 RBs, 5 WRs, 2 QBs, 2 TEs) optimized by age and trending metrics. There is no need for manual `query_players` search for rookies during these late rounds.
+
 ## Non-Interactive / Script Execution
 
 Strategies can be created or simulated programmatically:

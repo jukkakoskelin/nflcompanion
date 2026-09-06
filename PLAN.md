@@ -1,8 +1,6 @@
 # NFL Fantasy Draft Companion Plan
 
-Status: in progress - Sleeper Dynasty strategy support added; strategy creation skill,
-agent prompts, and validation now dual-platform (ESPN + Sleeper); draft companion
-roster needs and TBD slot extended for dynasty; 85 tests passing.
+Status: in progress - Added bye-week coverage for roster summaries and recommendation clash warnings; 96 tests passing.
 Priority: draft-ready for the Sleeper dynasty startup mock and live drafts
 
 ## Product goal
@@ -760,3 +758,49 @@ workflow is:
 |---|---|---|
 | ESPN 16-team snake | `draft-context/espn_snake/strategies/` | `draft-context/espn_snake/logs/` |
 | Sleeper 10-team dynasty | `draft-context/sleeper_dynasty/strategies/` | `draft-context/sleeper_dynasty/logs/` |
+
+## MCP Sleeper API Integration (2026-09-06)
+
+Added native Sleeper public API tools to the `nflcompanion` MCP server to directly fetch live draft states without requiring python scripts or explicit bypasses.
+- `sleeper_get_user_drafts`
+- `sleeper_get_draft`
+- `sleeper_get_draft_picks`
+
+These queries hit the Sleeper endpoints directly and do not populate the local state.
+
+## Bye-week coverage (2026-09-06)
+
+Added bye-week awareness to the draft companion so that roster summaries show
+starter bye weeks and candidate recommendations warn about bye-week clashes.
+
+### Design decision
+
+The 2026 NFL bye-week schedule is stored as a pure-Python dict constant
+(`NFL_BYE_WEEKS_2026`) in `draft_companion.py` rather than in the player
+snapshot. This is the most efficient approach because:
+
+- It is referenced on every `recommend_candidates` and
+  `calculate_roster_summary` call — a dict lookup is O(1) with zero I/O.
+- It changes only once per season.
+- The player snapshot already carries each player's `team` field; we just map
+  `team → bye_week`.
+
+An alias map (`_TEAM_CODE_ALIASES`) resolves ESPN/legacy codes (`ARZ`, `BLT`,
+`CLV`, `HST`, `OAK`, `LA`) to their Sleeper-native equivalents.
+
+### Changes
+
+- `draft_companion.py`:
+  - Added `NFL_BYE_WEEKS_2026` constant and `get_bye_week()` helper.
+  - `calculate_roster_summary` now returns `bye_week_distribution` (players
+    grouped by bye week) and `bye_week_conflicts` (weeks with 3+ starters).
+  - `recommend_candidates` accepts an optional `selected_players` parameter.
+    Candidates sharing a bye week with 2+ existing roster players receive a −5
+    score penalty, a `bye_week_clash` factor, and a rationale warning.
+  - `next_pick_preview` watch list entries now include `bye_week`.
+- `mcp_server.py`: `draft_recommend_candidates` handler passes
+  `selected_players` from the session to enable bye-week clash detection.
+- `test_draft_companion.py`: 10 new bye-week tests covering `get_bye_week`
+  lookups, alias mapping, case insensitivity, roster distribution, conflict
+  flagging, recommendation bye-week fields, clash penalties, and no-penalty
+  baseline.

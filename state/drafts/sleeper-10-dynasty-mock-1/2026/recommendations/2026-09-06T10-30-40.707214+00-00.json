@@ -1,0 +1,339 @@
+{
+  "ambiguous": [
+    {
+      "input": "Pierce",
+      "matches": [
+        {
+          "full_name": "Bernard Pierce",
+          "position": "RB",
+          "provider_id": "1263",
+          "team": null
+        },
+        {
+          "full_name": "Hollin Pierce",
+          "position": "OT",
+          "provider_id": "12869",
+          "team": null
+        },
+        {
+          "full_name": "Casey Pierce",
+          "position": "TE",
+          "provider_id": "2637",
+          "team": null
+        },
+        {
+          "full_name": "Markus Pierce-Brewster",
+          "position": "DE",
+          "provider_id": "2852",
+          "team": null
+        },
+        {
+          "full_name": "Michael Pierce",
+          "position": "DT",
+          "provider_id": "3681",
+          "team": null
+        },
+        {
+          "full_name": "Artavis Pierce",
+          "position": "RB",
+          "provider_id": "7227",
+          "team": null
+        },
+        {
+          "full_name": "Dameon Pierce",
+          "position": "RB",
+          "provider_id": "8129",
+          "team": "PHI"
+        },
+        {
+          "full_name": "Alec Pierce",
+          "position": "WR",
+          "provider_id": "8142",
+          "team": "IND"
+        },
+        {
+          "full_name": "Chris Pierce",
+          "position": "TE",
+          "provider_id": "8634",
+          "team": null
+        }
+      ]
+    }
+  ],
+  "generated_at": "2026-09-06T10:30:40.707214+00:00",
+  "recommendations": [
+    {
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Dalton Kincaid",
+      "position": "TE",
+      "provider_id": "10236",
+      "rank": 1,
+      "rationale": "Adds te value outside the current priority.",
+      "score": 40,
+      "team": "BUF"
+    },
+    {
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Oronde Gadsden",
+      "position": "TE",
+      "provider_id": "12493",
+      "rank": 2,
+      "rationale": "Adds te value outside the current priority.",
+      "score": 40,
+      "team": "LAC"
+    }
+  ],
+  "resolved": [
+    {
+      "active": true,
+      "age": 26,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1999-10-18",
+      "birth_state": null,
+      "college": "Utah",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "TE",
+      "espn_id": null,
+      "fantasy_data_id": 24102,
+      "fantasy_positions": [
+        "TE"
+      ],
+      "first_name": "Dalton",
+      "full_name": "Dalton Kincaid",
+      "gsis_id": null,
+      "hashtag": "#daltonkincaid-NFL-BUF-86",
+      "height": "75",
+      "high_school": "Faith Lutheran (NV)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "6b4831f0-002a-43a0-aff6-e8985fa653fa",
+      "last_name": "Kincaid",
+      "metadata": {
+        "channel_id": "1113708758392926208",
+        "genius_id": "1398598",
+        "rookie_year": "2023"
+      },
+      "news_updated": 1788357029149,
+      "number": 86,
+      "oddsjam_id": "6209487DAAAC",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "10236",
+      "player_shard": "5",
+      "position": "TE",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "10236",
+      "rotowire_id": 16697,
+      "rotoworld_id": null,
+      "search_first_name": "dalton",
+      "search_full_name": "daltonkincaid",
+      "search_last_name": "kincaid",
+      "search_rank": 81,
+      "sport": "nfl",
+      "sportradar_id": "b961fa15-0676-4948-b95f-56d06319d40e",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1135513,
+      "team": "BUF",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "246",
+      "yahoo_id": null,
+      "years_exp": 3
+    },
+    {
+      "active": true,
+      "age": 23,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "2003-06-25",
+      "birth_state": null,
+      "college": "Syracuse",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "TE",
+      "espn_id": null,
+      "fantasy_data_id": 25876,
+      "fantasy_positions": [
+        "TE"
+      ],
+      "first_name": "Oronde",
+      "full_name": "Oronde Gadsden",
+      "gsis_id": null,
+      "hashtag": "#orondegadsden-NFL-LAC-86",
+      "height": "77",
+      "high_school": "American Heritage (FL)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "1576d13c-5e56-46ee-bdbe-88c36b63a29c",
+      "last_name": "Gadsden",
+      "metadata": {
+        "channel_id": "1221956864154017792",
+        "genius_id": "1502729",
+        "rookie_year": "2025",
+        "source_id": "53043fac-4bd3-4c20-8b72-b33f9da5ba60"
+      },
+      "news_updated": 1788316223952,
+      "number": 86,
+      "oddsjam_id": "7B199EFCFEA900D6",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "12493",
+      "player_shard": "1",
+      "position": "TE",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "12493",
+      "rotowire_id": 18481,
+      "rotoworld_id": null,
+      "search_first_name": "oronde",
+      "search_full_name": "orondegadsden",
+      "search_last_name": "gadsden",
+      "search_rank": 83,
+      "sport": "nfl",
+      "sportradar_id": "6af50530-145a-4b34-946d-ce1a7f7d3166",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": null,
+      "team": "LAC",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "236",
+      "yahoo_id": null,
+      "years_exp": 1
+    }
+  ],
+  "roster_summary": {
+    "by_position": {
+      "DEF": [],
+      "K": [],
+      "OTHER": [],
+      "QB": [
+        {
+          "full_name": "Brock Purdy",
+          "overall_pick": 44,
+          "position": "QB",
+          "provider_id": "8183",
+          "round": 5,
+          "slot": 4,
+          "team": "SF"
+        },
+        {
+          "full_name": "Baker Mayfield",
+          "overall_pick": 77,
+          "position": "QB",
+          "provider_id": "4892",
+          "round": 8,
+          "slot": 4,
+          "team": "TB"
+        }
+      ],
+      "RB": [
+        {
+          "full_name": "Jahmyr Gibbs",
+          "overall_pick": 4,
+          "position": "RB",
+          "provider_id": "9221",
+          "round": 1,
+          "slot": 4,
+          "team": "DET"
+        },
+        {
+          "full_name": "Saquon Barkley",
+          "overall_pick": 37,
+          "position": "RB",
+          "provider_id": "4866",
+          "round": 4,
+          "slot": 4,
+          "team": "PHI"
+        },
+        {
+          "full_name": "RJ Harvey",
+          "overall_pick": 84,
+          "position": "RB",
+          "provider_id": "12489",
+          "round": 9,
+          "slot": 4,
+          "team": "DEN"
+        }
+      ],
+      "TE": [
+        {
+          "full_name": "Harold Fannin",
+          "overall_pick": 57,
+          "position": "TE",
+          "provider_id": "12506",
+          "round": 6,
+          "slot": 4,
+          "team": "CLE"
+        }
+      ],
+      "WR": [
+        {
+          "full_name": "CeeDee Lamb",
+          "overall_pick": 17,
+          "position": "WR",
+          "provider_id": "6786",
+          "round": 2,
+          "slot": 4,
+          "team": "DAL"
+        },
+        {
+          "full_name": "Drake London",
+          "overall_pick": 24,
+          "position": "WR",
+          "provider_id": "8112",
+          "round": 3,
+          "slot": 4,
+          "team": "ATL"
+        },
+        {
+          "full_name": "DeVonta Smith",
+          "overall_pick": 64,
+          "position": "WR",
+          "provider_id": "7525",
+          "round": 7,
+          "slot": 4,
+          "team": "PHI"
+        }
+      ]
+    },
+    "needs": [
+      "DEF",
+      "K"
+    ],
+    "position_counts": {
+      "DEF": 0,
+      "K": 0,
+      "QB": 2,
+      "RB": 3,
+      "TE": 1,
+      "WR": 3
+    },
+    "remaining_slots": 5,
+    "target_roster_size": 14,
+    "total_selected": 9
+  },
+  "unknown": []
+}

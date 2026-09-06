@@ -1,0 +1,269 @@
+{
+  "ambiguous": [
+    {
+      "input": "DeVonta Smith",
+      "matches": [
+        {
+          "full_name": "Devonta Smith",
+          "position": "CB",
+          "provider_id": "13977",
+          "team": "CAR"
+        },
+        {
+          "full_name": "DeVonta Smith",
+          "position": "WR",
+          "provider_id": "7525",
+          "team": "PHI"
+        }
+      ]
+    }
+  ],
+  "generated_at": "2026-09-06T10:26:11.138571+00:00",
+  "recommendations": [
+    {
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 20,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Derrick Henry",
+      "position": "RB",
+      "provider_id": "3198",
+      "rank": 1,
+      "rationale": "Adds rb value outside the current priority.",
+      "score": 50,
+      "team": "BAL"
+    },
+    {
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 20,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Javonte Williams",
+      "position": "RB",
+      "provider_id": "7588",
+      "rank": 2,
+      "rationale": "Adds rb value outside the current priority.",
+      "score": 50,
+      "team": "DAL"
+    }
+  ],
+  "resolved": [
+    {
+      "active": true,
+      "age": 26,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "2000-04-25",
+      "birth_state": null,
+      "college": "North Carolina",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "RB",
+      "espn_id": null,
+      "fantasy_data_id": 22558,
+      "fantasy_positions": [
+        "RB"
+      ],
+      "first_name": "Javonte",
+      "full_name": "Javonte Williams",
+      "gsis_id": null,
+      "hashtag": "#javontewilliams-NFL-DAL-33",
+      "height": "70",
+      "high_school": "Wallace-Rose Hill (NC)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "51cb139e-15c6-4ef7-83f0-382f82d34079",
+      "last_name": "Williams",
+      "metadata": {
+        "channel_id": "1113708826411954176",
+        "genius_id": "1073610",
+        "rookie_year": "2021"
+      },
+      "news_updated": 1788561023166,
+      "number": 33,
+      "oddsjam_id": "98ABA7982917",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "7588",
+      "player_shard": "9",
+      "position": "RB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "7588",
+      "rotowire_id": 15306,
+      "rotoworld_id": null,
+      "search_first_name": "javonte",
+      "search_full_name": "javontewilliams",
+      "search_last_name": "williams",
+      "search_rank": 32,
+      "sport": "nfl",
+      "sportradar_id": "889dcdc5-3d88-45df-9677-5ad7ff87c011",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1107881,
+      "team": "DAL",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "222",
+      "yahoo_id": null,
+      "years_exp": 5
+    },
+    {
+      "active": true,
+      "age": 32,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1994-01-04",
+      "birth_state": null,
+      "college": "Alabama",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "RB",
+      "espn_id": 3043078,
+      "fantasy_data_id": 17959,
+      "fantasy_positions": [
+        "RB"
+      ],
+      "first_name": "Derrick",
+      "full_name": "Derrick Henry",
+      "gsis_id": "00-0032764",
+      "hashtag": "#derrickhenry-NFL-BAL-22",
+      "height": "75",
+      "high_school": "Yulee (FL)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "8ebb7c40-992b-441b-a691-4ff745dbfd68",
+      "last_name": "Henry",
+      "metadata": {
+        "channel_id": "1113708869839777793",
+        "genius_id": "940750",
+        "rookie_year": "2016"
+      },
+      "news_updated": 1788530120390,
+      "number": 22,
+      "oddsjam_id": "9D8CB3224420",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "3198",
+      "player_shard": "7",
+      "position": "RB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "3198",
+      "rotowire_id": 10819,
+      "rotoworld_id": 11238,
+      "search_first_name": "derrick",
+      "search_full_name": "derrickhenry",
+      "search_last_name": "henry",
+      "search_rank": 7,
+      "sport": "nfl",
+      "sportradar_id": "87c481c7-7414-43cc-82df-19ca0c2ae22e",
+      "stats_id": 732145,
+      "status": "Active",
+      "swish_id": 732145,
+      "team": "BAL",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "252",
+      "yahoo_id": 29279,
+      "years_exp": 10
+    }
+  ],
+  "roster_summary": {
+    "by_position": {
+      "DEF": [],
+      "K": [],
+      "OTHER": [],
+      "QB": [
+        {
+          "full_name": "Brock Purdy",
+          "overall_pick": 44,
+          "position": "QB",
+          "provider_id": "8183",
+          "round": 5,
+          "slot": 4,
+          "team": "SF"
+        }
+      ],
+      "RB": [
+        {
+          "full_name": "Jahmyr Gibbs",
+          "overall_pick": 4,
+          "position": "RB",
+          "provider_id": "9221",
+          "round": 1,
+          "slot": 4,
+          "team": "DET"
+        },
+        {
+          "full_name": "Saquon Barkley",
+          "overall_pick": 37,
+          "position": "RB",
+          "provider_id": "4866",
+          "round": 4,
+          "slot": 4,
+          "team": "PHI"
+        }
+      ],
+      "TE": [
+        {
+          "full_name": "Harold Fannin",
+          "overall_pick": 57,
+          "position": "TE",
+          "provider_id": "12506",
+          "round": 6,
+          "slot": 4,
+          "team": "CLE"
+        }
+      ],
+      "WR": [
+        {
+          "full_name": "CeeDee Lamb",
+          "overall_pick": 17,
+          "position": "WR",
+          "provider_id": "6786",
+          "round": 2,
+          "slot": 4,
+          "team": "DAL"
+        },
+        {
+          "full_name": "Drake London",
+          "overall_pick": 24,
+          "position": "WR",
+          "provider_id": "8112",
+          "round": 3,
+          "slot": 4,
+          "team": "ATL"
+        }
+      ]
+    },
+    "needs": [
+      "DEF",
+      "K"
+    ],
+    "position_counts": {
+      "DEF": 0,
+      "K": 0,
+      "QB": 1,
+      "RB": 2,
+      "TE": 1,
+      "WR": 2
+    },
+    "remaining_slots": 8,
+    "target_roster_size": 14,
+    "total_selected": 6
+  },
+  "unknown": []
+}

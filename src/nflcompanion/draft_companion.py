@@ -12,6 +12,42 @@ from typing import Any, Iterable
 
 _POSITIONS = {"QB", "RB", "WR", "TE", "K", "DST", "DEF"}
 
+# 2026 NFL bye week schedule keyed by Sleeper team abbreviations.
+# Source: user-provided schedule mapped from ESPN/official codes.
+# Mapping differences: ARZ→ARI, BLT→BAL, CLV→CLE, HST→HOU, OAK→LV, LA→LAR.
+NFL_BYE_WEEKS_2026: dict[str, int] = {
+    "CAR": 5, "KC": 5,
+    "CIN": 6, "DET": 6, "MIA": 6, "MIN": 6,
+    "BUF": 7, "JAX": 7, "LAC": 7, "WAS": 7,
+    "HOU": 8, "NO": 8, "NYG": 8, "SF": 8,
+    "PIT": 9, "TEN": 9,
+    "CHI": 10, "DEN": 10, "PHI": 10, "TB": 10,
+    "ATL": 11, "CLE": 11, "GB": 11, "LAR": 11, "NE": 11, "SEA": 11,
+    "BAL": 13, "IND": 13, "LV": 13, "NYJ": 13,
+    "ARI": 14, "DAL": 14,
+}
+
+# Alias map from alternative team codes (ESPN, legacy, Pro Bowl) to Sleeper codes.
+_TEAM_CODE_ALIASES: dict[str, str] = {
+    "ARZ": "ARI",
+    "BLT": "BAL",
+    "CLV": "CLE",
+    "HST": "HOU",
+    "OAK": "LV",
+    "LA": "LAR",
+}
+
+
+def get_bye_week(team: str, *, season: int = 2026) -> int | None:
+    """Return the bye week for a team code, or None if unknown.
+
+    Accepts both Sleeper-native codes (e.g. ``ARI``) and common aliases
+    (e.g. ``ARZ``, ``BLT``).
+    """
+    code = str(team).upper()
+    code = _TEAM_CODE_ALIASES.get(code, code)
+    return NFL_BYE_WEEKS_2026.get(code)
+
 
 def _now() -> str:
     return datetime.now(UTC).isoformat()
@@ -146,6 +182,26 @@ def calculate_roster_summary(
     total_selected = len(selected_players)
     remaining_slots = max(0, target_roster_size - total_selected)
 
+    # Bye-week distribution: group selected players by their bye week.
+    bye_distribution: dict[int, list[str]] = {}
+    for item in selected_players:
+        team = str(item.get("team") or "").upper()
+        week = get_bye_week(team)
+        if week is not None:
+            name = item.get("full_name") or f"({team})"
+            bye_distribution.setdefault(week, []).append(name)
+
+    # Flag weeks where 3+ starters share a bye as conflicts.
+    bye_conflicts: list[dict[str, Any]] = []
+    for week in sorted(bye_distribution):
+        players_on_bye = bye_distribution[week]
+        if len(players_on_bye) >= 3:
+            bye_conflicts.append({
+                "week": week,
+                "count": len(players_on_bye),
+                "players": players_on_bye,
+            })
+
     return {
         "total_selected": total_selected,
         "target_roster_size": target_roster_size,
@@ -153,6 +209,8 @@ def calculate_roster_summary(
         "position_counts": counts,
         "by_position": by_position,
         "needs": needs,
+        "bye_week_distribution": bye_distribution,
+        "bye_week_conflicts": bye_conflicts,
     }
 
 
@@ -357,6 +415,7 @@ def recommend_candidates(
     strategy: dict[str, Any] | None = None,
     drafted_provider_ids: Iterable[str] = (),
     trending: dict[str, Any] | None = None,
+    selected_players: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     """Resolve and deterministically rank 2-4 candidate inputs."""
     strategy = strategy or {}
@@ -372,6 +431,15 @@ def recommend_candidates(
         for value in strategy.get("priority_positions", strategy.get("priorities", []))
     ]
     avoided = {str(value).upper() for value in strategy.get("avoid_early", [])}
+
+    # Pre-compute bye-week counts from the user's existing roster.
+    roster_bye_counts: dict[int, int] = {}
+    for item in selected_players or []:
+        team = str(item.get("team") or "").upper()
+        week = get_bye_week(team)
+        if week is not None:
+            roster_bye_counts[week] = roster_bye_counts.get(week, 0) + 1
+
     recommendations = []
     for player in resolution["resolved"]:
         provider_id = str(player.get("provider_id"))
@@ -387,12 +455,20 @@ def recommend_candidates(
         value = 20 if isinstance(search_rank, (int, float)) and search_rank <= 50 else 10
         activity = min(10, trend_counts.get(provider_id, 0) // 100)
         active = 10 if player.get("active", True) else -20
+
+        # Bye-week clash penalty.
+        candidate_team = str(player.get("team") or "").upper()
+        candidate_bye = get_bye_week(candidate_team)
+        bye_clash_count = roster_bye_counts.get(candidate_bye, 0) if candidate_bye else 0
+        bye_penalty = -5 if bye_clash_count >= 2 else 0
+
         factors = {
             "positional_need": need,
             "strategy_fit": strategy_fit,
             "available_value": value,
             "trend_signal": activity,
             "active_status": active,
+            "bye_week_clash": bye_penalty,
         }
         score = sum(factors.values())
         reasons = []
@@ -404,12 +480,19 @@ def recommend_candidates(
             reasons.append("has a positive local trend signal")
         if position in avoided:
             reasons.append(f"conflicts with the early {position} fade")
+        if bye_penalty:
+            reasons.append(
+                f"⚠ bye week {candidate_bye} clashes with {bye_clash_count} "
+                f"existing roster player{'s' if bye_clash_count != 1 else ''}"
+            )
         recommendations.append(
             {
                 "provider_id": provider_id,
                 "full_name": player.get("full_name"),
                 "position": player.get("position"),
                 "team": player.get("team"),
+                "bye_week": candidate_bye,
+                "bye_week_clash_count": bye_clash_count,
                 "score": score,
                 "factor_scores": factors,
                 "confidence": "high" if search_rank is not None else "medium",
@@ -426,6 +509,7 @@ def recommend_candidates(
         "recommendations": recommendations,
         "generated_at": _now(),
     }
+
 
 
 def _append_event(path: Path, event: dict[str, Any]) -> None:
@@ -601,6 +685,49 @@ def update_living_strategy(
     return deepcopy(strategy)
 
 
+def recommend_rookies(
+    players: Iterable[dict[str, Any]],
+    drafted_ids: set[str],
+    trend_counts: dict[str, int],
+) -> dict[str, list[dict[str, Any]]]:
+    """Recommend best rookie options based on age and trend signals."""
+    rookies = [
+        p for p in (players or [])
+        if p.get("years_exp") == 0
+        and str(p.get("provider_id")) not in drafted_ids
+        and p.get("active", True)
+    ]
+
+    limits = {"RB": 5, "WR": 5, "QB": 2, "TE": 2}
+    results: dict[str, list[dict[str, Any]]] = {"RB": [], "WR": [], "QB": [], "TE": []}
+
+    def rookie_score(p: dict[str, Any]) -> float:
+        provider_id = str(p.get("provider_id"))
+        trend = min(15, trend_counts.get(provider_id, 0) // 50)
+        age = p.get("age") or 22
+        age_bonus = max(0, 24 - int(age)) * 2
+        rank = p.get("search_rank")
+        rank_val = max(0, 20 - int(rank) // 100) if isinstance(rank, (int, float)) else 0
+        return float(trend + age_bonus + rank_val)
+
+    for p in rookies:
+        pos = str(p.get("position") or "").upper()
+        if pos in results:
+            results[pos].append({
+                "provider_id": str(p.get("provider_id")),
+                "full_name": p.get("full_name"),
+                "position": pos,
+                "team": p.get("team"),
+                "age": p.get("age"),
+                "trend_count": trend_counts.get(str(p.get("provider_id")), 0),
+                "score": rookie_score(p),
+            })
+
+    for pos in results:
+        results[pos].sort(key=lambda x: (-x["score"], x["full_name"] or ""))
+        results[pos] = results[pos][:limits[pos]]
+
+    return results
 
 def next_pick_preview(
     state_root: Path,
@@ -654,6 +781,7 @@ def next_pick_preview(
                 "full_name": player.get("full_name"),
                 "position": player.get("position"),
                 "team": player.get("team"),
+                "bye_week": get_bye_week(str(player.get("team") or "")),
                 "tier_priority": priority_index + 1 if position in priorities else None,
                 "trend_count": trend_counts.get(provider_id, 0),
                 "availability_estimate": availability,
@@ -669,11 +797,18 @@ def next_pick_preview(
         "availability_basis": "local player search rank and trending add snapshot; estimate only",
         "living_strategy": loaded["living_strategy"],
     }
+    
+    if session.get("draft_style") == "sleeper_dynasty" and next_pick.get("round", 0) >= 15:
+        result["rookie_suggestions"] = recommend_rookies(players or [], drafted_ids, trend_counts)
+
+    return result
 
 
 __all__ = [
+    "NFL_BYE_WEEKS_2026",
     "calculate_roster_summary",
     "create_draft_session",
+    "get_bye_week",
     "load_draft_session",
     "next_pick_for_slot",
     "next_pick_preview",
@@ -681,6 +816,7 @@ __all__ = [
     "record_observed_pick",
     "record_pick",
     "recommend_candidates",
+    "recommend_rookies",
     "resolve_candidates",
     "update_living_strategy",
 ]
