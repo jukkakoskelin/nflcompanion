@@ -1,8 +1,9 @@
 # NFL Fantasy Draft Companion Plan
 
-Status: in progress - evaluating mock-3 feedback, visual hierarchy, and planning local draft UI  
-Priority: draft-ready MVP for the Sleeper dynasty draft and ESPN 16-team snake
-draft in the next few days
+Status: in progress - Sleeper Dynasty strategy support added; strategy creation skill,
+agent prompts, and validation now dual-platform (ESPN + Sleeper); draft companion
+roster needs and TBD slot extended for dynasty; 85 tests passing.
+Priority: draft-ready for the Sleeper dynasty startup mock and live drafts
 
 ## Product goal
 
@@ -675,4 +676,87 @@ Google Antigravity:
 - Existing GitHub Copilot extension and canvas UI in `.github/extensions/`
   remain intact and backwards-compatible.
 
+## Sleeper Dynasty strategy support (2026-09-06)
 
+The strategy creation workflow is now dual-platform across ESPN 16-team snake
+and Sleeper 10-team dynasty startup snake. The following changes were made:
+
+### New files
+
+- `docs/draft-strategy-agents/sleeper-dynasty-strategy-agent.md` — new strategy
+  agent prompt with 10-team Superflex startup questionnaire (6 questions: anchor,
+  Superflex QB timing, TE timing, dynasty horizon, taxi-squad philosophy, draft
+  slot), decision rules (age targets, two-QB minimum, taxi hoarding vs. floor),
+  and output contract (`superflex_plan`, `taxi_squad_plan`, `dynasty_horizon`,
+  25-player `roster_target`, etc.). Mirrors the ESPN agent but is tuned for
+  dynasty/Superflex/PPR.
+
+### Modified files
+
+- `src/nflcompanion/state_store.py`:
+  - Added `_DEFAULT_AGENT_ROLES_BY_STYLE` and `_DEFAULT_AGENT_PROMPT_FILES_BY_STYLE`
+    — per-draft-style dicts so `sleeper_dynasty` routes to the dynasty strategy
+    agent and ESPN routes to the ESPN agent.
+  - `_agent_workflow()` now reads the draft style from `session_config` and selects
+    the correct agent role/prompt file and style-specific `success_criteria`.
+  - `validate_draft_strategy()` now warns when `superflex_plan` or `dynasty_horizon`
+    is missing for `sleeper_dynasty`.
+  - `rate_draft_strategy()` now awards bonus points for `superflex_plan` (+5),
+    `taxi_squad_plan` (+3), and `dynasty_horizon` (+2) for `sleeper_dynasty`.
+  - `save_draft_strategy()` defaults `collaborating_agents` to the style-specific
+    role map instead of the ESPN-only defaults.
+  - Both simulated `sleeper_dynasty` strategies in `_SIMULATED_STRATEGIES` have
+    been updated to include `superflex_plan`, `dynasty_horizon`, and
+    `taxi_squad_plan` so they pass the new validation without warnings.
+
+- `src/nflcompanion/draft_companion.py`:
+  - `calculate_roster_summary()` now accepts `draft_style` and
+    `target_roster_size=None`. For `sleeper_dynasty`: default 25-slot target,
+    2-QB minimum (with Superflex label), 3-WR minimum, no DEF/K required.
+    For `espn_snake`: behavior unchanged (14 slots, DEF+K required).
+  - `create_draft_session()` now accepts `user_slot=0` for TBD draft position.
+    Session metadata records `draft_slot_status: "TBD"` until the slot is
+    known; valid non-zero slots record `"confirmed"`.
+  - New `confirm_draft_slot()` helper updates a TBD session with the real slot
+    once it is revealed by the platform at draft start.
+
+- `.agents/skills/draft-strategy/SKILL.md`:
+  - Added "Choosing the Platform" section at the top.
+  - Extended interviewer section with the Sleeper Dynasty 10-team startup snake
+    intake questions (6 questions matching the strategy agent file).
+  - Strategy Agent entry now shows both ESPN and Sleeper dynasty routes.
+  - Writer entry now notes platform-specific save paths.
+  - Added `sleeper_dynasty` CLI examples.
+
+- `docs/draft-strategy-agents/orchestrator.md`:
+  - Added "Platform routing (first step)" section instructing the orchestrator
+    to ask ESPN vs. Sleeper at the top of every session and route to the correct
+    strategy agent before beginning the questionnaire.
+
+### Tests added
+
+- `tests/test_state_store.py`: 9 new dynasty tests — saves to correct folder,
+  superflex/horizon validation warnings, no-warning for complete strategy,
+  rating bonus, agent workflow routing for both styles, success_criteria content,
+  simulate produces valid strategy.
+- `tests/test_draft_companion.py`: 12 new tests — dynasty default 25-slot target,
+  ESPN 14-slot default, 2-QB Superflex need, no DEF/K in dynasty, 3-WR need,
+  ESPN DEF/K required, custom target override, TBD slot creation, confirmed slot,
+  `confirm_draft_slot` updates, double-confirm rejected, invalid slot rejected.
+
+### Draft slot strategy
+
+The user's draft position in the Sleeper startup is not yet known. The recommended
+workflow is:
+
+1. Run the strategy creation skill now (slot TBD) to build 1-2 dynasty strategies.
+2. At mock/live draft start, call `confirm_draft_slot` with the revealed slot to
+   enable pick-number math and next-pick forecasting.
+3. The `draft_init_session` MCP tool supports `user_slot=0` for the same TBD path.
+
+### Strategy save paths
+
+| Platform | Strategies | Logs |
+|---|---|---|
+| ESPN 16-team snake | `draft-context/espn_snake/strategies/` | `draft-context/espn_snake/logs/` |
+| Sleeper 10-team dynasty | `draft-context/sleeper_dynasty/strategies/` | `draft-context/sleeper_dynasty/logs/` |

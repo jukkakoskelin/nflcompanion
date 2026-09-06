@@ -72,22 +72,37 @@ def _positions(player: dict[str, Any]) -> set[str]:
     return result
 
 
+# Default minimum requirements per draft style
+_ROSTER_MINIMUMS: dict[str, dict[str, int]] = {
+    "espn_snake": {"QB": 1, "RB": 2, "WR": 2, "TE": 1, "FLEX": 5, "DEF": 1, "K": 1},
+    "sleeper_dynasty": {"QB": 2, "RB": 2, "WR": 3, "TE": 1, "FLEX": 10},
+}
+_ROSTER_FLEX_KEY = "FLEX"
+
+
 def calculate_roster_summary(
     selected_players: list[dict[str, Any]],
     *,
-    target_roster_size: int = 14,
+    target_roster_size: int | None = None,
+    draft_style: str = "espn_snake",
 ) -> dict[str, Any]:
-    """Calculate roster composition, positional counts, and remaining needs."""
-    counts: dict[str, int] = {"QB": 0, "RB": 0, "WR": 0, "TE": 0, "DEF": 0, "K": 0}
-    by_position: dict[str, list[dict[str, Any]]] = {
-        "QB": [],
-        "RB": [],
-        "WR": [],
-        "TE": [],
-        "DEF": [],
-        "K": [],
-        "OTHER": [],
-    }
+    """Calculate roster composition, positional counts, and remaining needs.
+
+    For ``sleeper_dynasty`` the target roster size defaults to 25 (active spots)
+    and DEF/K are not counted as positional needs. For ``espn_snake`` the default
+    remains 14 with DEF and K required.
+    """
+    is_dynasty = draft_style == "sleeper_dynasty"
+    if target_roster_size is None:
+        target_roster_size = 25 if is_dynasty else 14
+
+    minimums = _ROSTER_MINIMUMS.get(draft_style, _ROSTER_MINIMUMS["espn_snake"])
+
+    track_positions = ["QB", "RB", "WR", "TE", "DEF", "K"]
+    counts: dict[str, int] = {pos: 0 for pos in track_positions}
+    by_position: dict[str, list[dict[str, Any]]] = {pos: [] for pos in track_positions}
+    by_position["OTHER"] = []
+
     for item in selected_players:
         pos = str(item.get("position") or "").upper()
         if pos in ("DST", "DEF", "D/ST"):
@@ -99,20 +114,34 @@ def calculate_roster_summary(
             by_position["OTHER"].append(item)
 
     needs: list[str] = []
-    if counts["QB"] < 1:
-        needs.append("QB")
-    if counts["RB"] < 2:
-        needs.append(f"RB ({2 - counts['RB']} needed)")
-    if counts["WR"] < 2:
-        needs.append(f"WR ({2 - counts['WR']} needed)")
-    if counts["TE"] < 1:
+    flex_total = counts["RB"] + counts["WR"] + counts["TE"]
+
+    qb_min = minimums.get("QB", 1)
+    if counts["QB"] < qb_min:
+        label = "QB" if qb_min == 1 else f"QB ({qb_min - counts['QB']} needed for Superflex)"
+        needs.append(label)
+
+    rb_min = minimums.get("RB", 2)
+    if counts["RB"] < rb_min:
+        needs.append(f"RB ({rb_min - counts['RB']} needed)")
+
+    wr_min = minimums.get("WR", 2)
+    if counts["WR"] < wr_min:
+        needs.append(f"WR ({wr_min - counts['WR']} needed)")
+
+    if counts["TE"] < minimums.get("TE", 1):
         needs.append("TE")
-    if (counts["RB"] + counts["WR"] + counts["TE"]) < 5:
-        needs.append("FLEX (RB/WR/TE)")
-    if counts["DEF"] < 1:
-        needs.append("DEF")
-    if counts["K"] < 1:
-        needs.append("K")
+
+    flex_min = minimums.get("FLEX", 5)
+    if flex_total < flex_min:
+        flex_label = "FLEX (RB/WR/TE)" if not is_dynasty else "FLEX/Superflex (RB/WR/TE/QB)"
+        needs.append(flex_label)
+
+    if not is_dynasty:
+        if counts["DEF"] < minimums.get("DEF", 1):
+            needs.append("DEF")
+        if counts["K"] < minimums.get("K", 1):
+            needs.append("K")
 
     total_selected = len(selected_players)
     remaining_slots = max(0, target_roster_size - total_selected)
@@ -125,7 +154,6 @@ def calculate_roster_summary(
         "by_position": by_position,
         "needs": needs,
     }
-
 
 
 def pick_for_overall(
@@ -181,12 +209,19 @@ def create_draft_session(
     reverse_round: bool = False,
     decision_window_seconds: int = 90,
 ) -> dict[str, Any]:
-    """Create the durable session and its initial living strategy."""
+    """Create the durable session and its initial living strategy.
+
+    Pass ``user_slot=0`` when the draft position is not yet known (e.g. during
+    strategy creation before the actual draft). The session records
+    ``draft_slot_status: "TBD"`` and skips pick-number math until the slot is
+    confirmed via :func:`confirm_draft_slot`.
+    """
     if decision_window_seconds <= 0:
         raise ValueError("decision_window_seconds must be positive")
     pick_for_overall(1, team_count, reverse_round=reverse_round)
-    if user_slot < 1 or user_slot > team_count:
-        raise ValueError("user_slot must be within the team count")
+    slot_known = user_slot != 0
+    if slot_known and (user_slot < 1 or user_slot > team_count):
+        raise ValueError("user_slot must be within the team count or 0 for TBD")
     directory = _session_dir(state_root, league_id, season)
     session_path = directory / "session.md"
     if session_path.exists():
@@ -200,6 +235,7 @@ def create_draft_session(
         "draft_style": draft_style,
         "team_count": int(team_count),
         "user_slot": int(user_slot),
+        "draft_slot_status": "confirmed" if slot_known else "TBD",
         "current_overall_pick": 0,
         "reverse_round": bool(reverse_round),
         "decision_window_seconds": int(decision_window_seconds),
@@ -215,6 +251,38 @@ def create_draft_session(
     (directory / "events.md").write_text("# Draft events\n", encoding="utf-8")
     _write_living_strategy(directory / "living-strategy.md", session, strategy, [])
     return {"session": deepcopy(session), "living_strategy": strategy}
+
+
+def confirm_draft_slot(
+    state_root: Path,
+    *,
+    league_id: str,
+    season: int,
+    user_slot: int,
+) -> dict[str, Any]:
+    """Update a TBD session with the confirmed draft slot.
+
+    Call this at the start of the actual draft once the slot is revealed by the
+    platform. Raises :exc:`ValueError` if the session already has a confirmed slot.
+    """
+    directory = _session_dir(state_root, league_id, season)
+    session_path = directory / "session.md"
+    session = _read_front_matter(session_path)
+    team_count = int(session.get("team_count", 0))
+    if team_count < 2:
+        raise ValueError("Session team_count is missing or invalid")
+    if user_slot < 1 or user_slot > team_count:
+        raise ValueError("user_slot must be within the team count")
+    if session.get("draft_slot_status") == "confirmed" and session.get("user_slot", 0) != 0:
+        raise ValueError(
+            f"Draft slot is already confirmed as slot {session['user_slot']}; "
+            "create a new session or reset the existing one."
+        )
+    session["user_slot"] = int(user_slot)
+    session["draft_slot_status"] = "confirmed"
+    session["updated_at"] = _now()
+    _write_session_markdown(session_path, session)
+    return deepcopy(session)
 
 
 def load_draft_session(state_root: Path, *, league_id: str, season: int) -> dict[str, Any]:

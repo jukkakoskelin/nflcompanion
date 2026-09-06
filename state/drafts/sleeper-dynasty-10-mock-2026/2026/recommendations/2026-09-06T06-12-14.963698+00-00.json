@@ -1,0 +1,106 @@
+{
+  "ambiguous": [
+    {
+      "input": "Kenneth Walker",
+      "matches": [
+        {
+          "full_name": "Kenneth Walker",
+          "position": "WR",
+          "provider_id": "4634",
+          "team": null
+        },
+        {
+          "full_name": "Kenneth Walker",
+          "position": "RB",
+          "provider_id": "8151",
+          "team": "KC"
+        }
+      ]
+    }
+  ],
+  "generated_at": "2026-09-06T06:12:14.963698+00:00",
+  "recommendations": [
+    {
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 20,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Chase Brown",
+      "position": "RB",
+      "provider_id": "9224",
+      "rank": 1,
+      "rationale": "Adds rb value outside the current priority.",
+      "score": 50,
+      "team": "CIN"
+    }
+  ],
+  "resolved": [
+    {
+      "active": true,
+      "age": 26,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "2000-03-21",
+      "birth_state": null,
+      "college": "Illinois",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "RB",
+      "espn_id": null,
+      "fantasy_data_id": 24374,
+      "fantasy_positions": [
+        "RB"
+      ],
+      "first_name": "Chase",
+      "full_name": "Chase Brown",
+      "gsis_id": null,
+      "hashtag": "#chasebrown-NFL-CIN-30",
+      "height": "70",
+      "high_school": "Ponchatoula (LA)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "0a41adf7-a7af-4319-b867-4e25af813ac2",
+      "last_name": "Brown",
+      "metadata": {
+        "channel_id": "1113708808128983040",
+        "genius_id": "1014223",
+        "rookie_year": "2023"
+      },
+      "news_updated": 1788374732171,
+      "number": 30,
+      "oddsjam_id": "584E3945E8BF",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "9224",
+      "player_shard": "9",
+      "position": "RB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "9224",
+      "rotowire_id": 16934,
+      "rotoworld_id": null,
+      "search_first_name": "chase",
+      "search_full_name": "chasebrown",
+      "search_last_name": "brown",
+      "search_rank": 16,
+      "sport": "nfl",
+      "sportradar_id": "d74ff06d-905d-4fed-8f98-b5f6d4549333",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1123379,
+      "team": "CIN",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "210",
+      "yahoo_id": null,
+      "years_exp": 3
+    }
+  ],
+  "unknown": []
+}
