@@ -5,6 +5,7 @@ from pathlib import Path
 
 from nflcompanion.draft_companion import (
     calculate_roster_summary,
+    confirm_draft_slot,
     create_draft_session,
     load_draft_session,
     next_pick_for_slot,
@@ -261,7 +262,146 @@ class DraftCompanionTests(unittest.TestCase):
             self.assertEqual(player["position"], "WR")
             self.assertEqual(player["team"], "AAA")
 
+    # ---------------------------------------------------------------------------
+    # Dynasty roster summary tests
+    # ---------------------------------------------------------------------------
+
+    def test_dynasty_roster_summary_default_target_size_is_25(self):
+        """calculate_roster_summary for sleeper_dynasty should default to 25 active slots."""
+        summary = calculate_roster_summary([], draft_style="sleeper_dynasty")
+        self.assertEqual(summary["target_roster_size"], 25)
+
+    def test_espn_roster_summary_default_target_size_is_14(self):
+        """calculate_roster_summary for espn_snake should default to 14 players."""
+        summary = calculate_roster_summary([], draft_style="espn_snake")
+        self.assertEqual(summary["target_roster_size"], 14)
+
+    def test_dynasty_roster_summary_requires_two_qbs(self):
+        """Dynasty roster needs QB×2 for Superflex; one QB is not enough."""
+        one_qb = [{"position": "QB"}]
+        summary = calculate_roster_summary(one_qb, draft_style="sleeper_dynasty")
+        needs_text = " ".join(summary["needs"])
+        self.assertIn("QB", needs_text, f"Expected QB need; got needs={summary['needs']}")
+        self.assertIn("Superflex", needs_text, f"Expected Superflex label; got needs={summary['needs']}")
+
+    def test_dynasty_roster_summary_no_def_or_k_needed(self):
+        """Dynasty roster should NOT flag DEF or K as needs."""
+        # No players at all — still should not require DEF or K
+        summary = calculate_roster_summary([], draft_style="sleeper_dynasty")
+        needs = summary["needs"]
+        self.assertNotIn("DEF", needs, f"DEF should not be required in dynasty; needs={needs}")
+        self.assertNotIn("K", needs, f"K should not be required in dynasty; needs={needs}")
+
+    def test_dynasty_roster_summary_requires_three_wrs(self):
+        """Dynasty requires 3 WR starters, so fewer than 3 should appear in needs."""
+        two_wrs = [{"position": "WR"}, {"position": "WR"}]
+        summary = calculate_roster_summary(two_wrs, draft_style="sleeper_dynasty")
+        needs_text = " ".join(summary["needs"])
+        self.assertIn("WR", needs_text, f"Expected WR need; got needs={summary['needs']}")
+
+    def test_espn_roster_summary_requires_def_and_k(self):
+        """ESPN roster should flag DEF and K as needs when missing."""
+        summary = calculate_roster_summary([], draft_style="espn_snake")
+        needs = summary["needs"]
+        self.assertIn("DEF", needs, f"DEF should be required in ESPN; needs={needs}")
+        self.assertIn("K", needs, f"K should be required in ESPN; needs={needs}")
+
+    def test_roster_summary_custom_target_size_overrides_default(self):
+        """Explicit target_roster_size overrides the style default."""
+        summary = calculate_roster_summary([], draft_style="sleeper_dynasty", target_roster_size=10)
+        self.assertEqual(summary["target_roster_size"], 10)
+
+    # ---------------------------------------------------------------------------
+    # TBD draft slot tests
+    # ---------------------------------------------------------------------------
+
+    def test_create_session_with_tbd_slot(self):
+        """create_draft_session with user_slot=0 should succeed and mark slot as TBD."""
+        with tempfile.TemporaryDirectory() as directory:
+            state_root = Path(directory)
+            result = create_draft_session(
+                state_root,
+                league_id="sleeper-10-dynasty-2026",
+                season=2026,
+                draft_style="sleeper_dynasty",
+                team_count=10,
+                user_slot=0,  # TBD
+            )
+            session = result["session"]
+            self.assertEqual(session["user_slot"], 0)
+            self.assertEqual(session["draft_slot_status"], "TBD")
+
+    def test_create_session_with_known_slot_marks_confirmed(self):
+        """create_draft_session with a real slot should mark draft_slot_status as confirmed."""
+        with tempfile.TemporaryDirectory() as directory:
+            state_root = Path(directory)
+            result = create_draft_session(
+                state_root,
+                league_id="sleeper-10-dynasty-2026",
+                season=2026,
+                draft_style="sleeper_dynasty",
+                team_count=10,
+                user_slot=5,
+            )
+            session = result["session"]
+            self.assertEqual(session["user_slot"], 5)
+            self.assertEqual(session["draft_slot_status"], "confirmed")
+
+    def test_confirm_draft_slot_updates_tbd_session(self):
+        """confirm_draft_slot should update a TBD session to the confirmed slot."""
+        with tempfile.TemporaryDirectory() as directory:
+            state_root = Path(directory)
+            create_draft_session(
+                state_root,
+                league_id="sleeper-10-dynasty-2026",
+                season=2026,
+                draft_style="sleeper_dynasty",
+                team_count=10,
+                user_slot=0,
+            )
+            confirmed = confirm_draft_slot(
+                state_root,
+                league_id="sleeper-10-dynasty-2026",
+                season=2026,
+                user_slot=3,
+            )
+            self.assertEqual(confirmed["user_slot"], 3)
+            self.assertEqual(confirmed["draft_slot_status"], "confirmed")
+
+    def test_confirm_draft_slot_rejects_already_confirmed(self):
+        """confirm_draft_slot should raise ValueError if the slot is already confirmed."""
+        with tempfile.TemporaryDirectory() as directory:
+            state_root = Path(directory)
+            create_draft_session(
+                state_root,
+                league_id="sleeper-10-dynasty-2026",
+                season=2026,
+                draft_style="sleeper_dynasty",
+                team_count=10,
+                user_slot=7,
+            )
+            with self.assertRaises(ValueError):
+                confirm_draft_slot(
+                    state_root,
+                    league_id="sleeper-10-dynasty-2026",
+                    season=2026,
+                    user_slot=3,
+                )
+
+    def test_create_session_rejects_invalid_nonzero_slot(self):
+        """create_draft_session should reject slots outside 1..team_count (but allow 0)."""
+        with tempfile.TemporaryDirectory() as directory:
+            state_root = Path(directory)
+            with self.assertRaises(ValueError):
+                create_draft_session(
+                    state_root,
+                    league_id="sleeper-10-dynasty-2026",
+                    season=2026,
+                    draft_style="sleeper_dynasty",
+                    team_count=10,
+                    user_slot=11,  # out of range
+                )
+
 
 if __name__ == "__main__":
     unittest.main()
-

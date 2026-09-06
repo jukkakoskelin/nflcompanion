@@ -709,3 +709,188 @@ class StateStoreTests(unittest.TestCase):
                 strategy={},
             )
             self.assertEqual(saved["strategy_number"], 4)
+
+    # ---------------------------------------------------------------------------
+    # Dynasty-specific tests
+    # ---------------------------------------------------------------------------
+
+    def test_dynasty_strategy_saves_to_sleeper_dynasty_folder(self):
+        """Strategy Markdown file must land in draft-context/sleeper_dynasty/strategies/."""
+        with tempfile.TemporaryDirectory() as directory:
+            state_root = Path(directory) / "state"
+            saved = save_draft_strategy(
+                state_root,
+                league_id="sleeper-10-dynasty-2026",
+                season=2026,
+                draft_style="sleeper_dynasty",
+                name="WR Anchor Superflex Early QB",
+                strategy={
+                    "summary": "Open with elite WR, take a top QB early in Superflex.",
+                    "anchor_position": "WR",
+                    "superflex_plan": "Take a top-5 QB by round 3 for Superflex.",
+                    "dynasty_horizon": "balanced",
+                    "taxi_squad_plan": "Target 2 rookies in rounds 22-25.",
+                    "priority_positions": ["WR", "QB", "RB"],
+                    "avoid_early": ["K", "DST"],
+                    "round_plan": [
+                        {"rounds": "1-3", "targets": ["WR", "QB", "RB"], "focus": "Anchor WR + early QB."},
+                        {"rounds": "4-10", "targets": ["RB", "WR", "TE"], "focus": "Build depth."},
+                        {"rounds": "11-25", "targets": ["RB", "WR"], "focus": "Youth and taxi targets."},
+                    ],
+                    "notes": ["Full PPR rewards high-target WRs in dynasty."],
+                    "mock_draft_review": ["Did the anchor WR have locked-in target share?"],
+                },
+            )
+            draft_context_file = saved["draft_context_file"]
+            self.assertIn("sleeper_dynasty", draft_context_file)
+            self.assertIn("strategies", draft_context_file)
+            md_path = Path(directory) / draft_context_file
+            self.assertTrue(md_path.exists(), f"Strategy Markdown not found: {md_path}")
+            log_path = Path(directory) / saved["creation_log_file"]
+            self.assertTrue(log_path.exists(), f"Creation log not found: {log_path}")
+
+    def test_dynasty_validation_warns_without_superflex_plan(self):
+        """validate_draft_strategy should warn when superflex_plan is missing for sleeper_dynasty."""
+        from nflcompanion.state_store import validate_draft_strategy
+        strategy = {
+            "priority_positions": ["WR", "QB", "RB"],
+            "avoid_early": ["K", "DST"],
+            "round_plan": [{"rounds": "1-3", "targets": ["WR", "QB"]}],
+            # superflex_plan deliberately omitted
+            "dynasty_horizon": "balanced",
+        }
+        warnings = validate_draft_strategy(strategy, "sleeper_dynasty")
+        self.assertTrue(
+            any("superflex_plan" in w for w in warnings),
+            f"Expected superflex_plan warning; got: {warnings}",
+        )
+
+    def test_dynasty_validation_warns_without_dynasty_horizon(self):
+        """validate_draft_strategy should warn when dynasty_horizon is missing for sleeper_dynasty."""
+        from nflcompanion.state_store import validate_draft_strategy
+        strategy = {
+            "priority_positions": ["WR", "QB"],
+            "avoid_early": ["K", "DST"],
+            "round_plan": [{"rounds": "1-3", "targets": ["WR", "QB"]}],
+            "superflex_plan": "Take QB by round 3.",
+            # dynasty_horizon deliberately omitted
+        }
+        warnings = validate_draft_strategy(strategy, "sleeper_dynasty")
+        self.assertTrue(
+            any("dynasty_horizon" in w for w in warnings),
+            f"Expected dynasty_horizon warning; got: {warnings}",
+        )
+
+    def test_dynasty_validation_no_extra_warnings_for_full_strategy(self):
+        """A complete dynasty strategy should produce no dynasty-specific warnings."""
+        from nflcompanion.state_store import validate_draft_strategy
+        strategy = {
+            "priority_positions": ["WR", "QB", "RB"],
+            "avoid_early": ["K", "DST"],
+            "round_plan": [{"rounds": "1-3", "targets": ["WR", "QB"]}],
+            "superflex_plan": "Take QB by round 3.",
+            "dynasty_horizon": "balanced",
+        }
+        warnings = validate_draft_strategy(strategy, "sleeper_dynasty")
+        dynasty_warnings = [w for w in warnings if "superflex" in w or "dynasty_horizon" in w]
+        self.assertEqual(dynasty_warnings, [], f"Unexpected dynasty warnings: {dynasty_warnings}")
+
+    def test_dynasty_rating_bonus_for_superflex_and_taxi(self):
+        """rate_draft_strategy should give extra points for superflex_plan, taxi_squad_plan, dynasty_horizon."""
+        from nflcompanion.state_store import rate_draft_strategy
+        # Minimal base strategy: 55 base + 8 summary + 15 round_plan + 10 priority = 88
+        # Deliberately omit notes (+7) and mock_draft_review (+5) to stay well below the 95 cap.
+        base_strategy = {
+            "summary": "WR Anchor.",
+            "priority_positions": ["WR", "QB"],
+            "avoid_early": ["K", "DST"],
+            "round_plan": [{"rounds": "1-3", "targets": ["WR", "QB"]}],
+        }
+        dynasty_strategy = {
+            **base_strategy,
+            "superflex_plan": "Early QB.",     # +5
+            "taxi_squad_plan": "2 rookies.",    # +3
+            "dynasty_horizon": "balanced",      # +2
+        }
+        dynasty_base_score = rate_draft_strategy(base_strategy, draft_style="sleeper_dynasty", validation_feedback=[])
+        dynasty_full_score = rate_draft_strategy(dynasty_strategy, draft_style="sleeper_dynasty", validation_feedback=[])
+        espn_base_score = rate_draft_strategy(base_strategy, draft_style="espn_snake", validation_feedback=[])
+        # Dynasty bonus fields must push the full score above the base
+        self.assertGreater(
+            dynasty_full_score, dynasty_base_score,
+            f"dynasty_full={dynasty_full_score} should be > dynasty_base={dynasty_base_score}"
+        )
+        # ESPN and dynasty should score the same base (no dynasty-specific keys present)
+        self.assertEqual(espn_base_score, dynasty_base_score)
+
+    def test_agent_workflow_uses_dynasty_strategy_agent_for_sleeper(self):
+        """_agent_workflow should reference sleeper-dynasty-strategy-agent for sleeper_dynasty."""
+        from nflcompanion.state_store import _agent_workflow, _DEFAULT_AGENT_ROLES_BY_STYLE
+        session_config = {
+            "league_id": "sleeper-10-dynasty-2026",
+            "season": 2026,
+            "draft_style": "sleeper_dynasty",
+            "platform": "sleeper",
+            "draft_type": "dynasty",
+            "reverse_round": False,
+        }
+        collaborating = _DEFAULT_AGENT_ROLES_BY_STYLE["sleeper_dynasty"]
+        workflow = _agent_workflow(session_config, collaborating)
+        strategy_agent_entry = next(
+            (a for a in workflow["agents"] if a["role"] == "strategy_agent"), None
+        )
+        self.assertIsNotNone(strategy_agent_entry)
+        self.assertIn("sleeper-dynasty", strategy_agent_entry["agent"])
+        self.assertIn("sleeper-dynasty-strategy-agent.md", strategy_agent_entry["prompt_file"])
+
+    def test_agent_workflow_uses_espn_strategy_agent_for_espn(self):
+        """_agent_workflow should reference espn-snake-strategy-agent for espn_snake."""
+        from nflcompanion.state_store import _agent_workflow, _DEFAULT_AGENT_ROLES_BY_STYLE
+        session_config = {
+            "league_id": "espn-16-2026",
+            "season": 2026,
+            "draft_style": "espn_snake",
+            "platform": "espn",
+            "draft_type": "snake",
+            "reverse_round": False,
+        }
+        collaborating = _DEFAULT_AGENT_ROLES_BY_STYLE["espn_snake"]
+        workflow = _agent_workflow(session_config, collaborating)
+        strategy_agent_entry = next(
+            (a for a in workflow["agents"] if a["role"] == "strategy_agent"), None
+        )
+        self.assertIsNotNone(strategy_agent_entry)
+        self.assertIn("espn-snake", strategy_agent_entry["agent"])
+        self.assertIn("espn-strategy-agent.md", strategy_agent_entry["prompt_file"])
+
+    def test_dynasty_workflow_success_criteria_mention_superflex(self):
+        """Dynasty workflow success_criteria must mention Superflex QB plan."""
+        from nflcompanion.state_store import _agent_workflow, _DEFAULT_AGENT_ROLES_BY_STYLE
+        session_config = {
+            "league_id": "sleeper-10-dynasty-2026",
+            "season": 2026,
+            "draft_style": "sleeper_dynasty",
+            "platform": "sleeper",
+            "draft_type": "dynasty",
+            "reverse_round": False,
+        }
+        workflow = _agent_workflow(session_config, _DEFAULT_AGENT_ROLES_BY_STYLE["sleeper_dynasty"])
+        criteria_text = " ".join(workflow["success_criteria"])
+        self.assertIn("Superflex", criteria_text)
+
+    def test_dynasty_simulate_returns_valid_strategies(self):
+        """simulate_draft_strategy for sleeper_dynasty should produce at least one strategy."""
+        with tempfile.TemporaryDirectory() as directory:
+            state_root = Path(directory) / "state"
+            result = simulate_draft_strategy(
+                state_root,
+                league_id="sleeper-10-dynasty-2026",
+                season=2026,
+                draft_style="sleeper_dynasty",
+                reverse_round=False,
+                seed=42,
+            )
+            self.assertIn("strategy_id", result)
+            draft_context_file = result.get("draft_context_file", "")
+            self.assertIn("sleeper_dynasty", draft_context_file)
+

@@ -43,6 +43,16 @@ _DEFAULT_AGENT_ROLES = {
     "evaluator": "draft-strategy-evaluator",
     "writer": "draft-strategy-writer",
 }
+_DEFAULT_AGENT_ROLES_BY_STYLE: dict[str, dict[str, str]] = {
+    "espn_snake": {
+        **_DEFAULT_AGENT_ROLES,
+        "strategy_agent": "espn-snake-strategy-agent",
+    },
+    "sleeper_dynasty": {
+        **_DEFAULT_AGENT_ROLES,
+        "strategy_agent": "sleeper-dynasty-strategy-agent",
+    },
+}
 _DEFAULT_AGENT_PROMPT_FILES = {
     "orchestrator": "docs/draft-strategy-agents/orchestrator.md",
     "interviewer": "docs/draft-strategy-agents/interviewer.md",
@@ -51,6 +61,16 @@ _DEFAULT_AGENT_PROMPT_FILES = {
     "evaluator": "docs/draft-strategy-agents/evaluator.md",
     "writer": "docs/draft-strategy-agents/writer.md",
 }
+_DEFAULT_AGENT_PROMPT_FILES_BY_STYLE: dict[str, dict[str, str]] = {
+    "espn_snake": {
+        **_DEFAULT_AGENT_PROMPT_FILES,
+        "strategy_agent": "docs/draft-strategy-agents/espn-strategy-agent.md",
+    },
+    "sleeper_dynasty": {
+        **_DEFAULT_AGENT_PROMPT_FILES,
+        "strategy_agent": "docs/draft-strategy-agents/sleeper-dynasty-strategy-agent.md",
+    },
+}
 _SIMULATED_STRATEGIES = {
     "sleeper_dynasty": [
         {
@@ -58,13 +78,18 @@ _SIMULATED_STRATEGIES = {
             "questionnaire": [
                 {"question": "Preferred roster foundation", "answer": "Start WR-heavy with insulated dynasty assets."},
                 {"question": "Quarterback timing", "answer": "Take a top-10 young QB only if value survives into rounds 3-5."},
+                {"question": "Superflex QB plan", "answer": "Target a second startable QB by round 5 to fulfil the Superflex slot."},
                 {"question": "Early-round avoid list", "answer": "Avoid kicker and defense until the final rounds."},
                 {"question": "Mock-draft focus", "answer": "Track whether anchor WR builds still leave RB2 paths open after round 6."},
             ],
             "strategy": {
                 "summary": "Open with elite WR volume, then pivot into value RBs and young QB insulation.",
+                "anchor_position": "WR",
                 "priority_positions": ["WR", "RB", "QB"],
                 "avoid_early": ["K", "DST"],
+                "superflex_plan": "Take a top QB in rounds 3-5 and a second QB before round 10 to guarantee Superflex coverage.",
+                "dynasty_horizon": "rebuild",
+                "taxi_squad_plan": "Target 2 rookie WRs or RBs in rounds 22-25 for taxi slots.",
                 "round_plan": [
                     {"rounds": "1-3", "targets": ["WR", "WR", "RB"], "focus": "Bank elite target share before the RB dead zone."},
                     {"rounds": "4-7", "targets": ["RB", "QB", "TE"], "focus": "Take insulated upside and weekly-starter stability."},
@@ -85,12 +110,17 @@ _SIMULATED_STRATEGIES = {
             "questionnaire": [
                 {"question": "Roster construction goal", "answer": "Blend young RB/WR starters without overcommitting to one lane."},
                 {"question": "Risk tolerance", "answer": "Moderate risk with weekly floor in the first five rounds."},
+                {"question": "Superflex QB plan", "answer": "Take two QBs within rounds 1-6 to lock in the Superflex slot."},
                 {"question": "Early-round avoid list", "answer": "No kicker or defense before the closing rounds."},
             ],
             "strategy": {
                 "summary": "Alternate RB and WR value early while preserving optionality for QB/TE tiers.",
+                "anchor_position": "RB",
                 "priority_positions": ["RB", "WR", "QB"],
                 "avoid_early": ["K", "DST"],
+                "superflex_plan": "Target two young QBs within rounds 1-6 to lock in the Superflex slot.",
+                "dynasty_horizon": "balanced",
+                "taxi_squad_plan": "Draft 2-3 rookies in rounds 20-25 to fill taxi spots.",
                 "round_plan": [
                     {"rounds": "1-2", "targets": ["RB", "WR"], "focus": "Take best insulated talent regardless of position."},
                     {"rounds": "3-5", "targets": ["WR", "RB", "QB"], "focus": "Stay flexible around falling elite tiers."},
@@ -180,13 +210,38 @@ def _strategy_markdown_log_path(state_root: Path, draft_style: str) -> Path:
 
 def _agent_workflow(session_config: dict[str, Any], collaborating_agents: dict[str, str]) -> dict[str, Any]:
     ordered_roles = ["orchestrator", "interviewer", "strategy_agent", "validator", "evaluator", "writer"]
+    draft_style = str(session_config.get("draft_style") or "espn_snake")
+    style_roles = _DEFAULT_AGENT_ROLES_BY_STYLE.get(draft_style, _DEFAULT_AGENT_ROLES)
+    style_prompts = _DEFAULT_AGENT_PROMPT_FILES_BY_STYLE.get(draft_style, _DEFAULT_AGENT_PROMPT_FILES)
+    is_dynasty = draft_style == "sleeper_dynasty"
+    if is_dynasty:
+        success_criteria = [
+            "all required Sleeper dynasty preference questions are answered or explicitly left open",
+            "the strategy contains an anchor, Superflex QB plan, TE plan, dynasty horizon, taxi-squad plan, and round plan",
+            "validator warnings are resolved or shown to the user",
+            "the user confirms persistence and a new Markdown strategy file is created under draft-context/sleeper_dynasty/",
+        ]
+        strategy_agent_responsibility = (
+            "Turn the user's answers into a new Sleeper dynasty strategy candidate "
+            "without overwriting prior strategies."
+        )
+    else:
+        success_criteria = [
+            "all required ESPN preference questions are answered or explicitly left open",
+            "the strategy contains an anchor, second-round complement, QB plan, TE plan, and round plan",
+            "validator warnings are resolved or shown to the user",
+            "the user confirms persistence and a new Markdown strategy file is created",
+        ]
+        strategy_agent_responsibility = (
+            "Turn the user's answers into a new ESPN strategy candidate without overwriting prior strategies."
+        )
     workflow = {
         "pattern": "orchestrated_sequential_pipeline",
         "human_gate": "user_confirmation_before_persistence",
         "orchestrator": {
             "role": "orchestrator",
-            "agent": collaborating_agents.get("orchestrator", _DEFAULT_AGENT_ROLES["orchestrator"]),
-            "prompt_file": _DEFAULT_AGENT_PROMPT_FILES["orchestrator"],
+            "agent": collaborating_agents.get("orchestrator", style_roles["orchestrator"]),
+            "prompt_file": style_prompts["orchestrator"],
             "responsibility": "Drive the session, assign handoffs, and decide when the strategy is ready to save.",
         },
         "agents": [],
@@ -201,31 +256,27 @@ def _agent_workflow(session_config: dict[str, Any], collaborating_agents: dict[s
             "external_context": "linked league settings, scoring, and imported player snapshots",
             "continuity_rule": "read current state at session start and append a new strategy at completion",
         },
-        "success_criteria": [
-            "all required ESPN preference questions are answered or explicitly left open",
-            "the strategy contains an anchor, second-round complement, QB plan, TE plan, and round plan",
-            "validator warnings are resolved or shown to the user",
-            "the user confirms persistence and a new Markdown strategy file is created",
-        ],
+        "success_criteria": success_criteria,
         "quality_gates": [
             "no early kicker or defense recommendation",
             "no silent invention of player data or unanswered preferences",
             "no overwrite of an existing strategy file",
         ],
     }
+    responsibility_map = {
+        "interviewer": "Collect the user's draft preferences and clarify tradeoffs.",
+        "strategy_agent": strategy_agent_responsibility,
+        "validator": "Check the evolving plan against league context, player data, and obvious red flags.",
+        "evaluator": "Score completeness, traceability, and readiness against the workflow success criteria.",
+        "writer": "Persist the final strategy, metadata, and audit trail once the orchestrator approves it.",
+    }
     for role in ordered_roles[1:]:
         workflow["agents"].append(
             {
                 "role": role,
-                "agent": collaborating_agents.get(role, _DEFAULT_AGENT_ROLES[role]),
-                "prompt_file": _DEFAULT_AGENT_PROMPT_FILES[role],
-                "responsibility": {
-                    "interviewer": "Collect the user's draft preferences and clarify tradeoffs.",
-                    "strategy_agent": "Turn the user's answers into a new ESPN strategy candidate without overwriting prior strategies.",
-                    "validator": "Check the evolving plan against league context, player data, and obvious red flags.",
-                    "evaluator": "Score completeness, traceability, and readiness against the workflow success criteria.",
-                    "writer": "Persist the final strategy, metadata, and audit trail once the orchestrator approves it.",
-                }[role],
+                "agent": collaborating_agents.get(role, style_roles.get(role, _DEFAULT_AGENT_ROLES[role])),
+                "prompt_file": style_prompts.get(role, _DEFAULT_AGENT_PROMPT_FILES[role]),
+                "responsibility": responsibility_map[role],
             }
         )
     workflow["league_context_files"] = list(SUPPORTED_DRAFT_STYLES[str(session_config["draft_style"])]["context_files"])
@@ -470,6 +521,18 @@ def validate_draft_strategy(strategy: dict[str, Any], draft_style: str) -> list[
             + ", ".join(missing_red_flags)
             + " in the early rounds so the validator can catch obvious mistakes."
         )
+    # Dynasty-specific validations
+    if draft_style == "sleeper_dynasty":
+        if not strategy.get("superflex_plan"):
+            warnings.append(
+                "Add a superflex_plan specifying when each QB is targeted; "
+                "two startable QBs are a minimum in a Superflex league."
+            )
+        if not strategy.get("dynasty_horizon"):
+            warnings.append(
+                "Add a dynasty_horizon (win_now, rebuild, or balanced) so the "
+                "validator can check age targets and taxi-squad fit."
+            )
     return warnings
 
 
@@ -493,6 +556,14 @@ def rate_draft_strategy(
         score += 7
     if isinstance(strategy.get("mock_draft_review"), list) and strategy["mock_draft_review"]:
         score += 5
+    # Dynasty-specific bonuses
+    if draft_style == "sleeper_dynasty":
+        if strategy.get("superflex_plan"):
+            score += 5
+        if strategy.get("taxi_squad_plan"):
+            score += 3
+        if strategy.get("dynasty_horizon") in ("win_now", "rebuild", "balanced"):
+            score += 2
     score -= min(25, len(feedback) * 10)
     return max(25, min(95, score))
 
@@ -557,7 +628,9 @@ def save_draft_strategy(
     if agent_rating is None:
         agent_rating = rate_draft_strategy(strategy, draft_style=draft_style, validation_feedback=validation_feedback)
     questionnaire = deepcopy(questionnaire or [])
-    collaborating_agents = deepcopy(collaborating_agents or _DEFAULT_AGENT_ROLES)
+    collaborating_agents = deepcopy(
+        collaborating_agents or _DEFAULT_AGENT_ROLES_BY_STYLE.get(draft_style, _DEFAULT_AGENT_ROLES)
+    )
 
     path = _strategies_path(state_root)
     state = _read_strategy_state(path)
