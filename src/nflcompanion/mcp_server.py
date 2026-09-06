@@ -557,6 +557,7 @@ def execute_tool(name: str, arguments: dict[str, Any]) -> dict[str, Any]:
             strategy=loaded["living_strategy"],
             drafted_provider_ids=drafted_ids,
             trending=trending,
+            selected_players=loaded["session"].get("selected_players", []),
         )
         result["roster_summary"] = calculate_roster_summary(loaded["session"].get("selected_players", []))
         recommendation_dir = state_root / "drafts" / arguments["league_id"] / str(arguments["season"]) / "recommendations"

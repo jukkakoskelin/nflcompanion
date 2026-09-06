@@ -422,5 +422,126 @@ class DraftCompanionTests(unittest.TestCase):
                 )
 
 
+class ByeWeekTests(unittest.TestCase):
+    """Tests for bye-week lookup, roster distribution, and recommendation clash warnings."""
+
+    def test_get_bye_week_known_team(self):
+        from nflcompanion.draft_companion import get_bye_week
+        self.assertEqual(get_bye_week("KC"), 5)
+        self.assertEqual(get_bye_week("PHI"), 10)
+        self.assertEqual(get_bye_week("DAL"), 14)
+
+    def test_get_bye_week_unknown_team(self):
+        from nflcompanion.draft_companion import get_bye_week
+        self.assertIsNone(get_bye_week("ZZZ"))
+        self.assertIsNone(get_bye_week(""))
+
+    def test_get_bye_week_alias_mapping(self):
+        """ESPN/legacy codes like ARZ, BLT, CLV should resolve correctly."""
+        from nflcompanion.draft_companion import get_bye_week
+        self.assertEqual(get_bye_week("ARZ"), 14)   # ARZ → ARI
+        self.assertEqual(get_bye_week("BLT"), 13)   # BLT → BAL
+        self.assertEqual(get_bye_week("CLV"), 11)   # CLV → CLE
+        self.assertEqual(get_bye_week("HST"), 8)    # HST → HOU
+        self.assertEqual(get_bye_week("OAK"), 13)   # OAK → LV
+        self.assertEqual(get_bye_week("LA"), 11)    # LA → LAR
+
+    def test_get_bye_week_case_insensitive(self):
+        from nflcompanion.draft_companion import get_bye_week
+        self.assertEqual(get_bye_week("kc"), 5)
+        self.assertEqual(get_bye_week("Phi"), 10)
+
+    def test_roster_summary_bye_distribution(self):
+        """calculate_roster_summary should group players by bye week."""
+        roster = [
+            {"full_name": "Patrick Mahomes", "position": "QB", "team": "KC"},
+            {"full_name": "Jahmyr Gibbs", "position": "RB", "team": "DET"},
+            {"full_name": "CeeDee Lamb", "position": "WR", "team": "DAL"},
+        ]
+        result = calculate_roster_summary(roster)
+        dist = result["bye_week_distribution"]
+        self.assertIn(5, dist)
+        self.assertIn("Patrick Mahomes", dist[5])
+        self.assertIn(6, dist)
+        self.assertIn("Jahmyr Gibbs", dist[6])
+        self.assertIn(14, dist)
+        self.assertIn("CeeDee Lamb", dist[14])
+
+    def test_roster_summary_bye_conflict_flagged(self):
+        """Weeks with 3+ players should appear in bye_week_conflicts."""
+        roster = [
+            {"full_name": "Player A", "position": "WR", "team": "ATL"},   # week 11
+            {"full_name": "Player B", "position": "RB", "team": "CLE"},   # week 11
+            {"full_name": "Player C", "position": "WR", "team": "GB"},    # week 11
+        ]
+        result = calculate_roster_summary(roster)
+        conflicts = result["bye_week_conflicts"]
+        self.assertEqual(len(conflicts), 1)
+        self.assertEqual(conflicts[0]["week"], 11)
+        self.assertEqual(conflicts[0]["count"], 3)
+
+    def test_roster_summary_no_conflict_below_threshold(self):
+        """Two players on the same bye should NOT be flagged as a conflict."""
+        roster = [
+            {"full_name": "Player A", "position": "WR", "team": "ATL"},   # week 11
+            {"full_name": "Player B", "position": "RB", "team": "CLE"},   # week 11
+        ]
+        result = calculate_roster_summary(roster)
+        self.assertEqual(result["bye_week_conflicts"], [])
+
+    def test_recommend_candidates_includes_bye_week(self):
+        """Each recommendation should include bye_week field."""
+        players = [
+            {"provider_id": "1", "full_name": "Alpha One", "position": "WR",
+             "fantasy_positions": ["WR"], "team": "KC", "active": True, "search_rank": 10},
+            {"provider_id": "2", "full_name": "Beta Two", "position": "RB",
+             "fantasy_positions": ["RB"], "team": "PHI", "active": True, "search_rank": 20},
+        ]
+        result = recommend_candidates(players, ["Alpha One", "Beta Two"])
+        for rec in result["recommendations"]:
+            self.assertIn("bye_week", rec)
+        bye_weeks = {r["full_name"]: r["bye_week"] for r in result["recommendations"]}
+        self.assertEqual(bye_weeks["Alpha One"], 5)   # KC → week 5
+        self.assertEqual(bye_weeks["Beta Two"], 10)    # PHI → week 10
+
+    def test_recommend_candidates_bye_clash_penalty(self):
+        """A candidate sharing a bye with 2+ existing roster players should get a -5 penalty."""
+        players = [
+            {"provider_id": "10", "full_name": "Candidate X", "position": "WR",
+             "fantasy_positions": ["WR"], "team": "GB", "active": True, "search_rank": 15},
+            {"provider_id": "11", "full_name": "Candidate Y", "position": "WR",
+             "fantasy_positions": ["WR"], "team": "KC", "active": True, "search_rank": 15},
+        ]
+        # Roster already has 2 players on week 11 (ATL, CLE)
+        existing_roster = [
+            {"full_name": "Starter A", "position": "RB", "team": "ATL"},   # week 11
+            {"full_name": "Starter B", "position": "WR", "team": "CLE"},   # week 11
+        ]
+        result = recommend_candidates(
+            players, ["Candidate X", "Candidate Y"],
+            selected_players=existing_roster,
+        )
+        recs = {r["full_name"]: r for r in result["recommendations"]}
+        # GB is week 11 — clashes with 2 existing players
+        self.assertEqual(recs["Candidate X"]["bye_week_clash_count"], 2)
+        self.assertEqual(recs["Candidate X"]["factor_scores"]["bye_week_clash"], -5)
+        self.assertIn("bye week 11", recs["Candidate X"]["rationale"].lower())
+        # KC is week 5 — no clash
+        self.assertEqual(recs["Candidate Y"]["bye_week_clash_count"], 0)
+        self.assertEqual(recs["Candidate Y"]["factor_scores"]["bye_week_clash"], 0)
+
+    def test_recommend_candidates_no_penalty_without_roster(self):
+        """Without selected_players, no bye-week penalty should be applied."""
+        players = [
+            {"provider_id": "10", "full_name": "Candidate X", "position": "WR",
+             "fantasy_positions": ["WR"], "team": "GB", "active": True, "search_rank": 15},
+            {"provider_id": "11", "full_name": "Candidate Y", "position": "WR",
+             "fantasy_positions": ["WR"], "team": "KC", "active": True, "search_rank": 15},
+        ]
+        result = recommend_candidates(players, ["Candidate X", "Candidate Y"])
+        for rec in result["recommendations"]:
+            self.assertEqual(rec["factor_scores"]["bye_week_clash"], 0)
+
+
 if __name__ == "__main__":
     unittest.main()
