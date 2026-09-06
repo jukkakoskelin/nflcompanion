@@ -1,6 +1,6 @@
 # NFL Fantasy Draft Companion Plan
 
-Status: in progress - Streamlined live pick recording without repetitive confirmation prompts, added draft_id session binding and automatic Sleeper pick synchronization to eliminate already-drafted candidates; 101 tests passing.
+Status: in progress - Verified and tested ESPN draft isolation against Sleeper realtime sync API during draft recommendations and previews; 103 tests passing.
 Priority: draft-ready for the Sleeper dynasty startup mock and live drafts
 
 ## Product goal
@@ -842,4 +842,15 @@ Removed repetitive agent confirmation gates during active live drafting and enab
 - `tests/test_mcp_server.py`:
   - Added unit test verifying `draft_record_pick` defaults to confirmed.
   - Added unit test verifying `draft_recommend_candidates` automatically synchronizes draft picks and removes opponent-drafted players from recommendation outputs.
+
+## ESPN Draft Sleeper API Isolation Tests (2026-09-06)
+
+Verified and added regression tests ensuring that ESPN snake draft sessions never call the Sleeper realtime draft synchronization endpoint or external fetch logic during active drafting.
+
+### Changes
+- `tests/test_mcp_server.py`:
+  - Added `test_espn_draft_does_not_call_sleeper_realtime_api`: Verifies that `draft_recommend_candidates` and `draft_next_pick_preview` never invoke `sync_sleeper_draft_picks` for `espn_snake` sessions, even if a `draft_id` parameter is accidentally provided.
+- `tests/test_sleeper_sync.py`:
+  - Added `test_espn_draft_does_not_call_sleeper_fetch_api`: Verifies that ESPN draft session operations never invoke network fetch operations like `fetch_sleeper_draft_picks`.
+
 
