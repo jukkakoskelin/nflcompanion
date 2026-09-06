@@ -1,0 +1,358 @@
+{
+  "ambiguous": [
+    {
+      "input": "DJ Moore",
+      "matches": [
+        {
+          "full_name": "DJ Moore",
+          "position": "CB",
+          "provider_id": "4961",
+          "team": null
+        },
+        {
+          "full_name": "DJ Moore",
+          "position": "WR",
+          "provider_id": "4983",
+          "team": "BUF"
+        }
+      ]
+    }
+  ],
+  "generated_at": "2026-09-06T10:27:43.112082+00:00",
+  "recommendations": [
+    {
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 10
+      },
+      "full_name": "Tyler Shough",
+      "position": "QB",
+      "provider_id": "12545",
+      "rank": 1,
+      "rationale": "Adds qb value outside the current priority; has a positive local trend signal.",
+      "score": 50,
+      "team": "NO"
+    },
+    {
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Baker Mayfield",
+      "position": "QB",
+      "provider_id": "4892",
+      "rank": 2,
+      "rationale": "Adds qb value outside the current priority.",
+      "score": 40,
+      "team": "TB"
+    },
+    {
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Jameson Williams",
+      "position": "WR",
+      "provider_id": "8148",
+      "rank": 3,
+      "rationale": "Adds wr value outside the current priority.",
+      "score": 40,
+      "team": "DET"
+    }
+  ],
+  "resolved": [
+    {
+      "active": true,
+      "age": 25,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "2001-03-26",
+      "birth_state": null,
+      "college": "Alabama",
+      "competitions": [],
+      "depth_chart_order": 2,
+      "depth_chart_position": "RWR",
+      "espn_id": null,
+      "fantasy_data_id": 23234,
+      "fantasy_positions": [
+        "WR"
+      ],
+      "first_name": "Jameson",
+      "full_name": "Jameson Williams",
+      "gsis_id": null,
+      "hashtag": "#jamesonwilliams-NFL-DET-1",
+      "height": "73",
+      "high_school": "Cardinal Ritter (MO)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "eb937f22-3545-4a22-a6ce-b310b00e675d",
+      "last_name": "Williams",
+      "metadata": {
+        "channel_id": "1113708811916439552",
+        "genius_id": "1343228",
+        "rookie_year": "2022"
+      },
+      "news_updated": 1788364530619,
+      "number": 1,
+      "oddsjam_id": "CD981F59AB0B",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "8148",
+      "player_shard": "1",
+      "position": "WR",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "8148",
+      "rotowire_id": 15849,
+      "rotoworld_id": null,
+      "search_first_name": "jameson",
+      "search_full_name": "jamesonwilliams",
+      "search_last_name": "williams",
+      "search_rank": 53,
+      "sport": "nfl",
+      "sportradar_id": "590adb00-5598-47ad-b6d4-16a6c5519847",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1175184,
+      "team": "DET",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "184",
+      "yahoo_id": null,
+      "years_exp": 4
+    },
+    {
+      "active": true,
+      "age": 31,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1995-04-14",
+      "birth_state": null,
+      "college": "Oklahoma",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "QB",
+      "espn_id": 3052587,
+      "fantasy_data_id": 19790,
+      "fantasy_positions": [
+        "QB"
+      ],
+      "first_name": "Baker",
+      "full_name": "Baker Mayfield",
+      "gsis_id": "00-0034855",
+      "hashtag": "#bakermayfield-NFL-TB-6",
+      "height": "73",
+      "high_school": "Lake Travis (TX)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "075165b5-273c-4372-8950-7f01a4f1af4e",
+      "last_name": "Mayfield",
+      "metadata": {
+        "channel_id": "1113708728328155136",
+        "genius_id": "1013868",
+        "rookie_year": "2018"
+      },
+      "news_updated": 1788550222566,
+      "number": 6,
+      "oddsjam_id": "2F8FF2DF2E69",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "4892",
+      "player_shard": "8",
+      "position": "QB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "4892",
+      "rotowire_id": 12619,
+      "rotoworld_id": 13072,
+      "search_first_name": "baker",
+      "search_full_name": "bakermayfield",
+      "search_last_name": "mayfield",
+      "search_rank": 72,
+      "sport": "nfl",
+      "sportradar_id": "30198d30-9769-4e10-ac86-b4c91d940802",
+      "stats_id": 748070,
+      "status": "Active",
+      "swish_id": 748070,
+      "team": "TB",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "215",
+      "yahoo_id": 30971,
+      "years_exp": 8
+    },
+    {
+      "active": true,
+      "age": 26,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1999-09-28",
+      "birth_state": null,
+      "college": "Louisville",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "QB",
+      "espn_id": null,
+      "fantasy_data_id": 23187,
+      "fantasy_positions": [
+        "QB"
+      ],
+      "first_name": "Tyler",
+      "full_name": "Tyler Shough",
+      "gsis_id": null,
+      "hashtag": "#tylershough-NFL-NO-6",
+      "height": "77",
+      "high_school": "Hamilton (AZ)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "2699489c-13e2-4b99-a7e4-f4c7c22cc647",
+      "last_name": "Shough",
+      "metadata": {
+        "channel_id": "1221669996707467264",
+        "genius_id": "1495495",
+        "rookie_year": "2025",
+        "source_id": "955838b0-0ec5-46ce-a31a-d532fabd6264"
+      },
+      "news_updated": 1788550222107,
+      "number": 6,
+      "oddsjam_id": "4CC1B9D98EF44941",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "12545",
+      "player_shard": "2",
+      "position": "QB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "12545",
+      "rotowire_id": 17037,
+      "rotoworld_id": null,
+      "search_first_name": "tyler",
+      "search_full_name": "tylershough",
+      "search_last_name": "shough",
+      "search_rank": 86,
+      "sport": "nfl",
+      "sportradar_id": "94b8f9e1-3109-4429-8f71-4f79d7588237",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": null,
+      "team": "NO",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "219",
+      "yahoo_id": null,
+      "years_exp": 1
+    }
+  ],
+  "roster_summary": {
+    "by_position": {
+      "DEF": [],
+      "K": [],
+      "OTHER": [],
+      "QB": [
+        {
+          "full_name": "Brock Purdy",
+          "overall_pick": 44,
+          "position": "QB",
+          "provider_id": "8183",
+          "round": 5,
+          "slot": 4,
+          "team": "SF"
+        }
+      ],
+      "RB": [
+        {
+          "full_name": "Jahmyr Gibbs",
+          "overall_pick": 4,
+          "position": "RB",
+          "provider_id": "9221",
+          "round": 1,
+          "slot": 4,
+          "team": "DET"
+        },
+        {
+          "full_name": "Saquon Barkley",
+          "overall_pick": 37,
+          "position": "RB",
+          "provider_id": "4866",
+          "round": 4,
+          "slot": 4,
+          "team": "PHI"
+        }
+      ],
+      "TE": [
+        {
+          "full_name": "Harold Fannin",
+          "overall_pick": 57,
+          "position": "TE",
+          "provider_id": "12506",
+          "round": 6,
+          "slot": 4,
+          "team": "CLE"
+        }
+      ],
+      "WR": [
+        {
+          "full_name": "CeeDee Lamb",
+          "overall_pick": 17,
+          "position": "WR",
+          "provider_id": "6786",
+          "round": 2,
+          "slot": 4,
+          "team": "DAL"
+        },
+        {
+          "full_name": "Drake London",
+          "overall_pick": 24,
+          "position": "WR",
+          "provider_id": "8112",
+          "round": 3,
+          "slot": 4,
+          "team": "ATL"
+        },
+        {
+          "full_name": "DeVonta Smith",
+          "overall_pick": 64,
+          "position": "WR",
+          "provider_id": "7525",
+          "round": 7,
+          "slot": 4,
+          "team": "PHI"
+        }
+      ]
+    },
+    "needs": [
+      "DEF",
+      "K"
+    ],
+    "position_counts": {
+      "DEF": 0,
+      "K": 0,
+      "QB": 1,
+      "RB": 2,
+      "TE": 1,
+      "WR": 3
+    },
+    "remaining_slots": 7,
+    "target_roster_size": 14,
+    "total_selected": 7
+  },
+  "unknown": []
+}

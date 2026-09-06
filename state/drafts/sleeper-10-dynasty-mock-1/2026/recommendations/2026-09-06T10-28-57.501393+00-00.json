@@ -1,0 +1,353 @@
+{
+  "ambiguous": [],
+  "generated_at": "2026-09-06T10:28:57.501393+00:00",
+  "recommendations": [
+    {
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Parker Washington",
+      "position": "WR",
+      "provider_id": "9487",
+      "rank": 1,
+      "rationale": "Adds wr value outside the current priority.",
+      "score": 40,
+      "team": "JAX"
+    },
+    {
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "RJ Harvey",
+      "position": "RB",
+      "provider_id": "12489",
+      "rank": 2,
+      "rationale": "Adds rb value outside the current priority.",
+      "score": 40,
+      "team": "DEN"
+    },
+    {
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Terry McLaurin",
+      "position": "WR",
+      "provider_id": "5927",
+      "rank": 3,
+      "rationale": "Adds wr value outside the current priority.",
+      "score": 40,
+      "team": "WAS"
+    }
+  ],
+  "resolved": [
+    {
+      "active": true,
+      "age": 25,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "2001-02-04",
+      "birth_state": null,
+      "college": "UCF",
+      "competitions": [],
+      "depth_chart_order": 2,
+      "depth_chart_position": "RB",
+      "espn_id": null,
+      "fantasy_data_id": 25944,
+      "fantasy_positions": [
+        "RB"
+      ],
+      "first_name": "RJ",
+      "full_name": "RJ Harvey",
+      "gsis_id": null,
+      "hashtag": "#rjharvey-NFL-DEN-12",
+      "height": "68",
+      "high_school": "Edgewater (FL)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "70e9f488-aae9-4335-99e6-82ff2c7b2fe8",
+      "last_name": "Harvey",
+      "metadata": {
+        "channel_id": "1221670013681815552",
+        "genius_id": "1518454",
+        "rookie_year": "2025",
+        "source_id": "94c3c50f-def5-4f33-9fca-807558d19c6e"
+      },
+      "news_updated": 1788543321840,
+      "number": 12,
+      "oddsjam_id": "946284FA139C8D43",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "12489",
+      "player_shard": "1",
+      "position": "RB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "12489",
+      "rotowire_id": 18522,
+      "rotoworld_id": null,
+      "search_first_name": "rj",
+      "search_full_name": "rjharvey",
+      "search_last_name": "harvey",
+      "search_rank": 56,
+      "sport": "nfl",
+      "sportradar_id": "fc6dbb83-b2b1-4962-b793-e79b2378b525",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": null,
+      "team": "DEN",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "205",
+      "yahoo_id": null,
+      "years_exp": 1
+    },
+    {
+      "active": true,
+      "age": 30,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1995-09-15",
+      "birth_state": null,
+      "college": "Ohio State",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "LWR",
+      "espn_id": 3121422,
+      "fantasy_data_id": 20873,
+      "fantasy_positions": [
+        "WR"
+      ],
+      "first_name": "Terry",
+      "full_name": "Terry McLaurin",
+      "gsis_id": " 00-0035659",
+      "hashtag": "#terrymclaurin-NFL-WAS-17",
+      "height": "72",
+      "high_school": "Indianapolis Cathedral (IN)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "347b630d-6d52-4a67-835d-f363481073f3",
+      "last_name": "McLaurin",
+      "metadata": {
+        "channel_id": "1113708698389213184",
+        "genius_id": "1005455",
+        "injury_override_regular_2025_5": "Out",
+        "injury_override_regular_2025_6": "Out",
+        "rookie_year": "2019"
+      },
+      "news_updated": 1788544521740,
+      "number": 17,
+      "oddsjam_id": "01773297ACFE",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "5927",
+      "player_shard": "4",
+      "position": "WR",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "5927",
+      "rotowire_id": 13536,
+      "rotoworld_id": 14121,
+      "search_first_name": "terry",
+      "search_full_name": "terrymclaurin",
+      "search_last_name": "mclaurin",
+      "search_rank": 54,
+      "sport": "nfl",
+      "sportradar_id": "7e8c4641-2beb-4213-ba22-69fe0307005f",
+      "stats_id": 836116,
+      "status": "Active",
+      "swish_id": 836116,
+      "team": "WAS",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "210",
+      "yahoo_id": 31908,
+      "years_exp": 7
+    },
+    {
+      "active": true,
+      "age": 24,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "2002-03-21",
+      "birth_state": null,
+      "college": "Penn State",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "SWR",
+      "espn_id": null,
+      "fantasy_data_id": 24143,
+      "fantasy_positions": [
+        "WR"
+      ],
+      "first_name": "Parker",
+      "full_name": "Parker Washington",
+      "gsis_id": null,
+      "hashtag": "#parkerwashington-NFL-JAX-11",
+      "height": "70",
+      "high_school": "Travis (TX)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "6599a162-f520-46bf-8858-83777c92bd54",
+      "last_name": "Washington",
+      "metadata": {
+        "channel_id": "1113708892983947264",
+        "genius_id": "1399246",
+        "rookie_year": "2023"
+      },
+      "news_updated": 1788582015589,
+      "number": 11,
+      "oddsjam_id": "6C394246A6D8",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "9487",
+      "player_shard": "1",
+      "position": "WR",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "9487",
+      "rotowire_id": 16690,
+      "rotoworld_id": null,
+      "search_first_name": "parker",
+      "search_full_name": "parkerwashington",
+      "search_last_name": "washington",
+      "search_rank": 70,
+      "sport": "nfl",
+      "sportradar_id": "c05863ec-3414-4ae6-a8d2-830aed99b6d3",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1229074,
+      "team": "JAX",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "204",
+      "yahoo_id": null,
+      "years_exp": 3
+    }
+  ],
+  "roster_summary": {
+    "by_position": {
+      "DEF": [],
+      "K": [],
+      "OTHER": [],
+      "QB": [
+        {
+          "full_name": "Brock Purdy",
+          "overall_pick": 44,
+          "position": "QB",
+          "provider_id": "8183",
+          "round": 5,
+          "slot": 4,
+          "team": "SF"
+        },
+        {
+          "full_name": "Baker Mayfield",
+          "overall_pick": 77,
+          "position": "QB",
+          "provider_id": "4892",
+          "round": 8,
+          "slot": 4,
+          "team": "TB"
+        }
+      ],
+      "RB": [
+        {
+          "full_name": "Jahmyr Gibbs",
+          "overall_pick": 4,
+          "position": "RB",
+          "provider_id": "9221",
+          "round": 1,
+          "slot": 4,
+          "team": "DET"
+        },
+        {
+          "full_name": "Saquon Barkley",
+          "overall_pick": 37,
+          "position": "RB",
+          "provider_id": "4866",
+          "round": 4,
+          "slot": 4,
+          "team": "PHI"
+        }
+      ],
+      "TE": [
+        {
+          "full_name": "Harold Fannin",
+          "overall_pick": 57,
+          "position": "TE",
+          "provider_id": "12506",
+          "round": 6,
+          "slot": 4,
+          "team": "CLE"
+        }
+      ],
+      "WR": [
+        {
+          "full_name": "CeeDee Lamb",
+          "overall_pick": 17,
+          "position": "WR",
+          "provider_id": "6786",
+          "round": 2,
+          "slot": 4,
+          "team": "DAL"
+        },
+        {
+          "full_name": "Drake London",
+          "overall_pick": 24,
+          "position": "WR",
+          "provider_id": "8112",
+          "round": 3,
+          "slot": 4,
+          "team": "ATL"
+        },
+        {
+          "full_name": "DeVonta Smith",
+          "overall_pick": 64,
+          "position": "WR",
+          "provider_id": "7525",
+          "round": 7,
+          "slot": 4,
+          "team": "PHI"
+        }
+      ]
+    },
+    "needs": [
+      "DEF",
+      "K"
+    ],
+    "position_counts": {
+      "DEF": 0,
+      "K": 0,
+      "QB": 2,
+      "RB": 2,
+      "TE": 1,
+      "WR": 3
+    },
+    "remaining_slots": 6,
+    "target_roster_size": 14,
+    "total_selected": 8
+  },
+  "unknown": [
+    "Kevin Concepcion"
+  ]
+}

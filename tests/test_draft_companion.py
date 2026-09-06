@@ -94,6 +94,25 @@ class DraftCompanionTests(unittest.TestCase):
         self.assertIn("factor_scores", result["recommendations"][0])
         self.assertTrue(result["recommendations"][0]["rationale"])
 
+    def test_recommend_rookies(self):
+        from nflcompanion.draft_companion import recommend_rookies
+        players = [
+            {"provider_id": "r1", "full_name": "Rookie RB1", "position": "RB", "years_exp": 0, "age": 21, "search_rank": 10},
+            {"provider_id": "r2", "full_name": "Rookie WR1", "position": "WR", "years_exp": 0, "age": 22, "search_rank": 20},
+            {"provider_id": "r3", "full_name": "Rookie QB1", "position": "QB", "years_exp": 0, "age": 23, "search_rank": 30},
+            {"provider_id": "v1", "full_name": "Veteran RB", "position": "RB", "years_exp": 1},
+        ]
+        trending = {"r1": 100, "r2": 50}
+        drafted = {"r3"}
+
+        res = recommend_rookies(players, drafted, trending)
+        self.assertEqual(len(res["RB"]), 1)
+        self.assertEqual(res["RB"][0]["full_name"], "Rookie RB1")
+        self.assertEqual(len(res["WR"]), 1)
+        self.assertEqual(res["WR"][0]["full_name"], "Rookie WR1")
+        self.assertEqual(len(res["QB"]), 0)  # drafted
+        self.assertEqual(len(res["TE"]), 0)
+
     def test_session_requires_confirmation_and_is_idempotent(self):
         with tempfile.TemporaryDirectory() as directory:
             state_root = Path(directory)

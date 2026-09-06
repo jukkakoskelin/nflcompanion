@@ -601,6 +601,49 @@ def update_living_strategy(
     return deepcopy(strategy)
 
 
+def recommend_rookies(
+    players: Iterable[dict[str, Any]],
+    drafted_ids: set[str],
+    trend_counts: dict[str, int],
+) -> dict[str, list[dict[str, Any]]]:
+    """Recommend best rookie options based on age and trend signals."""
+    rookies = [
+        p for p in (players or [])
+        if p.get("years_exp") == 0
+        and str(p.get("provider_id")) not in drafted_ids
+        and p.get("active", True)
+    ]
+
+    limits = {"RB": 5, "WR": 5, "QB": 2, "TE": 2}
+    results: dict[str, list[dict[str, Any]]] = {"RB": [], "WR": [], "QB": [], "TE": []}
+
+    def rookie_score(p: dict[str, Any]) -> float:
+        provider_id = str(p.get("provider_id"))
+        trend = min(15, trend_counts.get(provider_id, 0) // 50)
+        age = p.get("age") or 22
+        age_bonus = max(0, 24 - int(age)) * 2
+        rank = p.get("search_rank")
+        rank_val = max(0, 20 - int(rank) // 100) if isinstance(rank, (int, float)) else 0
+        return float(trend + age_bonus + rank_val)
+
+    for p in rookies:
+        pos = str(p.get("position") or "").upper()
+        if pos in results:
+            results[pos].append({
+                "provider_id": str(p.get("provider_id")),
+                "full_name": p.get("full_name"),
+                "position": pos,
+                "team": p.get("team"),
+                "age": p.get("age"),
+                "trend_count": trend_counts.get(str(p.get("provider_id")), 0),
+                "score": rookie_score(p),
+            })
+
+    for pos in results:
+        results[pos].sort(key=lambda x: (-x["score"], x["full_name"] or ""))
+        results[pos] = results[pos][:limits[pos]]
+
+    return results
 
 def next_pick_preview(
     state_root: Path,
@@ -669,6 +712,11 @@ def next_pick_preview(
         "availability_basis": "local player search rank and trending add snapshot; estimate only",
         "living_strategy": loaded["living_strategy"],
     }
+    
+    if session.get("draft_style") == "sleeper_dynasty" and next_pick.get("round", 0) >= 15:
+        result["rookie_suggestions"] = recommend_rookies(players or [], drafted_ids, trend_counts)
+
+    return result
 
 
 __all__ = [
@@ -681,6 +729,7 @@ __all__ = [
     "record_observed_pick",
     "record_pick",
     "recommend_candidates",
+    "recommend_rookies",
     "resolve_candidates",
     "update_living_strategy",
 ]

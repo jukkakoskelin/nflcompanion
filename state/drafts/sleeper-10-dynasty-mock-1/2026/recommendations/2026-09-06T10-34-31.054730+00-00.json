@@ -1,0 +1,385 @@
+{
+  "ambiguous": [],
+  "generated_at": "2026-09-06T10:34:31.054730+00:00",
+  "recommendations": [
+    {
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "J.K. Dobbins",
+      "position": "RB",
+      "provider_id": "6806",
+      "rank": 1,
+      "rationale": "Adds rb value outside the current priority.",
+      "score": 40,
+      "team": "DEN"
+    },
+    {
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Tony Pollard",
+      "position": "RB",
+      "provider_id": "5967",
+      "rank": 2,
+      "rationale": "Adds rb value outside the current priority.",
+      "score": 40,
+      "team": "TEN"
+    },
+    {
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Zach Charbonnet",
+      "position": "RB",
+      "provider_id": "9753",
+      "rank": 3,
+      "rationale": "Adds rb value outside the current priority.",
+      "score": 40,
+      "team": "SEA"
+    }
+  ],
+  "resolved": [
+    {
+      "active": true,
+      "age": 27,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1998-12-17",
+      "birth_state": null,
+      "college": "Ohio State",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "RB",
+      "espn_id": 4241985,
+      "fantasy_data_id": 21674,
+      "fantasy_positions": [
+        "RB"
+      ],
+      "first_name": "J.K.",
+      "full_name": "J.K. Dobbins",
+      "gsis_id": null,
+      "hashtag": "#jkdobbins-NFL-DEN-27",
+      "height": "70",
+      "high_school": "La Grange (TX)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "8d717b20-c941-4438-9afe-b6452601d62f",
+      "last_name": "Dobbins",
+      "metadata": {
+        "channel_id": "1113708692374581248",
+        "genius_id": "1005289",
+        "injury_override_regular_2024_13": "IR",
+        "rookie_year": "2020"
+      },
+      "news_updated": 1788582015575,
+      "number": 27,
+      "oddsjam_id": "7DF78280F623",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "6806",
+      "player_shard": "4",
+      "position": "RB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "6806",
+      "rotowire_id": 14418,
+      "rotoworld_id": null,
+      "search_first_name": "jk",
+      "search_full_name": "jkdobbins",
+      "search_last_name": "dobbins",
+      "search_rank": 68,
+      "sport": "nfl",
+      "sportradar_id": "a57b9914-4315-4295-98b4-9b348c52d6a1",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 976513,
+      "team": "DEN",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "212",
+      "yahoo_id": 32725,
+      "years_exp": 6
+    },
+    {
+      "active": true,
+      "age": 25,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "2001-01-08",
+      "birth_state": null,
+      "college": "UCLA",
+      "competitions": [],
+      "depth_chart_order": 4,
+      "depth_chart_position": "RB",
+      "espn_id": null,
+      "fantasy_data_id": 23173,
+      "fantasy_positions": [
+        "RB"
+      ],
+      "first_name": "Zach",
+      "full_name": "Zach Charbonnet",
+      "gsis_id": null,
+      "hashtag": "#zachcharbonnet-NFL-SEA-26",
+      "height": "73",
+      "high_school": "Oaks Christian (CA)",
+      "injury_body_part": "Knee - ACL",
+      "injury_notes": "Surgery",
+      "injury_start_date": null,
+      "injury_status": "PUP",
+      "kalshi_id": "e4f3e4c7-94a3-487f-8ce1-284bb78b1ec4",
+      "last_name": "Charbonnet",
+      "metadata": {
+        "channel_id": "1113708723169161217",
+        "genius_id": "1398978",
+        "rookie_year": "2023"
+      },
+      "news_updated": 1788209112588,
+      "number": 26,
+      "oddsjam_id": "DD41FF156D28",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "9753",
+      "player_shard": "2",
+      "position": "RB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "9753",
+      "rotowire_id": 16897,
+      "rotoworld_id": null,
+      "search_first_name": "zach",
+      "search_full_name": "zachcharbonnet",
+      "search_last_name": "charbonnet",
+      "search_rank": 101,
+      "sport": "nfl",
+      "sportradar_id": "7d7f1628-85a7-4633-9ffe-d82fc2761b00",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1164530,
+      "team": "SEA",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "220",
+      "yahoo_id": null,
+      "years_exp": 3
+    },
+    {
+      "active": true,
+      "age": 29,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1997-04-30",
+      "birth_state": null,
+      "college": "Memphis",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "RB",
+      "espn_id": 3916148,
+      "fantasy_data_id": 20912,
+      "fantasy_positions": [
+        "RB"
+      ],
+      "first_name": "Tony",
+      "full_name": "Tony Pollard",
+      "gsis_id": " 00-0035261",
+      "hashtag": "#tonypollard-NFL-TEN-20",
+      "height": "72",
+      "high_school": "Melrose (TN)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "69deefe0-9032-4bd2-b8e5-2c49a8f9bba2",
+      "last_name": "Pollard",
+      "metadata": {
+        "channel_id": "1113708830862110720",
+        "genius_id": "1005525",
+        "rookie_year": "2019"
+      },
+      "news_updated": 1788554122408,
+      "number": 20,
+      "oddsjam_id": "792747EDCE23",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "5967",
+      "player_shard": "9",
+      "position": "RB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "5967",
+      "rotowire_id": 13590,
+      "rotoworld_id": 14245,
+      "search_first_name": "tony",
+      "search_full_name": "tonypollard",
+      "search_last_name": "pollard",
+      "search_rank": 63,
+      "sport": "nfl",
+      "sportradar_id": "33b0227d-4c21-4e71-b4cd-be35f7db9123",
+      "stats_id": 880398,
+      "status": "Active",
+      "swish_id": 880398,
+      "team": "TEN",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "209",
+      "yahoo_id": 31960,
+      "years_exp": 7
+    }
+  ],
+  "roster_summary": {
+    "by_position": {
+      "DEF": [],
+      "K": [],
+      "OTHER": [],
+      "QB": [
+        {
+          "full_name": "Brock Purdy",
+          "overall_pick": 44,
+          "position": "QB",
+          "provider_id": "8183",
+          "round": 5,
+          "slot": 4,
+          "team": "SF"
+        },
+        {
+          "full_name": "Baker Mayfield",
+          "overall_pick": 77,
+          "position": "QB",
+          "provider_id": "4892",
+          "round": 8,
+          "slot": 4,
+          "team": "TB"
+        }
+      ],
+      "RB": [
+        {
+          "full_name": "Jahmyr Gibbs",
+          "overall_pick": 4,
+          "position": "RB",
+          "provider_id": "9221",
+          "round": 1,
+          "slot": 4,
+          "team": "DET"
+        },
+        {
+          "full_name": "Saquon Barkley",
+          "overall_pick": 37,
+          "position": "RB",
+          "provider_id": "4866",
+          "round": 4,
+          "slot": 4,
+          "team": "PHI"
+        },
+        {
+          "full_name": "RJ Harvey",
+          "overall_pick": 84,
+          "position": "RB",
+          "provider_id": "12489",
+          "round": 9,
+          "slot": 4,
+          "team": "DEN"
+        },
+        {
+          "full_name": "Blake Corum",
+          "overall_pick": 104,
+          "position": "RB",
+          "provider_id": "11586",
+          "round": 11,
+          "slot": 4,
+          "team": "LAR"
+        }
+      ],
+      "TE": [
+        {
+          "full_name": "Harold Fannin",
+          "overall_pick": 57,
+          "position": "TE",
+          "provider_id": "12506",
+          "round": 6,
+          "slot": 4,
+          "team": "CLE"
+        },
+        {
+          "full_name": "Dalton Kincaid",
+          "overall_pick": 97,
+          "position": "TE",
+          "provider_id": "10236",
+          "round": 10,
+          "slot": 4,
+          "team": "BUF"
+        }
+      ],
+      "WR": [
+        {
+          "full_name": "CeeDee Lamb",
+          "overall_pick": 17,
+          "position": "WR",
+          "provider_id": "6786",
+          "round": 2,
+          "slot": 4,
+          "team": "DAL"
+        },
+        {
+          "full_name": "Drake London",
+          "overall_pick": 24,
+          "position": "WR",
+          "provider_id": "8112",
+          "round": 3,
+          "slot": 4,
+          "team": "ATL"
+        },
+        {
+          "full_name": "DeVonta Smith",
+          "overall_pick": 64,
+          "position": "WR",
+          "provider_id": "7525",
+          "round": 7,
+          "slot": 4,
+          "team": "PHI"
+        },
+        {
+          "full_name": "Michael Pittman",
+          "overall_pick": 117,
+          "position": "WR",
+          "provider_id": "6819",
+          "round": 12,
+          "slot": 4,
+          "team": "PIT"
+        }
+      ]
+    },
+    "needs": [
+      "DEF",
+      "K"
+    ],
+    "position_counts": {
+      "DEF": 0,
+      "K": 0,
+      "QB": 2,
+      "RB": 4,
+      "TE": 2,
+      "WR": 4
+    },
+    "remaining_slots": 2,
+    "target_roster_size": 14,
+    "total_selected": 12
+  },
+  "unknown": []
+}

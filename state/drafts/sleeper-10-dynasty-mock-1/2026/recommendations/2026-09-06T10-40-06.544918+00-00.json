@@ -1,0 +1,447 @@
+{
+  "ambiguous": [
+    {
+      "input": "Antonio Williams",
+      "matches": [
+        {
+          "full_name": "Antonio Williams",
+          "position": "WR",
+          "provider_id": "13301",
+          "team": "WAS"
+        },
+        {
+          "full_name": "Antonio Williams",
+          "position": "RB",
+          "provider_id": "7203",
+          "team": null
+        }
+      ]
+    }
+  ],
+  "generated_at": "2026-09-06T10:40:06.544918+00:00",
+  "recommendations": [
+    {
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Deebo Samuel",
+      "position": "WR",
+      "provider_id": "5872",
+      "rank": 1,
+      "rationale": "Adds wr value outside the current priority.",
+      "score": 40,
+      "team": "SF"
+    },
+    {
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Elijah Sarratt",
+      "position": "WR",
+      "provider_id": "13268",
+      "rank": 2,
+      "rationale": "Adds wr value outside the current priority.",
+      "score": 40,
+      "team": "BAL"
+    },
+    {
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Ja'Kobi Lane",
+      "position": "WR",
+      "provider_id": "13293",
+      "rank": 3,
+      "rationale": "Adds wr value outside the current priority.",
+      "score": 40,
+      "team": "BAL"
+    }
+  ],
+  "resolved": [
+    {
+      "active": true,
+      "age": 22,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "2004-05-05",
+      "birth_state": null,
+      "college": "USC",
+      "competitions": [],
+      "depth_chart_order": 3,
+      "depth_chart_position": "RWR",
+      "espn_id": null,
+      "fantasy_data_id": 26746,
+      "fantasy_positions": [
+        "WR"
+      ],
+      "first_name": "Ja'Kobi",
+      "full_name": "Ja'Kobi Lane",
+      "gsis_id": null,
+      "hashtag": "#jakobilane-NFL-BAL-6",
+      "height": "76",
+      "high_school": "Red Mountain (AZ)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "cdb04e2c-22ba-4f25-8028-8ab7f18d5a27",
+      "last_name": "Lane",
+      "metadata": {
+        "channel_id": "1353609382604075009",
+        "rookie_year": "2026",
+        "source_id": "6567cbc0-9eaf-11ed-b23c-b1b7c283bdf7"
+      },
+      "news_updated": 1788546621847,
+      "number": 6,
+      "oddsjam_id": null,
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "13293",
+      "player_shard": "7",
+      "position": "WR",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "13293",
+      "rotowire_id": 19230,
+      "rotoworld_id": null,
+      "search_first_name": "jakobi",
+      "search_full_name": "jakobilane",
+      "search_last_name": "lane",
+      "search_rank": 142,
+      "sport": "nfl",
+      "sportradar_id": "ea285842-4fdf-4b27-bd73-6bfd916c6bc5",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": null,
+      "team": "BAL",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "205",
+      "yahoo_id": null,
+      "years_exp": 0
+    },
+    {
+      "active": true,
+      "age": 23,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "2003-05-28",
+      "birth_state": null,
+      "college": "Indiana",
+      "competitions": [],
+      "depth_chart_order": 5,
+      "depth_chart_position": "LWR",
+      "espn_id": null,
+      "fantasy_data_id": 25892,
+      "fantasy_positions": [
+        "WR"
+      ],
+      "first_name": "Elijah",
+      "full_name": "Elijah Sarratt",
+      "gsis_id": null,
+      "hashtag": "#elijahsarratt-NFL-BAL-13",
+      "height": "74",
+      "high_school": "St. Frances Academy (MD)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "f4b76ac1-028e-443f-a413-8c41f43f37a4",
+      "last_name": "Sarratt",
+      "metadata": {
+        "channel_id": "1353835907928592384",
+        "rookie_year": "2026",
+        "source_id": "5f21bf90-0c8e-11ed-8189-d1adc266b955"
+      },
+      "news_updated": 1787985943985,
+      "number": 13,
+      "oddsjam_id": null,
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "13268",
+      "player_shard": "5",
+      "position": "WR",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "13268",
+      "rotowire_id": 19310,
+      "rotoworld_id": null,
+      "search_first_name": "elijah",
+      "search_full_name": "elijahsarratt",
+      "search_last_name": "sarratt",
+      "search_rank": 201,
+      "sport": "nfl",
+      "sportradar_id": "88739764-6bec-4d65-9381-a75510c5f595",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": null,
+      "team": "BAL",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "215",
+      "yahoo_id": null,
+      "years_exp": 0
+    },
+    {
+      "active": true,
+      "age": 30,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1996-01-15",
+      "birth_state": null,
+      "college": "South Carolina",
+      "competitions": [],
+      "depth_chart_order": 2,
+      "depth_chart_position": "RWR",
+      "espn_id": 3126486,
+      "fantasy_data_id": 20932,
+      "fantasy_positions": [
+        "WR"
+      ],
+      "first_name": "Deebo",
+      "full_name": "Deebo Samuel",
+      "gsis_id": " 00-0035719",
+      "hashtag": "#deebosamuel-NFL-SF-19",
+      "height": "72",
+      "high_school": "Inman Chapman (SC)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "05cef2d2-a730-4021-b8e0-d38755452a34",
+      "last_name": "Samuel",
+      "metadata": {
+        "channel_id": "1113708876399669248",
+        "genius_id": "1013413",
+        "rookie_year": "2019"
+      },
+      "news_updated": 1788572724151,
+      "number": 19,
+      "oddsjam_id": "273E9A5C74E8",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "5872",
+      "player_shard": "3",
+      "position": "WR",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "5872",
+      "rotowire_id": 13429,
+      "rotoworld_id": 14059,
+      "search_first_name": "deebo",
+      "search_full_name": "deebosamuel",
+      "search_last_name": "samuel",
+      "search_rank": 130,
+      "sport": "nfl",
+      "sportradar_id": "628a6a0a-4fde-4024-8d7c-28674953d5af",
+      "stats_id": 835749,
+      "status": "Active",
+      "swish_id": 835749,
+      "team": "SF",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "215",
+      "yahoo_id": 31868,
+      "years_exp": 7
+    }
+  ],
+  "roster_summary": {
+    "by_position": {
+      "DEF": [],
+      "K": [],
+      "OTHER": [],
+      "QB": [
+        {
+          "full_name": "Brock Purdy",
+          "overall_pick": 44,
+          "position": "QB",
+          "provider_id": "8183",
+          "round": 5,
+          "slot": 4,
+          "team": "SF"
+        },
+        {
+          "full_name": "Baker Mayfield",
+          "overall_pick": 77,
+          "position": "QB",
+          "provider_id": "4892",
+          "round": 8,
+          "slot": 4,
+          "team": "TB"
+        },
+        {
+          "full_name": "Tyler Shough",
+          "overall_pick": 137,
+          "position": "QB",
+          "provider_id": "12545",
+          "round": 14,
+          "slot": 4,
+          "team": "NO"
+        }
+      ],
+      "RB": [
+        {
+          "full_name": "Jahmyr Gibbs",
+          "overall_pick": 4,
+          "position": "RB",
+          "provider_id": "9221",
+          "round": 1,
+          "slot": 4,
+          "team": "DET"
+        },
+        {
+          "full_name": "Saquon Barkley",
+          "overall_pick": 37,
+          "position": "RB",
+          "provider_id": "4866",
+          "round": 4,
+          "slot": 4,
+          "team": "PHI"
+        },
+        {
+          "full_name": "RJ Harvey",
+          "overall_pick": 84,
+          "position": "RB",
+          "provider_id": "12489",
+          "round": 9,
+          "slot": 4,
+          "team": "DEN"
+        },
+        {
+          "full_name": "Blake Corum",
+          "overall_pick": 104,
+          "position": "RB",
+          "provider_id": "11586",
+          "round": 11,
+          "slot": 4,
+          "team": "LAR"
+        },
+        {
+          "full_name": "Zach Charbonnet",
+          "overall_pick": 124,
+          "position": "RB",
+          "provider_id": "9753",
+          "round": 13,
+          "slot": 4,
+          "team": "SEA"
+        },
+        {
+          "full_name": "Kaytron Allen",
+          "overall_pick": 157,
+          "position": "RB",
+          "provider_id": "13405",
+          "round": 16,
+          "slot": 4,
+          "team": "WAS"
+        }
+      ],
+      "TE": [
+        {
+          "full_name": "Harold Fannin",
+          "overall_pick": 57,
+          "position": "TE",
+          "provider_id": "12506",
+          "round": 6,
+          "slot": 4,
+          "team": "CLE"
+        },
+        {
+          "full_name": "Dalton Kincaid",
+          "overall_pick": 97,
+          "position": "TE",
+          "provider_id": "10236",
+          "round": 10,
+          "slot": 4,
+          "team": "BUF"
+        },
+        {
+          "full_name": "AJ Barner",
+          "overall_pick": 144,
+          "position": "TE",
+          "provider_id": "11603",
+          "round": 15,
+          "slot": 4,
+          "team": "SEA"
+        }
+      ],
+      "WR": [
+        {
+          "full_name": "CeeDee Lamb",
+          "overall_pick": 17,
+          "position": "WR",
+          "provider_id": "6786",
+          "round": 2,
+          "slot": 4,
+          "team": "DAL"
+        },
+        {
+          "full_name": "Drake London",
+          "overall_pick": 24,
+          "position": "WR",
+          "provider_id": "8112",
+          "round": 3,
+          "slot": 4,
+          "team": "ATL"
+        },
+        {
+          "full_name": "DeVonta Smith",
+          "overall_pick": 64,
+          "position": "WR",
+          "provider_id": "7525",
+          "round": 7,
+          "slot": 4,
+          "team": "PHI"
+        },
+        {
+          "full_name": "Michael Pittman",
+          "overall_pick": 117,
+          "position": "WR",
+          "provider_id": "6819",
+          "round": 12,
+          "slot": 4,
+          "team": "PIT"
+        },
+        {
+          "full_name": "Chris Bell",
+          "overall_pick": 174,
+          "position": "WR",
+          "provider_id": "13311",
+          "round": 18,
+          "slot": 7,
+          "team": "MIA"
+        }
+      ]
+    },
+    "needs": [
+      "DEF",
+      "K"
+    ],
+    "position_counts": {
+      "DEF": 0,
+      "K": 0,
+      "QB": 3,
+      "RB": 6,
+      "TE": 3,
+      "WR": 5
+    },
+    "remaining_slots": 0,
+    "target_roster_size": 14,
+    "total_selected": 17
+  },
+  "unknown": []
+}

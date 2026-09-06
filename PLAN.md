@@ -1,8 +1,6 @@
 # NFL Fantasy Draft Companion Plan
 
-Status: in progress - Sleeper Dynasty strategy support added; strategy creation skill,
-agent prompts, and validation now dual-platform (ESPN + Sleeper); draft companion
-roster needs and TBD slot extended for dynasty; 85 tests passing.
+Status: in progress - Added Sleeper Dynasty late-round rookie suggestions based on age and local trending metrics; 86 tests passing.
 Priority: draft-ready for the Sleeper dynasty startup mock and live drafts
 
 ## Product goal
@@ -760,3 +758,12 @@ workflow is:
 |---|---|---|
 | ESPN 16-team snake | `draft-context/espn_snake/strategies/` | `draft-context/espn_snake/logs/` |
 | Sleeper 10-team dynasty | `draft-context/sleeper_dynasty/strategies/` | `draft-context/sleeper_dynasty/logs/` |
+
+## MCP Sleeper API Integration (2026-09-06)
+
+Added native Sleeper public API tools to the `nflcompanion` MCP server to directly fetch live draft states without requiring python scripts or explicit bypasses.
+- `sleeper_get_user_drafts`
+- `sleeper_get_draft`
+- `sleeper_get_draft_picks`
+
+These queries hit the Sleeper endpoints directly and do not populate the local state.
