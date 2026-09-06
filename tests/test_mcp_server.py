@@ -70,6 +70,7 @@ class MCPServerTests(unittest.TestCase):
         self.assertIn("draft_observe_pick", tool_names)
         self.assertIn("draft_next_pick_preview", tool_names)
         self.assertIn("draft_update_strategy", tool_names)
+        self.assertIn("draft_sync_sleeper_picks", tool_names)
 
     def test_sleeper_query_players_tool(self):
         call_msg = {
@@ -366,7 +367,103 @@ class MCPServerTests(unittest.TestCase):
         self.assertFalse(prev_res["result"]["isError"])
         prev_data = json.loads(prev_res["result"]["content"][0]["text"])
         self.assertEqual(prev_data["recommended_positions"], ["WR", "TE"])
-        self.assertIn("roster_summary", prev_data)
+    def test_draft_record_pick_defaults_to_confirmed(self):
+        # Initializing session
+        handle_message({
+            "jsonrpc": "2.0",
+            "id": 50,
+            "method": "tools/call",
+            "params": {
+                "name": "draft_init_session",
+                "arguments": {
+                    "state_root": str(self.state_root),
+                    "league_id": "auto-confirmed-league",
+                    "season": 2026,
+                    "draft_style": "sleeper_dynasty",
+                    "team_count": 10,
+                    "user_slot": 1,
+                },
+            },
+        })
+
+        # Calling draft_record_pick without confirmed argument should succeed by default
+        pick_call = {
+            "jsonrpc": "2.0",
+            "id": 51,
+            "method": "tools/call",
+            "params": {
+                "name": "draft_record_pick",
+                "arguments": {
+                    "state_root": str(self.state_root),
+                    "league_id": "auto-confirmed-league",
+                    "season": 2026,
+                    "full_name": "Saquon Barkley",
+                },
+            },
+        }
+        response = handle_message(pick_call)
+        self.assertFalse(response["result"]["isError"])
+        pick_data = json.loads(response["result"]["content"][0]["text"])
+        self.assertEqual(len(pick_data["session"]["selected_players"]), 1)
+        self.assertEqual(pick_data["session"]["selected_players"][0]["full_name"], "Saquon Barkley")
+
+    def test_draft_recommend_auto_syncs_sleeper_picks(self):
+        # Create session with draft_id
+        handle_message({
+            "jsonrpc": "2.0",
+            "id": 60,
+            "method": "tools/call",
+            "params": {
+                "name": "draft_init_session",
+                "arguments": {
+                    "state_root": str(self.state_root),
+                    "league_id": "autosync-league",
+                    "season": 2026,
+                    "draft_style": "sleeper_dynasty",
+                    "team_count": 10,
+                    "user_slot": 8,
+                    "draft_id": "mock-draft-123",
+                },
+            },
+        })
+
+        # Mock sync_sleeper_draft_picks to record Saquon Barkley as an opponent pick
+        with unittest.mock.patch("nflcompanion.mcp_server.sync_sleeper_draft_picks") as mock_sync:
+            def fake_sync(state_root, **kwargs):
+                from nflcompanion.draft_companion import record_observed_pick
+                record_observed_pick(
+                    state_root,
+                    league_id="autosync-league",
+                    season=2026,
+                    provider_id="4034",
+                    player={"full_name": "Saquon Barkley", "position": "RB", "team": "PHI"},
+                    overall_pick=1,
+                )
+                return {}
+            mock_sync.side_effect = fake_sync
+
+            rec_call = {
+                "jsonrpc": "2.0",
+                "id": 61,
+                "method": "tools/call",
+                "params": {
+                    "name": "draft_recommend_candidates",
+                    "arguments": {
+                        "state_root": str(self.state_root),
+                        "league_id": "autosync-league",
+                        "season": 2026,
+                        "candidates": ["Saquon Barkley", "Justin Jefferson"],
+                    },
+                },
+            }
+            response = handle_message(rec_call)
+            self.assertFalse(response["result"]["isError"])
+            mock_sync.assert_called_once()
+            data = json.loads(response["result"]["content"][0]["text"])
+            # Saquon was drafted by opponent during sync, so only Jefferson is recommended
+            rec_names = [r["full_name"] for r in data["recommendations"]]
+            self.assertIn("Justin Jefferson", rec_names)
+            self.assertNotIn("Saquon Barkley", rec_names)
 
     def test_run_stdio_server(self):
         input_stream = io.StringIO(

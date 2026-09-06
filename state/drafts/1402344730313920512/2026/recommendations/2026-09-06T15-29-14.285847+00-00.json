@@ -1,0 +1,375 @@
+{
+  "ambiguous": [],
+  "generated_at": "2026-09-06T15:29:14.285847+00:00",
+  "recommendations": [
+    {
+      "bye_week": 6,
+      "bye_week_clash_count": 1,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": 0,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 10
+      },
+      "full_name": "Chris Bell",
+      "position": "WR",
+      "provider_id": "13311",
+      "rank": 1,
+      "rationale": "Adds wr value outside the current priority; has a positive local trend signal.",
+      "score": 50,
+      "team": "MIA"
+    },
+    {
+      "bye_week": 7,
+      "bye_week_clash_count": 1,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": 0,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Ray Davis",
+      "position": "RB",
+      "provider_id": "11575",
+      "rank": 2,
+      "rationale": "Adds rb value outside the current priority.",
+      "score": 40,
+      "team": "BUF"
+    }
+  ],
+  "resolved": [
+    {
+      "active": true,
+      "age": 22,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "2004-06-07",
+      "birth_state": null,
+      "college": "Louisville",
+      "competitions": [],
+      "depth_chart_order": 4,
+      "depth_chart_position": "LWR",
+      "espn_id": null,
+      "fantasy_data_id": 26745,
+      "fantasy_positions": [
+        "WR"
+      ],
+      "first_name": "Chris",
+      "full_name": "Chris Bell",
+      "gsis_id": null,
+      "hashtag": "#chrisbell-NFL-MIA-18",
+      "height": "74",
+      "high_school": "Greenville Christian (MS)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "4abd40f5-4bd6-448b-8d37-5a306eb1c815",
+      "last_name": "Bell",
+      "metadata": {
+        "channel_id": "1353609375104659456",
+        "genius_id": "1495627",
+        "rookie_year": "2026",
+        "source_id": "e540d3a0-8a15-11ec-afc6-9b22751babf7"
+      },
+      "news_updated": 1788305722667,
+      "number": 18,
+      "oddsjam_id": null,
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "13311",
+      "player_shard": "7",
+      "position": "WR",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "13311",
+      "rotowire_id": 19309,
+      "rotoworld_id": null,
+      "search_first_name": "chris",
+      "search_full_name": "chrisbell",
+      "search_last_name": "bell",
+      "search_rank": 203,
+      "sport": "nfl",
+      "sportradar_id": "e1d2a5a1-71a9-4053-b475-8e5075cb1860",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": null,
+      "team": "MIA",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "228",
+      "yahoo_id": null,
+      "years_exp": 0
+    },
+    {
+      "active": true,
+      "age": 26,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1999-11-11",
+      "birth_state": null,
+      "college": "Kentucky",
+      "competitions": [],
+      "depth_chart_order": 3,
+      "depth_chart_position": "RB",
+      "espn_id": null,
+      "fantasy_data_id": 24980,
+      "fantasy_positions": [
+        "RB"
+      ],
+      "first_name": "Ray",
+      "full_name": "Ray Davis",
+      "gsis_id": null,
+      "hashtag": "#raydavis-NFL-BUF-7",
+      "height": "68",
+      "high_school": "Blair Academy (NJ)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "3eff7f26-2247-4ed5-9294-bd886f420b64",
+      "last_name": "Davis",
+      "metadata": {
+        "channel_id": "1113708757860249600",
+        "genius_id": "1463978",
+        "rookie_year": "2024"
+      },
+      "news_updated": 1787941227836,
+      "number": 7,
+      "oddsjam_id": "9D8F918D01F7",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "11575",
+      "player_shard": "5",
+      "position": "RB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "11575",
+      "rotowire_id": 17792,
+      "rotoworld_id": null,
+      "search_first_name": "ray",
+      "search_full_name": "raydavis",
+      "search_last_name": "davis",
+      "search_rank": 167,
+      "sport": "nfl",
+      "sportradar_id": "a856dd59-ed95-471a-bfb9-fbd0566bd1a9",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1165229,
+      "team": "BUF",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "211",
+      "yahoo_id": null,
+      "years_exp": 2
+    }
+  ],
+  "roster_summary": {
+    "by_position": {
+      "DEF": [],
+      "K": [],
+      "OTHER": [],
+      "QB": [
+        {
+          "full_name": "Jalen Hurts",
+          "overall_pick": 33,
+          "position": "QB",
+          "provider_id": "6904",
+          "round": 4,
+          "slot": 8,
+          "team": "PHI"
+        },
+        {
+          "full_name": "Fernando Mendoza",
+          "overall_pick": 73,
+          "position": "QB",
+          "provider_id": "13269",
+          "round": 8,
+          "slot": 8,
+          "team": "LV"
+        },
+        {
+          "full_name": "Baker Mayfield",
+          "overall_pick": 88,
+          "position": "QB",
+          "provider_id": "4892",
+          "round": 9,
+          "slot": 8,
+          "team": "TB"
+        },
+        {
+          "full_name": "Ty Simpson",
+          "overall_pick": 128,
+          "position": "QB",
+          "provider_id": "13275",
+          "round": 13,
+          "slot": 8,
+          "team": "LAR"
+        }
+      ],
+      "RB": [
+        {
+          "full_name": "Chase Brown",
+          "overall_pick": 28,
+          "position": "RB",
+          "provider_id": "9224",
+          "round": 3,
+          "slot": 8,
+          "team": "CIN"
+        },
+        {
+          "full_name": "Breece Hall",
+          "overall_pick": 48,
+          "position": "RB",
+          "provider_id": "8155",
+          "round": 5,
+          "slot": 8,
+          "team": "NYJ"
+        },
+        {
+          "full_name": "Jaylen Warren",
+          "overall_pick": 93,
+          "position": "RB",
+          "provider_id": "8228",
+          "round": 10,
+          "slot": 8,
+          "team": "PIT"
+        }
+      ],
+      "TE": [
+        {
+          "full_name": "Harold Fannin",
+          "overall_pick": 53,
+          "position": "TE",
+          "provider_id": "12506",
+          "round": 6,
+          "slot": 8,
+          "team": "CLE"
+        },
+        {
+          "full_name": "George Kittle",
+          "overall_pick": 108,
+          "position": "TE",
+          "provider_id": "4217",
+          "round": 11,
+          "slot": 8,
+          "team": "SF"
+        }
+      ],
+      "WR": [
+        {
+          "full_name": "Puka Nacua",
+          "overall_pick": 8,
+          "position": "WR",
+          "provider_id": "9493",
+          "round": 1,
+          "slot": 8,
+          "team": "LAR"
+        },
+        {
+          "full_name": "CeeDee Lamb",
+          "overall_pick": 13,
+          "position": "WR",
+          "provider_id": "6786",
+          "round": 2,
+          "slot": 8,
+          "team": "DAL"
+        },
+        {
+          "full_name": "Marvin Harrison",
+          "overall_pick": 68,
+          "position": "WR",
+          "provider_id": "11628",
+          "round": 7,
+          "slot": 8,
+          "team": "ARI"
+        },
+        {
+          "full_name": "Quentin Johnston",
+          "overall_pick": 113,
+          "position": "WR",
+          "provider_id": "9754",
+          "round": 12,
+          "slot": 8,
+          "team": "LAC"
+        },
+        {
+          "full_name": "Jalen Coker",
+          "overall_pick": 133,
+          "position": "WR",
+          "provider_id": "11646",
+          "round": 14,
+          "slot": 8,
+          "team": "CAR"
+        }
+      ]
+    },
+    "bye_week_conflicts": [
+      {
+        "count": 3,
+        "players": [
+          "Puka Nacua",
+          "Harold Fannin",
+          "Ty Simpson"
+        ],
+        "week": 11
+      }
+    ],
+    "bye_week_distribution": {
+      "5": [
+        "Jalen Coker"
+      ],
+      "6": [
+        "Chase Brown"
+      ],
+      "7": [
+        "Quentin Johnston"
+      ],
+      "8": [
+        "George Kittle"
+      ],
+      "9": [
+        "Jaylen Warren"
+      ],
+      "10": [
+        "Jalen Hurts",
+        "Baker Mayfield"
+      ],
+      "11": [
+        "Puka Nacua",
+        "Harold Fannin",
+        "Ty Simpson"
+      ],
+      "13": [
+        "Breece Hall",
+        "Fernando Mendoza"
+      ],
+      "14": [
+        "CeeDee Lamb",
+        "Marvin Harrison"
+      ]
+    },
+    "needs": [
+      "DEF",
+      "K"
+    ],
+    "position_counts": {
+      "DEF": 0,
+      "K": 0,
+      "QB": 4,
+      "RB": 3,
+      "TE": 2,
+      "WR": 5
+    },
+    "remaining_slots": 0,
+    "target_roster_size": 14,
+    "total_selected": 14
+  },
+  "unknown": []
+}

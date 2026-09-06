@@ -1,0 +1,174 @@
+{
+  "ambiguous": [
+    {
+      "input": "Sutton",
+      "matches": [
+        {
+          "full_name": "Dani Dennis-Sutton",
+          "position": "DE",
+          "provider_id": "13492",
+          "team": "GB"
+        },
+        {
+          "full_name": "Will Sutton",
+          "position": "DT",
+          "provider_id": "2115",
+          "team": null
+        },
+        {
+          "full_name": "Cameron Sutton",
+          "position": "CB",
+          "provider_id": "4138",
+          "team": null
+        },
+        {
+          "full_name": "Courtland Sutton",
+          "position": "WR",
+          "provider_id": "5045",
+          "team": "DEN"
+        },
+        {
+          "full_name": "Sutton Smith",
+          "position": "FB",
+          "provider_id": "6188",
+          "team": null
+        },
+        {
+          "full_name": "Marcelias Sutton",
+          "position": "RB",
+          "provider_id": "6700",
+          "team": null
+        },
+        {
+          "full_name": "Cam Sutton",
+          "position": "TE",
+          "provider_id": "7218",
+          "team": null
+        },
+        {
+          "full_name": "Corey Sutton",
+          "position": "WR",
+          "provider_id": "8438",
+          "team": null
+        }
+      ]
+    },
+    {
+      "input": "Watson",
+      "matches": [
+        {
+          "full_name": "Blake Watson",
+          "position": "RB",
+          "provider_id": "11568",
+          "team": null
+        },
+        {
+          "full_name": "Nathaniel Watson",
+          "position": "LB",
+          "provider_id": "11790",
+          "team": "CLE"
+        },
+        {
+          "full_name": "Gunnar Watson",
+          "position": "QB",
+          "provider_id": "12003",
+          "team": null
+        },
+        {
+          "full_name": "Desmond Watson",
+          "position": "DL",
+          "provider_id": "12793",
+          "team": null
+        },
+        {
+          "full_name": "Tre Watson",
+          "position": "TE",
+          "provider_id": "13116",
+          "team": "MIA"
+        },
+        {
+          "full_name": "Menelik Watson",
+          "position": "G",
+          "provider_id": "1478",
+          "team": null
+        },
+        {
+          "full_name": "Terrell Watson",
+          "position": "RB",
+          "provider_id": "2598",
+          "team": null
+        },
+        {
+          "full_name": "Josh Watson",
+          "position": "LB",
+          "provider_id": "2894",
+          "team": null
+        },
+        {
+          "full_name": "Deshaun Watson",
+          "position": "QB",
+          "provider_id": "4017",
+          "team": "CLE"
+        },
+        {
+          "full_name": "Brad Watson",
+          "position": "CB",
+          "provider_id": "4672",
+          "team": null
+        },
+        {
+          "full_name": "Justin Watson",
+          "position": "WR",
+          "provider_id": "5374",
+          "team": null
+        },
+        {
+          "full_name": "Tre Watson",
+          "position": "ILB",
+          "provider_id": "6571",
+          "team": null
+        },
+        {
+          "full_name": "Benjamin Watson",
+          "position": "TE",
+          "provider_id": "663",
+          "team": null
+        },
+        {
+          "full_name": "Dekoda Watson",
+          "position": "LB",
+          "provider_id": "690",
+          "team": null
+        },
+        {
+          "full_name": "Jamar Watson",
+          "position": "LB",
+          "provider_id": "7900",
+          "team": null
+        },
+        {
+          "full_name": "Christian Watson",
+          "position": "WR",
+          "provider_id": "8167",
+          "team": "GB"
+        },
+        {
+          "full_name": "Jaylen Watson",
+          "position": "DB",
+          "provider_id": "8373",
+          "team": "LAR"
+        },
+        {
+          "full_name": "Leroy Watson",
+          "position": "TE",
+          "provider_id": "8660",
+          "team": null
+        }
+      ]
+    }
+  ],
+  "generated_at": "2026-09-06T13:01:10.518841+00:00",
+  "recommendations": [],
+  "resolved": [],
+  "unknown": []
+}

@@ -1,0 +1,486 @@
+{
+  "ambiguous": [],
+  "generated_at": "2026-09-06T15:30:59.398104+00:00",
+  "recommendations": [
+    {
+      "bye_week": 8,
+      "bye_week_clash_count": 1,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": 0,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 10
+      },
+      "full_name": "Kaelon Black",
+      "position": "RB",
+      "provider_id": "13414",
+      "rank": 1,
+      "rationale": "Adds rb value outside the current priority; has a positive local trend signal.",
+      "score": 50,
+      "team": "SF"
+    },
+    {
+      "bye_week": 8,
+      "bye_week_clash_count": 1,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": 0,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Alvin Kamara",
+      "position": "RB",
+      "provider_id": "4035",
+      "rank": 2,
+      "rationale": "Adds rb value outside the current priority.",
+      "score": 40,
+      "team": "NO"
+    },
+    {
+      "bye_week": 6,
+      "bye_week_clash_count": 2,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": -5,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Demond Claiborne",
+      "position": "RB",
+      "provider_id": "13347",
+      "rank": 3,
+      "rationale": "Adds rb value outside the current priority; \u26a0 bye week 6 clashes with 2 existing roster players.",
+      "score": 35,
+      "team": "MIN"
+    }
+  ],
+  "resolved": [
+    {
+      "active": true,
+      "age": 24,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "2001-10-17",
+      "birth_state": null,
+      "college": "Indiana",
+      "competitions": [],
+      "depth_chart_order": 2,
+      "depth_chart_position": "RB",
+      "espn_id": null,
+      "fantasy_data_id": 26981,
+      "fantasy_positions": [
+        "RB"
+      ],
+      "first_name": "Kaelon",
+      "full_name": "Kaelon Black",
+      "gsis_id": null,
+      "hashtag": "#kaelonblack-NFL-SF-26",
+      "height": "70",
+      "high_school": "Salem (VA)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "095e50f7-c83a-4f8f-89c3-3200bcbdc1d1",
+      "last_name": "Black",
+      "metadata": {
+        "channel_id": "1353609384155967488",
+        "rookie_year": "2026",
+        "source_id": "5006311b-02c5-4c70-8126-fe099ed5d977"
+      },
+      "news_updated": 1788554722587,
+      "number": 26,
+      "oddsjam_id": null,
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "13414",
+      "player_shard": "6",
+      "position": "RB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "13414",
+      "rotowire_id": 19607,
+      "rotoworld_id": null,
+      "search_first_name": "kaelon",
+      "search_full_name": "kaelonblack",
+      "search_last_name": "black",
+      "search_rank": 160,
+      "sport": "nfl",
+      "sportradar_id": "4dea3ae1-8c53-4ef1-bd72-e2d2dfb3fa97",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": null,
+      "team": "SF",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "208",
+      "yahoo_id": null,
+      "years_exp": 0
+    },
+    {
+      "active": true,
+      "age": 22,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "2003-10-09",
+      "birth_state": null,
+      "college": "Wake Forest",
+      "competitions": [],
+      "depth_chart_order": 3,
+      "depth_chart_position": "RB",
+      "espn_id": null,
+      "fantasy_data_id": 26764,
+      "fantasy_positions": [
+        "RB"
+      ],
+      "first_name": "Demond",
+      "full_name": "Demond Claiborne",
+      "gsis_id": null,
+      "hashtag": "#demondclaiborne-NFL-MIN-21",
+      "height": "70",
+      "high_school": "King William (VA)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "566f3fbc-de59-4c6b-9c55-36dd06c246f4",
+      "last_name": "Claiborne",
+      "metadata": {
+        "channel_id": "1353881190557315072",
+        "genius_id": "1507135",
+        "rookie_year": "2026",
+        "source_id": "c915add0-8921-11ec-a1ad-e7bb44b6038f"
+      },
+      "news_updated": 1788015646392,
+      "number": 21,
+      "oddsjam_id": null,
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "13347",
+      "player_shard": "5",
+      "position": "RB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "13347",
+      "rotowire_id": 19234,
+      "rotoworld_id": null,
+      "search_first_name": "demond",
+      "search_full_name": "demondclaiborne",
+      "search_last_name": "claiborne",
+      "search_rank": 176,
+      "sport": "nfl",
+      "sportradar_id": "b17d816a-b687-488f-ac03-7dcba5aae0b6",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": null,
+      "team": "MIN",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "188",
+      "yahoo_id": null,
+      "years_exp": 0
+    },
+    {
+      "active": true,
+      "age": 31,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1995-07-25",
+      "birth_state": null,
+      "college": "Tennessee",
+      "competitions": [],
+      "depth_chart_order": 4,
+      "depth_chart_position": "RB",
+      "espn_id": 3054850,
+      "fantasy_data_id": 18878,
+      "fantasy_positions": [
+        "RB"
+      ],
+      "first_name": "Alvin",
+      "full_name": "Alvin Kamara",
+      "gsis_id": "00-0033906",
+      "hashtag": "#alvinkamara-NFL-NO-41",
+      "height": "70",
+      "high_school": "Norcross (GA)",
+      "injury_body_part": "Knee",
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": "Questionable",
+      "kalshi_id": "54e15478-3cc6-4a30-b662-e3e967f6e5da",
+      "last_name": "Kamara",
+      "metadata": {
+        "channel_id": "1113708687463051264",
+        "genius_id": "998864",
+        "rookie_year": "2017"
+      },
+      "news_updated": 1788461706647,
+      "number": 41,
+      "oddsjam_id": "4DD7AD3020C5",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "4035",
+      "player_shard": "4",
+      "position": "RB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "4035",
+      "rotowire_id": 11732,
+      "rotoworld_id": 12172,
+      "search_first_name": "alvin",
+      "search_full_name": "alvinkamara",
+      "search_last_name": "kamara",
+      "search_rank": 119,
+      "sport": "nfl",
+      "sportradar_id": "d9c857b2-97da-4fb8-a527-afbbb2a67413",
+      "stats_id": 750846,
+      "status": "Active",
+      "swish_id": 750846,
+      "team": "NO",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "215",
+      "yahoo_id": 30180,
+      "years_exp": 9
+    }
+  ],
+  "roster_summary": {
+    "by_position": {
+      "DEF": [],
+      "K": [],
+      "OTHER": [],
+      "QB": [
+        {
+          "full_name": "Jalen Hurts",
+          "overall_pick": 33,
+          "position": "QB",
+          "provider_id": "6904",
+          "round": 4,
+          "slot": 8,
+          "team": "PHI"
+        },
+        {
+          "full_name": "Fernando Mendoza",
+          "overall_pick": 73,
+          "position": "QB",
+          "provider_id": "13269",
+          "round": 8,
+          "slot": 8,
+          "team": "LV"
+        },
+        {
+          "full_name": "Baker Mayfield",
+          "overall_pick": 88,
+          "position": "QB",
+          "provider_id": "4892",
+          "round": 9,
+          "slot": 8,
+          "team": "TB"
+        },
+        {
+          "full_name": "Ty Simpson",
+          "overall_pick": 128,
+          "position": "QB",
+          "provider_id": "13275",
+          "round": 13,
+          "slot": 8,
+          "team": "LAR"
+        }
+      ],
+      "RB": [
+        {
+          "full_name": "Chase Brown",
+          "overall_pick": 28,
+          "position": "RB",
+          "provider_id": "9224",
+          "round": 3,
+          "slot": 8,
+          "team": "CIN"
+        },
+        {
+          "full_name": "Breece Hall",
+          "overall_pick": 48,
+          "position": "RB",
+          "provider_id": "8155",
+          "round": 5,
+          "slot": 8,
+          "team": "NYJ"
+        },
+        {
+          "full_name": "Jaylen Warren",
+          "overall_pick": 93,
+          "position": "RB",
+          "provider_id": "8228",
+          "round": 10,
+          "slot": 8,
+          "team": "PIT"
+        },
+        {
+          "full_name": "Braelon Allen",
+          "overall_pick": 153,
+          "position": "RB",
+          "provider_id": "11576",
+          "round": 16,
+          "slot": 8,
+          "team": "NYJ"
+        }
+      ],
+      "TE": [
+        {
+          "full_name": "Harold Fannin",
+          "overall_pick": 53,
+          "position": "TE",
+          "provider_id": "12506",
+          "round": 6,
+          "slot": 8,
+          "team": "CLE"
+        },
+        {
+          "full_name": "George Kittle",
+          "overall_pick": 108,
+          "position": "TE",
+          "provider_id": "4217",
+          "round": 11,
+          "slot": 8,
+          "team": "SF"
+        }
+      ],
+      "WR": [
+        {
+          "full_name": "Puka Nacua",
+          "overall_pick": 8,
+          "position": "WR",
+          "provider_id": "9493",
+          "round": 1,
+          "slot": 8,
+          "team": "LAR"
+        },
+        {
+          "full_name": "CeeDee Lamb",
+          "overall_pick": 13,
+          "position": "WR",
+          "provider_id": "6786",
+          "round": 2,
+          "slot": 8,
+          "team": "DAL"
+        },
+        {
+          "full_name": "Marvin Harrison",
+          "overall_pick": 68,
+          "position": "WR",
+          "provider_id": "11628",
+          "round": 7,
+          "slot": 8,
+          "team": "ARI"
+        },
+        {
+          "full_name": "Quentin Johnston",
+          "overall_pick": 113,
+          "position": "WR",
+          "provider_id": "9754",
+          "round": 12,
+          "slot": 8,
+          "team": "LAC"
+        },
+        {
+          "full_name": "Jalen Coker",
+          "overall_pick": 133,
+          "position": "WR",
+          "provider_id": "11646",
+          "round": 14,
+          "slot": 8,
+          "team": "CAR"
+        },
+        {
+          "full_name": "Chris Bell",
+          "overall_pick": 148,
+          "position": "WR",
+          "provider_id": "13311",
+          "round": 15,
+          "slot": 8,
+          "team": "MIA"
+        }
+      ]
+    },
+    "bye_week_conflicts": [
+      {
+        "count": 3,
+        "players": [
+          "Puka Nacua",
+          "Harold Fannin",
+          "Ty Simpson"
+        ],
+        "week": 11
+      },
+      {
+        "count": 3,
+        "players": [
+          "Breece Hall",
+          "Fernando Mendoza",
+          "Braelon Allen"
+        ],
+        "week": 13
+      }
+    ],
+    "bye_week_distribution": {
+      "5": [
+        "Jalen Coker"
+      ],
+      "6": [
+        "Chase Brown",
+        "Chris Bell"
+      ],
+      "7": [
+        "Quentin Johnston"
+      ],
+      "8": [
+        "George Kittle"
+      ],
+      "9": [
+        "Jaylen Warren"
+      ],
+      "10": [
+        "Jalen Hurts",
+        "Baker Mayfield"
+      ],
+      "11": [
+        "Puka Nacua",
+        "Harold Fannin",
+        "Ty Simpson"
+      ],
+      "13": [
+        "Breece Hall",
+        "Fernando Mendoza",
+        "Braelon Allen"
+      ],
+      "14": [
+        "CeeDee Lamb",
+        "Marvin Harrison"
+      ]
+    },
+    "needs": [
+      "DEF",
+      "K"
+    ],
+    "position_counts": {
+      "DEF": 0,
+      "K": 0,
+      "QB": 4,
+      "RB": 4,
+      "TE": 2,
+      "WR": 6
+    },
+    "remaining_slots": 0,
+    "target_roster_size": 14,
+    "total_selected": 16
+  },
+  "unknown": []
+}

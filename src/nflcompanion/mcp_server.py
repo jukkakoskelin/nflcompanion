@@ -22,6 +22,7 @@ from nflcompanion.draft_companion import (
     recommend_candidates,
     update_living_strategy,
 )
+from nflcompanion.sleeper_sync import sync_sleeper_draft_picks
 from nflcompanion.state_store import (
     latest_snapshot,
     latest_trending_snapshot,
@@ -233,6 +234,7 @@ TOOLS: list[dict[str, Any]] = [
                 "draft_style": {"type": "string", "description": "e.g., espn_snake or sleeper_dynasty."},
                 "team_count": {"type": "integer", "description": "Number of teams in draft."},
                 "user_slot": {"type": "integer", "description": "User's draft slot (1-based)."},
+                "draft_id": {"type": "string", "description": "Sleeper draft ID for live pick synchronization."},
                 "active_strategy_id": {"type": "string", "description": "ID of active strategy."},
                 "strategy_json": {"type": "object", "description": "Inline strategy payload."},
                 "reverse_round": {"type": "boolean", "description": "Enable third-round reversal.", "default": False},
@@ -260,16 +262,20 @@ TOOLS: list[dict[str, Any]] = [
                     "items": {"type": "string"},
                     "description": "List of 2 to 4 candidate player names or surnames.",
                 },
+                "draft_id": {
+                    "type": "string",
+                    "description": "Optional Sleeper draft ID to sync picks before recommendations.",
+                },
                 "state_root": {"type": "string", "description": "Root state directory path.", "default": "state"},
             },
         },
     },
     {
         "name": "draft_record_pick",
-        "description": "Record a confirmed draft pick for the user's team. Requires explicit confirmation gate.",
+        "description": "Record a draft pick for the user's team. Defaults to confirmed=True when user specifies a pick.",
         "inputSchema": {
             "type": "object",
-            "required": ["league_id", "season", "confirmed"],
+            "required": ["league_id", "season"],
             "properties": {
                 "league_id": {"type": "string", "description": "League identifier."},
                 "season": {"type": "integer", "description": "NFL season year."},
@@ -281,7 +287,8 @@ TOOLS: list[dict[str, Any]] = [
                 "idempotency_key": {"type": "string", "description": "Idempotency key to prevent duplicates."},
                 "confirmed": {
                     "type": "boolean",
-                    "description": "Human confirmation gate. Must be true to record pick.",
+                    "description": "Confirmation gate. Defaults to true.",
+                    "default": True,
                 },
                 "state_root": {"type": "string", "description": "Root state directory path.", "default": "state"},
             },
@@ -332,6 +339,10 @@ TOOLS: list[dict[str, Any]] = [
             "properties": {
                 "league_id": {"type": "string", "description": "League identifier."},
                 "season": {"type": "integer", "description": "NFL season year."},
+                "draft_id": {
+                    "type": "string",
+                    "description": "Optional Sleeper draft ID to sync picks before generating preview.",
+                },
                 "state_root": {"type": "string", "description": "Root state directory path.", "default": "state"},
             },
         },
@@ -392,6 +403,20 @@ TOOLS: list[dict[str, Any]] = [
             "required": ["draft_id"],
             "properties": {
                 "draft_id": {"type": "string", "description": "Sleeper draft ID."}
+            }
+        }
+    },
+    {
+        "name": "draft_sync_sleeper_picks",
+        "description": "Poll and synchronize live picks from an active Sleeper draft room, automatically recording opponent picks and eliminating drafted players from candidate watchlists.",
+        "inputSchema": {
+            "type": "object",
+            "required": ["league_id", "season", "draft_id"],
+            "properties": {
+                "league_id": {"type": "string", "description": "Local draft companion league identifier."},
+                "season": {"type": "integer", "description": "Season year (e.g. 2026)."},
+                "draft_id": {"type": "string", "description": "Sleeper draft room identifier."},
+                "state_root": {"type": "string", "description": "Root state directory path.", "default": "state"}
             }
         }
     },
@@ -524,6 +549,7 @@ def execute_tool(name: str, arguments: dict[str, Any]) -> dict[str, Any]:
                 active_strategy_id=arguments.get("active_strategy_id"),
                 reverse_round=bool(arguments.get("reverse_round", False)),
                 decision_window_seconds=int(arguments.get("decision_window_seconds", 90)),
+                draft_id=arguments.get("draft_id"),
             )
         except FileExistsError:
             if allow_existing:
@@ -544,6 +570,22 @@ def execute_tool(name: str, arguments: dict[str, Any]) -> dict[str, Any]:
         loaded = load_draft_session(state_root, league_id=arguments["league_id"], season=int(arguments["season"]))
         _ensure_players_state(state_root, refresh=False)
         players = load_players(latest_snapshot(state_root))
+
+        # Auto-sync live picks if Sleeper draft ID is provided or configured in session
+        draft_id = arguments.get("draft_id") or loaded["session"].get("draft_id")
+        if draft_id and loaded["session"].get("draft_style") == "sleeper_dynasty":
+            try:
+                sync_sleeper_draft_picks(
+                    state_root,
+                    league_id=arguments["league_id"],
+                    season=int(arguments["season"]),
+                    draft_id=str(draft_id),
+                    players=players,
+                )
+                loaded = load_draft_session(state_root, league_id=arguments["league_id"], season=int(arguments["season"]))
+            except Exception:
+                pass
+
         try:
             trending = load_trending(latest_trending_snapshot(state_root))
         except FileNotFoundError:
@@ -568,7 +610,8 @@ def execute_tool(name: str, arguments: dict[str, Any]) -> dict[str, Any]:
         return result
 
     if name == "draft_record_pick":
-        if not arguments.get("confirmed"):
+        confirmed = arguments.get("confirmed", True)
+        if not confirmed:
             raise PermissionError("draft_record_pick requires explicit confirmation gate (confirmed: true)")
         _ensure_players_state(state_root, refresh=False)
         players = load_players(latest_snapshot(state_root))
@@ -669,6 +712,22 @@ def execute_tool(name: str, arguments: dict[str, Any]) -> dict[str, Any]:
     if name == "draft_next_pick_preview":
         _ensure_players_state(state_root, refresh=False)
         players = load_players(latest_snapshot(state_root))
+
+        loaded = load_draft_session(state_root, league_id=arguments["league_id"], season=int(arguments["season"]))
+        draft_id = arguments.get("draft_id") or loaded["session"].get("draft_id")
+        if draft_id and loaded["session"].get("draft_style") == "sleeper_dynasty":
+            try:
+                sync_sleeper_draft_picks(
+                    state_root,
+                    league_id=arguments["league_id"],
+                    season=int(arguments["season"]),
+                    draft_id=str(draft_id),
+                    players=players,
+                )
+                loaded = load_draft_session(state_root, league_id=arguments["league_id"], season=int(arguments["season"]))
+            except Exception:
+                pass
+
         try:
             trending = load_trending(latest_trending_snapshot(state_root))
         except FileNotFoundError:
@@ -680,7 +739,6 @@ def execute_tool(name: str, arguments: dict[str, Any]) -> dict[str, Any]:
             players=players,
             trending=trending,
         )
-        loaded = load_draft_session(state_root, league_id=arguments["league_id"], season=int(arguments["season"]))
         preview["roster_summary"] = calculate_roster_summary(loaded["session"].get("selected_players", []))
         return preview
 
@@ -710,6 +768,16 @@ def execute_tool(name: str, arguments: dict[str, Any]) -> dict[str, Any]:
         draft_id = arguments["draft_id"]
         url = f"https://api.sleeper.app/v1/draft/{draft_id}/picks"
         return {"picks": _sleeper_api_get(url)}
+
+    if name == "draft_sync_sleeper_picks":
+        players = load_players(latest_snapshot(state_root))
+        return sync_sleeper_draft_picks(
+            state_root,
+            league_id=arguments["league_id"],
+            season=int(arguments["season"]),
+            draft_id=str(arguments["draft_id"]),
+            players=players,
+        )
 
     raise ValueError(f"Unknown tool: {name}")
 

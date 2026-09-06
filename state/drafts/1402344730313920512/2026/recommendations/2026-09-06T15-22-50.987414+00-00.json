@@ -1,0 +1,316 @@
+{
+  "ambiguous": [
+    {
+      "input": "DeVonta Smith",
+      "matches": [
+        {
+          "full_name": "Devonta Smith",
+          "position": "CB",
+          "provider_id": "13977",
+          "team": "CAR"
+        },
+        {
+          "full_name": "DeVonta Smith",
+          "position": "WR",
+          "provider_id": "7525",
+          "team": "PHI"
+        }
+      ]
+    }
+  ],
+  "generated_at": "2026-09-06T15:22:50.987414+00:00",
+  "recommendations": [
+    {
+      "bye_week": 10,
+      "bye_week_clash_count": 1,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 20,
+        "bye_week_clash": 0,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Jaylen Waddle",
+      "position": "WR",
+      "provider_id": "7526",
+      "rank": 1,
+      "rationale": "Adds wr value outside the current priority.",
+      "score": 50,
+      "team": "DEN"
+    },
+    {
+      "bye_week": 9,
+      "bye_week_clash_count": 0,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": 0,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "DK Metcalf",
+      "position": "WR",
+      "provider_id": "5846",
+      "rank": 2,
+      "rationale": "Adds wr value outside the current priority.",
+      "score": 40,
+      "team": "PIT"
+    }
+  ],
+  "resolved": [
+    {
+      "active": true,
+      "age": 28,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1997-12-14",
+      "birth_state": null,
+      "college": "Ole Miss",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "LWR",
+      "espn_id": 4047650,
+      "fantasy_data_id": 20875,
+      "fantasy_positions": [
+        "WR"
+      ],
+      "first_name": "DK",
+      "full_name": "DK Metcalf",
+      "gsis_id": " 00-0035640",
+      "hashtag": "#dkmetcalf-NFL-PIT-4",
+      "height": "76",
+      "high_school": "Oxford (MS)",
+      "injury_body_part": "Undisclosed",
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": "Questionable",
+      "kalshi_id": "b7ce0d2b-ad08-4335-896f-242ff44d6204",
+      "last_name": "Metcalf",
+      "metadata": {
+        "channel_id": "1113708722909114368",
+        "genius_id": "1014088",
+        "rookie_year": "2019"
+      },
+      "news_updated": 1788374731698,
+      "number": 4,
+      "oddsjam_id": "08359C9C433B",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "5846",
+      "player_shard": "2",
+      "position": "WR",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "5846",
+      "rotowire_id": 13424,
+      "rotoworld_id": 13940,
+      "search_first_name": "dk",
+      "search_full_name": "dkmetcalf",
+      "search_last_name": "metcalf",
+      "search_rank": 73,
+      "sport": "nfl",
+      "sportradar_id": "754faf0f-40f7-45f0-b23b-6ce990ecaf26",
+      "stats_id": 945633,
+      "status": "Active",
+      "swish_id": 945633,
+      "team": "PIT",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "235",
+      "yahoo_id": 31896,
+      "years_exp": 7
+    },
+    {
+      "active": true,
+      "age": 27,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1998-11-25",
+      "birth_state": null,
+      "college": "Alabama",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "RWR",
+      "espn_id": null,
+      "fantasy_data_id": 22598,
+      "fantasy_positions": [
+        "WR"
+      ],
+      "first_name": "Jaylen",
+      "full_name": "Jaylen Waddle",
+      "gsis_id": null,
+      "hashtag": "#jaylenwaddle-NFL-DEN-17",
+      "height": "70",
+      "high_school": "Episcopal (TX)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "5d5ade2b-3ccd-40d8-b13e-b59d07b91c14",
+      "last_name": "Waddle",
+      "metadata": {
+        "channel_id": "1113708735299088384",
+        "genius_id": "1081537",
+        "rookie_year": "2021"
+      },
+      "news_updated": 1788537921125,
+      "number": 17,
+      "oddsjam_id": "100F669A3109",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "7526",
+      "player_shard": "3",
+      "position": "WR",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "7526",
+      "rotowire_id": 15404,
+      "rotoworld_id": null,
+      "search_first_name": "jaylen",
+      "search_full_name": "jaylenwaddle",
+      "search_last_name": "waddle",
+      "search_rank": 42,
+      "sport": "nfl",
+      "sportradar_id": "0ff9a975-669d-4851-a95d-ab28d9fc29c4",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1125749,
+      "team": "DEN",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "185",
+      "yahoo_id": null,
+      "years_exp": 5
+    }
+  ],
+  "roster_summary": {
+    "by_position": {
+      "DEF": [],
+      "K": [],
+      "OTHER": [],
+      "QB": [
+        {
+          "full_name": "Jalen Hurts",
+          "overall_pick": 33,
+          "position": "QB",
+          "provider_id": "6904",
+          "round": 4,
+          "slot": 8,
+          "team": "PHI"
+        },
+        {
+          "full_name": "Fernando Mendoza",
+          "overall_pick": 73,
+          "position": "QB",
+          "provider_id": "13269",
+          "round": 8,
+          "slot": 8,
+          "team": "LV"
+        }
+      ],
+      "RB": [
+        {
+          "full_name": "Chase Brown",
+          "overall_pick": 28,
+          "position": "RB",
+          "provider_id": "9224",
+          "round": 3,
+          "slot": 8,
+          "team": "CIN"
+        },
+        {
+          "full_name": "Breece Hall",
+          "overall_pick": 48,
+          "position": "RB",
+          "provider_id": "8155",
+          "round": 5,
+          "slot": 8,
+          "team": "NYJ"
+        }
+      ],
+      "TE": [
+        {
+          "full_name": "Harold Fannin",
+          "overall_pick": 53,
+          "position": "TE",
+          "provider_id": "12506",
+          "round": 6,
+          "slot": 8,
+          "team": "CLE"
+        }
+      ],
+      "WR": [
+        {
+          "full_name": "Puka Nacua",
+          "overall_pick": 8,
+          "position": "WR",
+          "provider_id": "9493",
+          "round": 1,
+          "slot": 8,
+          "team": "LAR"
+        },
+        {
+          "full_name": "CeeDee Lamb",
+          "overall_pick": 13,
+          "position": "WR",
+          "provider_id": "6786",
+          "round": 2,
+          "slot": 8,
+          "team": "DAL"
+        },
+        {
+          "full_name": "Marvin Harrison",
+          "overall_pick": 68,
+          "position": "WR",
+          "provider_id": "11628",
+          "round": 7,
+          "slot": 8,
+          "team": "ARI"
+        }
+      ]
+    },
+    "bye_week_conflicts": [],
+    "bye_week_distribution": {
+      "6": [
+        "Chase Brown"
+      ],
+      "10": [
+        "Jalen Hurts"
+      ],
+      "11": [
+        "Puka Nacua",
+        "Harold Fannin"
+      ],
+      "13": [
+        "Breece Hall",
+        "Fernando Mendoza"
+      ],
+      "14": [
+        "CeeDee Lamb",
+        "Marvin Harrison"
+      ]
+    },
+    "needs": [
+      "DEF",
+      "K"
+    ],
+    "position_counts": {
+      "DEF": 0,
+      "K": 0,
+      "QB": 2,
+      "RB": 2,
+      "TE": 1,
+      "WR": 3
+    },
+    "remaining_slots": 6,
+    "target_roster_size": 14,
+    "total_selected": 8
+  },
+  "unknown": [
+    "Kenneth Gainwell"
+  ]
+}

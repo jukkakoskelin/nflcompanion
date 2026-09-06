@@ -1,0 +1,322 @@
+{
+  "ambiguous": [
+    {
+      "input": "Justin Jefferson",
+      "matches": [
+        {
+          "full_name": "Justin Jefferson",
+          "position": "LB",
+          "provider_id": "13524",
+          "team": "CLE"
+        },
+        {
+          "full_name": "Justin Jefferson",
+          "position": "WR",
+          "provider_id": "6794",
+          "team": "MIN"
+        }
+      ]
+    }
+  ],
+  "generated_at": "2026-09-06T15:15:31.657927+00:00",
+  "recommendations": [
+    {
+      "bye_week": 13,
+      "bye_week_clash_count": 0,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 20,
+        "bye_week_clash": 0,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Breece Hall",
+      "position": "RB",
+      "provider_id": "8155",
+      "rank": 1,
+      "rationale": "Adds rb value outside the current priority.",
+      "score": 50,
+      "team": "NYJ"
+    },
+    {
+      "bye_week": 14,
+      "bye_week_clash_count": 0,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 20,
+        "bye_week_clash": 0,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "CeeDee Lamb",
+      "position": "WR",
+      "provider_id": "6786",
+      "rank": 2,
+      "rationale": "Adds wr value outside the current priority.",
+      "score": 50,
+      "team": "DAL"
+    },
+    {
+      "bye_week": 5,
+      "bye_week_clash_count": 0,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 20,
+        "bye_week_clash": 0,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Patrick Mahomes",
+      "position": "QB",
+      "provider_id": "4046",
+      "rank": 3,
+      "rationale": "Adds qb value outside the current priority.",
+      "score": 50,
+      "team": "KC"
+    }
+  ],
+  "resolved": [
+    {
+      "active": true,
+      "age": 27,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1999-04-08",
+      "birth_state": null,
+      "college": "Oklahoma",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "LWR",
+      "espn_id": 4241389,
+      "fantasy_data_id": 21679,
+      "fantasy_positions": [
+        "WR"
+      ],
+      "first_name": "CeeDee",
+      "full_name": "CeeDee Lamb",
+      "gsis_id": null,
+      "hashtag": "#ceedeelamb-NFL-DAL-88",
+      "height": "74",
+      "high_school": "Foster (TX)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "7263bc21-1155-4723-954a-7ed5ee22bc0a",
+      "last_name": "Lamb",
+      "metadata": {
+        "channel_id": "1113708855537201152",
+        "genius_id": "1013871",
+        "injury_override_regular_2025_5": "Out",
+        "injury_override_regular_2025_6": "Out",
+        "rookie_year": "2020"
+      },
+      "news_updated": 1788301822078,
+      "number": 88,
+      "oddsjam_id": "85450367222D",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "6786",
+      "player_shard": "6",
+      "position": "WR",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "6786",
+      "rotowire_id": 14411,
+      "rotoworld_id": null,
+      "search_first_name": "ceedee",
+      "search_full_name": "ceedeelamb",
+      "search_last_name": "lamb",
+      "search_rank": 11,
+      "sport": "nfl",
+      "sportradar_id": "a72ea15b-5199-4101-a300-846e1c655add",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1062020,
+      "team": "DAL",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "198",
+      "yahoo_id": 32687,
+      "years_exp": 6
+    },
+    {
+      "active": true,
+      "age": 30,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1995-09-17",
+      "birth_state": null,
+      "college": "Texas Tech",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "QB",
+      "espn_id": 3139477,
+      "fantasy_data_id": 18890,
+      "fantasy_positions": [
+        "QB"
+      ],
+      "first_name": "Patrick",
+      "full_name": "Patrick Mahomes",
+      "gsis_id": "00-0033873",
+      "hashtag": "#patrickmahomes-NFL-KC-15",
+      "height": "74",
+      "high_school": "Whitehouse (TX)",
+      "injury_body_part": "Knee - ACL",
+      "injury_notes": "Surgery",
+      "injury_start_date": null,
+      "injury_status": "Questionable",
+      "kalshi_id": "5f7253fb-e48e-44ff-9a51-4cd8e1893f68",
+      "last_name": "Mahomes",
+      "metadata": {
+        "channel_id": "1113708747563233280",
+        "genius_id": "998871",
+        "rookie_year": "2017"
+      },
+      "news_updated": 1788027047609,
+      "number": 15,
+      "oddsjam_id": "B671C99CB711",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "4046",
+      "player_shard": "0",
+      "position": "QB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "4046",
+      "rotowire_id": 11839,
+      "rotoworld_id": 12142,
+      "search_first_name": "patrick",
+      "search_full_name": "patrickmahomes",
+      "search_last_name": "mahomes",
+      "search_rank": 38,
+      "sport": "nfl",
+      "sportradar_id": "11cad59d-90dd-449c-a839-dddaba4fe16c",
+      "stats_id": 839031,
+      "status": "Active",
+      "swish_id": 839031,
+      "team": "KC",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "225",
+      "yahoo_id": 30123,
+      "years_exp": 9
+    },
+    {
+      "active": true,
+      "age": 25,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "2001-05-31",
+      "birth_state": null,
+      "college": "Iowa State",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "RB",
+      "espn_id": null,
+      "fantasy_data_id": 22526,
+      "fantasy_positions": [
+        "RB"
+      ],
+      "first_name": "Breece",
+      "full_name": "Breece Hall",
+      "gsis_id": null,
+      "hashtag": "#breecehall-NFL-NYJ-20",
+      "height": "71",
+      "high_school": "Wichita Northwest (KS)",
+      "injury_body_part": "Thigh",
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": "Questionable",
+      "kalshi_id": "f11b8451-d534-4db9-9221-aec35239039b",
+      "last_name": "Hall",
+      "metadata": {
+        "channel_id": "1113708746330107905",
+        "genius_id": "1343369",
+        "rookie_year": "2022"
+      },
+      "news_updated": 1788480615648,
+      "number": 20,
+      "oddsjam_id": "648A95BBCC7F",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "8155",
+      "player_shard": "3",
+      "position": "RB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "8155",
+      "rotowire_id": 15810,
+      "rotoworld_id": null,
+      "search_first_name": "breece",
+      "search_full_name": "breecehall",
+      "search_last_name": "hall",
+      "search_rank": 27,
+      "sport": "nfl",
+      "sportradar_id": "db1053d7-3343-43a3-9aab-8353f10f1221",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1162537,
+      "team": "NYJ",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "217",
+      "yahoo_id": null,
+      "years_exp": 4
+    }
+  ],
+  "roster_summary": {
+    "by_position": {
+      "DEF": [],
+      "K": [],
+      "OTHER": [],
+      "QB": [],
+      "RB": [],
+      "TE": [],
+      "WR": [
+        {
+          "full_name": "Puka Nacua",
+          "overall_pick": 8,
+          "position": "WR",
+          "provider_id": "9493",
+          "round": 1,
+          "slot": 8,
+          "team": "LAR"
+        }
+      ]
+    },
+    "bye_week_conflicts": [],
+    "bye_week_distribution": {
+      "11": [
+        "Puka Nacua"
+      ]
+    },
+    "needs": [
+      "QB",
+      "RB (2 needed)",
+      "WR (1 needed)",
+      "TE",
+      "FLEX (RB/WR/TE)",
+      "DEF",
+      "K"
+    ],
+    "position_counts": {
+      "DEF": 0,
+      "K": 0,
+      "QB": 0,
+      "RB": 0,
+      "TE": 0,
+      "WR": 1
+    },
+    "remaining_slots": 13,
+    "target_roster_size": 14,
+    "total_selected": 1
+  },
+  "unknown": []
+}
