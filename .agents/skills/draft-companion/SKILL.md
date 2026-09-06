@@ -24,9 +24,10 @@ This skill guides the agent during a live fantasy football draft or mock draft, 
    - Synthesize the scorecard: provide one concise sentence of guidance per candidate and highlight factor trade-offs.
    - Never invent player stats, projections, or ranking certainty.
 
-4. **Strict Human Confirmation Gate**:
-   - NEVER record a draft pick automatically merely because it was recommended.
-   - Recording a user pick requires explicit user confirmation (`confirmed: true`).
+4. **Zero-Delay Pick Recording (User Instruction Gate)**:
+   - When the user explicitly states their selection (e.g., *"Picked Nacua"*, *"Pick Lamb"*, *"Taking Hurts"*), **record it immediately** via `draft_record_pick` with `confirmed: true`.
+   - Do NOT ask an extra conversational confirmation question (*"Are you sure?"* or *"Please confirm"*); the user's pick statement is the confirmation.
+   - NEVER record a pick automatically merely because it was recommended without user instruction.
 
 ---
 

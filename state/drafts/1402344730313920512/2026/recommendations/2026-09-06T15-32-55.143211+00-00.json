@@ -1,0 +1,590 @@
+{
+  "ambiguous": [],
+  "generated_at": "2026-09-06T15:32:55.143211+00:00",
+  "recommendations": [
+    {
+      "bye_week": 13,
+      "bye_week_clash_count": 4,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": -5,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 10
+      },
+      "full_name": "Jalen Nailor",
+      "position": "WR",
+      "provider_id": "8180",
+      "rank": 1,
+      "rationale": "Adds wr value outside the current priority; has a positive local trend signal; \u26a0 bye week 13 clashes with 4 existing roster players.",
+      "score": 45,
+      "team": "LV"
+    },
+    {
+      "bye_week": 5,
+      "bye_week_clash_count": 1,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": 0,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Cyrus Allen",
+      "position": "WR",
+      "provider_id": "13413",
+      "rank": 2,
+      "rationale": "Adds wr value outside the current priority.",
+      "score": 40,
+      "team": "KC"
+    },
+    {
+      "bye_week": 11,
+      "bye_week_clash_count": 3,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": -5,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Hunter Henry",
+      "position": "TE",
+      "provider_id": "3214",
+      "rank": 3,
+      "rationale": "Adds te value outside the current priority; \u26a0 bye week 11 clashes with 3 existing roster players.",
+      "score": 35,
+      "team": "NE"
+    },
+    {
+      "bye_week": 6,
+      "bye_week_clash_count": 2,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": -5,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Isaac TeSlaa",
+      "position": "WR",
+      "provider_id": "12535",
+      "rank": 4,
+      "rationale": "Adds wr value outside the current priority; \u26a0 bye week 6 clashes with 2 existing roster players.",
+      "score": 35,
+      "team": "DET"
+    }
+  ],
+  "resolved": [
+    {
+      "active": true,
+      "age": 31,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1994-12-07",
+      "birth_state": null,
+      "college": "Arkansas",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "TE",
+      "espn_id": 3046439,
+      "fantasy_data_id": 17975,
+      "fantasy_positions": [
+        "TE"
+      ],
+      "first_name": "Hunter",
+      "full_name": "Hunter Henry",
+      "gsis_id": "00-0033090",
+      "hashtag": "#hunterhenry-NFL-NE-85",
+      "height": "77",
+      "high_school": "Pulaski (AR)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "7beb837b-5463-43cb-a483-ada79dcd24ee",
+      "last_name": "Henry",
+      "metadata": {
+        "channel_id": "1113708792316456960",
+        "genius_id": "941690",
+        "rookie_year": "2016"
+      },
+      "news_updated": 1788279920782,
+      "number": 85,
+      "oddsjam_id": "A615AF6BB3D2",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "3214",
+      "player_shard": "0",
+      "position": "TE",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "3214",
+      "rotowire_id": 10735,
+      "rotoworld_id": 11299,
+      "search_first_name": "hunter",
+      "search_full_name": "hunterhenry",
+      "search_last_name": "henry",
+      "search_rank": 92,
+      "sport": "nfl",
+      "sportradar_id": "705899da-3c20-4bc3-b5d0-2e6e40655131",
+      "stats_id": 744425,
+      "status": "Active",
+      "swish_id": 744425,
+      "team": "NE",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "249",
+      "yahoo_id": 29269,
+      "years_exp": 10
+    },
+    {
+      "active": true,
+      "age": 23,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "2003-02-11",
+      "birth_state": null,
+      "college": "Cincinnati",
+      "competitions": [],
+      "depth_chart_order": 4,
+      "depth_chart_position": "SWR",
+      "espn_id": null,
+      "fantasy_data_id": 26979,
+      "fantasy_positions": [
+        "WR"
+      ],
+      "first_name": "Cyrus",
+      "full_name": "Cyrus Allen",
+      "gsis_id": null,
+      "hashtag": "#cyrusallen-NFL-KC-13",
+      "height": "71",
+      "high_school": "Landry\u2013Walker (LA)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "65e9a69e-fc5c-4b86-aa3b-a1b061dbb191",
+      "last_name": "Allen",
+      "metadata": {
+        "channel_id": "1353866054744436736",
+        "genius_id": "1504885",
+        "rookie_year": "2026",
+        "source_id": "5b175e40-9516-11ec-a8cc-21afd89fadd3"
+      },
+      "news_updated": 1788360629767,
+      "number": 13,
+      "oddsjam_id": null,
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "13413",
+      "player_shard": "8",
+      "position": "WR",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "13413",
+      "rotowire_id": 19631,
+      "rotoworld_id": null,
+      "search_first_name": "cyrus",
+      "search_full_name": "cyrusallen",
+      "search_last_name": "allen",
+      "search_rank": 177,
+      "sport": "nfl",
+      "sportradar_id": "a07ac8bd-3929-4e48-b3c4-3ddeecd09dca",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": null,
+      "team": "KC",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "180",
+      "yahoo_id": null,
+      "years_exp": 0
+    },
+    {
+      "active": true,
+      "age": 24,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "2002-02-20",
+      "birth_state": null,
+      "college": "Arkansas",
+      "competitions": [],
+      "depth_chart_order": 3,
+      "depth_chart_position": "LWR",
+      "espn_id": null,
+      "fantasy_data_id": 26101,
+      "fantasy_positions": [
+        "WR"
+      ],
+      "first_name": "Isaac",
+      "full_name": "Isaac TeSlaa",
+      "gsis_id": null,
+      "hashtag": "#isaacteslaa-NFL-DET-18",
+      "height": "76",
+      "high_school": "Unity Christian (MI)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "968f7285-848c-4c8e-bb66-a349b3eaac30",
+      "last_name": "TeSlaa",
+      "metadata": {
+        "channel_id": "1221700203367636992",
+        "genius_id": "1485777",
+        "rookie_year": "2025",
+        "source_id": "11ee2210-a502-11ed-a01a-11e1dd6caf1d"
+      },
+      "news_updated": 1788378632137,
+      "number": 18,
+      "oddsjam_id": "F66FF1523BCC63B8",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "12535",
+      "player_shard": "1",
+      "position": "WR",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "12535",
+      "rotowire_id": 18642,
+      "rotoworld_id": null,
+      "search_first_name": "isaac",
+      "search_full_name": "isaacteslaa",
+      "search_last_name": "teslaa",
+      "search_rank": 184,
+      "sport": "nfl",
+      "sportradar_id": "41e5e4a9-f04c-462e-a1d1-e35a8115b974",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": null,
+      "team": "DET",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "214",
+      "yahoo_id": null,
+      "years_exp": 1
+    },
+    {
+      "active": true,
+      "age": 27,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1999-03-02",
+      "birth_state": null,
+      "college": "Michigan State",
+      "competitions": [],
+      "depth_chart_order": 2,
+      "depth_chart_position": "SWR",
+      "espn_id": null,
+      "fantasy_data_id": 23368,
+      "fantasy_positions": [
+        "WR"
+      ],
+      "first_name": "Jalen",
+      "full_name": "Jalen Nailor",
+      "gsis_id": null,
+      "hashtag": "#jalennailor-NFL-LV-9",
+      "height": "72",
+      "high_school": "Bishop Gorman (NV)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "5cf8a98b-2ee4-4ffc-971e-2e6c4c34ff00",
+      "last_name": "Nailor",
+      "metadata": {
+        "channel_id": "1113708708027723776",
+        "genius_id": "1074884",
+        "rookie_year": "2022"
+      },
+      "news_updated": 1788550822308,
+      "number": 9,
+      "oddsjam_id": "FB45C9495D2B",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "8180",
+      "player_shard": "5",
+      "position": "WR",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "8180",
+      "rotowire_id": 16025,
+      "rotoworld_id": null,
+      "search_first_name": "jalen",
+      "search_full_name": "jalennailor",
+      "search_last_name": "nailor",
+      "search_rank": 167,
+      "sport": "nfl",
+      "sportradar_id": "3f9e3634-54d7-46a4-bf26-67274500c907",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1126817,
+      "team": "LV",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "190",
+      "yahoo_id": null,
+      "years_exp": 4
+    }
+  ],
+  "roster_summary": {
+    "by_position": {
+      "DEF": [],
+      "K": [],
+      "OTHER": [],
+      "QB": [
+        {
+          "full_name": "Jalen Hurts",
+          "overall_pick": 33,
+          "position": "QB",
+          "provider_id": "6904",
+          "round": 4,
+          "slot": 8,
+          "team": "PHI"
+        },
+        {
+          "full_name": "Fernando Mendoza",
+          "overall_pick": 73,
+          "position": "QB",
+          "provider_id": "13269",
+          "round": 8,
+          "slot": 8,
+          "team": "LV"
+        },
+        {
+          "full_name": "Baker Mayfield",
+          "overall_pick": 88,
+          "position": "QB",
+          "provider_id": "4892",
+          "round": 9,
+          "slot": 8,
+          "team": "TB"
+        },
+        {
+          "full_name": "Ty Simpson",
+          "overall_pick": 128,
+          "position": "QB",
+          "provider_id": "13275",
+          "round": 13,
+          "slot": 8,
+          "team": "LAR"
+        }
+      ],
+      "RB": [
+        {
+          "full_name": "Chase Brown",
+          "overall_pick": 28,
+          "position": "RB",
+          "provider_id": "9224",
+          "round": 3,
+          "slot": 8,
+          "team": "CIN"
+        },
+        {
+          "full_name": "Breece Hall",
+          "overall_pick": 48,
+          "position": "RB",
+          "provider_id": "8155",
+          "round": 5,
+          "slot": 8,
+          "team": "NYJ"
+        },
+        {
+          "full_name": "Jaylen Warren",
+          "overall_pick": 93,
+          "position": "RB",
+          "provider_id": "8228",
+          "round": 10,
+          "slot": 8,
+          "team": "PIT"
+        },
+        {
+          "full_name": "Braelon Allen",
+          "overall_pick": 153,
+          "position": "RB",
+          "provider_id": "11576",
+          "round": 16,
+          "slot": 8,
+          "team": "NYJ"
+        },
+        {
+          "full_name": "Kaelon Black",
+          "overall_pick": 168,
+          "position": "RB",
+          "provider_id": "13414",
+          "round": 17,
+          "slot": 8,
+          "team": "SF"
+        }
+      ],
+      "TE": [
+        {
+          "full_name": "Harold Fannin",
+          "overall_pick": 53,
+          "position": "TE",
+          "provider_id": "12506",
+          "round": 6,
+          "slot": 8,
+          "team": "CLE"
+        },
+        {
+          "full_name": "George Kittle",
+          "overall_pick": 108,
+          "position": "TE",
+          "provider_id": "4217",
+          "round": 11,
+          "slot": 8,
+          "team": "SF"
+        }
+      ],
+      "WR": [
+        {
+          "full_name": "Puka Nacua",
+          "overall_pick": 8,
+          "position": "WR",
+          "provider_id": "9493",
+          "round": 1,
+          "slot": 8,
+          "team": "LAR"
+        },
+        {
+          "full_name": "CeeDee Lamb",
+          "overall_pick": 13,
+          "position": "WR",
+          "provider_id": "6786",
+          "round": 2,
+          "slot": 8,
+          "team": "DAL"
+        },
+        {
+          "full_name": "Marvin Harrison",
+          "overall_pick": 68,
+          "position": "WR",
+          "provider_id": "11628",
+          "round": 7,
+          "slot": 8,
+          "team": "ARI"
+        },
+        {
+          "full_name": "Quentin Johnston",
+          "overall_pick": 113,
+          "position": "WR",
+          "provider_id": "9754",
+          "round": 12,
+          "slot": 8,
+          "team": "LAC"
+        },
+        {
+          "full_name": "Jalen Coker",
+          "overall_pick": 133,
+          "position": "WR",
+          "provider_id": "11646",
+          "round": 14,
+          "slot": 8,
+          "team": "CAR"
+        },
+        {
+          "full_name": "Chris Bell",
+          "overall_pick": 148,
+          "position": "WR",
+          "provider_id": "13311",
+          "round": 15,
+          "slot": 8,
+          "team": "MIA"
+        },
+        {
+          "full_name": "Ja'Kobi Lane",
+          "overall_pick": 173,
+          "position": "WR",
+          "provider_id": "13293",
+          "round": 18,
+          "slot": 8,
+          "team": "BAL"
+        }
+      ]
+    },
+    "bye_week_conflicts": [
+      {
+        "count": 3,
+        "players": [
+          "Puka Nacua",
+          "Harold Fannin",
+          "Ty Simpson"
+        ],
+        "week": 11
+      },
+      {
+        "count": 4,
+        "players": [
+          "Breece Hall",
+          "Fernando Mendoza",
+          "Braelon Allen",
+          "Ja'Kobi Lane"
+        ],
+        "week": 13
+      }
+    ],
+    "bye_week_distribution": {
+      "5": [
+        "Jalen Coker"
+      ],
+      "6": [
+        "Chase Brown",
+        "Chris Bell"
+      ],
+      "7": [
+        "Quentin Johnston"
+      ],
+      "8": [
+        "George Kittle",
+        "Kaelon Black"
+      ],
+      "9": [
+        "Jaylen Warren"
+      ],
+      "10": [
+        "Jalen Hurts",
+        "Baker Mayfield"
+      ],
+      "11": [
+        "Puka Nacua",
+        "Harold Fannin",
+        "Ty Simpson"
+      ],
+      "13": [
+        "Breece Hall",
+        "Fernando Mendoza",
+        "Braelon Allen",
+        "Ja'Kobi Lane"
+      ],
+      "14": [
+        "CeeDee Lamb",
+        "Marvin Harrison"
+      ]
+    },
+    "needs": [
+      "DEF",
+      "K"
+    ],
+    "position_counts": {
+      "DEF": 0,
+      "K": 0,
+      "QB": 4,
+      "RB": 5,
+      "TE": 2,
+      "WR": 7
+    },
+    "remaining_slots": 0,
+    "target_roster_size": 14,
+    "total_selected": 18
+  },
+  "unknown": []
+}

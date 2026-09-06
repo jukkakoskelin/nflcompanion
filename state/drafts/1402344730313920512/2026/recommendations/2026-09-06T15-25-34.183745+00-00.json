@@ -1,0 +1,484 @@
+{
+  "ambiguous": [],
+  "generated_at": "2026-09-06T15:25:34.183745+00:00",
+  "recommendations": [
+    {
+      "bye_week": 5,
+      "bye_week_clash_count": 0,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": 0,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Chuba Hubbard",
+      "position": "RB",
+      "provider_id": "7594",
+      "rank": 1,
+      "rationale": "Adds rb value outside the current priority.",
+      "score": 40,
+      "team": "CAR"
+    },
+    {
+      "bye_week": 8,
+      "bye_week_clash_count": 0,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": 0,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "George Kittle",
+      "position": "TE",
+      "provider_id": "4217",
+      "rank": 2,
+      "rationale": "Adds te value outside the current priority.",
+      "score": 40,
+      "team": "SF"
+    },
+    {
+      "bye_week": 7,
+      "bye_week_clash_count": 0,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": 0,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Quentin Johnston",
+      "position": "WR",
+      "provider_id": "9754",
+      "rank": 3,
+      "rationale": "Adds wr value outside the current priority.",
+      "score": 40,
+      "team": "LAC"
+    },
+    {
+      "bye_week": 13,
+      "bye_week_clash_count": 2,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": -5,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Omar Cooper",
+      "position": "WR",
+      "provider_id": "13276",
+      "rank": 4,
+      "rationale": "Adds wr value outside the current priority; \u26a0 bye week 13 clashes with 2 existing roster players.",
+      "score": 35,
+      "team": "NYJ"
+    }
+  ],
+  "resolved": [
+    {
+      "active": true,
+      "age": 27,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1999-06-11",
+      "birth_state": null,
+      "college": "Oklahoma State",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "RB",
+      "espn_id": null,
+      "fantasy_data_id": 21691,
+      "fantasy_positions": [
+        "RB"
+      ],
+      "first_name": "Chuba",
+      "full_name": "Chuba Hubbard",
+      "gsis_id": null,
+      "hashtag": "#chubahubbard-NFL-CAR-30",
+      "height": "73",
+      "high_school": "Bev Facey (CAN)",
+      "injury_body_part": "Hamstring",
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": "Questionable",
+      "kalshi_id": "60a7f35f-273a-4437-b6b1-83c00b36866b",
+      "last_name": "Hubbard",
+      "metadata": {
+        "channel_id": "1113708881755795456",
+        "genius_id": "1013681",
+        "injury_override_regular_2025_5": "Out",
+        "injury_override_regular_2025_6": "Out",
+        "rookie_year": "2021"
+      },
+      "news_updated": 1788366030517,
+      "number": 30,
+      "oddsjam_id": "0A8CB704FEBB",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "7594",
+      "player_shard": "1",
+      "position": "RB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "7594",
+      "rotowire_id": 15242,
+      "rotoworld_id": null,
+      "search_first_name": "chuba",
+      "search_full_name": "chubahubbard",
+      "search_last_name": "hubbard",
+      "search_rank": 66,
+      "sport": "nfl",
+      "sportradar_id": "32205e74-b23f-420a-b312-465b29260745",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1062047,
+      "team": "CAR",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "210",
+      "yahoo_id": null,
+      "years_exp": 5
+    },
+    {
+      "active": true,
+      "age": 22,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "2003-12-14",
+      "birth_state": null,
+      "college": "Indiana",
+      "competitions": [],
+      "depth_chart_order": 3,
+      "depth_chart_position": "SWR",
+      "espn_id": null,
+      "fantasy_data_id": 26760,
+      "fantasy_positions": [
+        "WR"
+      ],
+      "first_name": "Omar",
+      "full_name": "Omar Cooper",
+      "gsis_id": null,
+      "hashtag": "#omarcooper-NFL-NYJ-83",
+      "height": "72",
+      "high_school": "Lawrence North (IN)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "5bd575ca-6a69-4377-9880-0c8283684284",
+      "last_name": "Cooper",
+      "metadata": {
+        "channel_id": "1353246913855512576",
+        "rookie_year": "2026",
+        "source_id": "6975fac0-86cd-11ec-91b7-bfe197069085"
+      },
+      "news_updated": 1788490217169,
+      "number": 83,
+      "oddsjam_id": null,
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "13276",
+      "player_shard": "9",
+      "position": "WR",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "13276",
+      "rotowire_id": 19314,
+      "rotoworld_id": null,
+      "search_first_name": "omar",
+      "search_full_name": "omarcooper",
+      "search_last_name": "cooper",
+      "search_rank": 151,
+      "sport": "nfl",
+      "sportradar_id": "72594204-b4a9-4f08-907d-029d8a425ddb",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": null,
+      "team": "NYJ",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "199",
+      "yahoo_id": null,
+      "years_exp": 0
+    },
+    {
+      "active": true,
+      "age": 32,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1993-10-09",
+      "birth_state": null,
+      "college": "Iowa",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "TE",
+      "espn_id": 3040151,
+      "fantasy_data_id": 19063,
+      "fantasy_positions": [
+        "TE"
+      ],
+      "first_name": "George",
+      "full_name": "George Kittle",
+      "gsis_id": "00-0033288",
+      "hashtag": "#georgekittle-NFL-SF-85",
+      "height": "76",
+      "high_school": "Norman (OK)",
+      "injury_body_part": "Achilles",
+      "injury_notes": "Surgery",
+      "injury_start_date": null,
+      "injury_status": "Questionable",
+      "kalshi_id": "ab6f0ec4-262b-4403-a26e-c061735f98af",
+      "last_name": "Kittle",
+      "metadata": {
+        "channel_id": "1113708874457706496",
+        "genius_id": "999472",
+        "rookie_year": "2017"
+      },
+      "news_updated": 1788463206738,
+      "number": 85,
+      "oddsjam_id": "42D0413964E3",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "4217",
+      "player_shard": "3",
+      "position": "TE",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "4217",
+      "rotowire_id": 11892,
+      "rotoworld_id": 12276,
+      "search_first_name": "george",
+      "search_full_name": "georgekittle",
+      "search_last_name": "kittle",
+      "search_rank": 84,
+      "sport": "nfl",
+      "sportradar_id": "2ada91b0-036e-454f-83c3-6d939ff584a9",
+      "stats_id": 733672,
+      "status": "Active",
+      "swish_id": 733672,
+      "team": "SF",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "250",
+      "yahoo_id": 30259,
+      "years_exp": 9
+    },
+    {
+      "active": true,
+      "age": 24,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "2001-09-06",
+      "birth_state": null,
+      "college": "TCU",
+      "competitions": [],
+      "depth_chart_order": 2,
+      "depth_chart_position": "LWR",
+      "espn_id": null,
+      "fantasy_data_id": 24226,
+      "fantasy_positions": [
+        "WR"
+      ],
+      "first_name": "Quentin",
+      "full_name": "Quentin Johnston",
+      "gsis_id": null,
+      "hashtag": "#quentinjohnston-NFL-LAC-1",
+      "height": "74",
+      "high_school": "Temple (TX)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "3c0a5c8a-333b-4fc8-9bea-c53de6508478",
+      "last_name": "Johnston",
+      "metadata": {
+        "channel_id": "1113708694329126912",
+        "genius_id": "1398594",
+        "rookie_year": "2023"
+      },
+      "news_updated": 1788553522367,
+      "number": 1,
+      "oddsjam_id": "4756EE52951F",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "9754",
+      "player_shard": "4",
+      "position": "WR",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "9754",
+      "rotowire_id": 16899,
+      "rotoworld_id": null,
+      "search_first_name": "quentin",
+      "search_full_name": "quentinjohnston",
+      "search_last_name": "johnston",
+      "search_rank": 102,
+      "sport": "nfl",
+      "sportradar_id": "e648bc98-bc81-44d0-8d4b-b9223c497ff4",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1213865,
+      "team": "LAC",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "208",
+      "yahoo_id": null,
+      "years_exp": 3
+    }
+  ],
+  "roster_summary": {
+    "by_position": {
+      "DEF": [],
+      "K": [],
+      "OTHER": [],
+      "QB": [
+        {
+          "full_name": "Jalen Hurts",
+          "overall_pick": 33,
+          "position": "QB",
+          "provider_id": "6904",
+          "round": 4,
+          "slot": 8,
+          "team": "PHI"
+        },
+        {
+          "full_name": "Fernando Mendoza",
+          "overall_pick": 73,
+          "position": "QB",
+          "provider_id": "13269",
+          "round": 8,
+          "slot": 8,
+          "team": "LV"
+        },
+        {
+          "full_name": "Baker Mayfield",
+          "overall_pick": 88,
+          "position": "QB",
+          "provider_id": "4892",
+          "round": 9,
+          "slot": 8,
+          "team": "TB"
+        }
+      ],
+      "RB": [
+        {
+          "full_name": "Chase Brown",
+          "overall_pick": 28,
+          "position": "RB",
+          "provider_id": "9224",
+          "round": 3,
+          "slot": 8,
+          "team": "CIN"
+        },
+        {
+          "full_name": "Breece Hall",
+          "overall_pick": 48,
+          "position": "RB",
+          "provider_id": "8155",
+          "round": 5,
+          "slot": 8,
+          "team": "NYJ"
+        },
+        {
+          "full_name": "Jaylen Warren",
+          "overall_pick": 93,
+          "position": "RB",
+          "provider_id": "8228",
+          "round": 10,
+          "slot": 8,
+          "team": "PIT"
+        }
+      ],
+      "TE": [
+        {
+          "full_name": "Harold Fannin",
+          "overall_pick": 53,
+          "position": "TE",
+          "provider_id": "12506",
+          "round": 6,
+          "slot": 8,
+          "team": "CLE"
+        }
+      ],
+      "WR": [
+        {
+          "full_name": "Puka Nacua",
+          "overall_pick": 8,
+          "position": "WR",
+          "provider_id": "9493",
+          "round": 1,
+          "slot": 8,
+          "team": "LAR"
+        },
+        {
+          "full_name": "CeeDee Lamb",
+          "overall_pick": 13,
+          "position": "WR",
+          "provider_id": "6786",
+          "round": 2,
+          "slot": 8,
+          "team": "DAL"
+        },
+        {
+          "full_name": "Marvin Harrison",
+          "overall_pick": 68,
+          "position": "WR",
+          "provider_id": "11628",
+          "round": 7,
+          "slot": 8,
+          "team": "ARI"
+        }
+      ]
+    },
+    "bye_week_conflicts": [],
+    "bye_week_distribution": {
+      "6": [
+        "Chase Brown"
+      ],
+      "9": [
+        "Jaylen Warren"
+      ],
+      "10": [
+        "Jalen Hurts",
+        "Baker Mayfield"
+      ],
+      "11": [
+        "Puka Nacua",
+        "Harold Fannin"
+      ],
+      "13": [
+        "Breece Hall",
+        "Fernando Mendoza"
+      ],
+      "14": [
+        "CeeDee Lamb",
+        "Marvin Harrison"
+      ]
+    },
+    "needs": [
+      "DEF",
+      "K"
+    ],
+    "position_counts": {
+      "DEF": 0,
+      "K": 0,
+      "QB": 3,
+      "RB": 3,
+      "TE": 1,
+      "WR": 3
+    },
+    "remaining_slots": 4,
+    "target_roster_size": 14,
+    "total_selected": 10
+  },
+  "unknown": []
+}

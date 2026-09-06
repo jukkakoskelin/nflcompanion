@@ -266,6 +266,7 @@ def create_draft_session(
     active_strategy_id: str | None = None,
     reverse_round: bool = False,
     decision_window_seconds: int = 90,
+    draft_id: str | None = None,
 ) -> dict[str, Any]:
     """Create the durable session and its initial living strategy.
 
@@ -298,6 +299,7 @@ def create_draft_session(
         "reverse_round": bool(reverse_round),
         "decision_window_seconds": int(decision_window_seconds),
         "active_strategy_id": active_strategy_id,
+        "draft_id": str(draft_id) if draft_id else None,
         "status": "planned",
         "created_at": created_at,
         "updated_at": created_at,
@@ -462,6 +464,14 @@ def recommend_candidates(
         bye_clash_count = roster_bye_counts.get(candidate_bye, 0) if candidate_bye else 0
         bye_penalty = -5 if bye_clash_count >= 2 else 0
 
+        # Also detect positional bye overlap (same position on user's existing roster)
+        same_pos_bye_overlaps = [
+            str(item.get("full_name") or item.get("provider_id"))
+            for item in (selected_players or [])
+            if str(item.get("position", "")).upper() == position
+            and get_bye_week(str(item.get("team", "")).upper()) == candidate_bye
+        ]
+
         factors = {
             "positional_need": need,
             "strategy_fit": strategy_fit,
@@ -485,6 +495,11 @@ def recommend_candidates(
                 f"⚠ bye week {candidate_bye} clashes with {bye_clash_count} "
                 f"existing roster player{'s' if bye_clash_count != 1 else ''}"
             )
+        elif same_pos_bye_overlaps:
+            names = ", ".join(same_pos_bye_overlaps)
+            reasons.append(f"shares bye week {candidate_bye} with {names} ({position})")
+        elif candidate_bye:
+            reasons.append(f"week {candidate_bye} bye")
         recommendations.append(
             {
                 "provider_id": provider_id,
@@ -551,7 +566,7 @@ def record_pick(
     season: int,
     provider_id: str,
     player: dict[str, Any] | None = None,
-    confirmed: bool,
+    confirmed: bool = True,
     idempotency_key: str | None = None,
     overall_pick: int | None = None,
     all_players: Iterable[dict[str, Any]] | None = None,
@@ -654,6 +669,61 @@ def record_observed_pick(
     session["updated_at"] = event["created_at"]
     _write_session_markdown(directory / "session.md", session)
     _write_living_strategy(directory / "living-strategy.md", session, loaded["living_strategy"], events + [event])
+    return deepcopy(session)
+
+
+def batch_record_observed_picks(
+    state_root: Path,
+    *,
+    league_id: str,
+    season: int,
+    picks: list[dict[str, Any]],
+    all_players: Iterable[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
+    """Append multiple opponent picks in a single atomic pass without adding to user's roster."""
+    loaded = load_draft_session(state_root, league_id=league_id, season=season)
+    session = loaded["session"]
+    directory = _session_dir(state_root, league_id, season)
+    events = _read_events(directory / "events.md")
+
+    player_lookup: dict[str, dict[str, Any]] = {}
+    if all_players:
+        for p in all_players:
+            pid = str(p.get("provider_id") or p.get("player_id") or "")
+            if pid:
+                player_lookup[pid] = p
+
+    new_events = []
+    for item in picks:
+        provider_id = str(item.get("provider_id") or "")
+        overall_pick = int(item.get("overall_pick") or 0)
+        player_info = deepcopy(item.get("player") or item)
+        if provider_id in player_lookup and (not player_info.get("full_name") or not player_info.get("position")):
+            lp = player_lookup[provider_id]
+            for k in ("full_name", "position", "team"):
+                if not player_info.get(k) and lp.get(k):
+                    player_info[k] = lp[k]
+
+        details = pick_for_overall(overall_pick, session["team_count"], reverse_round=session["reverse_round"])
+        event = {
+            "event": "pick_observed",
+            "event_id": str(uuid.uuid4()),
+            "created_at": _now(),
+            "league_id": str(league_id),
+            "season": int(season),
+            "player": {**player_info, "provider_id": provider_id, **details},
+            "source": "import",
+        }
+        new_events.append(event)
+        session["current_overall_pick"] = max(int(session["current_overall_pick"]), overall_pick)
+        session["observed_picks"].append(event["player"])
+        session["updated_at"] = event["created_at"]
+
+    for event in new_events:
+        _append_event(directory / "events.md", event)
+
+    _write_session_markdown(directory / "session.md", session)
+    _write_living_strategy(directory / "living-strategy.md", session, loaded["living_strategy"], events + new_events)
     return deepcopy(session)
 
 
@@ -789,15 +859,22 @@ def next_pick_preview(
             }
         )
     watch_list.sort(key=lambda item: (-item["watch_score"], item["full_name"] or ""))
-    return {
+    roster_summary = calculate_roster_summary(
+        session.get("selected_players", []),
+        draft_style=session.get("draft_style", "espn_snake"),
+    )
+    result = {
         "next_pick": next_pick,
         "picks_until_user_turn": next_pick["overall_pick"] - session["current_overall_pick"],
         "recommended_positions": priorities,
         "watch_list": watch_list[:12],
         "availability_basis": "local player search rank and trending add snapshot; estimate only",
         "living_strategy": loaded["living_strategy"],
+        "roster_summary": roster_summary,
+        "bye_week_distribution": roster_summary.get("bye_week_distribution", {}),
+        "bye_week_conflicts": roster_summary.get("bye_week_conflicts", []),
     }
-    
+
     if session.get("draft_style") == "sleeper_dynasty" and next_pick.get("round", 0) >= 15:
         result["rookie_suggestions"] = recommend_rookies(players or [], drafted_ids, trend_counts)
 
@@ -806,6 +883,7 @@ def next_pick_preview(
 
 __all__ = [
     "NFL_BYE_WEEKS_2026",
+    "batch_record_observed_picks",
     "calculate_roster_summary",
     "create_draft_session",
     "get_bye_week",

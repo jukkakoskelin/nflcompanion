@@ -5,7 +5,7 @@
 - Install the package with `python -m pip install -e .` before running tests.
 - Run tests with `python -m unittest discover -s tests -v`.
 - Keep generated player snapshots under `state/players/` out of commits.
-- Never record or commit a draft pick without explicit user confirmation.
+- Never record or commit a draft pick without explicit user instruction. When the user explicitly states their pick (e.g. 'Picked X' or 'Take Y'), record it immediately without asking for a secondary confirmation.
 
 ## Draft Strategy Creation
 
@@ -17,9 +17,9 @@
 
 ## Live Draft Companion
 
-- All draft state interaction during live drafts and mock drafts must execute via native MCP tools (`draft_get_session`, `draft_init_session`, `draft_recommend_candidates`, `draft_record_pick`, `draft_record_observed_pick`, `draft_next_pick_preview`, `draft_update_strategy`). Do not invoke terminal/shell commands (`scripts/draft_companion.py`) during active sessions.
+- All draft state interaction during live drafts and mock drafts must execute via native MCP tools (`draft_get_session`, `draft_init_session`, `draft_recommend_candidates`, `draft_record_pick`, `draft_record_observed_pick`, `draft_next_pick_preview`, `draft_update_strategy`, `draft_sync_sleeper_picks`). Do not invoke terminal/shell commands (`scripts/draft_companion.py`) during active sessions.
 - Fast lane responses (candidate recommendations) must execute within a 15-second budget (targeting <5 seconds) using local snapshot data without blocking on network refreshes.
 - Candidate scoring is deterministic; provide one-sentence rationales and cite local evidence.
 - Do not invent player data or ranking certainty.
-- Always require explicit confirmation (`confirmed: true`) before recording a draft selection.
+- When the user states who they picked or want to pick, record it immediately via `draft_record_pick` (`confirmed: true`). Do not prompt for an extra confirmation round-trip. Never record unconfirmed picks merely because they were recommended.
 

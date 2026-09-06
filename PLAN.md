@@ -1,6 +1,6 @@
 # NFL Fantasy Draft Companion Plan
 
-Status: in progress - Added bye-week coverage for roster summaries and recommendation clash warnings; 96 tests passing.
+Status: in progress - Streamlined live pick recording without repetitive confirmation prompts, added draft_id session binding and automatic Sleeper pick synchronization to eliminate already-drafted candidates; 101 tests passing.
 Priority: draft-ready for the Sleeper dynasty startup mock and live drafts
 
 ## Product goal
@@ -804,3 +804,42 @@ An alias map (`_TEAM_CODE_ALIASES`) resolves ESPN/legacy codes (`ARZ`, `BLT`,
   lookups, alias mapping, case insensitivity, roster distribution, conflict
   flagging, recommendation bye-week fields, clash penalties, and no-penalty
   baseline.
+
+## Real-time Sleeper Sync & Bye-Week Hardening (2026-09-06)
+
+Added real-time pick synchronization for active Sleeper draft rooms, atomic batch opponent pick ingestion, and enhanced proactive bye-week candidate alerts.
+
+### Changes
+- `sleeper_sync.py`:
+  - Added `fetch_sleeper_draft_picks(draft_id)` to hit Sleeper's open unauthenticated `/draft/{draft_id}/picks` endpoint.
+  - Added `sync_sleeper_draft_picks(...)` to compare live picks against the session, segregate opponent picks from user picks, automatically record new opponent picks as observed picks (eliminating them from recommendations and watchlists), and return detected user picks for confirmation.
+- `draft_companion.py`:
+  - Added `batch_record_observed_picks` for atomic batch insertion of opponent picks.
+  - Enhanced `recommend_candidates` to explicitly detect and flag positional bye-week overlaps (same position sharing a bye week) in candidate rationales, as well as multi-player clashes.
+  - Enriched `next_pick_preview` with `roster_summary`, `bye_week_distribution`, and `bye_week_conflicts`.
+- `mcp_server.py`:
+  - Registered `draft_sync_sleeper_picks` MCP tool.
+- `scripts/draft_companion.py`:
+  - Added `sync-sleeper` and `observe-batch` CLI commands.
+- `tests/test_sleeper_sync.py`:
+  - New test suite covering raw pick synchronization, opponent vs. user pick segregation, idempotency, and atomic batch pick recording.
+
+## Live Pick Confirmation Streamlining & Auto-Sync (2026-09-06)
+
+Removed repetitive agent confirmation gates during active live drafting and enabled auto-syncing of opponent picks into recommendations and previews to prevent recommending already-drafted players.
+
+### Changes
+- `draft_companion.py`:
+  - `create_draft_session`: Added optional `draft_id` parameter to persist platform room ID directly in session front matter.
+  - `record_pick`: Changed `confirmed: bool = True` default so picks declared by the user record immediately without an extra confirmation turn.
+- `mcp_server.py`:
+  - `draft_init_session`: Accepted optional `draft_id`.
+  - `draft_record_pick`: Made `confirmed` optional with default `True`.
+  - `draft_recommend_candidates` & `draft_next_pick_preview`: Automatically query and sync Sleeper draft picks when `draft_id` is set (or passed in) for `sleeper_dynasty`, recording opponent picks into `observed_picks` and excluding drafted players from candidate scores and watchlists before generating responses.
+  - Re-exported all 15 updated MCP tool schemas to `C:\Users\jukka\.gemini\antigravity-ide\mcp\nflcompanion/`.
+- `AGENTS.md`, `.github/copilot-instructions.md`, `.agents/skills/draft-companion/SKILL.md`:
+  - Removed strict instructions requiring agents to prompt users for pick confirmation when the user says "Picked X", mandating immediate execution.
+- `tests/test_mcp_server.py`:
+  - Added unit test verifying `draft_record_pick` defaults to confirmed.
+  - Added unit test verifying `draft_recommend_candidates` automatically synchronizes draft picks and removes opponent-drafted players from recommendation outputs.
+

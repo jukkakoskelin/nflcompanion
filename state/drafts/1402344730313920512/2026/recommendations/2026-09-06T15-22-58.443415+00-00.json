@@ -1,0 +1,442 @@
+{
+  "ambiguous": [],
+  "generated_at": "2026-09-06T15:22:58.443415+00:00",
+  "recommendations": [
+    {
+      "bye_week": 7,
+      "bye_week_clash_count": 0,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": 0,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Brian Thomas",
+      "position": "WR",
+      "provider_id": "11631",
+      "rank": 1,
+      "rationale": "Adds wr value outside the current priority.",
+      "score": 40,
+      "team": "JAX"
+    },
+    {
+      "bye_week": 9,
+      "bye_week_clash_count": 0,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": 0,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "DK Metcalf",
+      "position": "WR",
+      "provider_id": "5846",
+      "rank": 2,
+      "rationale": "Adds wr value outside the current priority.",
+      "score": 40,
+      "team": "PIT"
+    },
+    {
+      "bye_week": 7,
+      "bye_week_clash_count": 0,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": 0,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Terry McLaurin",
+      "position": "WR",
+      "provider_id": "5927",
+      "rank": 3,
+      "rationale": "Adds wr value outside the current priority.",
+      "score": 40,
+      "team": "WAS"
+    }
+  ],
+  "resolved": [
+    {
+      "active": true,
+      "age": 28,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1997-12-14",
+      "birth_state": null,
+      "college": "Ole Miss",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "LWR",
+      "espn_id": 4047650,
+      "fantasy_data_id": 20875,
+      "fantasy_positions": [
+        "WR"
+      ],
+      "first_name": "DK",
+      "full_name": "DK Metcalf",
+      "gsis_id": " 00-0035640",
+      "hashtag": "#dkmetcalf-NFL-PIT-4",
+      "height": "76",
+      "high_school": "Oxford (MS)",
+      "injury_body_part": "Undisclosed",
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": "Questionable",
+      "kalshi_id": "b7ce0d2b-ad08-4335-896f-242ff44d6204",
+      "last_name": "Metcalf",
+      "metadata": {
+        "channel_id": "1113708722909114368",
+        "genius_id": "1014088",
+        "rookie_year": "2019"
+      },
+      "news_updated": 1788374731698,
+      "number": 4,
+      "oddsjam_id": "08359C9C433B",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "5846",
+      "player_shard": "2",
+      "position": "WR",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "5846",
+      "rotowire_id": 13424,
+      "rotoworld_id": 13940,
+      "search_first_name": "dk",
+      "search_full_name": "dkmetcalf",
+      "search_last_name": "metcalf",
+      "search_rank": 73,
+      "sport": "nfl",
+      "sportradar_id": "754faf0f-40f7-45f0-b23b-6ce990ecaf26",
+      "stats_id": 945633,
+      "status": "Active",
+      "swish_id": 945633,
+      "team": "PIT",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "235",
+      "yahoo_id": 31896,
+      "years_exp": 7
+    },
+    {
+      "active": true,
+      "age": 26,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "2000-08-26",
+      "birth_state": null,
+      "college": "Notre Dame",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "RB",
+      "espn_id": null,
+      "fantasy_data_id": 23212,
+      "fantasy_positions": [
+        "RB"
+      ],
+      "first_name": "Kyren",
+      "full_name": "Kyren Williams",
+      "gsis_id": null,
+      "hashtag": "#kyrenwilliams-NFL-LAR-23",
+      "height": "69",
+      "high_school": "St. John Vianney (MO)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "de9f61e1-686f-4aad-afb6-6d7643f9d21f",
+      "last_name": "Williams",
+      "metadata": {
+        "channel_id": "1113708701824348160",
+        "genius_id": "1344062",
+        "rookie_year": "2022"
+      },
+      "news_updated": 1788297321732,
+      "number": 23,
+      "oddsjam_id": "C3619260E06D",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "8150",
+      "player_shard": "6",
+      "position": "RB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "8150",
+      "rotowire_id": 15807,
+      "rotoworld_id": null,
+      "search_first_name": "kyren",
+      "search_full_name": "kyrenwilliams",
+      "search_last_name": "williams",
+      "search_rank": 13,
+      "sport": "nfl",
+      "sportradar_id": "19d44771-8f1d-4127-9b7d-230da137f15d",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1167361,
+      "team": "LAR",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "207",
+      "yahoo_id": null,
+      "years_exp": 4
+    },
+    {
+      "active": true,
+      "age": 23,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "2002-10-08",
+      "birth_state": null,
+      "college": "LSU",
+      "competitions": [],
+      "depth_chart_order": 2,
+      "depth_chart_position": "LWR",
+      "espn_id": null,
+      "fantasy_data_id": 24933,
+      "fantasy_positions": [
+        "WR"
+      ],
+      "first_name": "Brian",
+      "full_name": "Brian Thomas",
+      "gsis_id": null,
+      "hashtag": "#brianthomas-NFL-JAX-7",
+      "height": "74",
+      "high_school": "Walker (LA)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "01b862cc-4d5b-45ac-9ec0-c1fc161bfa55",
+      "last_name": "Thomas",
+      "metadata": {
+        "channel_id": "1113708888835780608",
+        "genius_id": "1463696",
+        "rookie_year": "2024"
+      },
+      "news_updated": 1788383134639,
+      "number": 7,
+      "oddsjam_id": "8542FBE776C7",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "11631",
+      "player_shard": "5",
+      "position": "WR",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "11631",
+      "rotowire_id": 17716,
+      "rotoworld_id": null,
+      "search_first_name": "brian",
+      "search_full_name": "brianthomas",
+      "search_last_name": "thomas",
+      "search_rank": 74,
+      "sport": "nfl",
+      "sportradar_id": "271a233e-68b3-4261-a3aa-7667eaf9d3cc",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1286064,
+      "team": "JAX",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "209",
+      "yahoo_id": null,
+      "years_exp": 2
+    },
+    {
+      "active": true,
+      "age": 30,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1995-09-15",
+      "birth_state": null,
+      "college": "Ohio State",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "LWR",
+      "espn_id": 3121422,
+      "fantasy_data_id": 20873,
+      "fantasy_positions": [
+        "WR"
+      ],
+      "first_name": "Terry",
+      "full_name": "Terry McLaurin",
+      "gsis_id": " 00-0035659",
+      "hashtag": "#terrymclaurin-NFL-WAS-17",
+      "height": "72",
+      "high_school": "Indianapolis Cathedral (IN)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "347b630d-6d52-4a67-835d-f363481073f3",
+      "last_name": "McLaurin",
+      "metadata": {
+        "channel_id": "1113708698389213184",
+        "genius_id": "1005455",
+        "injury_override_regular_2025_5": "Out",
+        "injury_override_regular_2025_6": "Out",
+        "rookie_year": "2019"
+      },
+      "news_updated": 1788544521740,
+      "number": 17,
+      "oddsjam_id": "01773297ACFE",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "5927",
+      "player_shard": "4",
+      "position": "WR",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "5927",
+      "rotowire_id": 13536,
+      "rotoworld_id": 14121,
+      "search_first_name": "terry",
+      "search_full_name": "terrymclaurin",
+      "search_last_name": "mclaurin",
+      "search_rank": 54,
+      "sport": "nfl",
+      "sportradar_id": "7e8c4641-2beb-4213-ba22-69fe0307005f",
+      "stats_id": 836116,
+      "status": "Active",
+      "swish_id": 836116,
+      "team": "WAS",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "210",
+      "yahoo_id": 31908,
+      "years_exp": 7
+    }
+  ],
+  "roster_summary": {
+    "by_position": {
+      "DEF": [],
+      "K": [],
+      "OTHER": [],
+      "QB": [
+        {
+          "full_name": "Jalen Hurts",
+          "overall_pick": 33,
+          "position": "QB",
+          "provider_id": "6904",
+          "round": 4,
+          "slot": 8,
+          "team": "PHI"
+        },
+        {
+          "full_name": "Fernando Mendoza",
+          "overall_pick": 73,
+          "position": "QB",
+          "provider_id": "13269",
+          "round": 8,
+          "slot": 8,
+          "team": "LV"
+        }
+      ],
+      "RB": [
+        {
+          "full_name": "Chase Brown",
+          "overall_pick": 28,
+          "position": "RB",
+          "provider_id": "9224",
+          "round": 3,
+          "slot": 8,
+          "team": "CIN"
+        },
+        {
+          "full_name": "Breece Hall",
+          "overall_pick": 48,
+          "position": "RB",
+          "provider_id": "8155",
+          "round": 5,
+          "slot": 8,
+          "team": "NYJ"
+        }
+      ],
+      "TE": [
+        {
+          "full_name": "Harold Fannin",
+          "overall_pick": 53,
+          "position": "TE",
+          "provider_id": "12506",
+          "round": 6,
+          "slot": 8,
+          "team": "CLE"
+        }
+      ],
+      "WR": [
+        {
+          "full_name": "Puka Nacua",
+          "overall_pick": 8,
+          "position": "WR",
+          "provider_id": "9493",
+          "round": 1,
+          "slot": 8,
+          "team": "LAR"
+        },
+        {
+          "full_name": "CeeDee Lamb",
+          "overall_pick": 13,
+          "position": "WR",
+          "provider_id": "6786",
+          "round": 2,
+          "slot": 8,
+          "team": "DAL"
+        },
+        {
+          "full_name": "Marvin Harrison",
+          "overall_pick": 68,
+          "position": "WR",
+          "provider_id": "11628",
+          "round": 7,
+          "slot": 8,
+          "team": "ARI"
+        }
+      ]
+    },
+    "bye_week_conflicts": [],
+    "bye_week_distribution": {
+      "6": [
+        "Chase Brown"
+      ],
+      "10": [
+        "Jalen Hurts"
+      ],
+      "11": [
+        "Puka Nacua",
+        "Harold Fannin"
+      ],
+      "13": [
+        "Breece Hall",
+        "Fernando Mendoza"
+      ],
+      "14": [
+        "CeeDee Lamb",
+        "Marvin Harrison"
+      ]
+    },
+    "needs": [
+      "DEF",
+      "K"
+    ],
+    "position_counts": {
+      "DEF": 0,
+      "K": 0,
+      "QB": 2,
+      "RB": 2,
+      "TE": 1,
+      "WR": 3
+    },
+    "remaining_slots": 6,
+    "target_roster_size": 14,
+    "total_selected": 8
+  },
+  "unknown": []
+}

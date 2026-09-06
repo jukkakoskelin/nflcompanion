@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Any
 
 from nflcompanion.draft_companion import (
+    batch_record_observed_picks,
     create_draft_session,
     load_draft_session,
     next_pick_preview,
@@ -15,6 +16,7 @@ from nflcompanion.draft_companion import (
     record_pick,
     recommend_candidates,
 )
+from nflcompanion.sleeper_sync import sync_sleeper_draft_picks
 from nflcompanion.state_store import (
     latest_snapshot,
     latest_trending_snapshot,
@@ -86,6 +88,19 @@ def main() -> int:
     observe_parser.add_argument("--team")
     observe_parser.add_argument("--overall-pick", type=int, required=True)
 
+    batch_observe_parser = commands.add_parser("observe-batch", help="record multiple opponent picks in a batch")
+    _session_arguments(batch_observe_parser)
+    batch_observe_parser.add_argument(
+        "--picks-json",
+        type=lambda v: json.loads(v),
+        required=True,
+        help="JSON array of objects with provider_id, overall_pick, and optional full_name/position/team",
+    )
+
+    sync_sleeper_parser = commands.add_parser("sync-sleeper", help="poll and sync live picks from a Sleeper draft room")
+    _session_arguments(sync_sleeper_parser)
+    sync_sleeper_parser.add_argument("--draft-id", required=True, help="Sleeper draft ID")
+
     preview_parser = commands.add_parser("next-pick", help="show the next user pick")
     _session_arguments(preview_parser)
 
@@ -149,6 +164,24 @@ def main() -> int:
                 "team": args.team,
             },
             overall_pick=args.overall_pick,
+        )
+    elif args.command == "observe-batch":
+        players, _ = _load_local_context(args.state_root)
+        result = batch_record_observed_picks(
+            args.state_root,
+            league_id=args.league_id,
+            season=args.season,
+            picks=args.picks_json,
+            all_players=players,
+        )
+    elif args.command == "sync-sleeper":
+        players, _ = _load_local_context(args.state_root)
+        result = sync_sleeper_draft_picks(
+            args.state_root,
+            league_id=args.league_id,
+            season=args.season,
+            draft_id=args.draft_id,
+            players=players,
         )
     else:
         players, trending = _load_local_context(args.state_root)
