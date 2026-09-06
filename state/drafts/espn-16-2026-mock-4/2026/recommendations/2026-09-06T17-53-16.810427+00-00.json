@@ -1,0 +1,226 @@
+{
+  "ambiguous": [
+    {
+      "input": "Justin Jefferson",
+      "matches": [
+        {
+          "full_name": "Justin Jefferson",
+          "position": "LB",
+          "provider_id": "13524",
+          "team": "CLE"
+        },
+        {
+          "full_name": "Justin Jefferson",
+          "position": "WR",
+          "provider_id": "6794",
+          "team": "MIN"
+        }
+      ]
+    }
+  ],
+  "generated_at": "2026-09-06T17:53:16.810427+00:00",
+  "recommendations": [
+    {
+      "bye_week": 6,
+      "bye_week_clash_count": 0,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 20,
+        "bye_week_clash": 0,
+        "positional_need": 30,
+        "strategy_fit": 25,
+        "trend_signal": 0
+      },
+      "full_name": "Amon-Ra St. Brown",
+      "position": "WR",
+      "provider_id": "7547",
+      "rank": 1,
+      "rationale": "Fits the wr priority.",
+      "score": 85,
+      "team": "DET"
+    },
+    {
+      "bye_week": 14,
+      "bye_week_clash_count": 0,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 20,
+        "bye_week_clash": 0,
+        "positional_need": 30,
+        "strategy_fit": 25,
+        "trend_signal": 0
+      },
+      "full_name": "CeeDee Lamb",
+      "position": "WR",
+      "provider_id": "6786",
+      "rank": 2,
+      "rationale": "Fits the wr priority.",
+      "score": 85,
+      "team": "DAL"
+    }
+  ],
+  "resolved": [
+    {
+      "active": true,
+      "age": 26,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1999-10-24",
+      "birth_state": null,
+      "college": "USC",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "SWR",
+      "espn_id": null,
+      "fantasy_data_id": 22587,
+      "fantasy_positions": [
+        "WR"
+      ],
+      "first_name": "Amon-Ra",
+      "full_name": "Amon-Ra St. Brown",
+      "gsis_id": null,
+      "hashtag": "#amonrastbrown-NFL-DET-14",
+      "height": "72",
+      "high_school": "Mater Dei (CA)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "08ad19fe-ae33-49c5-8f3e-c54d3a464ccc",
+      "last_name": "St. Brown",
+      "metadata": {
+        "channel_id": "1113708810284855296",
+        "genius_id": "1078519",
+        "rookie_year": "2021"
+      },
+      "news_updated": 1788361530209,
+      "number": 14,
+      "oddsjam_id": "D8CD5325EF95",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "7547",
+      "player_shard": "9",
+      "position": "WR",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "7547",
+      "rotowire_id": 15332,
+      "rotoworld_id": null,
+      "search_first_name": "amonra",
+      "search_full_name": "amonrastbrown",
+      "search_last_name": "stbrown",
+      "search_rank": 7,
+      "sport": "nfl",
+      "sportradar_id": "26ef0447-29b8-4dd1-9831-dcbf8132bb74",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1127106,
+      "team": "DET",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "202",
+      "yahoo_id": null,
+      "years_exp": 5
+    },
+    {
+      "active": true,
+      "age": 27,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1999-04-08",
+      "birth_state": null,
+      "college": "Oklahoma",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "LWR",
+      "espn_id": 4241389,
+      "fantasy_data_id": 21679,
+      "fantasy_positions": [
+        "WR"
+      ],
+      "first_name": "CeeDee",
+      "full_name": "CeeDee Lamb",
+      "gsis_id": null,
+      "hashtag": "#ceedeelamb-NFL-DAL-88",
+      "height": "74",
+      "high_school": "Foster (TX)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "7263bc21-1155-4723-954a-7ed5ee22bc0a",
+      "last_name": "Lamb",
+      "metadata": {
+        "channel_id": "1113708855537201152",
+        "genius_id": "1013871",
+        "injury_override_regular_2025_5": "Out",
+        "injury_override_regular_2025_6": "Out",
+        "rookie_year": "2020"
+      },
+      "news_updated": 1788301822078,
+      "number": 88,
+      "oddsjam_id": "85450367222D",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "6786",
+      "player_shard": "6",
+      "position": "WR",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "6786",
+      "rotowire_id": 14411,
+      "rotoworld_id": null,
+      "search_first_name": "ceedee",
+      "search_full_name": "ceedeelamb",
+      "search_last_name": "lamb",
+      "search_rank": 11,
+      "sport": "nfl",
+      "sportradar_id": "a72ea15b-5199-4101-a300-846e1c655add",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1062020,
+      "team": "DAL",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "198",
+      "yahoo_id": 32687,
+      "years_exp": 6
+    }
+  ],
+  "roster_summary": {
+    "by_position": {
+      "DEF": [],
+      "K": [],
+      "OTHER": [],
+      "QB": [],
+      "RB": [],
+      "TE": [],
+      "WR": []
+    },
+    "bye_week_conflicts": [],
+    "bye_week_distribution": {},
+    "needs": [
+      "QB",
+      "RB (2 needed)",
+      "WR (2 needed)",
+      "TE",
+      "FLEX (RB/WR/TE)",
+      "DEF",
+      "K"
+    ],
+    "position_counts": {
+      "DEF": 0,
+      "K": 0,
+      "QB": 0,
+      "RB": 0,
+      "TE": 0,
+      "WR": 0
+    },
+    "remaining_slots": 14,
+    "target_roster_size": 14,
+    "total_selected": 0
+  },
+  "unknown": []
+}

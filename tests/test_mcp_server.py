@@ -465,6 +465,102 @@ class MCPServerTests(unittest.TestCase):
             self.assertIn("Justin Jefferson", rec_names)
             self.assertNotIn("Saquon Barkley", rec_names)
 
+    def test_espn_draft_does_not_call_sleeper_realtime_api(self):
+        """ESPN draft sessions must never attempt to invoke Sleeper draft sync in recommendation or preview."""
+        handle_message({
+            "jsonrpc": "2.0",
+            "id": 70,
+            "method": "tools/call",
+            "params": {
+                "name": "draft_init_session",
+                "arguments": {
+                    "state_root": str(self.state_root),
+                    "league_id": "espn-draft-league",
+                    "season": 2026,
+                    "draft_style": "espn_snake",
+                    "team_count": 16,
+                    "user_slot": 9,
+                },
+            },
+        })
+
+        with unittest.mock.patch("nflcompanion.mcp_server.sync_sleeper_draft_picks") as mock_sync:
+            # 1. draft_recommend_candidates with espn_snake
+            rec_call = {
+                "jsonrpc": "2.0",
+                "id": 71,
+                "method": "tools/call",
+                "params": {
+                    "name": "draft_recommend_candidates",
+                    "arguments": {
+                        "state_root": str(self.state_root),
+                        "league_id": "espn-draft-league",
+                        "season": 2026,
+                        "candidates": ["Saquon Barkley", "Justin Jefferson"],
+                    },
+                },
+            }
+            res_rec = handle_message(rec_call)
+            self.assertFalse(res_rec["result"]["isError"])
+            mock_sync.assert_not_called()
+
+            # Even if draft_id argument is erroneously passed, espn_snake draft style must ignore it
+            rec_call_with_draft_id = {
+                "jsonrpc": "2.0",
+                "id": 72,
+                "method": "tools/call",
+                "params": {
+                    "name": "draft_recommend_candidates",
+                    "arguments": {
+                        "state_root": str(self.state_root),
+                        "league_id": "espn-draft-league",
+                        "season": 2026,
+                        "candidates": ["Saquon Barkley", "Justin Jefferson"],
+                        "draft_id": "accidental-sleeper-id",
+                    },
+                },
+            }
+            res_rec2 = handle_message(rec_call_with_draft_id)
+            self.assertFalse(res_rec2["result"]["isError"])
+            mock_sync.assert_not_called()
+
+            # 2. draft_next_pick_preview with espn_snake
+            preview_call = {
+                "jsonrpc": "2.0",
+                "id": 73,
+                "method": "tools/call",
+                "params": {
+                    "name": "draft_next_pick_preview",
+                    "arguments": {
+                        "state_root": str(self.state_root),
+                        "league_id": "espn-draft-league",
+                        "season": 2026,
+                    },
+                },
+            }
+            res_preview = handle_message(preview_call)
+            self.assertFalse(res_preview["result"]["isError"])
+            mock_sync.assert_not_called()
+
+            # draft_next_pick_preview even with draft_id must ignore Sleeper sync for ESPN
+            preview_call_with_draft_id = {
+                "jsonrpc": "2.0",
+                "id": 74,
+                "method": "tools/call",
+                "params": {
+                    "name": "draft_next_pick_preview",
+                    "arguments": {
+                        "state_root": str(self.state_root),
+                        "league_id": "espn-draft-league",
+                        "season": 2026,
+                        "draft_id": "accidental-sleeper-id",
+                    },
+                },
+            }
+            res_preview2 = handle_message(preview_call_with_draft_id)
+            self.assertFalse(res_preview2["result"]["isError"])
+            mock_sync.assert_not_called()
+
     def test_run_stdio_server(self):
         input_stream = io.StringIO(
             json.dumps({"jsonrpc": "2.0", "id": 1, "method": "ping"}) + "\n"

@@ -155,6 +155,29 @@ class SleeperSyncTests(unittest.TestCase):
         self.assertEqual(session["observed_picks"][0]["full_name"], "Josh Allen")
         self.assertEqual(session["observed_picks"][1]["full_name"], "Ja'Marr Chase")
 
+    def test_espn_draft_does_not_call_sleeper_fetch_api(self) -> None:
+        """ESPN draft sessions must not invoke fetch_sleeper_draft_picks during live draft workflow."""
+        espn_league_id = "test-espn-snake-sync"
+        create_draft_session(
+            self.state_root,
+            league_id=espn_league_id,
+            season=self.season,
+            draft_style="espn_snake",
+            team_count=16,
+            user_slot=9,
+        )
+
+        with patch("nflcompanion.sleeper_sync.fetch_sleeper_draft_picks") as mock_fetch:
+            # Running candidate recommendation for ESPN session with local context
+            candidates = ["Josh Allen", "Ja'Marr Chase"]
+            rec_result = recommend_candidates(
+                self.mock_players,
+                candidates,
+            )
+            self.assertEqual(len(rec_result["recommendations"]), 2)
+            # Ensure Sleeper fetch was never invoked
+            mock_fetch.assert_not_called()
+
 
 if __name__ == "__main__":
     unittest.main()
