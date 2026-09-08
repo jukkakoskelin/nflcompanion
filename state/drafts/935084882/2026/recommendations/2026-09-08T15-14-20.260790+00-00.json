@@ -1,0 +1,226 @@
+{
+  "ambiguous": [
+    {
+      "input": "Justin Jefferson",
+      "matches": [
+        {
+          "full_name": "Justin Jefferson",
+          "position": "LB",
+          "provider_id": "13524",
+          "team": "CLE"
+        },
+        {
+          "full_name": "Justin Jefferson",
+          "position": "WR",
+          "provider_id": "6794",
+          "team": "MIN"
+        }
+      ]
+    }
+  ],
+  "generated_at": "2026-09-08T15:14:20.260790+00:00",
+  "recommendations": [
+    {
+      "bye_week": 14,
+      "bye_week_clash_count": 0,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 20,
+        "bye_week_clash": 0,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "CeeDee Lamb",
+      "position": "WR",
+      "provider_id": "6786",
+      "rank": 1,
+      "rationale": "Adds wr value outside the current priority; week 14 bye.",
+      "score": 50,
+      "team": "DAL"
+    },
+    {
+      "bye_week": 10,
+      "bye_week_clash_count": 0,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 20,
+        "bye_week_clash": 0,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Saquon Barkley",
+      "position": "RB",
+      "provider_id": "4866",
+      "rank": 2,
+      "rationale": "Adds rb value outside the current priority; week 10 bye.",
+      "score": 50,
+      "team": "PHI"
+    }
+  ],
+  "resolved": [
+    {
+      "active": true,
+      "age": 27,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1999-04-08",
+      "birth_state": null,
+      "college": "Oklahoma",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "LWR",
+      "espn_id": 4241389,
+      "fantasy_data_id": 21679,
+      "fantasy_positions": [
+        "WR"
+      ],
+      "first_name": "CeeDee",
+      "full_name": "CeeDee Lamb",
+      "gsis_id": null,
+      "hashtag": "#ceedeelamb-NFL-DAL-88",
+      "height": "74",
+      "high_school": "Foster (TX)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "7263bc21-1155-4723-954a-7ed5ee22bc0a",
+      "last_name": "Lamb",
+      "metadata": {
+        "channel_id": "1113708855537201152",
+        "genius_id": "1013871",
+        "injury_override_regular_2025_5": "Out",
+        "injury_override_regular_2025_6": "Out",
+        "rookie_year": "2020"
+      },
+      "news_updated": 1788616517110,
+      "number": 88,
+      "oddsjam_id": "85450367222D",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "6786",
+      "player_shard": "6",
+      "position": "WR",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "6786",
+      "rotowire_id": 14411,
+      "rotoworld_id": null,
+      "search_first_name": "ceedee",
+      "search_full_name": "ceedeelamb",
+      "search_last_name": "lamb",
+      "search_rank": 10,
+      "sport": "nfl",
+      "sportradar_id": "a72ea15b-5199-4101-a300-846e1c655add",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1062020,
+      "team": "DAL",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "198",
+      "yahoo_id": 32687,
+      "years_exp": 6
+    },
+    {
+      "active": true,
+      "age": 29,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1997-02-09",
+      "birth_state": null,
+      "college": "Penn State",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "RB",
+      "espn_id": 3929630,
+      "fantasy_data_id": 19766,
+      "fantasy_positions": [
+        "RB"
+      ],
+      "first_name": "Saquon",
+      "full_name": "Saquon Barkley",
+      "gsis_id": "00-0034844",
+      "hashtag": "#saquonbarkley-NFL-PHI-26",
+      "height": "72",
+      "high_school": "Whitehall (PA)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "e29c0914-7743-4abc-af67-b38a4f1cb5eb",
+      "last_name": "Barkley",
+      "metadata": {
+        "channel_id": "1113708717460713472",
+        "genius_id": "1007964",
+        "rookie_year": "2018"
+      },
+      "news_updated": 1788397834774,
+      "number": 26,
+      "oddsjam_id": "08F1CFA81F52",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "4866",
+      "player_shard": "4",
+      "position": "RB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "4866",
+      "rotowire_id": 12507,
+      "rotoworld_id": 13048,
+      "search_first_name": "saquon",
+      "search_full_name": "saquonbarkley",
+      "search_last_name": "barkley",
+      "search_rank": 11,
+      "sport": "nfl",
+      "sportradar_id": "9811b753-347c-467a-b3cb-85937e71e2b9",
+      "stats_id": 883302,
+      "status": "Active",
+      "swish_id": 883302,
+      "team": "PHI",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "233",
+      "yahoo_id": 30972,
+      "years_exp": 8
+    }
+  ],
+  "roster_summary": {
+    "by_position": {
+      "DEF": [],
+      "K": [],
+      "OTHER": [],
+      "QB": [],
+      "RB": [],
+      "TE": [],
+      "WR": []
+    },
+    "bye_week_conflicts": [],
+    "bye_week_distribution": {},
+    "needs": [
+      "QB",
+      "RB (2 needed)",
+      "WR (2 needed)",
+      "TE",
+      "FLEX (RB/WR/TE)",
+      "DEF",
+      "K"
+    ],
+    "position_counts": {
+      "DEF": 0,
+      "K": 0,
+      "QB": 0,
+      "RB": 0,
+      "TE": 0,
+      "WR": 0
+    },
+    "remaining_slots": 14,
+    "target_roster_size": 14,
+    "total_selected": 0
+  },
+  "unknown": []
+}
