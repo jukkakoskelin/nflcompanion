@@ -1,0 +1,372 @@
+{
+  "ambiguous": [],
+  "generated_at": "2026-09-08T18:51:17.244727+00:00",
+  "recommendations": [
+    {
+      "bye_week": 10,
+      "bye_week_clash_count": 1,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 20,
+        "bye_week_clash": 0,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Bo Nix",
+      "position": "QB",
+      "provider_id": "11563",
+      "rank": 1,
+      "rationale": "Adds qb value outside the current priority; shares bye week 10 with caleb williams (qb).",
+      "score": 50,
+      "team": "DEN"
+    },
+    {
+      "bye_week": 5,
+      "bye_week_clash_count": 0,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 20,
+        "bye_week_clash": 0,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Patrick Mahomes",
+      "position": "QB",
+      "provider_id": "4046",
+      "rank": 2,
+      "rationale": "Adds qb value outside the current priority; week 5 bye.",
+      "score": 50,
+      "team": "KC"
+    },
+    {
+      "bye_week": 11,
+      "bye_week_clash_count": 2,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": -5,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Matthew Stafford",
+      "position": "QB",
+      "provider_id": "421",
+      "rank": 3,
+      "rationale": "Adds qb value outside the current priority; \u26a0 bye week 11 clashes with 2 existing roster players.",
+      "score": 35,
+      "team": "LAR"
+    }
+  ],
+  "resolved": [
+    {
+      "active": true,
+      "age": 26,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "2000-02-25",
+      "birth_state": null,
+      "college": "Oregon",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "QB",
+      "espn_id": null,
+      "fantasy_data_id": 25069,
+      "fantasy_positions": [
+        "QB"
+      ],
+      "first_name": "Bo",
+      "full_name": "Bo Nix",
+      "gsis_id": null,
+      "hashtag": "#bonix-NFL-DEN-10",
+      "height": "74",
+      "high_school": "Pinson Valley (AL)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "c08c47a0-5509-4edb-ae96-3d58dd0b67b2",
+      "last_name": "Nix",
+      "metadata": {
+        "channel_id": "1113708828932730881",
+        "genius_id": "1463652",
+        "rookie_year": "2024"
+      },
+      "news_updated": 1788486316132,
+      "number": 10,
+      "oddsjam_id": "AC5A5CA4A398",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "11563",
+      "player_shard": "5",
+      "position": "QB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "11563",
+      "rotowire_id": 16995,
+      "rotoworld_id": null,
+      "search_first_name": "bo",
+      "search_full_name": "bonix",
+      "search_last_name": "nix",
+      "search_rank": 44,
+      "sport": "nfl",
+      "sportradar_id": "f056c8ed-6ee5-492c-af11-3f7e3d97195c",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1161899,
+      "team": "DEN",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "217",
+      "yahoo_id": null,
+      "years_exp": 2
+    },
+    {
+      "active": true,
+      "age": 38,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1988-02-07",
+      "birth_state": null,
+      "college": "Georgia",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "QB",
+      "espn_id": 12483,
+      "fantasy_data_id": 9038,
+      "fantasy_positions": [
+        "QB"
+      ],
+      "first_name": "Matthew",
+      "full_name": "Matthew Stafford",
+      "gsis_id": "00-0026498",
+      "hashtag": "#matthewstafford-NFL-LAR-9",
+      "height": "75",
+      "high_school": "Highland Park (TX)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "3a248cd7-2cbc-4ec7-ad38-1d1712298293",
+      "last_name": "Stafford",
+      "metadata": {
+        "channel_id": "1113708705066545153",
+        "genius_id": "180838",
+        "rookie_year": "2009"
+      },
+      "news_updated": 1788575124438,
+      "number": 9,
+      "oddsjam_id": "DD2E6E11452C",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "421",
+      "player_shard": "3",
+      "position": "QB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "421",
+      "rotowire_id": 5971,
+      "rotoworld_id": 5132,
+      "search_first_name": "matthew",
+      "search_full_name": "matthewstafford",
+      "search_last_name": "stafford",
+      "search_rank": 66,
+      "sport": "nfl",
+      "sportradar_id": "ade43b1a-0601-4672-83b6-d246bc066a19",
+      "stats_id": 323205,
+      "status": "Active",
+      "swish_id": 323205,
+      "team": "LAR",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "214",
+      "yahoo_id": 9265,
+      "years_exp": 17
+    },
+    {
+      "active": true,
+      "age": 30,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1995-09-17",
+      "birth_state": null,
+      "college": "Texas Tech",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "QB",
+      "espn_id": 3139477,
+      "fantasy_data_id": 18890,
+      "fantasy_positions": [
+        "QB"
+      ],
+      "first_name": "Patrick",
+      "full_name": "Patrick Mahomes",
+      "gsis_id": "00-0033873",
+      "hashtag": "#patrickmahomes-NFL-KC-15",
+      "height": "74",
+      "high_school": "Whitehouse (TX)",
+      "injury_body_part": "Knee - ACL",
+      "injury_notes": "Surgery",
+      "injury_start_date": null,
+      "injury_status": "Questionable",
+      "kalshi_id": "5f7253fb-e48e-44ff-9a51-4cd8e1893f68",
+      "last_name": "Mahomes",
+      "metadata": {
+        "channel_id": "1113708747563233280",
+        "genius_id": "998871",
+        "rookie_year": "2017"
+      },
+      "news_updated": 1788705330538,
+      "number": 15,
+      "oddsjam_id": "B671C99CB711",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "4046",
+      "player_shard": "0",
+      "position": "QB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "4046",
+      "rotowire_id": 11839,
+      "rotoworld_id": 12142,
+      "search_first_name": "patrick",
+      "search_full_name": "patrickmahomes",
+      "search_last_name": "mahomes",
+      "search_rank": 39,
+      "sport": "nfl",
+      "sportradar_id": "11cad59d-90dd-449c-a839-dddaba4fe16c",
+      "stats_id": 839031,
+      "status": "Active",
+      "swish_id": 839031,
+      "team": "KC",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "225",
+      "yahoo_id": 30123,
+      "years_exp": 9
+    }
+  ],
+  "roster_summary": {
+    "by_position": {
+      "DEF": [],
+      "K": [],
+      "OTHER": [],
+      "QB": [
+        {
+          "full_name": "Caleb Williams",
+          "overall_pick": 89,
+          "position": "QB",
+          "provider_id": "4431611",
+          "round": 6,
+          "slot": 9,
+          "team": "CHI"
+        }
+      ],
+      "RB": [
+        {
+          "full_name": "James Cook III",
+          "overall_pick": 9,
+          "position": "RB",
+          "provider_id": "4379399",
+          "round": 1,
+          "slot": 9,
+          "team": "BUF"
+        },
+        {
+          "full_name": "Quinshon Judkins",
+          "overall_pick": 40,
+          "position": "RB",
+          "provider_id": "4685702",
+          "round": 3,
+          "slot": 9,
+          "team": "CLE"
+        },
+        {
+          "full_name": "Rico Dowdle",
+          "overall_pick": 72,
+          "position": "RB",
+          "provider_id": "4038815",
+          "round": 5,
+          "slot": 9,
+          "team": "PIT"
+        }
+      ],
+      "TE": [
+        {
+          "full_name": "Isaiah Likely",
+          "overall_pick": 104,
+          "position": "TE",
+          "provider_id": "4361050",
+          "round": 7,
+          "slot": 9,
+          "team": "NYG"
+        }
+      ],
+      "WR": [
+        {
+          "full_name": "A.J. Brown",
+          "overall_pick": 24,
+          "position": "WR",
+          "provider_id": "5859",
+          "round": 2,
+          "slot": 9,
+          "team": "NE"
+        },
+        {
+          "full_name": "Jameson Williams",
+          "overall_pick": 57,
+          "position": "WR",
+          "provider_id": "4426388",
+          "round": 4,
+          "slot": 9,
+          "team": "DET"
+        }
+      ]
+    },
+    "bye_week_conflicts": [],
+    "bye_week_distribution": {
+      "6": [
+        "Jameson Williams"
+      ],
+      "7": [
+        "James Cook III"
+      ],
+      "8": [
+        "Isaiah Likely"
+      ],
+      "9": [
+        "Rico Dowdle"
+      ],
+      "10": [
+        "Caleb Williams"
+      ],
+      "11": [
+        "A.J. Brown",
+        "Quinshon Judkins"
+      ]
+    },
+    "needs": [
+      "DEF",
+      "K"
+    ],
+    "position_counts": {
+      "DEF": 0,
+      "K": 0,
+      "QB": 1,
+      "RB": 3,
+      "TE": 1,
+      "WR": 2
+    },
+    "remaining_slots": 7,
+    "target_roster_size": 14,
+    "total_selected": 7
+  },
+  "unknown": [
+    "Deebo Samuel Sr."
+  ]
+}

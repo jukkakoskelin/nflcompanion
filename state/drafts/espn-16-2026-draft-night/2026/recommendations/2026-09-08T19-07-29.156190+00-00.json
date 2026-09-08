@@ -1,0 +1,394 @@
+{
+  "ambiguous": [],
+  "generated_at": "2026-09-08T19:07:29.156190+00:00",
+  "recommendations": [
+    {
+      "bye_week": 6,
+      "bye_week_clash_count": 1,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": 0,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 10
+      },
+      "full_name": "Malik Willis",
+      "position": "QB",
+      "provider_id": "8161",
+      "rank": 1,
+      "rationale": "Adds qb value outside the current priority; has a positive local trend signal; week 6 bye.",
+      "score": 50,
+      "team": "MIA"
+    },
+    {
+      "bye_week": 8,
+      "bye_week_clash_count": 1,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": 0,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Alvin Kamara",
+      "position": "RB",
+      "provider_id": "4035",
+      "rank": 2,
+      "rationale": "Adds rb value outside the current priority; week 8 bye.",
+      "score": 40,
+      "team": "NO"
+    },
+    {
+      "bye_week": 11,
+      "bye_week_clash_count": 2,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": -5,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Jordan Love",
+      "position": "QB",
+      "provider_id": "6804",
+      "rank": 3,
+      "rationale": "Adds qb value outside the current priority; \u26a0 bye week 11 clashes with 2 existing roster players.",
+      "score": 35,
+      "team": "GB"
+    }
+  ],
+  "resolved": [
+    {
+      "active": true,
+      "age": 27,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1999-05-25",
+      "birth_state": null,
+      "college": "Liberty",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "QB",
+      "espn_id": null,
+      "fantasy_data_id": 23118,
+      "fantasy_positions": [
+        "QB"
+      ],
+      "first_name": "Malik",
+      "full_name": "Malik Willis",
+      "gsis_id": null,
+      "hashtag": "#malikwillis-NFL-MIA-2",
+      "height": "73",
+      "high_school": "Roswell (GA)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "83bb2293-a7ad-4092-8a18-601cd3994099",
+      "last_name": "Willis",
+      "metadata": {
+        "channel_id": "1113708831713554433",
+        "genius_id": "1015283",
+        "rookie_year": "2022"
+      },
+      "news_updated": 1788544522068,
+      "number": 2,
+      "oddsjam_id": "BB802A531515",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "8161",
+      "player_shard": "9",
+      "position": "QB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "8161",
+      "rotowire_id": 15872,
+      "rotoworld_id": null,
+      "search_first_name": "malik",
+      "search_full_name": "malikwillis",
+      "search_last_name": "willis",
+      "search_rank": 119,
+      "sport": "nfl",
+      "sportradar_id": "55aefcf9-4dfb-4994-883f-4d537a6f1ddb",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 976323,
+      "team": "MIA",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "225",
+      "yahoo_id": null,
+      "years_exp": 4
+    },
+    {
+      "active": true,
+      "age": 27,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1998-11-02",
+      "birth_state": null,
+      "college": "Utah State",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "QB",
+      "espn_id": 4036378,
+      "fantasy_data_id": 21841,
+      "fantasy_positions": [
+        "QB"
+      ],
+      "first_name": "Jordan",
+      "full_name": "Jordan Love",
+      "gsis_id": null,
+      "hashtag": "#jordanlove-NFL-GB-10",
+      "height": "76",
+      "high_school": "Liberty (CA)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "e97d88a5-b339-4b92-bd49-877e01b32191",
+      "last_name": "Love",
+      "metadata": {
+        "channel_id": "1113708802567335936",
+        "genius_id": "1005917",
+        "rookie_year": "2020"
+      },
+      "news_updated": 1788535821055,
+      "number": 10,
+      "oddsjam_id": "E7BCA7FF5B4A",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "6804",
+      "player_shard": "5",
+      "position": "QB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "6804",
+      "rotowire_id": 14371,
+      "rotoworld_id": null,
+      "search_first_name": "jordan",
+      "search_full_name": "jordanlove",
+      "search_last_name": "love",
+      "search_rank": 67,
+      "sport": "nfl",
+      "sportradar_id": "e5094779-e94f-4052-8597-bdbee3719f6b",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 912137,
+      "team": "GB",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "219",
+      "yahoo_id": 32696,
+      "years_exp": 6
+    },
+    {
+      "active": true,
+      "age": 31,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1995-07-25",
+      "birth_state": null,
+      "college": "Tennessee",
+      "competitions": [],
+      "depth_chart_order": 4,
+      "depth_chart_position": "RB",
+      "espn_id": 3054850,
+      "fantasy_data_id": 18878,
+      "fantasy_positions": [
+        "RB"
+      ],
+      "first_name": "Alvin",
+      "full_name": "Alvin Kamara",
+      "gsis_id": "00-0033906",
+      "hashtag": "#alvinkamara-NFL-NO-41",
+      "height": "70",
+      "high_school": "Norcross (GA)",
+      "injury_body_part": "Knee",
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": "Questionable",
+      "kalshi_id": "54e15478-3cc6-4a30-b662-e3e967f6e5da",
+      "last_name": "Kamara",
+      "metadata": {
+        "channel_id": "1113708687463051264",
+        "genius_id": "998864",
+        "rookie_year": "2017"
+      },
+      "news_updated": 1788461706647,
+      "number": 41,
+      "oddsjam_id": "4DD7AD3020C5",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "4035",
+      "player_shard": "4",
+      "position": "RB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "4035",
+      "rotowire_id": 11732,
+      "rotoworld_id": 12172,
+      "search_first_name": "alvin",
+      "search_full_name": "alvinkamara",
+      "search_last_name": "kamara",
+      "search_rank": 119,
+      "sport": "nfl",
+      "sportradar_id": "d9c857b2-97da-4fb8-a527-afbbb2a67413",
+      "stats_id": 750846,
+      "status": "Active",
+      "swish_id": 750846,
+      "team": "NO",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "215",
+      "yahoo_id": 30180,
+      "years_exp": 9
+    }
+  ],
+  "roster_summary": {
+    "by_position": {
+      "DEF": [],
+      "K": [],
+      "OTHER": [],
+      "QB": [
+        {
+          "full_name": "Caleb Williams",
+          "overall_pick": 89,
+          "position": "QB",
+          "provider_id": "4431611",
+          "round": 6,
+          "slot": 9,
+          "team": "CHI"
+        }
+      ],
+      "RB": [
+        {
+          "full_name": "James Cook III",
+          "overall_pick": 9,
+          "position": "RB",
+          "provider_id": "4379399",
+          "round": 1,
+          "slot": 9,
+          "team": "BUF"
+        },
+        {
+          "full_name": "Quinshon Judkins",
+          "overall_pick": 40,
+          "position": "RB",
+          "provider_id": "4685702",
+          "round": 3,
+          "slot": 9,
+          "team": "CLE"
+        },
+        {
+          "full_name": "Rico Dowdle",
+          "overall_pick": 72,
+          "position": "RB",
+          "provider_id": "4038815",
+          "round": 5,
+          "slot": 9,
+          "team": "PIT"
+        },
+        {
+          "full_name": "Mike Washington Jr.",
+          "overall_pick": 136,
+          "position": "RB",
+          "provider_id": "4686658",
+          "round": 9,
+          "slot": 9,
+          "team": "LV"
+        }
+      ],
+      "TE": [
+        {
+          "full_name": "Isaiah Likely",
+          "overall_pick": 104,
+          "position": "TE",
+          "provider_id": "4361050",
+          "round": 7,
+          "slot": 9,
+          "team": "NYG"
+        }
+      ],
+      "WR": [
+        {
+          "full_name": "A.J. Brown",
+          "overall_pick": 24,
+          "position": "WR",
+          "provider_id": "5859",
+          "round": 2,
+          "slot": 9,
+          "team": "NE"
+        },
+        {
+          "full_name": "Jameson Williams",
+          "overall_pick": 57,
+          "position": "WR",
+          "provider_id": "4426388",
+          "round": 4,
+          "slot": 9,
+          "team": "DET"
+        },
+        {
+          "full_name": "Makai Lemon",
+          "overall_pick": 121,
+          "position": "WR",
+          "provider_id": "4870795",
+          "round": 8,
+          "slot": 9,
+          "team": "PHI"
+        }
+      ]
+    },
+    "bye_week_conflicts": [],
+    "bye_week_distribution": {
+      "6": [
+        "Jameson Williams"
+      ],
+      "7": [
+        "James Cook III"
+      ],
+      "8": [
+        "Isaiah Likely"
+      ],
+      "9": [
+        "Rico Dowdle"
+      ],
+      "10": [
+        "Caleb Williams",
+        "Makai Lemon"
+      ],
+      "11": [
+        "A.J. Brown",
+        "Quinshon Judkins"
+      ],
+      "13": [
+        "Mike Washington Jr."
+      ]
+    },
+    "needs": [
+      "DEF",
+      "K"
+    ],
+    "position_counts": {
+      "DEF": 0,
+      "K": 0,
+      "QB": 1,
+      "RB": 4,
+      "TE": 1,
+      "WR": 3
+    },
+    "remaining_slots": 5,
+    "target_roster_size": 14,
+    "total_selected": 9
+  },
+  "unknown": [
+    "Chris Rodriguez Jr."
+  ]
+}

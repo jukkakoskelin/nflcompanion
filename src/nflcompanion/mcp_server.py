@@ -184,6 +184,7 @@ TOOLS: list[dict[str, Any]] = [
                 "position": {"type": "string", "description": "Position abbreviation (e.g., QB, RB, WR)."},
                 "team": {"type": "string", "description": "NFL team abbreviation (e.g., GB, KC)."},
                 "activeOnly": {"type": "boolean", "description": "Filter for active NFL roster status.", "default": False},
+                "provider": {"type": "string", "enum": ["sleeper", "espn"], "description": "Player snapshot provider to query ('sleeper' or 'espn').", "default": "sleeper"},
                 "limit": {"type": "integer", "description": "Maximum number of results.", "default": 20},
                 "state_root": {"type": "string", "description": "Root state directory path.", "default": "state"},
             },
@@ -423,13 +424,32 @@ TOOLS: list[dict[str, Any]] = [
 ]
 
 
-def _ensure_players_state(state_root: Path, refresh: bool = False) -> dict[str, Any]:
+def _get_player_snapshot(state_root: Path, provider: str = "sleeper") -> Path:
+    try:
+        return latest_snapshot(state_root, provider=provider)
+    except FileNotFoundError:
+        if provider != "sleeper":
+            try:
+                return latest_snapshot(state_root, provider="sleeper")
+            except FileNotFoundError:
+                pass
+        raise
+
+
+def _ensure_players_state(state_root: Path, refresh: bool = False, provider: str = "sleeper") -> dict[str, Any]:
     try:
         if not refresh:
-            path = latest_snapshot(state_root)
+            path = _get_player_snapshot(state_root, provider=provider)
             return {"exists": True, "fetched": False, "snapshot": str(path)}
     except FileNotFoundError:
         pass
+
+    if provider != "sleeper":
+        try:
+            path = latest_snapshot(state_root, provider="sleeper")
+            return {"exists": True, "fetched": False, "snapshot": str(path)}
+        except FileNotFoundError:
+            raise FileNotFoundError(f"No local {provider} or sleeper player snapshot found under {state_root / 'players' / 'raw'}")
 
     retrieved_at = datetime.now(timezone.utc)
     payload = fetch_players()
@@ -473,8 +493,9 @@ def execute_tool(name: str, arguments: dict[str, Any]) -> dict[str, Any]:
         return _ensure_players_state(state_root, refresh=refresh)
 
     if name == "sleeper_query_players":
-        _ensure_players_state(state_root, refresh=False)
-        snapshot_path = latest_snapshot(state_root)
+        provider = arguments.get("provider", "sleeper")
+        _ensure_players_state(state_root, refresh=False, provider=provider)
+        snapshot_path = latest_snapshot(state_root, provider=provider)
         players = load_players(snapshot_path)
         matches = query_players(
             players,
@@ -568,8 +589,10 @@ def execute_tool(name: str, arguments: dict[str, Any]) -> dict[str, Any]:
         if not 2 <= len(candidates) <= 4:
             raise ValueError("candidates must contain between 2 and 4 candidate inputs")
         loaded = load_draft_session(state_root, league_id=arguments["league_id"], season=int(arguments["season"]))
-        _ensure_players_state(state_root, refresh=False)
-        players = load_players(latest_snapshot(state_root))
+        session_style = loaded["session"].get("draft_style")
+        provider = "espn" if session_style == "espn_snake" else "sleeper"
+        _ensure_players_state(state_root, refresh=False, provider=provider)
+        players = load_players(_get_player_snapshot(state_root, provider=provider))
 
         # Auto-sync live picks if Sleeper draft ID is provided or configured in session
         draft_id = arguments.get("draft_id") or loaded["session"].get("draft_id")
@@ -613,8 +636,11 @@ def execute_tool(name: str, arguments: dict[str, Any]) -> dict[str, Any]:
         confirmed = arguments.get("confirmed", True)
         if not confirmed:
             raise PermissionError("draft_record_pick requires explicit confirmation gate (confirmed: true)")
-        _ensure_players_state(state_root, refresh=False)
-        players = load_players(latest_snapshot(state_root))
+        loaded = load_draft_session(state_root, league_id=arguments["league_id"], season=int(arguments["season"]))
+        session_style = loaded["session"].get("draft_style")
+        provider = "espn" if session_style == "espn_snake" else "sleeper"
+        _ensure_players_state(state_root, refresh=False, provider=provider)
+        players = load_players(_get_player_snapshot(state_root, provider=provider))
         provider_id = str(arguments.get("provider_id") or "").strip()
         full_name = str(arguments.get("full_name") or "").strip()
         if not provider_id and not full_name:
@@ -663,8 +689,11 @@ def execute_tool(name: str, arguments: dict[str, Any]) -> dict[str, Any]:
         }
 
     if name in ("draft_record_observed_pick", "draft_observe_pick"):
-        _ensure_players_state(state_root, refresh=False)
-        players = load_players(latest_snapshot(state_root))
+        loaded = load_draft_session(state_root, league_id=arguments["league_id"], season=int(arguments["season"]))
+        session_style = loaded["session"].get("draft_style")
+        provider = "espn" if session_style == "espn_snake" else "sleeper"
+        _ensure_players_state(state_root, refresh=False, provider=provider)
+        players = load_players(_get_player_snapshot(state_root, provider=provider))
         provider_id = str(arguments.get("provider_id") or "").strip()
         full_name = str(arguments.get("full_name") or "").strip()
         overall_pick = int(arguments["overall_pick"])
@@ -710,10 +739,12 @@ def execute_tool(name: str, arguments: dict[str, Any]) -> dict[str, Any]:
         }
 
     if name == "draft_next_pick_preview":
-        _ensure_players_state(state_root, refresh=False)
-        players = load_players(latest_snapshot(state_root))
-
         loaded = load_draft_session(state_root, league_id=arguments["league_id"], season=int(arguments["season"]))
+        session_style = loaded["session"].get("draft_style")
+        provider = "espn" if session_style == "espn_snake" else "sleeper"
+        _ensure_players_state(state_root, refresh=False, provider=provider)
+        players = load_players(_get_player_snapshot(state_root, provider=provider))
+
         draft_id = arguments.get("draft_id") or loaded["session"].get("draft_id")
         if draft_id and loaded["session"].get("draft_style") == "sleeper_dynasty":
             try:

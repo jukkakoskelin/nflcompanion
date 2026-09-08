@@ -1,6 +1,6 @@
 # NFL Fantasy Draft Companion Plan
 
-Status: in progress - Verified and tested ESPN draft isolation against Sleeper realtime sync API during draft recommendations and previews; 103 tests passing.
+Status: in progress - Imported full 1,036-player ESPN draft snapshot and wired provider-aware snapshot routing for ESPN snake draft companion tools; 104 tests passing.
 Priority: draft-ready for the Sleeper dynasty startup mock and live drafts
 
 ## Product goal
@@ -843,14 +843,20 @@ Removed repetitive agent confirmation gates during active live drafting and enab
   - Added unit test verifying `draft_record_pick` defaults to confirmed.
   - Added unit test verifying `draft_recommend_candidates` automatically synchronizes draft picks and removes opponent-drafted players from recommendation outputs.
 
-## ESPN Draft Sleeper API Isolation Tests (2026-09-06)
+## ESPN Draft Player Snapshot Integration (2026-09-08)
 
-Verified and added regression tests ensuring that ESPN snake draft sessions never call the Sleeper realtime draft synchronization endpoint or external fetch logic during active drafting.
+Fetched all 1,036 players directly from the ESPN Fantasy API for the user's 2026 private league using authenticated cookies (`espn_s2` and `SWID`), canonicalized them into the repository's player schema, and integrated automatic snapshot resolution into all ESPN draft session workflows.
 
 ### Changes
+- `state/players/raw/espn-players-*.json` & `state/players/espn-players-*.md`:
+  - Persisted immutable local snapshot containing 1,036 players with ESPN default `STANDARD` draft ranks, team IDs, positions, and active statuses.
+  - Cross-referenced 916 players to Sleeper IDs, ages, and bye-week data.
+- `src/nflcompanion/mcp_server.py`:
+  - Updated `_ensure_players_state` and added `_get_player_snapshot` to support provider-specific snapshot loading (`espn` vs `sleeper`) with fallback.
+  - Updated `draft_recommend_candidates`, `draft_record_pick`, `draft_record_observed_pick`, and `draft_next_pick_preview` to detect `draft_style == "espn_snake"` from the active session and automatically load the ESPN player snapshot.
+  - Added `provider` parameter to `sleeper_query_players` (`"sleeper"` or `"espn"`).
 - `tests/test_mcp_server.py`:
-  - Added `test_espn_draft_does_not_call_sleeper_realtime_api`: Verifies that `draft_recommend_candidates` and `draft_next_pick_preview` never invoke `sync_sleeper_draft_picks` for `espn_snake` sessions, even if a `draft_id` parameter is accidentally provided.
-- `tests/test_sleeper_sync.py`:
-  - Added `test_espn_draft_does_not_call_sleeper_fetch_api`: Verifies that ESPN draft session operations never invoke network fetch operations like `fetch_sleeper_draft_picks`.
+  - Added `test_espn_draft_uses_espn_player_snapshot` verifying query tool and recommendation tools load and rank from the ESPN dataset when active.
+
 
 

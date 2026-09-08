@@ -561,6 +561,80 @@ class MCPServerTests(unittest.TestCase):
             self.assertFalse(res_preview2["result"]["isError"])
             mock_sync.assert_not_called()
 
+    def test_espn_draft_uses_espn_player_snapshot(self):
+        # Create an ESPN player snapshot in test fixture
+        players_raw = self.state_root / "players" / "raw"
+        espn_player_data = {
+            "9999": {
+                "player_id": "9999",
+                "provider_id": "9999",
+                "full_name": "ESPN Specific Player",
+                "position": "WR",
+                "fantasy_positions": ["WR"],
+                "team": "DAL",
+                "active": True,
+                "search_rank": 5,
+            },
+        }
+        (players_raw / "espn-players-2026-09-08T120000000Z.json").write_text(
+            json.dumps(espn_player_data), encoding="utf-8"
+        )
+        # Init an ESPN draft session
+        handle_message({
+            "jsonrpc": "2.0",
+            "id": 80,
+            "method": "tools/call",
+            "params": {
+                "name": "draft_init_session",
+                "arguments": {
+                    "state_root": str(self.state_root),
+                    "league_id": "espn-real-data-league",
+                    "season": 2026,
+                    "draft_style": "espn_snake",
+                    "team_count": 16,
+                    "user_slot": 9,
+                },
+            },
+        })
+        # Query sleeper_query_players with provider="espn"
+        query_res = handle_message({
+            "jsonrpc": "2.0",
+            "id": 81,
+            "method": "tools/call",
+            "params": {
+                "name": "sleeper_query_players",
+                "arguments": {
+                    "state_root": str(self.state_root),
+                    "name": "ESPN Specific",
+                    "provider": "espn",
+                },
+            },
+        })
+        self.assertFalse(query_res["result"]["isError"])
+        q_data = json.loads(query_res["result"]["content"][0]["text"])
+        self.assertEqual(q_data["count"], 1)
+        self.assertEqual(q_data["players"][0]["full_name"], "ESPN Specific Player")
+
+        # draft_recommend_candidates for ESPN session should use the ESPN snapshot
+        rec_res = handle_message({
+            "jsonrpc": "2.0",
+            "id": 82,
+            "method": "tools/call",
+            "params": {
+                "name": "draft_recommend_candidates",
+                "arguments": {
+                    "state_root": str(self.state_root),
+                    "league_id": "espn-real-data-league",
+                    "season": 2026,
+                    "candidates": ["ESPN Specific Player", "Barkley"],
+                },
+            },
+        })
+        self.assertFalse(rec_res["result"]["isError"])
+        rec_data = json.loads(rec_res["result"]["content"][0]["text"])
+        rec_names = [r["full_name"] for r in rec_data["recommendations"]]
+        self.assertIn("ESPN Specific Player", rec_names)
+
     def test_run_stdio_server(self):
         input_stream = io.StringIO(
             json.dumps({"jsonrpc": "2.0", "id": 1, "method": "ping"}) + "\n"
