@@ -1,0 +1,638 @@
+{
+  "ambiguous": [],
+  "generated_at": "2026-09-07T19:07:28.775684+00:00",
+  "recommendations": [
+    {
+      "bye_week": 11,
+      "bye_week_clash_count": 4,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": -5,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Colby Parkinson",
+      "position": "TE",
+      "provider_id": "6865",
+      "rank": 1,
+      "rationale": "Adds te value outside the current priority; \u26a0 bye week 11 clashes with 4 existing roster players.",
+      "score": 35,
+      "team": "LAR"
+    },
+    {
+      "bye_week": 6,
+      "bye_week_clash_count": 3,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": -5,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Erick All",
+      "position": "TE",
+      "provider_id": "11592",
+      "rank": 2,
+      "rationale": "Adds te value outside the current priority; \u26a0 bye week 6 clashes with 3 existing roster players.",
+      "score": 35,
+      "team": "CIN"
+    },
+    {
+      "bye_week": 5,
+      "bye_week_clash_count": 4,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": -5,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Ja'Tavion Sanders",
+      "position": "TE",
+      "provider_id": "11600",
+      "rank": 3,
+      "rationale": "Adds te value outside the current priority; \u26a0 bye week 5 clashes with 4 existing roster players.",
+      "score": 35,
+      "team": "CAR"
+    },
+    {
+      "bye_week": 8,
+      "bye_week_clash_count": 2,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": -5,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Theo Johnson",
+      "position": "TE",
+      "provider_id": "11597",
+      "rank": 4,
+      "rationale": "Adds te value outside the current priority; \u26a0 bye week 8 clashes with 2 existing roster players.",
+      "score": 35,
+      "team": "NYG"
+    }
+  ],
+  "resolved": [
+    {
+      "active": true,
+      "age": 23,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "2003-03-27",
+      "birth_state": null,
+      "college": "Texas",
+      "competitions": [],
+      "depth_chart_order": 3,
+      "depth_chart_position": "TE",
+      "espn_id": null,
+      "fantasy_data_id": 24947,
+      "fantasy_positions": [
+        "TE"
+      ],
+      "first_name": "Ja'Tavion",
+      "full_name": "Ja'Tavion Sanders",
+      "gsis_id": null,
+      "hashtag": "#jatavionsanders-NFL-CAR-0",
+      "height": "76",
+      "high_school": "Billy Ryan (TX)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "c9a943d2-37b9-4415-9494-c3558c2745ff",
+      "last_name": "Sanders",
+      "metadata": {
+        "channel_id": "1113708887741067264",
+        "genius_id": "1463724",
+        "rookie_year": "2024"
+      },
+      "news_updated": 1788745834631,
+      "number": 0,
+      "oddsjam_id": "F6E43D34ED8D",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "11600",
+      "player_shard": "6",
+      "position": "TE",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "11600",
+      "rotowire_id": 17748,
+      "rotoworld_id": null,
+      "search_first_name": "jatavion",
+      "search_full_name": "jatavionsanders",
+      "search_last_name": "sanders",
+      "search_rank": 576,
+      "sport": "nfl",
+      "sportradar_id": "ffd2ff3f-4b56-4232-be8e-bf163c29f406",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1326628,
+      "team": "CAR",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "252",
+      "yahoo_id": null,
+      "years_exp": 2
+    },
+    {
+      "active": true,
+      "age": 27,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1999-01-08",
+      "birth_state": null,
+      "college": "Stanford",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "TE",
+      "espn_id": 4242557,
+      "fantasy_data_id": 21807,
+      "fantasy_positions": [
+        "TE"
+      ],
+      "first_name": "Colby",
+      "full_name": "Colby Parkinson",
+      "gsis_id": null,
+      "hashtag": "#colbyparkinson-NFL-LAR-84",
+      "height": "79",
+      "high_school": "Oaks Christian (CA)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "feb56419-2cc2-4f3a-92cf-611386c938f5",
+      "last_name": "Parkinson",
+      "metadata": {
+        "channel_id": "1113708701862096896",
+        "genius_id": "1003426",
+        "rookie_year": "2020"
+      },
+      "news_updated": 1788631218456,
+      "number": 84,
+      "oddsjam_id": "570514936B0A",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "6865",
+      "player_shard": "8",
+      "position": "TE",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "6865",
+      "rotowire_id": 14463,
+      "rotoworld_id": null,
+      "search_first_name": "colby",
+      "search_full_name": "colbyparkinson",
+      "search_last_name": "parkinson",
+      "search_rank": 136,
+      "sport": "nfl",
+      "sportradar_id": "1ea7affb-e5e7-491a-aaa3-55e200b2eb48",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1060312,
+      "team": "LAR",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "266",
+      "yahoo_id": 32803,
+      "years_exp": 6
+    },
+    {
+      "active": true,
+      "age": 25,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "2001-02-26",
+      "birth_state": null,
+      "college": "Penn State",
+      "competitions": [],
+      "depth_chart_order": 2,
+      "depth_chart_position": "TE",
+      "espn_id": null,
+      "fantasy_data_id": 23142,
+      "fantasy_positions": [
+        "TE"
+      ],
+      "first_name": "Theo",
+      "full_name": "Theo Johnson",
+      "gsis_id": null,
+      "hashtag": "#theojohnson-NFL-NYG-84",
+      "height": "78",
+      "high_school": "Holy Names (CAN)",
+      "injury_body_part": "Undisclosed",
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": "Questionable",
+      "kalshi_id": "fd07038e-a82f-4536-bc2e-d3a1fd35044f",
+      "last_name": "Johnson",
+      "metadata": {
+        "channel_id": "1113708678248165376",
+        "genius_id": "1463957",
+        "rookie_year": "2024"
+      },
+      "news_updated": 1788715231554,
+      "number": 84,
+      "oddsjam_id": "464BD224959C",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "11597",
+      "player_shard": "1",
+      "position": "TE",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "11597",
+      "rotowire_id": 17021,
+      "rotoworld_id": null,
+      "search_first_name": "theo",
+      "search_full_name": "theojohnson",
+      "search_last_name": "johnson",
+      "search_rank": 144,
+      "sport": "nfl",
+      "sportradar_id": "a5d4bb1d-c130-47c2-808a-2dd1f85005fb",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1214414,
+      "team": "NYG",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "264",
+      "yahoo_id": null,
+      "years_exp": 2
+    },
+    {
+      "active": true,
+      "age": 25,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "2000-09-13",
+      "birth_state": null,
+      "college": "Iowa",
+      "competitions": [],
+      "depth_chart_order": 2,
+      "depth_chart_position": "TE",
+      "espn_id": null,
+      "fantasy_data_id": 25208,
+      "fantasy_positions": [
+        "TE"
+      ],
+      "first_name": "Erick",
+      "full_name": "Erick All",
+      "gsis_id": null,
+      "hashtag": "#erickall-NFL-CIN-83",
+      "height": "77",
+      "high_school": "Fairfield (OH)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "bdb56ffc-d639-4c32-8029-fe15a9bd9f86",
+      "last_name": "All",
+      "metadata": {
+        "channel_id": "1113708804966477824",
+        "genius_id": "1463966",
+        "injury_override_pre_2025_0": "IR",
+        "rookie_year": "2024"
+      },
+      "news_updated": 1785445823666,
+      "number": 83,
+      "oddsjam_id": "C5B5D1A0E5AD",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "11592",
+      "player_shard": "0",
+      "position": "TE",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "11592",
+      "rotowire_id": 17696,
+      "rotoworld_id": null,
+      "search_first_name": "erick",
+      "search_full_name": "erickall",
+      "search_last_name": "all",
+      "search_rank": 565,
+      "sport": "nfl",
+      "sportradar_id": "5523779b-db60-4158-b232-8391bc7db65b",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1164533,
+      "team": "CIN",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "255",
+      "yahoo_id": null,
+      "years_exp": 2
+    }
+  ],
+  "roster_summary": {
+    "by_position": {
+      "DEF": [],
+      "K": [],
+      "OTHER": [],
+      "QB": [
+        {
+          "full_name": "Jalen Hurts",
+          "overall_pick": 16,
+          "position": "QB",
+          "provider_id": "6904",
+          "round": 2,
+          "slot": 5,
+          "team": "PHI"
+        },
+        {
+          "full_name": "Patrick Mahomes",
+          "overall_pick": 35,
+          "position": "QB",
+          "provider_id": "4046",
+          "round": 4,
+          "slot": 6,
+          "team": "KC"
+        },
+        {
+          "full_name": "C.J. Stroud",
+          "overall_pick": 85,
+          "position": "QB",
+          "provider_id": "9758",
+          "round": 9,
+          "slot": 5,
+          "team": "HOU"
+        },
+        {
+          "full_name": "Aidan O'Connell",
+          "overall_pick": 148,
+          "position": "QB",
+          "provider_id": "10866",
+          "round": 15,
+          "slot": 8,
+          "team": "LV"
+        }
+      ],
+      "RB": [
+        {
+          "full_name": "Bijan Robinson",
+          "overall_pick": 1,
+          "position": "RB",
+          "provider_id": "9509",
+          "round": 1,
+          "slot": 1,
+          "team": "ATL"
+        },
+        {
+          "full_name": "Kyren Williams",
+          "overall_pick": 48,
+          "position": "RB",
+          "provider_id": "8150",
+          "round": 5,
+          "slot": 8,
+          "team": "LAR"
+        },
+        {
+          "full_name": "Blake Corum",
+          "overall_pick": 88,
+          "position": "RB",
+          "provider_id": "11586",
+          "round": 9,
+          "slot": 8,
+          "team": "LAR"
+        },
+        {
+          "full_name": "Chuba Hubbard",
+          "overall_pick": 127,
+          "position": "RB",
+          "provider_id": "7594",
+          "round": 13,
+          "slot": 7,
+          "team": "CAR"
+        },
+        {
+          "full_name": "Tyjae Spears",
+          "overall_pick": 136,
+          "position": "RB",
+          "provider_id": "9508",
+          "round": 14,
+          "slot": 5,
+          "team": "TEN"
+        },
+        {
+          "full_name": "Braelon Allen",
+          "overall_pick": 167,
+          "position": "RB",
+          "provider_id": "11576",
+          "round": 17,
+          "slot": 7,
+          "team": "NYJ"
+        },
+        {
+          "full_name": "Kimani Vidal",
+          "overall_pick": 177,
+          "position": "RB",
+          "provider_id": "11647",
+          "round": 18,
+          "slot": 4,
+          "team": "LAC"
+        },
+        {
+          "full_name": "Ray Davis",
+          "overall_pick": 190,
+          "position": "RB",
+          "provider_id": "11575",
+          "round": 19,
+          "slot": 10,
+          "team": "BUF"
+        }
+      ],
+      "TE": [
+        {
+          "full_name": "Sam LaPorta",
+          "overall_pick": 56,
+          "position": "TE",
+          "provider_id": "10859",
+          "round": 6,
+          "slot": 5,
+          "team": "DET"
+        },
+        {
+          "full_name": "George Kittle",
+          "overall_pick": 124,
+          "position": "TE",
+          "provider_id": "4217",
+          "round": 13,
+          "slot": 4,
+          "team": "SF"
+        }
+      ],
+      "WR": [
+        {
+          "full_name": "CeeDee Lamb",
+          "overall_pick": 25,
+          "position": "WR",
+          "provider_id": "6786",
+          "round": 3,
+          "slot": 5,
+          "team": "DAL"
+        },
+        {
+          "full_name": "Rashee Rice",
+          "overall_pick": 45,
+          "position": "WR",
+          "provider_id": "10229",
+          "round": 5,
+          "slot": 5,
+          "team": "KC"
+        },
+        {
+          "full_name": "Xavier Worthy",
+          "overall_pick": 68,
+          "position": "WR",
+          "provider_id": "11624",
+          "round": 7,
+          "slot": 8,
+          "team": "KC"
+        },
+        {
+          "full_name": "Jordan Addison",
+          "overall_pick": 104,
+          "position": "WR",
+          "provider_id": "9756",
+          "round": 11,
+          "slot": 4,
+          "team": "MIN"
+        },
+        {
+          "full_name": "Davante Adams",
+          "overall_pick": 105,
+          "position": "WR",
+          "provider_id": "2133",
+          "round": 11,
+          "slot": 5,
+          "team": "LAR"
+        },
+        {
+          "full_name": "Adonai Mitchell",
+          "overall_pick": 137,
+          "position": "WR",
+          "provider_id": "11625",
+          "round": 14,
+          "slot": 4,
+          "team": "NYJ"
+        },
+        {
+          "full_name": "Malik Washington",
+          "overall_pick": 176,
+          "position": "WR",
+          "provider_id": "11610",
+          "round": 18,
+          "slot": 5,
+          "team": "MIA"
+        }
+      ]
+    },
+    "bye_week_conflicts": [
+      {
+        "count": 4,
+        "players": [
+          "Patrick Mahomes",
+          "Rashee Rice",
+          "Xavier Worthy",
+          "Chuba Hubbard"
+        ],
+        "week": 5
+      },
+      {
+        "count": 3,
+        "players": [
+          "Sam LaPorta",
+          "Jordan Addison",
+          "Malik Washington"
+        ],
+        "week": 6
+      },
+      {
+        "count": 4,
+        "players": [
+          "Bijan Robinson",
+          "Kyren Williams",
+          "Blake Corum",
+          "Davante Adams"
+        ],
+        "week": 11
+      },
+      {
+        "count": 3,
+        "players": [
+          "Adonai Mitchell",
+          "Aidan O'Connell",
+          "Braelon Allen"
+        ],
+        "week": 13
+      }
+    ],
+    "bye_week_distribution": {
+      "5": [
+        "Patrick Mahomes",
+        "Rashee Rice",
+        "Xavier Worthy",
+        "Chuba Hubbard"
+      ],
+      "6": [
+        "Sam LaPorta",
+        "Jordan Addison",
+        "Malik Washington"
+      ],
+      "7": [
+        "Kimani Vidal",
+        "Ray Davis"
+      ],
+      "8": [
+        "C.J. Stroud",
+        "George Kittle"
+      ],
+      "9": [
+        "Tyjae Spears"
+      ],
+      "10": [
+        "Jalen Hurts"
+      ],
+      "11": [
+        "Bijan Robinson",
+        "Kyren Williams",
+        "Blake Corum",
+        "Davante Adams"
+      ],
+      "13": [
+        "Adonai Mitchell",
+        "Aidan O'Connell",
+        "Braelon Allen"
+      ],
+      "14": [
+        "CeeDee Lamb"
+      ]
+    },
+    "needs": [
+      "DEF",
+      "K"
+    ],
+    "position_counts": {
+      "DEF": 0,
+      "K": 0,
+      "QB": 4,
+      "RB": 8,
+      "TE": 2,
+      "WR": 7
+    },
+    "remaining_slots": 0,
+    "target_roster_size": 14,
+    "total_selected": 21
+  },
+  "unknown": []
+}

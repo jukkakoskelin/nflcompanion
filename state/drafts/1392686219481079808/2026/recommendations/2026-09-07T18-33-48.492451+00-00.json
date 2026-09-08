@@ -1,0 +1,501 @@
+{
+  "ambiguous": [],
+  "generated_at": "2026-09-07T18:33:48.492451+00:00",
+  "recommendations": [
+    {
+      "bye_week": 11,
+      "bye_week_clash_count": 3,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 20,
+        "bye_week_clash": -5,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Davante Adams",
+      "position": "WR",
+      "provider_id": "2133",
+      "rank": 1,
+      "rationale": "Adds wr value outside the current priority; \u26a0 bye week 11 clashes with 3 existing roster players.",
+      "score": 45,
+      "team": "LAR"
+    },
+    {
+      "bye_week": 7,
+      "bye_week_clash_count": 0,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": 0,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Dalton Kincaid",
+      "position": "TE",
+      "provider_id": "10236",
+      "rank": 2,
+      "rationale": "Adds te value outside the current priority; week 7 bye.",
+      "score": 40,
+      "team": "BUF"
+    },
+    {
+      "bye_week": 6,
+      "bye_week_clash_count": 1,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": 0,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Jordan Addison",
+      "position": "WR",
+      "provider_id": "9756",
+      "rank": 3,
+      "rationale": "Adds wr value outside the current priority; week 6 bye.",
+      "score": 40,
+      "team": "MIN"
+    },
+    {
+      "bye_week": 14,
+      "bye_week_clash_count": 1,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": 0,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Michael Wilson",
+      "position": "WR",
+      "provider_id": "10232",
+      "rank": 4,
+      "rationale": "Adds wr value outside the current priority; shares bye week 14 with ceedee lamb (wr).",
+      "score": 40,
+      "team": "ARI"
+    }
+  ],
+  "resolved": [
+    {
+      "active": true,
+      "age": 26,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "2000-02-23",
+      "birth_state": null,
+      "college": "Stanford",
+      "competitions": [],
+      "depth_chart_order": 2,
+      "depth_chart_position": "RWR",
+      "espn_id": null,
+      "fantasy_data_id": 24173,
+      "fantasy_positions": [
+        "WR"
+      ],
+      "first_name": "Michael",
+      "full_name": "Michael Wilson",
+      "gsis_id": null,
+      "hashtag": "#michaelwilson-NFL-ARI-14",
+      "height": "74",
+      "high_school": "Chaminade College Prep (CA)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "4f23a255-3f5c-41ce-83d2-f8451817f8c0",
+      "last_name": "Wilson",
+      "metadata": {
+        "channel_id": "1113708848750817280",
+        "genius_id": "1075269",
+        "rookie_year": "2023"
+      },
+      "news_updated": 1788455106623,
+      "number": 14,
+      "oddsjam_id": "C1EBDE7E9115",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "10232",
+      "player_shard": "3",
+      "position": "WR",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "10232",
+      "rotowire_id": 16957,
+      "rotoworld_id": null,
+      "search_first_name": "michael",
+      "search_full_name": "michaelwilson",
+      "search_last_name": "wilson",
+      "search_rank": 75,
+      "sport": "nfl",
+      "sportradar_id": "b91be982-fccd-448e-869b-e9b5148a1730",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1123529,
+      "team": "ARI",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "213",
+      "yahoo_id": null,
+      "years_exp": 3
+    },
+    {
+      "active": true,
+      "age": 33,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1992-12-24",
+      "birth_state": null,
+      "college": "Fresno State",
+      "competitions": [],
+      "depth_chart_order": 2,
+      "depth_chart_position": "RWR",
+      "espn_id": 16800,
+      "fantasy_data_id": 16470,
+      "fantasy_positions": [
+        "WR"
+      ],
+      "first_name": "Davante",
+      "full_name": "Davante Adams",
+      "gsis_id": "00-0031381",
+      "hashtag": "#davanteadams-NFL-LAR-17",
+      "height": "73",
+      "high_school": "Palo Alto (CA)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "224c89e1-8fba-44cd-a337-70b53547c35c",
+      "last_name": "Adams",
+      "metadata": {
+        "channel_id": "1113708773697941505",
+        "genius_id": "796224",
+        "rookie_year": "2014"
+      },
+      "news_updated": 1788708930935,
+      "number": 17,
+      "oddsjam_id": "616DA87E3731",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "2133",
+      "player_shard": "5",
+      "position": "WR",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "2133",
+      "rotowire_id": 9455,
+      "rotoworld_id": 9273,
+      "search_first_name": "davante",
+      "search_full_name": "davanteadams",
+      "search_last_name": "adams",
+      "search_rank": 46,
+      "sport": "nfl",
+      "sportradar_id": "e7d6ae25-bf15-4660-8b37-c37716551de3",
+      "stats_id": 611417,
+      "status": "Active",
+      "swish_id": 611417,
+      "team": "LAR",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "204",
+      "yahoo_id": 27581,
+      "years_exp": 12
+    },
+    {
+      "active": true,
+      "age": 24,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "2002-01-27",
+      "birth_state": null,
+      "college": "USC",
+      "competitions": [],
+      "depth_chart_order": 2,
+      "depth_chart_position": "RWR",
+      "espn_id": null,
+      "fantasy_data_id": 23162,
+      "fantasy_positions": [
+        "WR"
+      ],
+      "first_name": "Jordan",
+      "full_name": "Jordan Addison",
+      "gsis_id": null,
+      "hashtag": "#jordanaddison-NFL-MIN-3",
+      "height": "71",
+      "high_school": "Tuscarora (MD)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "750af3d1-1e56-46bc-9f0b-59a3f93052ec",
+      "last_name": "Addison",
+      "metadata": {
+        "channel_id": "1113708709416038401",
+        "genius_id": "1398596",
+        "rookie_year": "2023"
+      },
+      "news_updated": 1788465306980,
+      "number": 3,
+      "oddsjam_id": "645BE77276B1",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "9756",
+      "player_shard": "5",
+      "position": "WR",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "9756",
+      "rotowire_id": 16895,
+      "rotoworld_id": null,
+      "search_first_name": "jordan",
+      "search_full_name": "jordanaddison",
+      "search_last_name": "addison",
+      "search_rank": 99,
+      "sport": "nfl",
+      "sportradar_id": "63fdd64e-1a23-4b77-9536-b1609f3a708c",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1214250,
+      "team": "MIN",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "179",
+      "yahoo_id": null,
+      "years_exp": 3
+    },
+    {
+      "active": true,
+      "age": 26,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1999-10-18",
+      "birth_state": null,
+      "college": "Utah",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "TE",
+      "espn_id": null,
+      "fantasy_data_id": 24102,
+      "fantasy_positions": [
+        "TE"
+      ],
+      "first_name": "Dalton",
+      "full_name": "Dalton Kincaid",
+      "gsis_id": null,
+      "hashtag": "#daltonkincaid-NFL-BUF-86",
+      "height": "75",
+      "high_school": "Faith Lutheran (NV)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "6b4831f0-002a-43a0-aff6-e8985fa653fa",
+      "last_name": "Kincaid",
+      "metadata": {
+        "channel_id": "1113708758392926208",
+        "genius_id": "1398598",
+        "rookie_year": "2023"
+      },
+      "news_updated": 1788357029149,
+      "number": 86,
+      "oddsjam_id": "6209487DAAAC",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "10236",
+      "player_shard": "5",
+      "position": "TE",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "10236",
+      "rotowire_id": 16697,
+      "rotoworld_id": null,
+      "search_first_name": "dalton",
+      "search_full_name": "daltonkincaid",
+      "search_last_name": "kincaid",
+      "search_rank": 81,
+      "sport": "nfl",
+      "sportradar_id": "b961fa15-0676-4948-b95f-56d06319d40e",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1135513,
+      "team": "BUF",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "246",
+      "yahoo_id": null,
+      "years_exp": 3
+    }
+  ],
+  "roster_summary": {
+    "by_position": {
+      "DEF": [],
+      "K": [],
+      "OTHER": [],
+      "QB": [
+        {
+          "full_name": "Jalen Hurts",
+          "overall_pick": 16,
+          "position": "QB",
+          "provider_id": "6904",
+          "round": 2,
+          "slot": 5,
+          "team": "PHI"
+        },
+        {
+          "full_name": "Patrick Mahomes",
+          "overall_pick": 35,
+          "position": "QB",
+          "provider_id": "4046",
+          "round": 4,
+          "slot": 6,
+          "team": "KC"
+        },
+        {
+          "full_name": "C.J. Stroud",
+          "overall_pick": 85,
+          "position": "QB",
+          "provider_id": "9758",
+          "round": 9,
+          "slot": 5,
+          "team": "HOU"
+        }
+      ],
+      "RB": [
+        {
+          "full_name": "Bijan Robinson",
+          "overall_pick": 1,
+          "position": "RB",
+          "provider_id": "9509",
+          "round": 1,
+          "slot": 1,
+          "team": "ATL"
+        },
+        {
+          "full_name": "Kyren Williams",
+          "overall_pick": 48,
+          "position": "RB",
+          "provider_id": "8150",
+          "round": 5,
+          "slot": 8,
+          "team": "LAR"
+        },
+        {
+          "full_name": "Blake Corum",
+          "overall_pick": 88,
+          "position": "RB",
+          "provider_id": "11586",
+          "round": 9,
+          "slot": 8,
+          "team": "LAR"
+        }
+      ],
+      "TE": [
+        {
+          "full_name": "Sam LaPorta",
+          "overall_pick": 56,
+          "position": "TE",
+          "provider_id": "10859",
+          "round": 6,
+          "slot": 5,
+          "team": "DET"
+        }
+      ],
+      "WR": [
+        {
+          "full_name": "CeeDee Lamb",
+          "overall_pick": 25,
+          "position": "WR",
+          "provider_id": "6786",
+          "round": 3,
+          "slot": 5,
+          "team": "DAL"
+        },
+        {
+          "full_name": "Rashee Rice",
+          "overall_pick": 45,
+          "position": "WR",
+          "provider_id": "10229",
+          "round": 5,
+          "slot": 5,
+          "team": "KC"
+        },
+        {
+          "full_name": "Xavier Worthy",
+          "overall_pick": 68,
+          "position": "WR",
+          "provider_id": "11624",
+          "round": 7,
+          "slot": 8,
+          "team": "KC"
+        }
+      ]
+    },
+    "bye_week_conflicts": [
+      {
+        "count": 3,
+        "players": [
+          "Patrick Mahomes",
+          "Rashee Rice",
+          "Xavier Worthy"
+        ],
+        "week": 5
+      },
+      {
+        "count": 3,
+        "players": [
+          "Bijan Robinson",
+          "Kyren Williams",
+          "Blake Corum"
+        ],
+        "week": 11
+      }
+    ],
+    "bye_week_distribution": {
+      "5": [
+        "Patrick Mahomes",
+        "Rashee Rice",
+        "Xavier Worthy"
+      ],
+      "6": [
+        "Sam LaPorta"
+      ],
+      "8": [
+        "C.J. Stroud"
+      ],
+      "10": [
+        "Jalen Hurts"
+      ],
+      "11": [
+        "Bijan Robinson",
+        "Kyren Williams",
+        "Blake Corum"
+      ],
+      "14": [
+        "CeeDee Lamb"
+      ]
+    },
+    "needs": [
+      "DEF",
+      "K"
+    ],
+    "position_counts": {
+      "DEF": 0,
+      "K": 0,
+      "QB": 3,
+      "RB": 3,
+      "TE": 1,
+      "WR": 3
+    },
+    "remaining_slots": 4,
+    "target_roster_size": 14,
+    "total_selected": 10
+  },
+  "unknown": []
+}

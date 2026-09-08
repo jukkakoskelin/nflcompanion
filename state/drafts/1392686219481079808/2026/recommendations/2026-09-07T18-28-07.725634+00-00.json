@@ -1,0 +1,388 @@
+{
+  "ambiguous": [],
+  "generated_at": "2026-09-07T18:28:07.725634+00:00",
+  "recommendations": [
+    {
+      "bye_week": 8,
+      "bye_week_clash_count": 0,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 20,
+        "bye_week_clash": 0,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "David Montgomery",
+      "position": "RB",
+      "provider_id": "5892",
+      "rank": 1,
+      "rationale": "Adds rb value outside the current priority; week 8 bye.",
+      "score": 50,
+      "team": "HOU"
+    },
+    {
+      "bye_week": 8,
+      "bye_week_clash_count": 0,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": 0,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "C.J. Stroud",
+      "position": "QB",
+      "provider_id": "9758",
+      "rank": 2,
+      "rationale": "Adds qb value outside the current priority; week 8 bye.",
+      "score": 40,
+      "team": "HOU"
+    },
+    {
+      "bye_week": 11,
+      "bye_week_clash_count": 2,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": -5,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Matthew Stafford",
+      "position": "QB",
+      "provider_id": "421",
+      "rank": 3,
+      "rationale": "Adds qb value outside the current priority; \u26a0 bye week 11 clashes with 2 existing roster players.",
+      "score": 35,
+      "team": "LAR"
+    }
+  ],
+  "resolved": [
+    {
+      "active": true,
+      "age": 24,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "2001-10-03",
+      "birth_state": null,
+      "college": "Ohio State",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "QB",
+      "espn_id": null,
+      "fantasy_data_id": 23239,
+      "fantasy_positions": [
+        "QB"
+      ],
+      "first_name": "C.J.",
+      "full_name": "C.J. Stroud",
+      "gsis_id": null,
+      "hashtag": "#cjstroud-NFL-HOU-7",
+      "height": "75",
+      "high_school": "Rancho Cucamonga (CA)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "cb98f616-f5cb-41e2-b49e-b32cd7277862",
+      "last_name": "Stroud",
+      "metadata": {
+        "channel_id": "1113708785806897152",
+        "genius_id": "1398557",
+        "rookie_year": "2023"
+      },
+      "news_updated": 1788451506186,
+      "number": 7,
+      "oddsjam_id": "66A14E676432",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "9758",
+      "player_shard": "0",
+      "position": "QB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "9758",
+      "rotowire_id": 16886,
+      "rotoworld_id": null,
+      "search_first_name": "cj",
+      "search_full_name": "cjstroud",
+      "search_last_name": "stroud",
+      "search_rank": 102,
+      "sport": "nfl",
+      "sportradar_id": "7e91086f-9ca4-4bd9-a099-b88b2f37e6c6",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1214084,
+      "team": "HOU",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "218",
+      "yahoo_id": null,
+      "years_exp": 3
+    },
+    {
+      "active": true,
+      "age": 38,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1988-02-07",
+      "birth_state": null,
+      "college": "Georgia",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "QB",
+      "espn_id": 12483,
+      "fantasy_data_id": 9038,
+      "fantasy_positions": [
+        "QB"
+      ],
+      "first_name": "Matthew",
+      "full_name": "Matthew Stafford",
+      "gsis_id": "00-0026498",
+      "hashtag": "#matthewstafford-NFL-LAR-9",
+      "height": "75",
+      "high_school": "Highland Park (TX)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "3a248cd7-2cbc-4ec7-ad38-1d1712298293",
+      "last_name": "Stafford",
+      "metadata": {
+        "channel_id": "1113708705066545153",
+        "genius_id": "180838",
+        "rookie_year": "2009"
+      },
+      "news_updated": 1788575124438,
+      "number": 9,
+      "oddsjam_id": "DD2E6E11452C",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "421",
+      "player_shard": "3",
+      "position": "QB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "421",
+      "rotowire_id": 5971,
+      "rotoworld_id": 5132,
+      "search_first_name": "matthew",
+      "search_full_name": "matthewstafford",
+      "search_last_name": "stafford",
+      "search_rank": 66,
+      "sport": "nfl",
+      "sportradar_id": "ade43b1a-0601-4672-83b6-d246bc066a19",
+      "stats_id": 323205,
+      "status": "Active",
+      "swish_id": 323205,
+      "team": "LAR",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "214",
+      "yahoo_id": 9265,
+      "years_exp": 17
+    },
+    {
+      "active": true,
+      "age": 29,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1997-06-07",
+      "birth_state": null,
+      "college": "Iowa State",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "RB",
+      "espn_id": 4035538,
+      "fantasy_data_id": 20882,
+      "fantasy_positions": [
+        "RB"
+      ],
+      "first_name": "David",
+      "full_name": "David Montgomery",
+      "gsis_id": " 00-0035685",
+      "hashtag": "#davidmontgomery-NFL-HOU-32",
+      "height": "71",
+      "high_school": "Mount Healthy (OH)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "7a0ad4e9-56c4-40b4-8da6-511ac66f9d79",
+      "last_name": "Montgomery",
+      "metadata": {
+        "channel_id": "1113708809991254017",
+        "genius_id": "1016052",
+        "rookie_year": "2019"
+      },
+      "news_updated": 1788545721912,
+      "number": 32,
+      "oddsjam_id": "A2114935F695",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "5892",
+      "player_shard": "6",
+      "position": "RB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "5892",
+      "rotowire_id": 13556,
+      "rotoworld_id": 13978,
+      "search_first_name": "david",
+      "search_full_name": "davidmontgomery",
+      "search_last_name": "montgomery",
+      "search_rank": 43,
+      "sport": "nfl",
+      "sportradar_id": "1c9e1cd5-8cb1-4a15-a2c8-3a0c0fd5423c",
+      "stats_id": 946739,
+      "status": "Active",
+      "swish_id": 946739,
+      "team": "HOU",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "230",
+      "yahoo_id": 31905,
+      "years_exp": 7
+    }
+  ],
+  "roster_summary": {
+    "by_position": {
+      "DEF": [],
+      "K": [],
+      "OTHER": [],
+      "QB": [
+        {
+          "full_name": "Jalen Hurts",
+          "overall_pick": 16,
+          "position": "QB",
+          "provider_id": "6904",
+          "round": 2,
+          "slot": 5,
+          "team": "PHI"
+        },
+        {
+          "full_name": "Patrick Mahomes",
+          "overall_pick": 35,
+          "position": "QB",
+          "provider_id": "4046",
+          "round": 4,
+          "slot": 6,
+          "team": "KC"
+        }
+      ],
+      "RB": [
+        {
+          "full_name": "Bijan Robinson",
+          "overall_pick": 1,
+          "position": "RB",
+          "provider_id": "9509",
+          "round": 1,
+          "slot": 1,
+          "team": "ATL"
+        },
+        {
+          "full_name": "Kyren Williams",
+          "overall_pick": 48,
+          "position": "RB",
+          "provider_id": "8150",
+          "round": 5,
+          "slot": 8,
+          "team": "LAR"
+        }
+      ],
+      "TE": [
+        {
+          "full_name": "Sam LaPorta",
+          "overall_pick": 56,
+          "position": "TE",
+          "provider_id": "10859",
+          "round": 6,
+          "slot": 5,
+          "team": "DET"
+        }
+      ],
+      "WR": [
+        {
+          "full_name": "CeeDee Lamb",
+          "overall_pick": 25,
+          "position": "WR",
+          "provider_id": "6786",
+          "round": 3,
+          "slot": 5,
+          "team": "DAL"
+        },
+        {
+          "full_name": "Rashee Rice",
+          "overall_pick": 45,
+          "position": "WR",
+          "provider_id": "10229",
+          "round": 5,
+          "slot": 5,
+          "team": "KC"
+        },
+        {
+          "full_name": "Xavier Worthy",
+          "overall_pick": 68,
+          "position": "WR",
+          "provider_id": "11624",
+          "round": 7,
+          "slot": 8,
+          "team": "KC"
+        }
+      ]
+    },
+    "bye_week_conflicts": [
+      {
+        "count": 3,
+        "players": [
+          "Patrick Mahomes",
+          "Rashee Rice",
+          "Xavier Worthy"
+        ],
+        "week": 5
+      }
+    ],
+    "bye_week_distribution": {
+      "5": [
+        "Patrick Mahomes",
+        "Rashee Rice",
+        "Xavier Worthy"
+      ],
+      "6": [
+        "Sam LaPorta"
+      ],
+      "10": [
+        "Jalen Hurts"
+      ],
+      "11": [
+        "Bijan Robinson",
+        "Kyren Williams"
+      ],
+      "14": [
+        "CeeDee Lamb"
+      ]
+    },
+    "needs": [
+      "DEF",
+      "K"
+    ],
+    "position_counts": {
+      "DEF": 0,
+      "K": 0,
+      "QB": 2,
+      "RB": 2,
+      "TE": 1,
+      "WR": 3
+    },
+    "remaining_slots": 6,
+    "target_roster_size": 14,
+    "total_selected": 8
+  },
+  "unknown": []
+}

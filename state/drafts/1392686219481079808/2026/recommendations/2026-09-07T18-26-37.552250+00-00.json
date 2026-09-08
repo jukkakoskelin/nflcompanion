@@ -1,0 +1,471 @@
+{
+  "ambiguous": [],
+  "generated_at": "2026-09-07T18:26:37.552250+00:00",
+  "recommendations": [
+    {
+      "bye_week": 10,
+      "bye_week_clash_count": 1,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": 0,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Baker Mayfield",
+      "position": "QB",
+      "provider_id": "4892",
+      "rank": 1,
+      "rationale": "Adds qb value outside the current priority; shares bye week 10 with jalen hurts (qb).",
+      "score": 40,
+      "team": "TB"
+    },
+    {
+      "bye_week": 13,
+      "bye_week_clash_count": 0,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": 0,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Geno Smith",
+      "position": "QB",
+      "provider_id": "1373",
+      "rank": 2,
+      "rationale": "Adds qb value outside the current priority; week 13 bye.",
+      "score": 40,
+      "team": "NYJ"
+    },
+    {
+      "bye_week": 14,
+      "bye_week_clash_count": 1,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": 0,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Trey Benson",
+      "position": "RB",
+      "provider_id": "11589",
+      "rank": 3,
+      "rationale": "Adds rb value outside the current priority; week 14 bye.",
+      "score": 40,
+      "team": "ARI"
+    },
+    {
+      "bye_week": 11,
+      "bye_week_clash_count": 2,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": -5,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Matthew Stafford",
+      "position": "QB",
+      "provider_id": "421",
+      "rank": 4,
+      "rationale": "Adds qb value outside the current priority; \u26a0 bye week 11 clashes with 2 existing roster players.",
+      "score": 35,
+      "team": "LAR"
+    }
+  ],
+  "resolved": [
+    {
+      "active": true,
+      "age": 31,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1995-04-14",
+      "birth_state": null,
+      "college": "Oklahoma",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "QB",
+      "espn_id": 3052587,
+      "fantasy_data_id": 19790,
+      "fantasy_positions": [
+        "QB"
+      ],
+      "first_name": "Baker",
+      "full_name": "Baker Mayfield",
+      "gsis_id": "00-0034855",
+      "hashtag": "#bakermayfield-NFL-TB-6",
+      "height": "73",
+      "high_school": "Lake Travis (TX)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "075165b5-273c-4372-8950-7f01a4f1af4e",
+      "last_name": "Mayfield",
+      "metadata": {
+        "channel_id": "1113708728328155136",
+        "genius_id": "1013868",
+        "rookie_year": "2018"
+      },
+      "news_updated": 1788722432358,
+      "number": 6,
+      "oddsjam_id": "2F8FF2DF2E69",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "4892",
+      "player_shard": "8",
+      "position": "QB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "4892",
+      "rotowire_id": 12619,
+      "rotoworld_id": 13072,
+      "search_first_name": "baker",
+      "search_full_name": "bakermayfield",
+      "search_last_name": "mayfield",
+      "search_rank": 74,
+      "sport": "nfl",
+      "sportradar_id": "30198d30-9769-4e10-ac86-b4c91d940802",
+      "stats_id": 748070,
+      "status": "Active",
+      "swish_id": 748070,
+      "team": "TB",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "215",
+      "yahoo_id": 30971,
+      "years_exp": 8
+    },
+    {
+      "active": true,
+      "age": 35,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1990-10-10",
+      "birth_state": null,
+      "college": "West Virginia",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "QB",
+      "espn_id": 15864,
+      "fantasy_data_id": 14895,
+      "fantasy_positions": [
+        "QB"
+      ],
+      "first_name": "Geno",
+      "full_name": "Geno Smith",
+      "gsis_id": "00-0030565",
+      "hashtag": "#genosmith-NFL-NYJ-7",
+      "height": "74",
+      "high_school": "Miramar (FL)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "618d0f7c-0e21-4590-9aa0-c2908e4d0269",
+      "last_name": "Smith",
+      "metadata": {
+        "channel_id": "1113708724981100544",
+        "genius_id": "758015",
+        "rookie_year": "2013"
+      },
+      "news_updated": 1788487516278,
+      "number": 7,
+      "oddsjam_id": "083339653919",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "1373",
+      "player_shard": "8",
+      "position": "QB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "1373",
+      "rotowire_id": 8743,
+      "rotoworld_id": 8326,
+      "search_first_name": "geno",
+      "search_full_name": "genosmith",
+      "search_last_name": "smith",
+      "search_rank": 214,
+      "sport": "nfl",
+      "sportradar_id": "cfc93f5e-105e-4a5e-88d3-f4279893cfa8",
+      "stats_id": 513856,
+      "status": "Active",
+      "swish_id": 513856,
+      "team": "NYJ",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "221",
+      "yahoo_id": 26662,
+      "years_exp": 13
+    },
+    {
+      "active": true,
+      "age": 38,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1988-02-07",
+      "birth_state": null,
+      "college": "Georgia",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "QB",
+      "espn_id": 12483,
+      "fantasy_data_id": 9038,
+      "fantasy_positions": [
+        "QB"
+      ],
+      "first_name": "Matthew",
+      "full_name": "Matthew Stafford",
+      "gsis_id": "00-0026498",
+      "hashtag": "#matthewstafford-NFL-LAR-9",
+      "height": "75",
+      "high_school": "Highland Park (TX)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "3a248cd7-2cbc-4ec7-ad38-1d1712298293",
+      "last_name": "Stafford",
+      "metadata": {
+        "channel_id": "1113708705066545153",
+        "genius_id": "180838",
+        "rookie_year": "2009"
+      },
+      "news_updated": 1788575124438,
+      "number": 9,
+      "oddsjam_id": "DD2E6E11452C",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "421",
+      "player_shard": "3",
+      "position": "QB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "421",
+      "rotowire_id": 5971,
+      "rotoworld_id": 5132,
+      "search_first_name": "matthew",
+      "search_full_name": "matthewstafford",
+      "search_last_name": "stafford",
+      "search_rank": 66,
+      "sport": "nfl",
+      "sportradar_id": "ade43b1a-0601-4672-83b6-d246bc066a19",
+      "stats_id": 323205,
+      "status": "Active",
+      "swish_id": 323205,
+      "team": "LAR",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "214",
+      "yahoo_id": 9265,
+      "years_exp": 17
+    },
+    {
+      "active": true,
+      "age": 24,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "2002-07-23",
+      "birth_state": null,
+      "college": "Florida State",
+      "competitions": [],
+      "depth_chart_order": 6,
+      "depth_chart_position": "RB",
+      "espn_id": null,
+      "fantasy_data_id": 24292,
+      "fantasy_positions": [
+        "RB"
+      ],
+      "first_name": "Trey",
+      "full_name": "Trey Benson",
+      "gsis_id": null,
+      "hashtag": "#treybenson-NFL-ARI-33",
+      "height": "72",
+      "high_school": "St. Joseph Catholic (MS)",
+      "injury_body_part": "Knee",
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": "IR",
+      "kalshi_id": "6023c7cf-c72f-44b2-a70c-46c74dba787b",
+      "last_name": "Benson",
+      "metadata": {
+        "channel_id": "1113708844208386048",
+        "genius_id": "1463718",
+        "injury_override_regular_2025_5": "IR",
+        "rookie_year": "2024"
+      },
+      "news_updated": 1787706941742,
+      "number": 33,
+      "oddsjam_id": "CE0DD0AD4D9A",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "11589",
+      "player_shard": "9",
+      "position": "RB",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "11589",
+      "rotowire_id": 17767,
+      "rotoworld_id": null,
+      "search_first_name": "trey",
+      "search_full_name": "treybenson",
+      "search_last_name": "benson",
+      "search_rank": 114,
+      "sport": "nfl",
+      "sportradar_id": "0c1253f2-1822-445d-8590-fea6fd32703f",
+      "stats_id": null,
+      "status": "Inactive",
+      "swish_id": 1248031,
+      "team": "ARI",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "225",
+      "yahoo_id": null,
+      "years_exp": 2
+    }
+  ],
+  "roster_summary": {
+    "by_position": {
+      "DEF": [],
+      "K": [],
+      "OTHER": [],
+      "QB": [
+        {
+          "full_name": "Jalen Hurts",
+          "overall_pick": 16,
+          "position": "QB",
+          "provider_id": "6904",
+          "round": 2,
+          "slot": 5,
+          "team": "PHI"
+        },
+        {
+          "full_name": "Patrick Mahomes",
+          "overall_pick": 35,
+          "position": "QB",
+          "provider_id": "4046",
+          "round": 4,
+          "slot": 6,
+          "team": "KC"
+        }
+      ],
+      "RB": [
+        {
+          "full_name": "Bijan Robinson",
+          "overall_pick": 1,
+          "position": "RB",
+          "provider_id": "9509",
+          "round": 1,
+          "slot": 1,
+          "team": "ATL"
+        },
+        {
+          "full_name": "Kyren Williams",
+          "overall_pick": 48,
+          "position": "RB",
+          "provider_id": "8150",
+          "round": 5,
+          "slot": 8,
+          "team": "LAR"
+        }
+      ],
+      "TE": [
+        {
+          "full_name": "Sam LaPorta",
+          "overall_pick": 56,
+          "position": "TE",
+          "provider_id": "10859",
+          "round": 6,
+          "slot": 5,
+          "team": "DET"
+        }
+      ],
+      "WR": [
+        {
+          "full_name": "CeeDee Lamb",
+          "overall_pick": 25,
+          "position": "WR",
+          "provider_id": "6786",
+          "round": 3,
+          "slot": 5,
+          "team": "DAL"
+        },
+        {
+          "full_name": "Rashee Rice",
+          "overall_pick": 45,
+          "position": "WR",
+          "provider_id": "10229",
+          "round": 5,
+          "slot": 5,
+          "team": "KC"
+        },
+        {
+          "full_name": "Xavier Worthy",
+          "overall_pick": 68,
+          "position": "WR",
+          "provider_id": "11624",
+          "round": 7,
+          "slot": 8,
+          "team": "KC"
+        }
+      ]
+    },
+    "bye_week_conflicts": [
+      {
+        "count": 3,
+        "players": [
+          "Patrick Mahomes",
+          "Rashee Rice",
+          "Xavier Worthy"
+        ],
+        "week": 5
+      }
+    ],
+    "bye_week_distribution": {
+      "5": [
+        "Patrick Mahomes",
+        "Rashee Rice",
+        "Xavier Worthy"
+      ],
+      "6": [
+        "Sam LaPorta"
+      ],
+      "10": [
+        "Jalen Hurts"
+      ],
+      "11": [
+        "Bijan Robinson",
+        "Kyren Williams"
+      ],
+      "14": [
+        "CeeDee Lamb"
+      ]
+    },
+    "needs": [
+      "DEF",
+      "K"
+    ],
+    "position_counts": {
+      "DEF": 0,
+      "K": 0,
+      "QB": 2,
+      "RB": 2,
+      "TE": 1,
+      "WR": 3
+    },
+    "remaining_slots": 6,
+    "target_roster_size": 14,
+    "total_selected": 8
+  },
+  "unknown": []
+}

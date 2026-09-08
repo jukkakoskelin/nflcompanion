@@ -1,0 +1,522 @@
+{
+  "ambiguous": [],
+  "generated_at": "2026-09-07T18:39:25.316448+00:00",
+  "recommendations": [
+    {
+      "bye_week": 7,
+      "bye_week_clash_count": 0,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": 0,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Ben Sinnott",
+      "position": "TE",
+      "provider_id": "11596",
+      "rank": 1,
+      "rationale": "Adds te value outside the current priority; week 7 bye.",
+      "score": 40,
+      "team": "WAS"
+    },
+    {
+      "bye_week": 8,
+      "bye_week_clash_count": 1,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": 0,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Cade Stover",
+      "position": "TE",
+      "provider_id": "11599",
+      "rank": 2,
+      "rationale": "Adds te value outside the current priority; week 8 bye.",
+      "score": 40,
+      "team": "HOU"
+    },
+    {
+      "bye_week": 7,
+      "bye_week_clash_count": 0,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": 0,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Chig Okonkwo",
+      "position": "TE",
+      "provider_id": "8210",
+      "rank": 3,
+      "rationale": "Adds te value outside the current priority; week 7 bye.",
+      "score": 40,
+      "team": "WAS"
+    },
+    {
+      "bye_week": 11,
+      "bye_week_clash_count": 4,
+      "confidence": "high",
+      "factor_scores": {
+        "active_status": 10,
+        "available_value": 10,
+        "bye_week_clash": -5,
+        "positional_need": 12,
+        "strategy_fit": 8,
+        "trend_signal": 0
+      },
+      "full_name": "Luke Musgrave",
+      "position": "TE",
+      "provider_id": "9481",
+      "rank": 4,
+      "rationale": "Adds te value outside the current priority; \u26a0 bye week 11 clashes with 4 existing roster players.",
+      "score": 35,
+      "team": "GB"
+    }
+  ],
+  "resolved": [
+    {
+      "active": true,
+      "age": 26,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "2000-09-02",
+      "birth_state": null,
+      "college": "Oregon State",
+      "competitions": [],
+      "depth_chart_order": 4,
+      "depth_chart_position": "TE",
+      "espn_id": null,
+      "fantasy_data_id": 24150,
+      "fantasy_positions": [
+        "TE"
+      ],
+      "first_name": "Luke",
+      "full_name": "Luke Musgrave",
+      "gsis_id": null,
+      "hashtag": "#lukemusgrave-NFL-GB-88",
+      "height": "78",
+      "high_school": "Bend Senior (OR)",
+      "injury_body_part": "Undisclosed",
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": "PUP",
+      "kalshi_id": "5592da81-fa19-416f-8b7a-c4290b669b8a",
+      "last_name": "Musgrave",
+      "metadata": {
+        "channel_id": "1113708799316750336",
+        "genius_id": "1398972",
+        "rookie_year": "2023"
+      },
+      "news_updated": 1788297321695,
+      "number": 88,
+      "oddsjam_id": "5D4E77A5CDBB",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "9481",
+      "player_shard": "2",
+      "position": "TE",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "9481",
+      "rotowire_id": 16663,
+      "rotoworld_id": null,
+      "search_first_name": "luke",
+      "search_full_name": "lukemusgrave",
+      "search_last_name": "musgrave",
+      "search_rank": 687,
+      "sport": "nfl",
+      "sportradar_id": "77a4fb49-3c6c-4aa1-8a21-20956e2d2240",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1179790,
+      "team": "GB",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "253",
+      "yahoo_id": null,
+      "years_exp": 3
+    },
+    {
+      "active": true,
+      "age": 26,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "2000-06-12",
+      "birth_state": null,
+      "college": "Ohio State",
+      "competitions": [],
+      "depth_chart_order": 3,
+      "depth_chart_position": "TE",
+      "espn_id": null,
+      "fantasy_data_id": 24986,
+      "fantasy_positions": [
+        "TE"
+      ],
+      "first_name": "Cade",
+      "full_name": "Cade Stover",
+      "gsis_id": null,
+      "hashtag": "#cadestover-NFL-HOU-8",
+      "height": "76",
+      "high_school": "Lexington (OH)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "c1b95e7f-17e3-4c43-88c8-0dd0edc39f7e",
+      "last_name": "Stover",
+      "metadata": {
+        "channel_id": "1113708785060311040",
+        "genius_id": "1463732",
+        "rookie_year": "2024"
+      },
+      "news_updated": 1780438850031,
+      "number": 8,
+      "oddsjam_id": "54048CAE6A00",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "11599",
+      "player_shard": "2",
+      "position": "TE",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "11599",
+      "rotowire_id": 17794,
+      "rotoworld_id": null,
+      "search_first_name": "cade",
+      "search_full_name": "cadestover",
+      "search_last_name": "stover",
+      "search_rank": 683,
+      "sport": "nfl",
+      "sportradar_id": "559d5222-0403-4a14-94c7-c7bd5072c939",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1175182,
+      "team": "HOU",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "251",
+      "yahoo_id": null,
+      "years_exp": 2
+    },
+    {
+      "active": true,
+      "age": 24,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "2002-06-14",
+      "birth_state": null,
+      "college": "Kansas State",
+      "competitions": [],
+      "depth_chart_order": 3,
+      "depth_chart_position": "TE",
+      "espn_id": null,
+      "fantasy_data_id": 24985,
+      "fantasy_positions": [
+        "TE"
+      ],
+      "first_name": "Ben",
+      "full_name": "Ben Sinnott",
+      "gsis_id": null,
+      "hashtag": "#bensinnott-NFL-WAS-82",
+      "height": "76",
+      "high_school": "Columbus (IA)",
+      "injury_body_part": "Oblique",
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": "Questionable",
+      "kalshi_id": "475c3f72-dc8b-4346-8b3d-8714eba3a853",
+      "last_name": "Sinnott",
+      "metadata": {
+        "channel_id": "1113708699513286656",
+        "genius_id": "1463871",
+        "rookie_year": "2024"
+      },
+      "news_updated": 1787666447489,
+      "number": 82,
+      "oddsjam_id": "8B176931BA87",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "11596",
+      "player_shard": "3",
+      "position": "TE",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "11596",
+      "rotowire_id": 17833,
+      "rotoworld_id": null,
+      "search_first_name": "ben",
+      "search_full_name": "bensinnott",
+      "search_last_name": "sinnott",
+      "search_rank": 672,
+      "sport": "nfl",
+      "sportradar_id": "b5c717af-9116-483c-9ab3-c9db0a988ab8",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1228920,
+      "team": "WAS",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "245",
+      "yahoo_id": null,
+      "years_exp": 2
+    },
+    {
+      "active": true,
+      "age": 26,
+      "birth_city": null,
+      "birth_country": null,
+      "birth_date": "1999-09-08",
+      "birth_state": null,
+      "college": "Maryland",
+      "competitions": [],
+      "depth_chart_order": 1,
+      "depth_chart_position": "TE",
+      "espn_id": null,
+      "fantasy_data_id": 23489,
+      "fantasy_positions": [
+        "TE"
+      ],
+      "first_name": "Chig",
+      "full_name": "Chig Okonkwo",
+      "gsis_id": null,
+      "hashtag": "#chigokonkwo-NFL-WAS-85",
+      "height": "75",
+      "high_school": "Hillgrove (GA)",
+      "injury_body_part": null,
+      "injury_notes": null,
+      "injury_start_date": null,
+      "injury_status": null,
+      "kalshi_id": "320ff933-d015-48c1-bc6f-13058dc633f8",
+      "last_name": "Okonkwo",
+      "metadata": {
+        "channel_id": "1113708830119718912",
+        "genius_id": "1075524",
+        "rookie_year": "2022"
+      },
+      "news_updated": 1788543322152,
+      "number": 85,
+      "oddsjam_id": "06307AE899D5",
+      "opta_id": null,
+      "pandascore_id": null,
+      "player_id": "8210",
+      "player_shard": "2",
+      "position": "TE",
+      "practice_description": null,
+      "practice_participation": null,
+      "provider_id": "8210",
+      "rotowire_id": 16042,
+      "rotoworld_id": null,
+      "search_first_name": "chig",
+      "search_full_name": "chigokonkwo",
+      "search_last_name": "okonkwo",
+      "search_rank": 137,
+      "sport": "nfl",
+      "sportradar_id": "14e11f9b-58c8-437f-abc0-a4e4df9a7c47",
+      "stats_id": null,
+      "status": "Active",
+      "swish_id": 1106374,
+      "team": "WAS",
+      "team_abbr": null,
+      "team_changed_at": null,
+      "weight": "238",
+      "yahoo_id": null,
+      "years_exp": 4
+    }
+  ],
+  "roster_summary": {
+    "by_position": {
+      "DEF": [],
+      "K": [],
+      "OTHER": [],
+      "QB": [
+        {
+          "full_name": "Jalen Hurts",
+          "overall_pick": 16,
+          "position": "QB",
+          "provider_id": "6904",
+          "round": 2,
+          "slot": 5,
+          "team": "PHI"
+        },
+        {
+          "full_name": "Patrick Mahomes",
+          "overall_pick": 35,
+          "position": "QB",
+          "provider_id": "4046",
+          "round": 4,
+          "slot": 6,
+          "team": "KC"
+        },
+        {
+          "full_name": "C.J. Stroud",
+          "overall_pick": 85,
+          "position": "QB",
+          "provider_id": "9758",
+          "round": 9,
+          "slot": 5,
+          "team": "HOU"
+        }
+      ],
+      "RB": [
+        {
+          "full_name": "Bijan Robinson",
+          "overall_pick": 1,
+          "position": "RB",
+          "provider_id": "9509",
+          "round": 1,
+          "slot": 1,
+          "team": "ATL"
+        },
+        {
+          "full_name": "Kyren Williams",
+          "overall_pick": 48,
+          "position": "RB",
+          "provider_id": "8150",
+          "round": 5,
+          "slot": 8,
+          "team": "LAR"
+        },
+        {
+          "full_name": "Blake Corum",
+          "overall_pick": 88,
+          "position": "RB",
+          "provider_id": "11586",
+          "round": 9,
+          "slot": 8,
+          "team": "LAR"
+        }
+      ],
+      "TE": [
+        {
+          "full_name": "Sam LaPorta",
+          "overall_pick": 56,
+          "position": "TE",
+          "provider_id": "10859",
+          "round": 6,
+          "slot": 5,
+          "team": "DET"
+        }
+      ],
+      "WR": [
+        {
+          "full_name": "CeeDee Lamb",
+          "overall_pick": 25,
+          "position": "WR",
+          "provider_id": "6786",
+          "round": 3,
+          "slot": 5,
+          "team": "DAL"
+        },
+        {
+          "full_name": "Rashee Rice",
+          "overall_pick": 45,
+          "position": "WR",
+          "provider_id": "10229",
+          "round": 5,
+          "slot": 5,
+          "team": "KC"
+        },
+        {
+          "full_name": "Xavier Worthy",
+          "overall_pick": 68,
+          "position": "WR",
+          "provider_id": "11624",
+          "round": 7,
+          "slot": 8,
+          "team": "KC"
+        },
+        {
+          "full_name": "Jordan Addison",
+          "overall_pick": 104,
+          "position": "WR",
+          "provider_id": "9756",
+          "round": 11,
+          "slot": 4,
+          "team": "MIN"
+        },
+        {
+          "full_name": "Davante Adams",
+          "overall_pick": 105,
+          "position": "WR",
+          "provider_id": "2133",
+          "round": 11,
+          "slot": 5,
+          "team": "LAR"
+        }
+      ]
+    },
+    "bye_week_conflicts": [
+      {
+        "count": 3,
+        "players": [
+          "Patrick Mahomes",
+          "Rashee Rice",
+          "Xavier Worthy"
+        ],
+        "week": 5
+      },
+      {
+        "count": 4,
+        "players": [
+          "Bijan Robinson",
+          "Kyren Williams",
+          "Blake Corum",
+          "Davante Adams"
+        ],
+        "week": 11
+      }
+    ],
+    "bye_week_distribution": {
+      "5": [
+        "Patrick Mahomes",
+        "Rashee Rice",
+        "Xavier Worthy"
+      ],
+      "6": [
+        "Sam LaPorta",
+        "Jordan Addison"
+      ],
+      "8": [
+        "C.J. Stroud"
+      ],
+      "10": [
+        "Jalen Hurts"
+      ],
+      "11": [
+        "Bijan Robinson",
+        "Kyren Williams",
+        "Blake Corum",
+        "Davante Adams"
+      ],
+      "14": [
+        "CeeDee Lamb"
+      ]
+    },
+    "needs": [
+      "DEF",
+      "K"
+    ],
+    "position_counts": {
+      "DEF": 0,
+      "K": 0,
+      "QB": 3,
+      "RB": 3,
+      "TE": 1,
+      "WR": 5
+    },
+    "remaining_slots": 2,
+    "target_roster_size": 14,
+    "total_selected": 12
+  },
+  "unknown": []
+}
