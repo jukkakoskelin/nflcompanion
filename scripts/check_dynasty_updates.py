@@ -87,7 +87,12 @@ def main() -> int:
     else:
         report_lines.append("No changes detected in tracked attributes.")
         
-    report_path.write_text("\n".join(report_lines), encoding="utf-8")
+    report_text = "\n".join(report_lines)
+    report_path.write_text(report_text, encoding="utf-8")
+    
+    if "GITHUB_STEP_SUMMARY" in os.environ:
+        with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
+            f.write(report_text + "\n")
     
     if changes:
         print("Changes detected.")
