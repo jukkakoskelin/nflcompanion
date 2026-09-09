@@ -1,8 +1,8 @@
-name: Daily Dynasty Update
+name: Weekly Dynasty Update
 
 on:
   schedule:
-    - cron: '0 14 * * *'
+    - cron: '0 14 * * 3'
   workflow_dispatch:
 
 permissions:
@@ -14,16 +14,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
-          python-version: '3.12'
+          python-version: '3.14'
           
       - name: Install dependencies
         run: python -m pip install -e .
         
+      - name: Download Previous State
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          LAST_RUN=$(gh run list --workflow "dynasty-weekly-update.yml" --status success --json databaseId -q ".[0].databaseId" || echo "")
+          if [ -n "$LAST_RUN" ]; then
+            gh run download $LAST_RUN -n dynasty-state -D state/rosters/ || echo "No state artifact found."
+          fi
+
       - name: Run update check
         id: update_check
         run: python scripts/check_dynasty_updates.py
@@ -41,18 +50,25 @@ jobs:
           
           git checkout -b "$BRANCH_NAME"
           git add state/rosters/
-          git commit -m "chore: daily dynasty roster update ($DATE_STR)"
+          git commit -m "chore: weekly dynasty roster update ($DATE_STR)"
           git push origin "$BRANCH_NAME"
           
           gh pr create \
-            --title "Daily Dynasty Roster Update ($DATE_STR)" \
-            --body "Daily automated check of Sleeper Dynasty roster for changes in player status, injuries, and depth chart." \
+            --title "Weekly Dynasty Roster Update ($DATE_STR)" \
+            --body "Weekly automated check of Sleeper Dynasty roster for changes in player status, injuries, and depth chart." \
             --base main \
             --head "$BRANCH_NAME"
 
       - name: Upload Report Artifact
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: dynasty-update-report
           path: dynasty_update_report.md
+
+      - name: Upload State Artifact
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: dynasty-state
+          path: state/rosters/sleeper_dynasty_*_state.json
