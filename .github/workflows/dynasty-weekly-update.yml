@@ -8,6 +8,10 @@ on:
 jobs:
   check-updates:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+      issues: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
@@ -32,6 +36,16 @@ jobs:
       - name: Run update check
         id: update_check
         run: python scripts/check_dynasty_updates.py
+        
+      - name: Create Update Issue
+        if: steps.update_check.outputs.has_changes == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue create --title "Dynasty Weekly Update - $(date +'%Y-%m-%d')" \
+                          --body-file dynasty_update_report.md \
+                          --label "dynasty-update"
+
         
       - name: Upload Report Artifact
         if: always()

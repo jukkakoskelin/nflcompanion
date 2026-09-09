@@ -1,37 +1,4 @@
 # Dynasty Roster Update (2026-09-09)
 
 ## Changes Detected
-- **Ray Davis**: Added to roster tracking.
-- **Alex Tecza**: Added to roster tracking.
-- **Jordan Addison**: Added to roster tracking.
-- **C.J. Stroud**: Added to roster tracking.
-- **Alvin Kamara**: Added to roster tracking.
-- **Chuba Hubbard**: Added to roster tracking.
-- **Adonai Mitchell**: Added to roster tracking.
-- **Ja'Tavion Sanders**: Added to roster tracking.
-- **Kyren Williams**: Added to roster tracking.
-- **Reggie Virgil**: Added to roster tracking.
-- **Tory Horton**: Added to roster tracking.
-- **Tyjae Spears**: Added to roster tracking.
-- **Kylin Hill**: Added to roster tracking.
-- **Tejhaun Palmer**: Added to roster tracking.
-- **Cade Klubnik**: Added to roster tracking.
-- **Jameis Winston**: Added to roster tracking.
-- **George Kittle**: Added to roster tracking.
-- **Aidan O'Connell**: Added to roster tracking.
-- **Xavier Worthy**: Added to roster tracking.
-- **Bijan Robinson**: Added to roster tracking.
-- **Rashee Rice**: Added to roster tracking.
-- **CJ Donaldson**: Added to roster tracking.
-- **Blake Corum**: Added to roster tracking.
-- **Braelon Allen**: Added to roster tracking.
-- **Davante Adams**: Added to roster tracking.
-- **RJ Maryland**: Added to roster tracking.
-- **Sam LaPorta**: Added to roster tracking.
-- **Patrick Mahomes**: Added to roster tracking.
-- **Jalen Hurts**: Added to roster tracking.
-- **Jack Endries**: Added to roster tracking.
-- **Kimani Vidal**: Added to roster tracking.
-- **Malik Washington**: Added to roster tracking.
-- **Devontez Walker**: Added to roster tracking.
-- **CeeDee Lamb**: Added to roster tracking.
+- **George Kittle**: News Updated - 49ers to Monitor Playing Time for George Kittle in Week 1: San Francisco 49ers head coach Kyle Shanahan said that the team will monitor the playing time for tight end George Kittle (Achilles) in the Week 1 season opener in Melbourne, Australia, on Thursday against the division-rival Los Angeles Rams, according to Matt Maiocco of NBC Sports. "We got to be smart with that," Shanahan said. Kittle was listed as limited in Tuesday's practice in Australia as he comes back from a torn Achilles tendon in last year's postseason. The 32-year-old veteran traveled with the team and is in line to play on Thursday, but he could be facing limited offensive snaps, which will make him highly volatile in fantasy football to kick things off. It does not mean that Kittle cannot still be valuable for his red-zone prowess, but there will be much more risk. Jake Tonges could be a sneaky deep-league streamer in Week 1 if Kittle's reps are managed against the Rams. Fantasy managers should view Kittle as more of a low-end TE2 option in starting lineups for Week 1.
