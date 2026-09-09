@@ -13,6 +13,38 @@ import sys
 sys.path.insert(0, str(Path(__file__).parent))
 import fetch_sleeper_players
 
+def fetch_player_news(player_id: str) -> str:
+    import urllib.request
+    query = """
+    query {
+      get_player_news(sport: "nfl", player_id: "%s") {
+        metadata
+      }
+    }
+    """ % player_id
+    req = urllib.request.Request(
+        'https://sleeper.app/graphql',
+        data=json.dumps({'query': query}).encode(),
+        headers={'Content-Type': 'application/json'}
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=5) as response:
+            data = json.load(response)
+            news_items = data.get("data", {}).get("get_player_news", [])
+            if news_items:
+                metadata = news_items[0].get("metadata", {})
+                title = metadata.get("title", "")
+                desc = metadata.get("description", "")
+                if title and desc:
+                    return f"{title}: {desc}"
+                elif desc:
+                    return desc
+                elif title:
+                    return title
+    except Exception as e:
+        print(f"Failed to fetch news for {player_id}: {e}")
+    return "New update available"
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--workspace", type=Path, default=Path("."))
@@ -71,7 +103,11 @@ def main() -> int:
                 old_val = prev_p.get(attr)
                 new_val = p_state.get(attr)
                 if old_val != new_val:
-                    changes.append(f"- **{p_name}**: `{attr}` changed from `{old_val}` to `{new_val}`")
+                    if attr == "news_updated":
+                        news = fetch_player_news(pid)
+                        changes.append(f"- **{p_name}**: News Updated - {news}")
+                    else:
+                        changes.append(f"- **{p_name}**: `{attr}` changed from `{old_val}` to `{new_val}`")
         else:
             changes.append(f"- **{p_name}**: Added to roster tracking.")
 
