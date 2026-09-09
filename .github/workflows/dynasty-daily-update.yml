@@ -1,0 +1,58 @@
+name: Daily Dynasty Update
+
+on:
+  schedule:
+    - cron: '0 14 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  check-updates:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          
+      - name: Install dependencies
+        run: python -m pip install -e .
+        
+      - name: Run update check
+        id: update_check
+        run: python scripts/check_dynasty_updates.py
+        
+      - name: Create Pull Request
+        if: steps.update_check.outputs.has_changes == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          DATE_STR=$(date +'%Y-%m-%d')
+          BRANCH_NAME="updates-dynasty/$DATE_STR"
+          
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          git checkout -b "$BRANCH_NAME"
+          git add state/rosters/
+          git commit -m "chore: daily dynasty roster update ($DATE_STR)"
+          git push origin "$BRANCH_NAME"
+          
+          gh pr create \
+            --title "Daily Dynasty Roster Update ($DATE_STR)" \
+            --body "Daily automated check of Sleeper Dynasty roster for changes in player status, injuries, and depth chart." \
+            --base main \
+            --head "$BRANCH_NAME"
+
+      - name: Upload Report Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dynasty-update-report
+          path: dynasty_update_report.md
