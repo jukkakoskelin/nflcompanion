@@ -777,9 +777,10 @@ Added a weekly GitHub Actions workflow (`.github/workflows/dynasty-weekly-update
 - `src/nflcompanion/config.py`: Introduced config loader that abstracts finding league and user IDs from `state/config.json` and migrates `state/sleeper_user_info.json`.
 - `src/nflcompanion/providers.py`: Added provider abstraction (`Provider` base class and `SleeperProvider`) to fetch live rosters directly via API, ensuring we track post-draft trades/waivers.
 - `scripts/check_dynasty_updates.py`: Connects Sleeper roster data with local snapshot data, comparing current `status`, `injury_status`, `depth_chart_order`, `news_updated`, and `team` fields against `state/rosters/sleeper_dynasty_<league_id>_state.json`.
-- Instead of creating noisy Pull Requests, the updates are published directly to the GitHub Actions workflow logs via `$GITHUB_STEP_SUMMARY`.
+- Instead of creating noisy Pull Requests, the updates are published directly to the GitHub Actions workflow logs via `$GITHUB_STEP_SUMMARY`, and an automated issue is created.
 - The repository state remains clean, as the state relies entirely on GitHub Actions workflow artifacts.
 - Generates a local `dynasty_update_report.md` artifact per-run.
+- Uses a **GitHub Agentic Workflow** (`.github/workflows/dynasty-analyst.md`) that triggers on the newly created update issue to provide AI-generated fantasy football analysis and recommendations.
 
 ## Bye-week coverage (2026-09-06)
 
