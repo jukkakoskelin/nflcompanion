@@ -1,6 +1,6 @@
 # NFL Fantasy Draft Companion Plan
 
-Status: in progress - Imported full 1,036-player ESPN draft snapshot and wired provider-aware snapshot routing for ESPN snake draft companion tools; 104 tests passing.
+Status: in progress - Created daily GitHub Actions workflow and python scripts for checking Sleeper Dynasty roster updates.
 Priority: draft-ready for the Sleeper dynasty startup mock and live drafts
 
 ## Product goal
@@ -767,6 +767,18 @@ Added native Sleeper public API tools to the `nflcompanion` MCP server to direct
 - `sleeper_get_draft_picks`
 
 These queries hit the Sleeper endpoints directly and do not populate the local state.
+
+## Daily Sleeper Dynasty Updates (2026-09-09)
+
+Added a daily GitHub Actions workflow (`.github/workflows/dynasty-daily-update.yml`) to automatically track player status changes for the Sleeper Dynasty league.
+
+- Scheduled to run daily at 09:00 EST (`0 14 * * *`).
+- `src/nflcompanion/config.py`: Introduced config loader that abstracts finding league and user IDs from `state/config.json` and migrates `state/sleeper_user_info.json`.
+- `src/nflcompanion/providers.py`: Added provider abstraction (`Provider` base class and `SleeperProvider`) to fetch live rosters directly via API, ensuring we track post-draft trades/waivers.
+- `scripts/check_dynasty_updates.py`: Connects Sleeper roster data with local snapshot data, comparing current `status`, `injury_status`, `depth_chart_order`, `news_updated`, and `team` fields against `state/rosters/sleeper_dynasty_<league_id>_state.json`.
+- When changes are detected, a new branch (`updates-dynasty/<yyyy>-<mm>-<dd>`) and PR are created via `gh pr create`.
+- Employs least-privileged access (`contents: write, pull-requests: write`).
+- Generates a local `dynasty_update_report.md` artifact per-run.
 
 ## Bye-week coverage (2026-09-06)
 
