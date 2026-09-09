@@ -1,6 +1,6 @@
 # NFL Fantasy Draft Companion Plan
 
-Status: in progress - Created daily GitHub Actions workflow and python scripts for checking Sleeper Dynasty roster updates.
+Status: in progress - Updated Python requirement to >=3.14 and configured Dependabot for automated version checking.
 Priority: draft-ready for the Sleeper dynasty startup mock and live drafts
 
 ## Product goal
@@ -768,11 +768,12 @@ Added native Sleeper public API tools to the `nflcompanion` MCP server to direct
 
 These queries hit the Sleeper endpoints directly and do not populate the local state.
 
-## Daily Sleeper Dynasty Updates (2026-09-09)
+## Weekly Sleeper Dynasty Updates (2026-09-09)
 
-Added a daily GitHub Actions workflow (`.github/workflows/dynasty-daily-update.yml`) to automatically track player status changes for the Sleeper Dynasty league.
+Added a weekly GitHub Actions workflow (`.github/workflows/dynasty-weekly-update.yml`) to automatically track player status changes for the Sleeper Dynasty league.
 
-- Scheduled to run daily at 09:00 EST (`0 14 * * *`).
+- Scheduled to run weekly on Wednesdays at 09:00 EST (`0 14 * * 3`).
+- Uses GitHub Actions artifacts (`dynasty-state`) to persist the latest snapshot of `state/rosters/sleeper_dynasty_<league_id>_state.json` across workflow runs. This acts as agent memory, ensuring concurrent or subsequent runs compare against the most recent state even if previous pull requests were not merged.
 - `src/nflcompanion/config.py`: Introduced config loader that abstracts finding league and user IDs from `state/config.json` and migrates `state/sleeper_user_info.json`.
 - `src/nflcompanion/providers.py`: Added provider abstraction (`Provider` base class and `SleeperProvider`) to fetch live rosters directly via API, ensuring we track post-draft trades/waivers.
 - `scripts/check_dynasty_updates.py`: Connects Sleeper roster data with local snapshot data, comparing current `status`, `injury_status`, `depth_chart_order`, `news_updated`, and `team` fields against `state/rosters/sleeper_dynasty_<league_id>_state.json`.

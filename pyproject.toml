@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "nflcompanion"
 version = "0.1.0"
 description = "NFL fantasy draft companion state and provider adapters"
-requires-python = ">=3.11"
+requires-python = ">=3.14"
 
 [tool.setuptools.packages.find]
 where = ["src"]
