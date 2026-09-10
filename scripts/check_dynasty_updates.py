@@ -48,19 +48,28 @@ def fetch_player_news(player_id: str) -> str:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--workspace", type=Path, default=Path("."))
+    parser.add_argument("--platform", type=str, default="sleeper", choices=["sleeper", "espn"], help="Platform to check updates for")
     args = parser.parse_args()
     
     workspace = args.workspace
+    platform = args.platform
     config = load_config(workspace)
-    league_id = config.get("dynasty_league_id")
-    user_id = config.get("sleeper_user_id")
+    
+    if platform == "espn":
+        from nflcompanion.config import ensure_espn_config
+        config = ensure_espn_config(workspace)
+        league_id = config.get("espn_league_id")
+        user_id = config.get("espn_team_id")
+    else:
+        league_id = config.get("dynasty_league_id")
+        user_id = config.get("sleeper_user_id")
     
     if not league_id or not user_id:
-        print("Missing dynasty_league_id or sleeper_user_id in config.")
+        print(f"Missing config for {platform}.")
         return 1
 
     print(f"Fetching roster for user {user_id} in league {league_id}...")
-    provider = get_provider("sleeper")
+    provider = get_provider(platform, config)
     roster_player_ids = provider.get_user_roster(league_id, user_id)
     if not roster_player_ids:
         print("No players found on roster.")
@@ -75,8 +84,24 @@ def main() -> int:
     all_players_list = load_players(snapshot_path)
     all_players = {str(p.get("player_id")): p for p in all_players_list}
     
+    fallback_metadata = provider.get_player_fallback_metadata() if hasattr(provider, 'get_player_fallback_metadata') else {}
+    
+    if platform == "espn":
+        espn_to_sleeper = {str(p.get("espn_id")): str(p.get("player_id")) for p in all_players_list if p.get("espn_id")}
+        
+        mapped_roster = []
+        for pid in roster_player_ids:
+            str_pid = str(pid)
+            if str_pid in espn_to_sleeper:
+                mapped_roster.append(espn_to_sleeper[str_pid])
+            else:
+                mapped_roster.append(str_pid)
+                if str_pid in fallback_metadata and str_pid not in all_players:
+                    all_players[str_pid] = fallback_metadata[str_pid]
+        roster_player_ids = mapped_roster
+    
     # State file for PR tracking
-    roster_state_path = workspace / "state" / "rosters" / f"sleeper_dynasty_{league_id}_state.json"
+    roster_state_path = workspace / "state" / "rosters" / f"{platform}_dynasty_{league_id}_state.json"
     roster_state_path.parent.mkdir(parents=True, exist_ok=True)
     
     previous_state = {}

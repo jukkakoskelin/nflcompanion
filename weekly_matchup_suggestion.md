@@ -2,38 +2,23 @@
 
 ## Your Starter Issues
 
-- **Patrick Mahomes** (QB - KC): Injury: Questionable
+- **A.J. Brown** (WR - NE): Injury: Out
 
 ### Bench Alternatives
-- **Ray Davis** (RB - BUF) - Healthy
-- **C.J. Stroud** (QB - HOU) - Healthy
-- **Alvin Kamara** (RB - NO) - Healthy
+- **Makai Lemon** (WR - PHI) - Healthy
+- **Mike Washington Jr.** (RB - LV) - Healthy
+- **Tyler Shough** (QB - NO) - Healthy
 - **Adonai Mitchell** (WR - NYJ) - Healthy
-- **Ja'Tavion Sanders** (TE - CAR) - Healthy
-- **Reggie Virgil** (WR - ARI) - Healthy
-- **Tyjae Spears** (RB - TEN) - Healthy
-- **Cade Klubnik** (QB - NYJ) - Healthy
-- **Jameis Winston** (QB - NYG) - Healthy
-- **George Kittle** (TE - SF) - Healthy
-- **Aidan O'Connell** (QB - LV) - Healthy
-- **Xavier Worthy** (WR - KC) - Healthy
-- **CJ Donaldson** (RB - NO) - Healthy
-- **Blake Corum** (RB - LAR) - Healthy
-- **Braelon Allen** (RB - NYJ) - Healthy
-- **Jack Endries** (TE - CIN) - Healthy
-- **Kimani Vidal** (RB - LAC) - Healthy
-- **Malik Washington** (WR - MIA) - Healthy
-- **Devontez Walker** (WR - BAL) - Healthy
+- **Brenton Strange** (TE - JAX) - Healthy
 
 ## Opponent's Starters
 
-- **Jared Goff** (QB - DET)
-- **David Montgomery** (RB - HOU)
-- **Chase Brown** (RB - CIN)
-- **Jaxon Smith-Njigba** (WR - SEA)
-- **Tetairoa McMillan** (WR - CAR)
-- **Parker Washington** (WR - JAX)
-- **Tyler Warren** (TE - IND)
+- **Omarion Hampton** (RB - LAC)
 - **Ashton Jeanty** (RB - LV)
+- **Trey McBride** (TE - ARI)
+- **Carnell Tate** (WR - TEN)
+- **Marvin Harrison Jr.** (WR - ARI)
 - **Michael Wilson** (WR - ARI)
 - **Bo Nix** (QB - DEN)
+- **Eagles D/ST** (D/ST - PHI)
+- **Cam Little** (K - JAX)

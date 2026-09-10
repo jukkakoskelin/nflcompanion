@@ -1,0 +1,26 @@
+{
+  "1945": {
+    "depth_chart_order": 1,
+    "injury_status": null,
+    "name": "Chris Boswell",
+    "news_updated": 1787420424674,
+    "status": "Active",
+    "team": "PIT"
+  },
+  "5859": {
+    "depth_chart_order": 1,
+    "injury_status": "Out",
+    "name": "A.J. Brown",
+    "news_updated": 1789049110575,
+    "status": "Active",
+    "team": "NE"
+  },
+  "7021": {
+    "depth_chart_order": 2,
+    "injury_status": null,
+    "name": "Rico Dowdle",
+    "news_updated": 1788887150299,
+    "status": "Active",
+    "team": "PIT"
+  }
+}
