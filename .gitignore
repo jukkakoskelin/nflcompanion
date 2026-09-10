@@ -31,3 +31,6 @@ __pycache__/
 
 # Editable install metadata
 *.egg-info/
+
+# Local config can contain auth secrets and must never be committed.
+/state/config.json

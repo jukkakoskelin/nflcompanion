@@ -57,4 +57,4 @@ python scripts/check_dynasty_updates.py --platform espn
 python scripts/suggest_starters.py --platform espn
 ```
 
-When running the ESPN scripts for the first time, you will be interactively prompted to enter your league ID, team ID, and authentication cookies (`espn_s2` and `swid`).
+When running the ESPN scripts for the first time, you will be interactively prompted to enter your league ID and team ID. ESPN authentication cookies (`espn_s2` and `swid`) are secrets: provide them through environment variables (`NFLCOMPANION_ESPN_S2`/`NFLCOMPANION_SWID` or `ESPN_S2`/`SWID`) or enter them through the hidden prompt when requested, and do not commit `state/config.json`.

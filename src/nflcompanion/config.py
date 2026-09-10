@@ -1,4 +1,6 @@
 import json
+import os
+from getpass import getpass
 from pathlib import Path
 from typing import Any
 
@@ -34,14 +36,21 @@ def ensure_espn_config(workspace_root: Path) -> dict[str, Any]:
         year_input = input("Enter ESPN Year (e.g. 2026): ").strip()
         config["espn_year"] = int(year_input) if year_input else 2026
         updated = True
-    if "espn_s2" not in config:
-        config["espn_s2"] = input("Enter ESPN espn_s2 cookie: ").strip()
-        updated = True
-    if "swid" not in config:
-        config["swid"] = input("Enter ESPN swid cookie: ").strip()
-        updated = True
+    espn_s2 = os.getenv("NFLCOMPANION_ESPN_S2") or os.getenv("ESPN_S2") or config.get("espn_s2")
+    if not espn_s2:
+        espn_s2 = getpass("Enter ESPN espn_s2 cookie (input hidden): ").strip()
+    swid = os.getenv("NFLCOMPANION_SWID") or os.getenv("SWID") or config.get("swid")
+    if not swid:
+        swid = getpass("Enter ESPN swid cookie (input hidden): ").strip()
+    if espn_s2:
+        config["espn_s2"] = espn_s2
+    if swid:
+        config["swid"] = swid
         
     if updated:
-        save_config(workspace_root, config)
+        save_config(
+            workspace_root,
+            {k: v for k, v in config.items() if k not in {"espn_s2", "swid"}},
+        )
         
     return config

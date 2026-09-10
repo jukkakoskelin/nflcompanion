@@ -81,7 +81,7 @@ class SleeperProvider(Provider):
             "opponent": opponent_matchup
         }
 
-def get_provider(platform: str, config: dict[str, Any] = None) -> Provider:
+def get_provider(platform: str, config: dict[str, Any] | None = None) -> Provider:
     if platform == "sleeper":
         return SleeperProvider()
     elif platform == "espn":

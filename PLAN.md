@@ -3,6 +3,10 @@
 Status: in progress - Added ESPN parity to the weekly update and matchup suggestion scripts.
 Priority: draft-ready for the Sleeper dynasty startup mock and live drafts
 
+- 2026-09-10 security follow-up: ESPN cookie values are now treated as runtime
+  secrets (env vars or hidden prompt) and are no longer written to tracked
+  workspace config.
+
 ## Product goal
 
 Provide a fast, explainable draft companion that keeps the user's draft state in
