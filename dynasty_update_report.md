@@ -1,4 +1,6 @@
-# Dynasty Roster Update (2026-09-09)
+# Dynasty Roster Update (2026-09-10)
 
 ## Changes Detected
-- **George Kittle**: News Updated - 49ers to Monitor Playing Time for George Kittle in Week 1: San Francisco 49ers head coach Kyle Shanahan said that the team will monitor the playing time for tight end George Kittle (Achilles) in the Week 1 season opener in Melbourne, Australia, on Thursday against the division-rival Los Angeles Rams, according to Matt Maiocco of NBC Sports. "We got to be smart with that," Shanahan said. Kittle was listed as limited in Tuesday's practice in Australia as he comes back from a torn Achilles tendon in last year's postseason. The 32-year-old veteran traveled with the team and is in line to play on Thursday, but he could be facing limited offensive snaps, which will make him highly volatile in fantasy football to kick things off. It does not mean that Kittle cannot still be valuable for his red-zone prowess, but there will be much more risk. Jake Tonges could be a sneaky deep-league streamer in Week 1 if Kittle's reps are managed against the Rams. Fantasy managers should view Kittle as more of a low-end TE2 option in starting lineups for Week 1.
+- **A.J. Brown**: Added to roster tracking.
+- **Rico Dowdle**: Added to roster tracking.
+- **Chris Boswell**: Added to roster tracking.

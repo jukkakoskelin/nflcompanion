@@ -7,6 +7,9 @@ name = "nflcompanion"
 version = "0.1.0"
 description = "NFL fantasy draft companion state and provider adapters"
 requires-python = ">=3.14"
+dependencies = [
+    "espn-api>=0.38.1"
+]
 
 [tool.setuptools.packages.find]
 where = ["src"]

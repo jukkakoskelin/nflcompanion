@@ -17,18 +17,27 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--workspace", type=Path, default=Path("."))
     parser.add_argument("--week", type=int, help="Override the NFL week")
+    parser.add_argument("--platform", type=str, default="sleeper", choices=["sleeper", "espn"], help="Platform to generate suggestions for")
     args = parser.parse_args()
     
     workspace = args.workspace
+    platform = args.platform
     config = load_config(workspace)
-    league_id = config.get("dynasty_league_id")
-    user_id = config.get("sleeper_user_id")
+    
+    if platform == "espn":
+        from nflcompanion.config import ensure_espn_config
+        config = ensure_espn_config(workspace)
+        league_id = config.get("espn_league_id")
+        user_id = config.get("espn_team_id")
+    else:
+        league_id = config.get("dynasty_league_id")
+        user_id = config.get("sleeper_user_id")
     
     if not league_id or not user_id:
-        print("Missing dynasty_league_id or sleeper_user_id in config.")
+        print(f"Missing config for {platform}.")
         return 1
 
-    provider = get_provider("sleeper")
+    provider = get_provider(platform, config)
     
     # 1. Determine week
     week = args.week
@@ -65,6 +74,28 @@ def main() -> int:
     snapshot_path = fetch_sleeper_players.save_snapshot(raw_payload, workspace / "state", retrieved_at)
     all_players_list = load_players(snapshot_path)
     all_players = {str(p.get("player_id")): p for p in all_players_list}
+    
+    fallback_metadata = provider.get_player_fallback_metadata() if hasattr(provider, 'get_player_fallback_metadata') else {}
+    
+    if platform == "espn":
+        espn_to_sleeper = {str(p.get("espn_id")): str(p.get("player_id")) for p in all_players_list if p.get("espn_id")}
+        def map_ids(id_list):
+            mapped = []
+            for pid in id_list:
+                str_pid = str(pid)
+                if str_pid in espn_to_sleeper:
+                    mapped.append(espn_to_sleeper[str_pid])
+                else:
+                    mapped.append(str_pid)
+                    if str_pid in fallback_metadata and str_pid not in all_players:
+                        all_players[str_pid] = fallback_metadata[str_pid]
+            return mapped
+            
+        user_matchup["starters"] = map_ids(user_matchup.get("starters", []))
+        user_matchup["players"] = map_ids(user_matchup.get("players", []))
+        opponent_matchup["starters"] = map_ids(opponent_matchup.get("starters", []))
+        if opponent_matchup.get("players"):
+            opponent_matchup["players"] = map_ids(opponent_matchup.get("players", []))
     
     # Extract players
     user_starters = [pid for pid in user_matchup.get("starters", []) if pid != "0"]

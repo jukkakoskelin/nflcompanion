@@ -1,6 +1,6 @@
 # NFL Fantasy Draft Companion Plan
 
-Status: in progress - Updated Python requirement to >=3.14 and configured Dependabot for automated version checking.
+Status: in progress - Added ESPN parity to the weekly update and matchup suggestion scripts.
 Priority: draft-ready for the Sleeper dynasty startup mock and live drafts
 
 ## Product goal
@@ -781,6 +781,16 @@ Added a weekly GitHub Actions workflow (`.github/workflows/dynasty-weekly-update
 - The repository state remains clean, as the state relies entirely on GitHub Actions workflow artifacts.
 - Generates a local `dynasty_update_report.md` artifact per-run.
 - Uses a **GitHub Agentic Workflow** (`.github/workflows/dynasty-analyst.md`) that triggers on the newly created update issue to provide AI-generated fantasy football analysis and recommendations.
+
+## Weekly ESPN Matchup and Updates (2026-09-10)
+
+Added ESPN parity to the weekly update and matchup suggestion scripts.
+
+- `pyproject.toml`: Added `espn-api` dependency.
+- `src/nflcompanion/config.py`: Added support for ESPN credentials (`espn_league_id`, `espn_team_id`, `espn_s2`, `swid`, `espn_year`). Provides interactive prompts when run locally and missing credentials.
+- `src/nflcompanion/providers.py`: Implemented `ESPNProvider` using `espn-api` to fetch league rosters, state, and box scores. 
+- `scripts/check_dynasty_updates.py`: Added `--platform` flag. For `espn`, it maps ESPN player IDs to our local Sleeper snapshot via the `espn_id` field to reuse injury/status data.
+- `scripts/suggest_starters.py`: Added `--platform` flag, supporting ESPN lineup optimization via identical reverse-mapping logic.
 
 ## Bye-week coverage (2026-09-06)
 
