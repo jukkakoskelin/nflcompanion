@@ -872,5 +872,16 @@ Fetched all 1,036 players directly from the ESPN Fantasy API for the user's 2026
 - `tests/test_mcp_server.py`:
   - Added `test_espn_draft_uses_espn_player_snapshot` verifying query tool and recommendation tools load and rank from the ESPN dataset when active.
 
+## Weekly Matchup Suggestions (2026-09-10)
 
+Added a feature to proactively suggest weekly starter changes based on the user's Sleeper Dynasty matchup, highlighting bye weeks, injuries, bench alternatives, and opponent threats.
 
+### Changes
+- `src/nflcompanion/providers.py`:
+  - Added `get_nfl_state`, `get_league_rosters`, `get_matchups`, and `get_user_matchup` to fetch the current week and roster data.
+- `scripts/suggest_starters.py`:
+  - Created a script that identifies the user's matchup, highlights starter issues (injuries, bye weeks, suspensions), lists healthy bench alternatives, and summarizes the opponent's starters.
+- `.github/workflows/dynasty-start-sit-agent.md`:
+  - Created a new AI prompt/agent tailored for providing a definitive start/sit verdict based on the matchup report.
+- `.github/workflows/dynasty-weekly-matchup.yml`:
+  - Added a new scheduled GitHub Action (running Thursdays) that runs `suggest_starters.py` and creates an issue to trigger the Start/Sit Agent.

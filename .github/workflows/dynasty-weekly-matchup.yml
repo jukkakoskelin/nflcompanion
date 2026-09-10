@@ -1,0 +1,58 @@
+name: Weekly Dynasty Matchup Suggestion
+
+on:
+  schedule:
+    - cron: '0 13 * * 4' # Thursdays at 13:00 UTC (09:00 EST)
+  workflow_dispatch:
+    inputs:
+      week:
+        description: 'Override NFL week'
+        required: false
+        type: string
+
+jobs:
+  suggest-starters:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+      issues: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+      
+      - name: Setup Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.14'
+          
+      - name: Install dependencies
+        run: python -m pip install -e .
+        
+      - name: Run Starter Suggestion
+        id: starter_suggestion
+        run: |
+          if [ -n "${{ github.event.inputs.week }}" ]; then
+            python scripts/suggest_starters.py --week "${{ github.event.inputs.week }}"
+          else
+            python scripts/suggest_starters.py
+          fi
+          
+      - name: Create Matchup Issue
+        if: success()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # The script produces weekly_matchup_suggestion.md
+          if [ -f "weekly_matchup_suggestion.md" ]; then
+            gh issue create --title "Dynasty Matchup Suggestion - $(date +'%Y-%m-%d')" \
+                            --body-file weekly_matchup_suggestion.md \
+                            --label "dynasty-start-sit"
+          fi
+        
+      - name: Upload Report Artifact
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: dynasty-matchup-report
+          path: weekly_matchup_suggestion.md
