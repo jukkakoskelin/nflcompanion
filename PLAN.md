@@ -1,6 +1,6 @@
 # NFL Fantasy Draft Companion Plan
 
-Status: in progress - Added ESPN parity to the weekly update and matchup suggestion scripts.
+Status: in progress - Established GitHub issue-driven agentic development lifecycle (Issue Template, branch isolation, Planner/Implementor/Reviewer roles, PR template, Actions synopsis).
 Priority: draft-ready for the Sleeper dynasty startup mock and live drafts
 
 - 2026-09-10 security follow-up: ESPN cookie values are now treated as runtime
@@ -53,6 +53,18 @@ first-class data, not a cache that can be silently replaced.
   switching the active strategy, and reviewing a completed pick.
 - Add evaluation fixtures with known rosters, cheat sheets, and candidate
   situations so recommendations can be regression-tested.
+
+### Milestone 1.5: GitHub issue-driven agentic feature development
+
+- Standardize issue intake with `.github/ISSUE_TEMPLATE/feature_request.md`, enforcing explicit Expected End Result (Definition of Done) and Acceptance Criteria.
+- Enforce strict branch isolation: immediately checkout `feature/<issue_id>-<sanitized-title>` via `scripts/issue_workflow.py start <id>` before making plan or code edits.
+- Formalize three-agent role sequence:
+  - **Planning Agent**: Parses issue, defines/expands Expected End Result, and drafts plan in `PLAN.md`.
+  - **Implementor Agent**: Writes feature code and automated verification tests matching acceptance criteria.
+  - **Reviewer Agent**: Audits plan adherence, code quality, security, and test execution.
+- Automate remote push and PR creation via `scripts/issue_workflow.py pr` using `.github/pull_request_template.md`.
+- Provide automated human reviewer synopsis via GitHub Actions (`.github/workflows/pr-synopsis.yml`) rendering test results, guardrails, and acceptance verification to Step Summary and PR comments.
+
 
 ### Milestone 2: provider and UX hardening
 
