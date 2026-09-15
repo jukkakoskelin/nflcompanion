@@ -9,7 +9,24 @@ import tempfile
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
+import time
 from typing import Any
+
+def retry(times=3, delay=1):
+    def decorator(func):
+        def newfn(*args, **kwargs):
+            attempt = 0
+            while attempt < times:
+                try:
+                    return func(*args, **kwargs)
+                except Exception as e:
+                    attempt += 1
+                    if attempt >= times:
+                        raise e
+                    time.sleep(delay)
+            return func(*args, **kwargs)
+        return newfn
+    return decorator
 
 URL_TEMPLATE = "https://api.sleeper.app/v1/players/nfl/trending/{direction}"
 DIRECTIONS = ("add", "drop")
@@ -32,6 +49,7 @@ def atomic_write(path: Path, content: str) -> None:
         raise
 
 
+@retry(times=3, delay=1)
 def fetch_trending(
     direction: str, *, lookback_hours: int = 24, limit: int = 25, timeout: int = 30
 ) -> list[dict[str, Any]]:

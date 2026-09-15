@@ -2,6 +2,24 @@ from abc import ABC, abstractmethod
 import urllib.request
 import json
 from typing import Any
+import time
+import socket
+
+def retry(times=3, delay=1):
+    def decorator(func):
+        def newfn(*args, **kwargs):
+            attempt = 0
+            while attempt < times:
+                try:
+                    return func(*args, **kwargs)
+                except Exception as e:
+                    attempt += 1
+                    if attempt >= times:
+                        raise e
+                    time.sleep(delay)
+            return func(*args, **kwargs)
+        return newfn
+    return decorator
 
 class Provider(ABC):
     @abstractmethod
@@ -40,6 +58,7 @@ class SleeperProvider(Provider):
             rostered.update(r.get("players", []))
         return rostered
 
+    @retry(times=3, delay=1)
     def get_nfl_state(self) -> dict[str, Any]:
         url = "https://api.sleeper.app/v1/state/nfl"
         req = urllib.request.Request(
@@ -48,22 +67,26 @@ class SleeperProvider(Provider):
         with urllib.request.urlopen(req, timeout=self.timeout) as response:
             return json.load(response)
 
+    @retry(times=3, delay=1)
+    def _fetch_projections(self, url: str) -> dict[str, Any]:
+        req = urllib.request.Request(
+            url, headers={"Accept": "application/json", "User-Agent": "nflcompanion/0.1"}
+        )
+        with urllib.request.urlopen(req, timeout=self.timeout) as response:
+            projections = json.load(response)
+            return {pid: p.get("pts_half_ppr", 0.0) for pid, p in projections.items()}
+
     def get_projections(self, week: int, year: int | None = None) -> dict[str, Any]:
         if year is None:
             state = self.get_nfl_state()
             year = int(state.get("season", 2026))
         url = f"https://api.sleeper.app/v1/projections/nfl/regular/{year}/{week}"
-        req = urllib.request.Request(
-            url, headers={"Accept": "application/json", "User-Agent": "nflcompanion/0.1"}
-        )
         try:
-            with urllib.request.urlopen(req, timeout=self.timeout) as response:
-                projections = json.load(response)
-                # Map player ID to pts_half_ppr (defaulting to 0.0)
-                return {pid: p.get("pts_half_ppr", 0.0) for pid, p in projections.items()}
+            return self._fetch_projections(url)
         except Exception:
             return {}
 
+    @retry(times=3, delay=1)
     def get_league_rosters(self, league_id: str) -> list[dict[str, Any]]:
         url = f"https://api.sleeper.app/v1/league/{league_id}/rosters"
         req = urllib.request.Request(
@@ -72,6 +95,7 @@ class SleeperProvider(Provider):
         with urllib.request.urlopen(req, timeout=self.timeout) as response:
             return json.load(response)
 
+    @retry(times=3, delay=1)
     def get_matchups(self, league_id: str, week: int) -> list[dict[str, Any]]:
         url = f"https://api.sleeper.app/v1/league/{league_id}/matchups/{week}"
         req = urllib.request.Request(
