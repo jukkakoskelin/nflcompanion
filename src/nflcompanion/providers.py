@@ -2,15 +2,42 @@ from abc import ABC, abstractmethod
 import urllib.request
 import json
 from typing import Any
+import time
+import socket
+
+def retry(times=3, delay=1):
+    def decorator(func):
+        def newfn(*args, **kwargs):
+            attempt = 0
+            while attempt < times:
+                try:
+                    return func(*args, **kwargs)
+                except Exception as e:
+                    attempt += 1
+                    if attempt >= times:
+                        raise e
+                    time.sleep(delay)
+            return func(*args, **kwargs)
+        return newfn
+    return decorator
 
 class Provider(ABC):
     @abstractmethod
     def get_user_roster(self, league_id: str, user_id: str) -> list[str]:
         """Returns a list of player IDs currently on the given user's roster."""
         pass
+        
+    @abstractmethod
+    def get_all_rostered_players(self, league_id: str) -> set[str]:
+        """Returns a set of all player IDs currently on any roster in the league."""
+        pass
 
     def get_player_fallback_metadata(self) -> dict[str, dict[str, Any]]:
         """Returns a dict mapping player IDs to a fallback metadata dict (e.g. from a third-party API) to use if local data is missing."""
+        return {}
+
+    def get_projections(self, week: int, year: int | None = None) -> dict[str, Any]:
+        """Returns a dictionary mapping player IDs to their projected points."""
         return {}
 
 class SleeperProvider(Provider):
@@ -24,6 +51,14 @@ class SleeperProvider(Provider):
                 return roster.get("players", [])
         return []
 
+    def get_all_rostered_players(self, league_id: str) -> set[str]:
+        rosters = self.get_league_rosters(league_id)
+        rostered = set()
+        for r in rosters:
+            rostered.update(r.get("players", []))
+        return rostered
+
+    @retry(times=3, delay=1)
     def get_nfl_state(self) -> dict[str, Any]:
         url = "https://api.sleeper.app/v1/state/nfl"
         req = urllib.request.Request(
@@ -32,6 +67,26 @@ class SleeperProvider(Provider):
         with urllib.request.urlopen(req, timeout=self.timeout) as response:
             return json.load(response)
 
+    @retry(times=3, delay=1)
+    def _fetch_projections(self, url: str) -> dict[str, Any]:
+        req = urllib.request.Request(
+            url, headers={"Accept": "application/json", "User-Agent": "nflcompanion/0.1"}
+        )
+        with urllib.request.urlopen(req, timeout=self.timeout) as response:
+            projections = json.load(response)
+            return {pid: p.get("pts_half_ppr", 0.0) for pid, p in projections.items()}
+
+    def get_projections(self, week: int, year: int | None = None) -> dict[str, Any]:
+        if year is None:
+            state = self.get_nfl_state()
+            year = int(state.get("season", 2026))
+        url = f"https://api.sleeper.app/v1/projections/nfl/regular/{year}/{week}"
+        try:
+            return self._fetch_projections(url)
+        except Exception:
+            return {}
+
+    @retry(times=3, delay=1)
     def get_league_rosters(self, league_id: str) -> list[dict[str, Any]]:
         url = f"https://api.sleeper.app/v1/league/{league_id}/rosters"
         req = urllib.request.Request(
@@ -40,6 +95,7 @@ class SleeperProvider(Provider):
         with urllib.request.urlopen(req, timeout=self.timeout) as response:
             return json.load(response)
 
+    @retry(times=3, delay=1)
     def get_matchups(self, league_id: str, week: int) -> list[dict[str, Any]]:
         url = f"https://api.sleeper.app/v1/league/{league_id}/matchups/{week}"
         req = urllib.request.Request(
@@ -102,12 +158,24 @@ def get_provider(platform: str, config: dict[str, Any] | None = None) -> Provide
                     if team.team_id == team_id:
                         return [str(player.playerId) for player in team.roster]
                 return []
+                
+            def get_all_rostered_players(self, league_id: str) -> set[str]:
+                rostered = set()
+                for team in self.league.teams:
+                    for player in team.roster:
+                        rostered.add(str(player.playerId))
+                return rostered
 
             def get_nfl_state(self) -> dict[str, Any]:
                 return {
                     "season_type": "regular",
                     "leg": self.league.current_week
                 }
+                
+            def get_projections(self, week: int, year: int | None = None) -> dict[str, Any]:
+                # For ESPN, projections are usually attached to the box_scores or player objects.
+                # It's easier to retrieve them directly from get_user_matchup.
+                return {}
 
             def get_user_matchup(self, league_id: str, user_id: str, week: int) -> dict[str, Any]:
                 team_id = int(user_id)
@@ -132,9 +200,35 @@ def get_provider(platform: str, config: dict[str, Any] | None = None) -> Provide
                 def format_lineup(lineup):
                     if not lineup:
                         return None
+                    
+                    starters = []
+                    players = []
+                    points = 0.0
+                    projected_points = 0.0
+                    player_points = {}
+                    player_projected = {}
+                    
+                    for p in lineup:
+                        pid = str(p.playerId)
+                        players.append(pid)
+                        pts = getattr(p, 'points', 0.0)
+                        proj = getattr(p, 'projected_points', 0.0)
+                        
+                        player_points[pid] = pts
+                        player_projected[pid] = proj
+                        
+                        if getattr(p, 'slot_position', '') not in ('BE', 'IR'):
+                            starters.append(pid)
+                            points += pts
+                            projected_points += proj
+                            
                     return {
-                        "starters": [str(p.playerId) for p in lineup if p.slot_position not in ('BE', 'IR')],
-                        "players": [str(p.playerId) for p in lineup]
+                        "starters": starters,
+                        "players": players,
+                        "points": points,
+                        "projected_points": projected_points,
+                        "player_points": player_points,
+                        "player_projected": player_projected
                     }
                     
                 return {
@@ -159,3 +253,4 @@ def get_provider(platform: str, config: dict[str, Any] | None = None) -> Provide
 
         return ESPNProvider(config)
     raise ValueError(f"Unsupported platform: {platform}")
+
