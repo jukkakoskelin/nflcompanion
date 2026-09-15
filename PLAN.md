@@ -911,3 +911,20 @@ Added a feature to proactively suggest weekly starter changes based on the user'
   - Created a new AI prompt/agent tailored for providing a definitive start/sit verdict based on the matchup report.
 - `.github/workflows/dynasty-weekly-matchup.yml`:
   - Added a new scheduled GitHub Action (running Thursdays) that runs `suggest_starters.py` and creates an issue to trigger the Start/Sit Agent.
+
+## Game Week Report & Suggestions (Issue #28)
+
+**Branch:** `feature/28-feat-game-week-report-and-suggestions-for-next`
+
+### Expected End Result (Definition of Done)
+A script (`scripts/game_week_report.py`) that generates a markdown report analyzing the roster's performance for the past week (including actual vs. projected points, busts, and bench hindsight) and provides suggestions for the next week (start/sit decisions based on byes/injuries, and waiver targets using trending data). This script will eventually replace `scripts/suggest_starters.py`.
+
+### Implementation Steps
+1. **`src/nflcompanion/providers.py`**: Update `SleeperProvider` to fetch and return previous week projections. Update `ESPNProvider` to return actual points and projected points in `get_user_matchup`.
+2. **`scripts/game_week_report.py`**: Implement past week analysis and next week suggestions logic. Integrate trending data for waiver suggestions.
+3. **`tests/test_game_week_report.py`**: Write tests that verify the logic using mocked provider responses.
+
+### Verification & Test Strategy
+- Mock the API responses for Sleeper and ESPN.
+- Ensure the markdown report includes expected sections (Past Week Performance, Next Week Suggestions, Waiver Targets).
+- Run `python -m unittest discover -s tests -v` to confirm all tests pass.
