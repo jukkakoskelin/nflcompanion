@@ -234,10 +234,7 @@ def analyze_next_week(provider, platform, league_id, user_id, week, all_players,
             
         # Try to fetch fresh trending, fallback to snapshot
         try:
-            trending_raw = fetch_sleeper_trending.fetch_trending("add", lookback_hours=24)
-            retrieved_at = datetime.now(timezone.utc)
-            t_path = fetch_sleeper_trending.save_snapshot(trending_raw, workspace / "state", retrieved_at)
-            trending_players = load_trending(t_path)
+            trending_players = fetch_sleeper_trending.fetch_trending("add", lookback_hours=24)
         except Exception:
             snapshot_path = latest_trending_snapshot(workspace)
             if snapshot_path:
