@@ -9,7 +9,24 @@ import tempfile
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
+import time
 from typing import Any
+
+def retry(times=3, delay=1):
+    def decorator(func):
+        def newfn(*args, **kwargs):
+            attempt = 0
+            while attempt < times:
+                try:
+                    return func(*args, **kwargs)
+                except Exception as e:
+                    attempt += 1
+                    if attempt >= times:
+                        raise e
+                    time.sleep(delay)
+            return func(*args, **kwargs)
+        return newfn
+    return decorator
 
 URL = "https://api.sleeper.app/v1/players/nfl"
 
@@ -31,6 +48,7 @@ def atomic_write(path: Path, content: str) -> None:
         raise
 
 
+@retry(times=3, delay=1)
 def fetch_players(url: str = URL, timeout: int = 30) -> dict[str, Any]:
     request = urllib.request.Request(
         url, headers={"Accept": "application/json", "User-Agent": "nflcompanion/0.1"}
