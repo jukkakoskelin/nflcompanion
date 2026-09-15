@@ -2,9 +2,9 @@
 
 ## Week 1 Performance Summary
 
-- **Total Points:** 157.58 (Projected: 0.00 | Diff: +157.58)
-- **Top Scorer:** Bijan Robinson with 31.30 pts (Proj: 0.00)
-- **Worst Scorer:** Jordan Addison with 0.00 pts (Proj: 0.00)
+- **Total Points:** 157.58 (Projected: 131.39 | Diff: +26.19)
+- **Top Scorer:** Bijan Robinson with 31.30 pts (Proj: 17.24)
+- **Worst Scorer:** Jordan Addison with 0.00 pts (Proj: 9.79)
 
 - **Bench Hindsight:** Adonai Mitchell (9.00 pts) outscored Jordan Addison (0.00 pts).
 - **Bench Hindsight:** Xavier Worthy (4.80 pts) outscored Jordan Addison (0.00 pts).
@@ -28,4 +28,4 @@ No immediate red flags (byes/injuries) found among your starters.
 - **Matthew Stafford** (QB - LAR)
 
 ### Waiver Targets (Trending Players)
-- Could not generate waiver suggestions: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1082)>
+- Could not generate waiver suggestions: No sleeper trending snapshot found under players\trending\raw
