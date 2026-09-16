@@ -1,24 +1,17 @@
-# Week 1 Dynasty Matchup Suggestion
+# Week 2 Dynasty Matchup Suggestion
 
 ## Your Starter Issues
 
-- **A.J. Brown** (WR - NE): Injury: Out
-
-### Bench Alternatives
-- **Makai Lemon** (WR - PHI) - Healthy
-- **Mike Washington Jr.** (RB - LV) - Healthy
-- **Tyler Shough** (QB - NO) - Healthy
-- **Adonai Mitchell** (WR - NYJ) - Healthy
-- **Brenton Strange** (TE - JAX) - Healthy
+No immediate red flags (byes/injuries) found among your starters.
 
 ## Opponent's Starters
 
-- **Omarion Hampton** (RB - LAC)
-- **Ashton Jeanty** (RB - LV)
-- **Trey McBride** (TE - ARI)
-- **Carnell Tate** (WR - TEN)
-- **Marvin Harrison Jr.** (WR - ARI)
-- **Michael Wilson** (WR - ARI)
-- **Bo Nix** (QB - DEN)
-- **Eagles D/ST** (D/ST - PHI)
-- **Cam Little** (K - JAX)
+- **Kenneth Walker III** (RB - KC)
+- **George Pickens** (WR - DAL)
+- **Tee Higgins** (WR - CIN)
+- **Jaylen Warren** (RB - PIT)
+- **Deebo Samuel** (WR - SF)
+- **Baker Mayfield** (QB - TB)
+- **Dallas Goedert** (TE - PHI)
+- **Harrison Butker** (K - KC)
+- **Lions D/ST** (D/ST - DET)

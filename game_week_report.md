@@ -28,4 +28,8 @@ No immediate red flags (byes/injuries) found among your starters.
 - **Matthew Stafford** (QB - LAR)
 
 ### Waiver Targets (Trending Players)
-- Could not generate waiver suggestions: No sleeper trending snapshot found under players\trending\raw
+- **Devin Singletary** (RB - NYG) - 1126530 recent adds
+- **Tampa Bay** (DEF - TB) - 999505 recent adds
+- **San Francisco** (DEF - SF) - 571626 recent adds
+- **Carson Wentz** (QB - MIN) - 554682 recent adds
+- **Raheim Sanders** (RB - CLE) - 297264 recent adds
