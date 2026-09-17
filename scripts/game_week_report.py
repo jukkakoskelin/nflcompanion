@@ -177,6 +177,14 @@ def analyze_next_week(provider, platform, league_id, user_id, week, all_players,
     user_bench = [pid for pid in user_players if pid not in user_starters]
     
     opponent_starters = [pid for pid in opponent_matchup.get("starters", []) if pid != "0"]
+
+    healthy_bench_options = []
+    for pid in user_bench:
+        p = all_players.get(pid, {})
+        name = _get_player_name(all_players, pid)
+        pos, team = _get_player_pos_team(all_players, pid)
+        if team and NFL_BYE_WEEKS_2026.get(team) != week and str(p.get("injury_status") or "").lower() not in ("out", "ir", "doubtful"):
+            healthy_bench_options.append((name, pos, team))
     
     issues = []
     for pid in user_starters:
@@ -201,15 +209,22 @@ def analyze_next_week(provider, platform, league_id, user_id, week, all_players,
     if issues:
         report.extend(issues)
         report.append("")
-        report.append("#### Bench Alternatives")
-        for pid in user_bench:
-            p = all_players.get(pid, {})
-            name = _get_player_name(all_players, pid)
-            pos, team = _get_player_pos_team(all_players, pid)
-            if team and NFL_BYE_WEEKS_2026.get(team) != week and str(p.get("injury_status") or "").lower() not in ("out", "ir", "doubtful"):
+        report.append("### Start/Sit Recommendations")
+        report.append("- Sit the flagged starters above unless their status improves before kickoff.")
+        if healthy_bench_options:
+            report.append("")
+            report.append("#### Bench Alternatives")
+            for name, pos, team in healthy_bench_options:
                 report.append(f"- **{name}** ({pos} - {team}) - Healthy")
+        else:
+            report.append("- No healthy bench alternatives are available right now.")
     else:
         report.append("No immediate red flags (byes/injuries) found among your starters.")
+        report.extend([
+            "",
+            "### Start/Sit Recommendations",
+            "- Start your current lineup this week; no bye-week or injury-driven swaps are needed right now.",
+        ])
         
     report.extend(["", "### Opponent's Starters"])
     for pid in opponent_starters:

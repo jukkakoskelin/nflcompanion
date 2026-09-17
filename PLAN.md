@@ -928,3 +928,8 @@ A script (`scripts/game_week_report.py`) that generates a markdown report analyz
 - Mock the API responses for Sleeper and ESPN.
 - Ensure the markdown report includes expected sections (Past Week Performance, Next Week Suggestions, Waiver Targets).
 - Run `python -m unittest discover -s tests -v` to confirm all tests pass.
+
+### 2026-09-17 Review Follow-up
+- Exclude generated weekly artifacts (`game_week_report.md`, `dynasty_update_report.md`, and runtime roster state snapshots) from the feature PR scope.
+- Ensure `scripts/game_week_report.py` emits an explicit positive start/sit recommendation when the current starters have no bye-week or injury red flags.
+- Add a regression test covering the no-issues recommendation path.
