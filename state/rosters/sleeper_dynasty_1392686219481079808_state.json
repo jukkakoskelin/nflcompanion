@@ -3,15 +3,15 @@
     "depth_chart_order": 1,
     "injury_status": null,
     "name": "Rashee Rice",
-    "news_updated": 1789591823325,
+    "news_updated": 1788574524467,
     "status": "Active",
     "team": "KC"
   },
   "10859": {
     "depth_chart_order": 1,
-    "injury_status": null,
+    "injury_status": "Questionable",
     "name": "Sam LaPorta",
-    "news_updated": 1789607723013,
+    "news_updated": 1788562823637,
     "status": "Active",
     "team": "DET"
   },
@@ -19,7 +19,7 @@
     "depth_chart_order": 2,
     "injury_status": null,
     "name": "Aidan O'Connell",
-    "news_updated": 1789326655462,
+    "news_updated": 1779924031748,
     "status": "Active",
     "team": "LV"
   },
@@ -27,7 +27,7 @@
     "depth_chart_order": 3,
     "injury_status": null,
     "name": "Ray Davis",
-    "news_updated": 1789500060189,
+    "news_updated": 1788836744570,
     "status": "Active",
     "team": "BUF"
   },
@@ -35,7 +35,7 @@
     "depth_chart_order": 2,
     "injury_status": null,
     "name": "Braelon Allen",
-    "news_updated": 1789452309401,
+    "news_updated": 1788813342066,
     "status": "Active",
     "team": "NYJ"
   },
@@ -43,15 +43,15 @@
     "depth_chart_order": 2,
     "injury_status": null,
     "name": "Blake Corum",
-    "news_updated": 1789103723774,
+    "news_updated": 1788372931363,
     "status": "Active",
     "team": "LAR"
   },
   "11600": {
-    "depth_chart_order": 4,
+    "depth_chart_order": 3,
     "injury_status": null,
     "name": "Ja'Tavion Sanders",
-    "news_updated": 1789317353715,
+    "news_updated": 1788745834631,
     "status": "Active",
     "team": "CAR"
   },
@@ -59,7 +59,7 @@
     "depth_chart_order": 1,
     "injury_status": null,
     "name": "Malik Washington",
-    "news_updated": 1789503352493,
+    "news_updated": 1788549622032,
     "status": "Active",
     "team": "MIA"
   },
@@ -67,7 +67,7 @@
     "depth_chart_order": 2,
     "injury_status": null,
     "name": "Xavier Worthy",
-    "news_updated": 1789479912609,
+    "news_updated": 1788790239471,
     "status": "Active",
     "team": "KC"
   },
@@ -75,15 +75,15 @@
     "depth_chart_order": 2,
     "injury_status": null,
     "name": "Adonai Mitchell",
-    "news_updated": 1789426207303,
+    "news_updated": 1788873649001,
     "status": "Active",
     "team": "NYJ"
   },
   "11629": {
     "depth_chart_order": 4,
-    "injury_status": null,
+    "injury_status": "Questionable",
     "name": "Devontez Walker",
-    "news_updated": 1789602623118,
+    "news_updated": 1788906321385,
     "status": "Active",
     "team": "BAL"
   },
@@ -91,7 +91,7 @@
     "depth_chart_order": 3,
     "injury_status": null,
     "name": "Kimani Vidal",
-    "news_updated": 1789428907257,
+    "news_updated": 1788749135008,
     "status": "Active",
     "team": "LAC"
   },
@@ -105,9 +105,9 @@
   },
   "12497": {
     "depth_chart_order": 4,
-    "injury_status": null,
+    "injury_status": "Questionable",
     "name": "Tory Horton",
-    "news_updated": 1789611923559,
+    "news_updated": 1788906020731,
     "status": "Active",
     "team": "SEA"
   },
@@ -115,7 +115,7 @@
     "depth_chart_order": null,
     "injury_status": null,
     "name": "CJ Donaldson",
-    "news_updated": 1789443309042,
+    "news_updated": 1788400236602,
     "status": "Active",
     "team": "NO"
   },
@@ -123,7 +123,7 @@
     "depth_chart_order": 4,
     "injury_status": null,
     "name": "Jack Endries",
-    "news_updated": 1789316454100,
+    "news_updated": 1786816501976,
     "status": "Active",
     "team": "CIN"
   },
@@ -143,6 +143,14 @@
     "status": "Active",
     "team": "NYJ"
   },
+  "13430": {
+    "depth_chart_order": null,
+    "injury_status": "Questionable",
+    "name": "RJ Maryland",
+    "news_updated": 1786662646073,
+    "status": "Inactive",
+    "team": null
+  },
   "14082": {
     "depth_chart_order": null,
     "injury_status": null,
@@ -155,7 +163,7 @@
     "depth_chart_order": 2,
     "injury_status": null,
     "name": "Davante Adams",
-    "news_updated": 1789105522537,
+    "news_updated": 1788708930935,
     "status": "Active",
     "team": "LAR"
   },
@@ -168,18 +176,18 @@
     "team": "NYG"
   },
   "4035": {
-    "depth_chart_order": 2,
-    "injury_status": null,
+    "depth_chart_order": 4,
+    "injury_status": "Questionable",
     "name": "Alvin Kamara",
-    "news_updated": 1789594523165,
+    "news_updated": 1788900951851,
     "status": "Active",
     "team": "NO"
   },
   "4046": {
     "depth_chart_order": 1,
-    "injury_status": null,
+    "injury_status": "Questionable",
     "name": "Patrick Mahomes",
-    "news_updated": 1789591522617,
+    "news_updated": 1788889550651,
     "status": "Active",
     "team": "KC"
   },
@@ -187,23 +195,15 @@
     "depth_chart_order": 1,
     "injury_status": "Questionable",
     "name": "George Kittle",
-    "news_updated": 1789601423731,
+    "news_updated": 1788974134120,
     "status": "Active",
     "team": "SF"
-  },
-  "5857": {
-    "depth_chart_order": 2,
-    "injury_status": null,
-    "name": "Noah Fant",
-    "news_updated": 1789526454945,
-    "status": "Active",
-    "team": "NO"
   },
   "6786": {
     "depth_chart_order": 1,
     "injury_status": null,
     "name": "CeeDee Lamb",
-    "news_updated": 1789387503698,
+    "news_updated": 1788616517110,
     "status": "Active",
     "team": "DAL"
   },
@@ -211,7 +211,7 @@
     "depth_chart_order": 1,
     "injury_status": null,
     "name": "Jalen Hurts",
-    "news_updated": 1789510254960,
+    "news_updated": 1788557122735,
     "status": "Active",
     "team": "PHI"
   },
@@ -225,9 +225,9 @@
   },
   "7594": {
     "depth_chart_order": 1,
-    "injury_status": null,
+    "injury_status": "Questionable",
     "name": "Chuba Hubbard",
-    "news_updated": 1789569959541,
+    "news_updated": 1788903320515,
     "status": "Active",
     "team": "CAR"
   },
@@ -235,7 +235,7 @@
     "depth_chart_order": 1,
     "injury_status": null,
     "name": "Kyren Williams",
-    "news_updated": 1789104322300,
+    "news_updated": 1788614116896,
     "status": "Active",
     "team": "LAR"
   },
@@ -243,7 +243,7 @@
     "depth_chart_order": 2,
     "injury_status": null,
     "name": "Tyjae Spears",
-    "news_updated": 1789427107123,
+    "news_updated": 1788791139490,
     "status": "Active",
     "team": "TEN"
   },
@@ -251,7 +251,7 @@
     "depth_chart_order": 1,
     "injury_status": null,
     "name": "Bijan Robinson",
-    "news_updated": 1789398303314,
+    "news_updated": 1788527720297,
     "status": "Active",
     "team": "ATL"
   },
@@ -259,7 +259,7 @@
     "depth_chart_order": 2,
     "injury_status": null,
     "name": "Jordan Addison",
-    "news_updated": 1789363561237,
+    "news_updated": 1788465306980,
     "status": "Active",
     "team": "MIN"
   },
@@ -267,7 +267,7 @@
     "depth_chart_order": 1,
     "injury_status": null,
     "name": "C.J. Stroud",
-    "news_updated": 1789495859802,
+    "news_updated": 1788930922981,
     "status": "Active",
     "team": "HOU"
   }

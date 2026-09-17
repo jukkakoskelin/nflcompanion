@@ -97,5 +97,35 @@ class TestGameWeekReport(unittest.TestCase):
             game_week_report.NFL_BYE_WEEKS_2026.clear()
             game_week_report.NFL_BYE_WEEKS_2026.update(original_byes)
 
+    @patch("fetch_sleeper_trending.fetch_trending")
+    @patch("game_week_report.latest_trending_snapshot")
+    def test_analyze_next_week_recommends_keeping_healthy_lineup(self, mock_latest, mock_fetch):
+        self.mock_provider.get_user_matchup.return_value = {
+            "user": {
+                "starters": ["1", "4"],
+                "players": ["1", "3", "4"],
+            },
+            "opponent": {
+                "starters": ["2"],
+                "players": ["2"],
+            },
+        }
+
+        self.mock_provider.get_all_rostered_players.return_value = {"1", "2", "3", "4"}
+        mock_fetch.side_effect = Exception("API error")
+        mock_latest.return_value = None
+
+        report = game_week_report.analyze_next_week(
+            self.mock_provider, "sleeper", "league1", "user1", 2, self.all_players, self.espn_to_sleeper, self.workspace
+        )
+
+        report_text = "\n".join(report)
+        self.assertIn("No immediate red flags (byes/injuries) found among your starters.", report_text)
+        self.assertIn("### Start/Sit Recommendations", report_text)
+        self.assertIn(
+            "- Start your current lineup this week; no bye-week or injury-driven swaps are needed right now.",
+            report_text,
+        )
+
 if __name__ == "__main__":
     unittest.main()

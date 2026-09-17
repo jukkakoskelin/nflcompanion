@@ -21,15 +21,15 @@ No immediate red flags (byes/injuries) found among your starters.
 - **Cam Skattebo** (RB - NYG)
 - **Ja'Marr Chase** (WR - CIN)
 - **Ladd McConkey** (WR - LAC) (Injury: Questionable)
-- **Jalen Coker** (WR - CAR) (Injury: Questionable)
-- **Dallas Goedert** (TE - PHI)
+- **Luther Burden** (WR - CHI)
+- **Tucker Kraft** (TE - GB)
 - **Bhayshul Tuten** (RB - JAX)
-- **Jacory Croskey-Merritt** (RB - WAS)
+- **Jalen Coker** (WR - CAR) (Injury: Questionable)
 - **Matthew Stafford** (QB - LAR)
 
 ### Waiver Targets (Trending Players)
-- **Devin Singletary** (RB - NYG) - 893070 recent adds
-- **Tampa Bay** (DEF - TB) - 868205 recent adds
-- **Raheim Sanders** (RB - CLE) - 481416 recent adds
-- **Carson Wentz** (QB - MIN) - 463920 recent adds
-- **San Francisco** (DEF - SF) - 459525 recent adds
+- **Devin Singletary** (RB - NYG) - 1126530 recent adds
+- **Tampa Bay** (DEF - TB) - 999505 recent adds
+- **San Francisco** (DEF - SF) - 571626 recent adds
+- **Carson Wentz** (QB - MIN) - 554682 recent adds
+- **Raheim Sanders** (RB - CLE) - 297264 recent adds
