@@ -421,6 +421,17 @@ TOOLS: list[dict[str, Any]] = [
             }
         }
     },
+    {
+        "name": "sync_espn_data",
+        "description": "Fetch and save the user's ESPN roster, matchup, and top free agents to a local state JSON file.",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "limit": {"type": "integer", "description": "Number of top free agents to fetch.", "default": 100},
+                "state_root": {"type": "string", "description": "Root state directory path.", "default": "state"}
+            }
+        }
+    },
 ]
 
 
@@ -809,6 +820,14 @@ def execute_tool(name: str, arguments: dict[str, Any]) -> dict[str, Any]:
             draft_id=str(arguments["draft_id"]),
             players=players,
         )
+
+    if name == "sync_espn_data":
+        from nflcompanion.espn_sync import sync_espn_data
+        limit = int(arguments.get("limit", 100))
+        workspace_root = state_root.parent if state_root.name == "state" else state_root
+        if str(workspace_root) == "":
+            workspace_root = Path(".")
+        return sync_espn_data(workspace_root.resolve(), limit=limit)
 
     raise ValueError(f"Unknown tool: {name}")
 
