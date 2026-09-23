@@ -933,3 +933,24 @@ A script (`scripts/game_week_report.py`) that generates a markdown report analyz
 - Exclude generated weekly artifacts (`game_week_report.md`, `dynasty_update_report.md`, and runtime roster state snapshots) from the feature PR scope.
 - Ensure `scripts/game_week_report.py` emits an explicit positive start/sit recommendation when the current starters have no bye-week or injury red flags.
 - Add a regression test covering the no-issues recommendation path.
+
+## ESPN Data & Roster Synchronization (Issue #38)
+
+**Branch:** `feature/38-feat-espn-roster-matchup-and-free-agent-sync`
+
+### Expected End Result (Definition of Done)
+A new script or command structure that fetches and persists the following data from the ESPN Fantasy API to our local `state/espn/` directory:
+1. The user's current team roster.
+2. The user's upcoming matchup schedule.
+3. The current list of available free agents (top 100), excluding DEF and K positions.
+
+### Implementation Steps
+1. **`src/nflcompanion/providers.py`**: Update `Provider` to support `get_free_agents`. Implement `get_free_agents` in `ESPNProvider` using `espn_api`, limiting to top 100 and filtering out 'D/ST' and 'K'.
+2. **`scripts/sync_espn_data.py`**: A new script that fetches roster, matchup, and free agents, then writes the result to `state/espn/espn_sync_state.json`.
+3. **`src/nflcompanion/mcp_server.py`**: Expose an MCP tool `sync_espn_data` to run the sync.
+4. **Tests**: Verify `get_free_agents` and the sync logic.
+
+### Verification & Test Strategy
+- Mock the API responses for ESPN.
+- Ensure `espn_sync_state.json` contains the expected output format.
+- Run `python -m unittest discover -s tests -v` to confirm tests pass.

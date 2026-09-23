@@ -32,6 +32,10 @@ class Provider(ABC):
         """Returns a set of all player IDs currently on any roster in the league."""
         pass
 
+    def get_free_agents(self, league_id: str, limit: int = 100) -> list[dict[str, Any]]:
+        """Returns a list of free agents available in the league."""
+        return []
+
     def get_player_fallback_metadata(self) -> dict[str, dict[str, Any]]:
         """Returns a dict mapping player IDs to a fallback metadata dict (e.g. from a third-party API) to use if local data is missing."""
         return {}
@@ -250,6 +254,35 @@ def get_provider(platform: str, config: dict[str, Any] | None = None) -> Provide
                             "is_unmapped_espn": True
                         }
                 return metadata
+
+            def get_free_agents(self, league_id: str, limit: int = 100) -> list[dict[str, Any]]:
+                # Fetch more to account for filtered positions
+                fetch_size = limit + 50
+                try:
+                    free_agents = self.league.free_agents(size=fetch_size)
+                except Exception:
+                    # Some ESPN leagues might not support free_agents or might throw on error
+                    return []
+                    
+                results = []
+                for p in free_agents:
+                    if p.position in ("D/ST", "K"):
+                        continue
+                    
+                    results.append({
+                        "player_id": str(p.playerId),
+                        "full_name": p.name,
+                        "position": p.position,
+                        "team": getattr(p, 'proTeam', ''),
+                        "injury_status": getattr(p, 'injuryStatus', ''),
+                        "projected_points": getattr(p, 'projected_points', 0.0),
+                        "total_points": getattr(p, 'total_points', 0.0),
+                        "percent_owned": getattr(p, 'percent_owned', 0.0),
+                        "percent_started": getattr(p, 'percent_started', 0.0),
+                    })
+                    if len(results) >= limit:
+                        break
+                return results
 
         return ESPNProvider(config)
     raise ValueError(f"Unsupported platform: {platform}")
