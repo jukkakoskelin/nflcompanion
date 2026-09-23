@@ -211,6 +211,7 @@ def get_provider(platform: str, config: dict[str, Any] | None = None) -> Provide
                     projected_points = 0.0
                     player_points = {}
                     player_projected = {}
+                    player_injury_status = {}
                     
                     for p in lineup:
                         pid = str(p.playerId)
@@ -220,6 +221,7 @@ def get_provider(platform: str, config: dict[str, Any] | None = None) -> Provide
                         
                         player_points[pid] = pts
                         player_projected[pid] = proj
+                        player_injury_status[pid] = getattr(p, 'injuryStatus', 'ACTIVE')
                         
                         if getattr(p, 'slot_position', '') not in ('BE', 'IR'):
                             starters.append(pid)
@@ -232,7 +234,8 @@ def get_provider(platform: str, config: dict[str, Any] | None = None) -> Provide
                         "points": points,
                         "projected_points": projected_points,
                         "player_points": player_points,
-                        "player_projected": player_projected
+                        "player_projected": player_projected,
+                        "player_injury_status": player_injury_status
                     }
                     
                 return {
