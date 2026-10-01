@@ -758,6 +758,45 @@ and Sleeper 10-team dynasty startup snake. The following changes were made:
   ESPN DEF/K required, custom target override, TBD slot creation, confirmed slot,
   `confirm_draft_slot` updates, double-confirm rejected, invalid slot rejected.
 
+### Feature #46: Implement required GitHub Copilot features
+
+- **Branch:** `feature/46-implement-required-github-copilot-features`
+- **Status:** Implementation complete; awaiting reviewer validation.
+
+#### Expected End Result
+
+Redo the GitHub Copilot and Antigravity workflow gap analysis against the
+repository's current files, close each confirmed actionable gap, and update
+`docs/agentic-workflow-audit-plan.md` so its inventory, assessment, proposed
+implementation, and acceptance criteria describe the resulting state.
+
+The implementation must provide a usable Copilot cloud-agent setup workflow,
+keep the Antigravity and VS Code MCP server configurations aligned, and make
+`AGENTS.md` the canonical source for shared repository guidance without
+removing Copilot-specific instructions. Existing guardrails, hooks, skills,
+and issue workflow behavior must remain intact.
+
+#### Implementation & Verification Plan
+
+1. Re-run the audit against the current repository and record the confirmed
+  gaps and any newly discovered drift in the audit document.
+2. Add or update `.github/workflows/copilot-setup-steps.yml` with the required
+  manual trigger, Copilot setup job identity, supported Python environment,
+  editable package installation, and test prerequisites.
+3. Update `.agents/mcp_config.json` to expose the same supported fetch MCP
+  server as `.vscode/mcp.json`, preserving the existing `nflcompanion`
+  server configuration.
+4. Reduce duplicated shared rules in `.github/copilot-instructions.md` while
+  retaining Copilot-specific notes and an explicit reference to `AGENTS.md`.
+5. Update the audit document's inventory, gap assessment, proposed changes,
+  and acceptance checklist to reflect the files actually present.
+6. Add focused tests or validation checks for the workflow YAML, MCP parity,
+  and instruction-source expectations where the repository's existing test
+  conventions support them; run `python -m unittest discover -s tests -v`.
+7. Review the diff for secrets, unsafe workflow permissions, malformed JSON or
+  YAML, unintended guardrail changes, and plan adherence before requesting PR
+  review.
+
 ### Draft slot strategy
 
 The user's draft position in the Sleeper startup is not yet known. The recommended
