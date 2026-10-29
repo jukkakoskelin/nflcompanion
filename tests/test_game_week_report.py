@@ -10,6 +10,7 @@ import game_week_report
 class TestGameWeekReport(unittest.TestCase):
     def setUp(self):
         self.mock_provider = MagicMock()
+        self.mock_provider.get_projections.return_value = {}
         self.all_players = {
             "1": {"full_name": "Tom Brady", "position": "QB", "team": "TB", "injury_status": ""},
             "2": {"full_name": "Julio Jones", "position": "WR", "team": "ATL", "injury_status": "Out"},
@@ -112,6 +113,11 @@ class TestGameWeekReport(unittest.TestCase):
         }
 
         self.mock_provider.get_all_rostered_players.return_value = {"1", "2", "3", "4"}
+        self.mock_provider.get_projections.return_value = {
+            "1": 20.0,
+            "2": 14.0,
+            "4": 9.0,
+        }
         mock_fetch.side_effect = Exception("API error")
         mock_latest.return_value = None
 
@@ -126,6 +132,31 @@ class TestGameWeekReport(unittest.TestCase):
             "- Start your current lineup this week; no bye-week or injury-driven swaps are needed right now.",
             report_text,
         )
+        self.assertIn("- **Your projected total:** 29.0 pts (2/2 starters projected)", report_text)
+        self.assertIn("- **Opponent projected total:** 14.0 pts (1/1 starters projected)", report_text)
+        self.assertIn("- **Projected edge:** Your team by 15.0 pts.", report_text)
+
+    def test_analyze_next_week_reports_missing_opponent_comparison(self):
+        self.mock_provider.get_user_matchup.return_value = {
+            "user": {"starters": ["1"], "players": ["1"]},
+            "opponent": None,
+        }
+
+        report = game_week_report.analyze_next_week(
+            self.mock_provider,
+            "sleeper",
+            "league1",
+            "user1",
+            2,
+            self.all_players,
+            self.espn_to_sleeper,
+            self.workspace,
+        )
+
+        report_text = "\n".join(report)
+        self.assertIn("No opponent found for week 2. (Bye week?)", report_text)
+        self.assertIn("Comparison unavailable because no opponent matchup was found.", report_text)
+        self.mock_provider.get_projections.assert_not_called()
 
 if __name__ == "__main__":
     unittest.main()
