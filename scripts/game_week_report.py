@@ -5,6 +5,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from nflcompanion.config import load_config
+from nflcompanion.matchup_report import (
+    build_projection_comparison,
+    get_matchup_projections,
+)
 from nflcompanion.providers import get_provider
 from nflcompanion.state_store import load_players, latest_trending_snapshot, load_trending
 from nflcompanion.draft_companion import NFL_BYE_WEEKS_2026
@@ -148,7 +152,15 @@ def analyze_next_week(provider, platform, league_id, user_id, week, all_players,
     opponent_matchup = matchup_data["opponent"]
     
     if not opponent_matchup:
-        report.append(f"No opponent found for week {week}. (Bye week?)")
+        report.extend(
+            [
+                f"No opponent found for week {week}. (Bye week?)",
+                "",
+                "### Projected Matchup Comparison",
+                "",
+                "Comparison unavailable because no opponent matchup was found.",
+            ]
+        )
         return report
 
     fallback_metadata = provider.get_player_fallback_metadata() if hasattr(provider, 'get_player_fallback_metadata') else {}
@@ -175,8 +187,10 @@ def analyze_next_week(provider, platform, league_id, user_id, week, all_players,
     user_starters = [pid for pid in user_matchup.get("starters", []) if pid != "0"]
     user_players = user_matchup.get("players", [])
     user_bench = [pid for pid in user_players if pid not in user_starters]
-    
     opponent_starters = [pid for pid in opponent_matchup.get("starters", []) if pid != "0"]
+    projections = get_matchup_projections(
+        provider, week, platform, matchup_data, espn_to_sleeper
+    )
 
     healthy_bench_options = []
     for pid in user_bench:
@@ -226,14 +240,18 @@ def analyze_next_week(provider, platform, league_id, user_id, week, all_players,
             "- Start your current lineup this week; no bye-week or injury-driven swaps are needed right now.",
         ])
         
-    report.extend(["", "### Opponent's Starters"])
-    for pid in opponent_starters:
-        p = all_players.get(pid, {})
-        name = _get_player_name(all_players, pid)
-        pos, team = _get_player_pos_team(all_players, pid)
-        injury = p.get("injury_status")
-        flag = f" (Injury: {injury})" if injury and injury.lower() in ("out", "questionable", "doubtful") else ""
-        report.append(f"- **{name}** ({pos} - {team}){flag}")
+    report.extend(
+        [
+            "",
+            *build_projection_comparison(
+                user_starters,
+                opponent_starters,
+                all_players,
+                projections,
+                platform=platform,
+            ),
+        ]
+    )
         
     # Waiver Suggestions
     report.extend(["", "### Waiver Targets (Trending Players)"])

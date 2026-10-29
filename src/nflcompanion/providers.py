@@ -78,7 +78,7 @@ class SleeperProvider(Provider):
         )
         with urllib.request.urlopen(req, timeout=self.timeout) as response:
             projections = json.load(response)
-            return {pid: p.get("pts_half_ppr", 0.0) for pid, p in projections.items()}
+            return {pid: p.get("pts_half_ppr") for pid, p in projections.items()}
 
     def get_projections(self, week: int, year: int | None = None) -> dict[str, Any]:
         if year is None:
@@ -217,7 +217,7 @@ def get_provider(platform: str, config: dict[str, Any] | None = None) -> Provide
                         pid = str(p.playerId)
                         players.append(pid)
                         pts = getattr(p, 'points', 0.0)
-                        proj = getattr(p, 'projected_points', 0.0)
+                        proj = getattr(p, 'projected_points', None)
                         
                         player_points[pid] = pts
                         player_projected[pid] = proj
@@ -226,7 +226,8 @@ def get_provider(platform: str, config: dict[str, Any] | None = None) -> Provide
                         if getattr(p, 'slot_position', '') not in ('BE', 'IR'):
                             starters.append(pid)
                             points += pts
-                            projected_points += proj
+                            if proj is not None:
+                                projected_points += proj
                             
                     return {
                         "starters": starters,
@@ -289,4 +290,3 @@ def get_provider(platform: str, config: dict[str, Any] | None = None) -> Provide
 
         return ESPNProvider(config)
     raise ValueError(f"Unsupported platform: {platform}")
-

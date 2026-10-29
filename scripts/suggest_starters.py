@@ -5,6 +5,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from nflcompanion.config import load_config
+from nflcompanion.matchup_report import (
+    build_projection_comparison,
+    get_matchup_projections,
+)
 from nflcompanion.providers import get_provider
 from nflcompanion.state_store import load_players
 from nflcompanion.draft_companion import NFL_BYE_WEEKS_2026
@@ -12,6 +16,19 @@ from nflcompanion.draft_companion import NFL_BYE_WEEKS_2026
 import sys
 sys.path.insert(0, str(Path(__file__).parent))
 import fetch_sleeper_players
+
+
+def _write_report(workspace: Path, report_lines: list[str]) -> Path:
+    report_path = workspace / "weekly_matchup_suggestion.md"
+    report_text = "\n".join(report_lines)
+    report_path.write_text(report_text, encoding="utf-8")
+
+    if "GITHUB_STEP_SUMMARY" in os.environ:
+        with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as file:
+            file.write(report_text + "\n")
+
+    return report_path
+
 
 def main() -> int:
     parser = argparse.ArgumentParser()
@@ -64,7 +81,19 @@ def main() -> int:
     opponent_matchup = matchup_data["opponent"]
     
     if not opponent_matchup:
-        print(f"No opponent found for week {week}. (Bye week?)")
+        report_path = _write_report(
+            workspace,
+            [
+                f"# Week {week} Dynasty Matchup Suggestion",
+                "",
+                f"No opponent found for week {week}. (Bye week?)",
+                "",
+                "## Projected Matchup Comparison",
+                "",
+                "Comparison unavailable because no opponent matchup was found.",
+            ],
+        )
+        print(f"Report written to {report_path.name}")
         return 0
 
     # 3. Load player state
@@ -74,6 +103,7 @@ def main() -> int:
     snapshot_path = fetch_sleeper_players.save_snapshot(raw_payload, workspace / "state", retrieved_at)
     all_players_list = load_players(snapshot_path)
     all_players = {str(p.get("player_id")): p for p in all_players_list}
+    espn_to_sleeper = {}
     
     fallback_metadata = provider.get_player_fallback_metadata() if hasattr(provider, 'get_player_fallback_metadata') else {}
     
@@ -96,7 +126,11 @@ def main() -> int:
         opponent_matchup["starters"] = map_ids(opponent_matchup.get("starters", []))
         if opponent_matchup.get("players"):
             opponent_matchup["players"] = map_ids(opponent_matchup.get("players", []))
-    
+
+    projections = get_matchup_projections(
+        provider, week, platform, matchup_data, espn_to_sleeper
+    )
+
     # Extract players
     user_starters = [pid for pid in user_matchup.get("starters", []) if pid != "0"]
     user_players = user_matchup.get("players", [])
@@ -144,28 +178,20 @@ def main() -> int:
     else:
         report_lines.append("No immediate red flags (byes/injuries) found among your starters.")
         
-    report_lines.extend([
-        "",
-        "## Opponent's Starters",
-        ""
-    ])
-    
-    for pid in opponent_starters:
-        p = all_players.get(pid, {})
-        name = p.get("full_name") or p.get("first_name") or f"Player {pid}"
-        team = p.get("team")
-        injury = p.get("injury_status")
-        flag = f" (Injury: {injury})" if injury and injury.lower() in ("out", "questionable", "doubtful") else ""
-        report_lines.append(f"- **{name}** ({p.get('position')} - {team}){flag}")
-
-    report_path = workspace / "weekly_matchup_suggestion.md"
-    report_text = "\n".join(report_lines)
-    report_path.write_text(report_text, encoding="utf-8")
-    
-    if "GITHUB_STEP_SUMMARY" in os.environ:
-        with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
-            f.write(report_text + "\n")
+    report_lines.extend(
+        [
+            "",
+            *build_projection_comparison(
+                user_starters,
+                opponent_starters,
+                all_players,
+                projections,
+                platform=platform,
+            ),
+        ]
+    )
             
+    report_path = _write_report(workspace, report_lines)
     print(f"Report written to {report_path.name}")
     return 0
 

@@ -993,3 +993,26 @@ A new script or command structure that fetches and persists the following data f
 - Mock the API responses for ESPN.
 - Ensure `espn_sync_state.json` contains the expected output format.
 - Run `python -m unittest discover -s tests -v` to confirm tests pass.
+
+## Weekly Projected Matchup Comparison (Issue #63)
+
+- **Branch:** `feature/63-feat-compare-roster-projections-in-weekly-matchup`
+- **Status:** Implementation complete; tests and live Week 8 report verified.
+
+### Expected End Result
+
+The Week N game-week and scheduled matchup reports show both teams' starting
+lineups with player projections, projected starter totals, and the projected
+point edge. Missing projections are identified and excluded from totals, and
+an overall edge is shown only when every starter on both teams has a projection.
+Unavailable provider projections remain missing rather than defaulting to zero.
+Matchups without an opponent remain clearly identified without fabricating a
+comparison.
+
+### Implementation & Verification Plan
+
+1. Add shared projection comparison formatting for both weekly report scripts.
+2. Use week-specific Sleeper projections and ESPN matchup player projections.
+3. Add tests for complete projections, missing projections, and a missing
+   opponent while preserving existing report sections.
+4. Run `python -m unittest discover -s tests -v` after installing the package.
