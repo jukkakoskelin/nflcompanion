@@ -1005,6 +1005,7 @@ The Week N game-week and scheduled matchup reports show both teams' starting
 lineups with player projections, projected starter totals, and the projected
 point edge. Missing projections are identified and excluded from totals, and
 an overall edge is shown only when every starter on both teams has a projection.
+Unavailable provider projections remain missing rather than defaulting to zero.
 Matchups without an opponent remain clearly identified without fabricating a
 comparison.
 
