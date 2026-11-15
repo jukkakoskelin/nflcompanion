@@ -1,6 +1,58 @@
-# Dynasty Roster Update (2026-09-10)
+# Dynasty Roster Update (2026-11-11)
 
 ## Changes Detected
-- **A.J. Brown**: Added to roster tracking.
-- **Rico Dowdle**: Added to roster tracking.
-- **Chris Boswell**: Added to roster tracking.
+- **Ray Davis**: News Updated - Ray Davis - Minimal production in Monday night win: Davis logged two carries for two yards and didn't catch his only target Monday in a 23-6 victory against the Vikings.
+- **Jordan Addison**: News Updated - Jordan Addison finishes with 28 yards Monday night: Jordan Addison caught 2-of-3 targets for 28 yards in Monday's 23-6 loss to the Bills. 
+- **C.J. Stroud**: News Updated - C.J. Stroud tosses five touchdowns in win Sunday: C.J. Stroud completed 21-of-35 passing attempts for 384 yards, five touchdowns, and one interception in Sunday's 44-22 win over the Los Angeles Chargers.
+- **Alvin Kamara**: `injury_status` changed from `Questionable` to `None`
+- **Alvin Kamara**: `depth_chart_order` changed from `4` to `1`
+- **Alvin Kamara**: News Updated - Alvin Kamara runs for 32 yards in win: Alvin Kamara ran six times for 32 yards and caught three of four targets for 17 yards in the Saints' 23-22 win over the Browns on Sunday.
+- **Roschon Johnson**: Added to roster tracking.
+- **Chuba Hubbard**: `injury_status` changed from `Questionable` to `None`
+- **Chuba Hubbard**: News Updated - Chuba Hubbard rushes for 79 yards in Week 9: Chuba Hubbard rushed 16 times for 79 yards while catching four of five targets for 17 yards in the Panthers' 26-21 loss to the Broncos in Week 9.
+- **Adonai Mitchell**: `depth_chart_order` changed from `2` to `1`
+- **Adonai Mitchell**: News Updated - Adonai Mitchell Still Worth a Look on Waivers: New York Jets wide receiver Adonai Mitchell failed to catch any of his seven targets in Sunday's 35-12 loss to Kansas City. The disappointing outing followed a breakout Week 8 performance against Las Vegas, when he caught seven passes for 142 yards and a touchdown. Mitchell continues to see opportunities with Garrett Wilson (concussion) sidelined, but his production has been inconsistent. His seven targets Sunday are encouraging for fantasy managers considering a waiver claim, even if the results weren't. Mitchell remains a speculative addition in deeper leagues ahead of Week 10 against Buffalo. Managers should monitor Wilson's health throughout the week, as his return would likely reduce Mitchell's opportunities in the passing game.
+- **Tanner McKee**: Added to roster tracking.
+- **Ja'Tavion Sanders**: `depth_chart_order` changed from `3` to `4`
+- **Ja'Tavion Sanders**: News Updated - Ja'Tavion Sanders - Limited to special teams Sunday: Sanders recorded zero targets during Sunday's 26-21 loss to the Broncos.
+- **Noah Fant**: Added to roster tracking.
+- **Kyren Williams**: News Updated - Kyren Williams totals 61 scoreless yards in win: Kyren Williams rushed 15 times for 45 yards and caught three passes for 16 yards in Sunday's win over the Commanders.
+- **Reggie Virgil**: `depth_chart_order` changed from `5` to `1`
+- **Reggie Virgil**: News Updated - Reggie Virgil - One catch against Seattle: Virgil caught one of four targets for 25 yards during Sunday's 17-3 loss to the Seahawks on Sunday.
+- **Tory Horton**: `injury_status` changed from `Questionable` to `None`
+- **Tory Horton**: `depth_chart_order` changed from `4` to `3`
+- **Tory Horton**: News Updated - Tory Horton - Two catches in win: Horton caught two passes for 22 yards on three targets in Sunday's 17-3 win over the Cardinals.
+- **Tyjae Spears**: `injury_status` changed from `None` to `Questionable`
+- **Tyjae Spears**: `depth_chart_order` changed from `2` to `5`
+- **Tyjae Spears**: News Updated - Tyjae Spears (knee) ruled out Sunday : Tyjae Spears has been ruled out for Sunday's game against the Bengals. 
+- **Trevor Etienne**: Added to roster tracking.
+- **George Kittle**: `injury_status` changed from `Questionable` to `None`
+- **George Kittle**: News Updated - George Kittle totals 58 yards Sunday : George Kittle caught 4-of-7 targets for 58 yards in the 49ers 38-17 win over the Raiders. 
+- **Xavier Worthy**: `injury_status` changed from `None` to `Questionable`
+- **Xavier Worthy**: News Updated - Xavier Worthy Becoming a Cut Candidate After Downs Trade: Kansas City Chiefs wide receiver Xavier Worthy (hamstring) caught six passes for 48 yards in Sunday's 35-12 win over the Jets before leaving with an injury. Worthy managed just 24 receiving yards over his previous two games and has scored only one touchdown this season. His fantasy outlook took another hit Tuesday when Kansas City acquired Josh Downs from Indianapolis. Downs primarily works out of the slot, but his arrival adds more competition for targets alongside Rashee Rice and Travis Kelce. Head coach Andy Reid called Worthy day-to-day Monday, leaving his availability for Week 10 against Atlanta uncertain. With limited production, a hamstring injury, and another receiver joining the offense, Worthy is becoming expendable in shallow redraft leagues. Managers in deeper formats may prefer to hold him until his injury status becomes clearer.
+- **Bijan Robinson**: News Updated - Giants Called the Falcons About Acquiring Bijan Robinson: The New York Giants reportedly called the Atlanta Falcons to inquire about trading for star running back Bijan Robinson, according to ESPN's Jordan Raanan. New York was involved in trade discussions for several star players, including Jeffrey Simmons, Jonathan Taylor, and DeForest Buckner, who ultimately landed elsewhere. Although there were no reports that the Falcons made Robinson available, the Giants explored the possibility as they looked to add an elite piece to their offense. For the remainder of the 2026 season, New York will roll with second-year running back Cam Skattebo, veteran Devin Singletary, and Tyrone Tracy Jr., who is currently on injured reserve. Fantasy managers with Skattebo can breathe a sigh of relief after he survived the trade deadline, despite speculation that the Giants could bring in a star running back.
+- **Rashee Rice**: News Updated - Rashee Rice - Five catches in Week 9 win: Rice secured five of seven targets for 49 yards in the Chiefs' 35-12 win over the Jets on Sunday.
+- **CJ Donaldson**: `injury_status` changed from `None` to `Questionable`
+- **CJ Donaldson**: `depth_chart_order` changed from `None` to `6`
+- **CJ Donaldson**: News Updated - CJ Donaldson (shoulder/concussion) won't play Sunday: CJ Donaldson (shoulder/concussion) won't play in Sunday's game against the Cleveland Browns.
+- **Tutu Atwell**: Added to roster tracking.
+- **Blake Corum**: News Updated - Blake Corum hits paydirt in win: Blake Corum rushed 11 times for 58 yards and a touchdown in Sunday's win over the Commanders.
+- **Braelon Allen**: News Updated - Braelon Allen - Cedes majority of work to Hall: Allen rushed eight times for 33 yards, caught both of his targets for 21 yards and lost a fumble in Sunday's 35-12 loss to the Chiefs.
+- **Davante Adams**: `status` changed from `Active` to `Inactive`
+- **Davante Adams**: `injury_status` changed from `None` to `IR`
+- **Davante Adams**: `depth_chart_order` changed from `2` to `4`
+- **Davante Adams**: News Updated - Davante Adams a Top Stash for the Fantasy Playoffs: Los Angeles Rams wide receiver Davante Adams (hamstring) appears to be on the early side of his 6-to-10-week recovery timetable after undergoing hamstring surgery, which puts him in line for a potential return ahead of the fantasy football playoffs. Adams was a must-start wide receiver when he was healthy, and he should continue to be stashed in all leagues, either on the bench or in the IR slot. The 33-year-old ranked as the overall WR5 in half-PPR scoring before he suffered his injury, and even though his production was a little less consistent when Puka Nacua was healthy, the two absolutely proved that they can co-exist as fantasy weapons in this dominant Rams passing game. While it may feel like leaving Adams on the bench for upward of two months requires a lot of patience, the decision should pay off in time for the fantasy playoffs. Adams is a weekly WR2 option in fantasy football, so getting someone like that back from IR in time for the end of the fantasy season is a huge boost that could push fringe playoff teams into legitimate championship contention.
+- **Sam LaPorta**: `injury_status` changed from `Questionable` to `None`
+- **Sam LaPorta**: News Updated - Sam LaPorta - Not viewed as trade candidate: The Lions have received trade calls on LaPorta leading up to Tuesday's deadline, but the team prefers to keep him with the hope of signing the tight end to a long-term deal, Jeremy Fowler of ESPN.com reports.
+- **Patrick Mahomes**: News Updated - Patrick Mahomes II (elbow) considered day-to-day: Chiefs head coach Andy Reid said Patrick Mahomes II is day-to-day.
+- **Jalen Hurts**: `status` changed from `Active` to `Inactive`
+- **Jalen Hurts**: `injury_status` changed from `None` to `IR`
+- **Jalen Hurts**: `depth_chart_order` changed from `1` to `2`
+- **Jalen Hurts**: News Updated - Jalen Hurts Makes Appearance at the Eagles Practice Facility on Wednesday: Philadelphia Eagles quarterback Jalen Hurts (blood clots) made an appearance at the Eagles facility for the first time since being placed on injured reserve for blood clots in his lungs. According to Tim McManus of ESPN, it marked the first time some of the players had seen him since he was placed on IR. The 28-year-old sat during meetings but did not address the team. "I've talked to him and am in constant communication with him and know he's resting and recovering," Sirianni said. "I miss him like crazy. But nothing new on that front. I know he's resting and recovering, and we're all still praying for him and hoping for a speedy recovery," said Eagles head coach Nick Sirianni. Hurts is being held out of football activities and has been ruled out for the season, but the issue isn't expected to be long-term. Tanner McKee replaced Hurts in Week 6, but after struggling and going 0-3 in his three starts, the Eagles will turn to Joe Milton in Week 9's matchup against the New York Giants.
+- **Jack Endries**: News Updated - Jack Endries finds the end zone in Week 8: Jack Endries caught his lone target for a one-yard touchdown in a 43-36 overtime win over the Titans in Week 8.
+- **Kimani Vidal**: `depth_chart_order` changed from `3` to `2`
+- **Kimani Vidal**: News Updated - Kimani Vidal - Totals 36 yards against Houston: Vidal rushed seven times for 30 yards in Sunday's 44-22 loss to the Texans. He added one catch for six yards on three targets.
+- **Malik Washington**: News Updated - Malik Washington Still Offers Deep-League Appeal After Down Week 9: Miami wide receiver Malik Washington still holds some fantasy appeal despite a lackluster Week 9 performance. He had two receptions for 21 yards on three targets against the Lions, plus had a rushing attempt that didn't gain a yard. Washington has three or more touches in every game, but hasn't gone over 40 total yards in any of the past three contests. While he's trending down now, Washington still holds deep-league appeal thanks to his offensive involvement every week. He's one to start if you are lacking quality options, but is more on the flex-level line in deeper leagues. Keep tabs on Washington, but until we see more consistent performances from him, he's hard to trust in many fantasy leagues.
+- **Efton Chism III**: Added to roster tracking.
+- **Joe Milton**: Added to roster tracking.
+- **CeeDee Lamb**: News Updated - CeeDee Lamb - Standout numbers again in win: Lamb brought in 10 of 16 targets for 195 yards and a touchdown in the Cowboys' 27-23 win over the Colts on Sunday. He also lost a fumble.
