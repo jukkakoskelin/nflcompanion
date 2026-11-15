@@ -94,6 +94,36 @@ class DraftCompanionTests(unittest.TestCase):
         self.assertIn("factor_scores", result["recommendations"][0])
         self.assertTrue(result["recommendations"][0]["rationale"])
 
+    def test_recommendation_confidence_requires_numeric_evidence(self):
+        players = [
+            {
+                "provider_id": "7",
+                "full_name": "Unknown Rank WR",
+                "position": "WR",
+                "fantasy_positions": ["WR"],
+                "team": "KC",
+                "active": True,
+                "search_rank": "N/A",
+            },
+            {
+                "provider_id": "8",
+                "full_name": "Other WR",
+                "position": "WR",
+                "fantasy_positions": ["WR"],
+                "team": "GB",
+                "active": True,
+                "search_rank": 12,
+            },
+        ]
+        result = recommend_candidates(
+            players,
+            ["Unknown Rank WR", "Other WR"],
+            strategy={"priority_positions": ["WR"]},
+        )
+        by_name = {item["full_name"]: item for item in result["recommendations"]}
+        self.assertEqual(by_name["Unknown Rank WR"]["confidence"], "medium")
+        self.assertEqual(by_name["Other WR"]["confidence"], "high")
+
     def test_recommend_rookies(self):
         from nflcompanion.draft_companion import recommend_rookies
         players = [

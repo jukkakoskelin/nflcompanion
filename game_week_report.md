@@ -1,20 +1,15 @@
-# Game Week Report - Week 8
+# Game Week Report - Week 10
 
-## Week 7 Performance Summary
+## Week 9 Performance Summary
 
-- **Total Points:** 120.42 (Projected: 146.20 | Diff: -25.78)
-- **Top Scorer:** CeeDee Lamb with 24.40 pts (Proj: 14.22)
-- **Worst Scorer:** Sam LaPorta with 2.80 pts (Proj: 11.04)
+- **Total Points:** 79.46 (Projected: 113.65 | Diff: -34.19)
+- **Top Scorer:** Player 4379399 with 16.70 pts (Proj: 18.49)
+- **Worst Scorer:** Player 4597500 with 0.00 pts (Proj: 11.35)
 
-- **Bench Hindsight:** Jordan Addison (4.30 pts) outscored Xavier Worthy (4.10 pts).
-- **Bench Hindsight:** Alvin Kamara (13.20 pts) outscored Chuba Hubbard (10.00 pts).
-- **Bench Hindsight:** Tanner McKee (10.54 pts) outscored Patrick Mahomes (6.00 pts).
-- **Bench Hindsight:** Noah Fant (3.10 pts) outscored Sam LaPorta (2.80 pts).
-- **Bench Hindsight:** Jameis Winston (6.40 pts) outscored Patrick Mahomes (6.00 pts).
-- **Bench Hindsight:** Blake Corum (17.10 pts) outscored Chuba Hubbard (10.00 pts).
-- **Bench Hindsight:** Braelon Allen (19.40 pts) outscored Chuba Hubbard (10.00 pts).
+- **Bench Hindsight:** Player 4870795 (12.10 pts) outscored Player 4597500 (0.00 pts).
+- **Bench Hindsight:** Player 4360689 (19.70 pts) outscored Player 4597500 (0.00 pts).
 
-## Week 8 Matchup Suggestions
+## Week 10 Matchup Suggestions
 
 ### Your Starter Issues
 No immediate red flags (byes/injuries) found among your starters.
@@ -24,43 +19,41 @@ No immediate red flags (byes/injuries) found among your starters.
 
 ### Projected Matchup Comparison
 
-Sleeper half-PPR projections are estimates, not actual scores.
+ESPN league scoring projections are estimates, not actual scores.
 
-- **Your projected total:** 136.7 pts (10/10 starters projected)
+- **Your projected total:** 111.0 pts (9/9 starters projected)
 
 #### Your Starters
 
-- **Patrick Mahomes** (QB - KC) - 16.8 projected pts
-- **Bijan Robinson** (RB - ATL) - 20.3 projected pts
-- **Kyren Williams** (RB - LAR) - 18.3 projected pts
-- **Xavier Worthy** (WR - KC) - 7.4 projected pts
-- **CeeDee Lamb** (WR - DAL) - 18.6 projected pts
-- **Jordan Addison** (WR - MIN) - 8.0 projected pts
-- **Sam LaPorta** (TE - DET) - 8.7 projected pts
-- **Chuba Hubbard** (RB - CAR) - 15.1 projected pts
-- **Rashee Rice** (WR - KC) - 10.3 projected pts
-- **Tanner McKee** (QB - PHI) - 13.3 projected pts
+- **James Cook III** (RB - BUF) - 20.5 projected pts
+- **Quinshon Judkins** (RB - CLE) - 11.8 projected pts
+- **Jameson Williams** (WR - DET) - 12.1 projected pts
+- **Rico Dowdle** (RB - PIT) - 9.8 projected pts
+- **Isaiah Likely** (TE - NYG) - 12.4 projected pts
+- **Tyler Shough** (QB - NO) - 17.3 projected pts
+- **Tyler Bass** (K - BUF) - 11.2 projected pts
+- **Commanders D/ST** (D/ST - WSH) - 6.4 projected pts
+- **Malachi Fields** (WR - NYG) - 9.4 projected pts
 
-- **Opponent projected total:** 115.0 pts (10/10 starters projected)
+- **Opponent projected total:** 107.7 pts (9/9 starters projected)
 
 #### Opponent Starters
 
-- **Caleb Williams** (QB - CHI) - 15.7 projected pts
-- **Jordan Mason** (RB - MIN) - 10.3 projected pts
-- **Kenneth Walker III** (RB - KC) - 18.9 projected pts
-- **Puka Nacua** (WR - LAR) - 18.1 projected pts
-- **Rome Odunze** (WR - CHI) - 8.3 projected pts
-- **Khalil Shakir** (WR - BUF) - 7.4 projected pts
-- **Colston Loveland** (TE - CHI) - 7.7 projected pts
-- **Chig Okonkwo** (TE - WAS) - 6.2 projected pts
-- **Tre' Harris** (WR - LAC) - 5.3 projected pts
-- **Jordan Love** (QB - GB) - 17.1 projected pts
+- **CeeDee Lamb** (WR - DAL) - 20.9 projected pts
+- **Brock Bowers** (TE - LV) - 15.4 projected pts
+- **Jordan Mason** (RB - MIN) - 9.2 projected pts
+- **Patrick Mahomes** (QB - KC) - 17.5 projected pts
+- **Alvin Kamara** (RB - NO) (Injury: Questionable) - 10.2 projected pts
+- **Germie Bernard** (WR - PIT) - 10.9 projected pts
+- **Jake Bates** (K - DET) - 9.3 projected pts
+- **Steelers D/ST** (D/ST - PIT) - 5.4 projected pts
+- **Konata Mumpfield** (WR - LAR) - 8.8 projected pts
 
-- **Projected edge:** Your team by 21.8 pts.
+- **Projected edge:** Your team by 3.3 pts.
 
 ### Waiver Targets (Trending Players)
-- **Elijah Mitchell** (RB - PHI) - 134730 recent adds
-- **Washington** (DEF - WAS) - 104181 recent adds
-- **Corey Kiner** (RB - NE) - 101640 recent adds
-- **Tampa Bay** (DEF - TB) - 67285 recent adds
-- **Tyler Bass** (K - BUF) - 40900 recent adds
+- **Corey Kiner** (RB - NE) - 1245144 recent adds
+- **Konata Mumpfield** (WR - LAR) - 1085814 recent adds
+- **Tutu Atwell** (WR - LAR) - 771323 recent adds
+- **Tank Dell** (WR - HOU) - 626176 recent adds
+- **Audric Estime** (RB - NO) - 464097 recent adds

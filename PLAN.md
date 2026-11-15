@@ -1,6 +1,6 @@
 # NFL Fantasy Draft Companion Plan
 
-Status: in progress - Established GitHub issue-driven agentic development lifecycle (Issue Template, branch isolation, Planner/Implementor/Reviewer roles, PR template, Actions synopsis).
+Status: in progress - Established GitHub issue-driven agentic development lifecycle (Issue Template, branch isolation, Planner/Implementor/Reviewer roles, PR template, Actions synopsis); recommendation confidence now checks for valid numeric search-rank evidence before labeling a pick as high-confidence.
 Priority: draft-ready for the Sleeper dynasty startup mock and live drafts
 
 - 2026-09-10 security follow-up: ESPN cookie values are now treated as runtime

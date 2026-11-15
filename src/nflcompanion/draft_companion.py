@@ -454,7 +454,17 @@ def recommend_candidates(
         if position in avoided:
             strategy_fit -= 25
         search_rank = player.get("search_rank")
-        value = 20 if isinstance(search_rank, (int, float)) and search_rank <= 50 else 10
+        numeric_search_rank = None
+        if isinstance(search_rank, (int, float)) and not isinstance(search_rank, bool):
+            numeric_search_rank = float(search_rank)
+        elif isinstance(search_rank, str):
+            cleaned = search_rank.strip()
+            if cleaned and cleaned.upper() not in {"N/A", "NA", "UNKNOWN", "TBD"}:
+                try:
+                    numeric_search_rank = float(cleaned)
+                except ValueError:
+                    numeric_search_rank = None
+        value = 20 if numeric_search_rank is not None and numeric_search_rank <= 50 else 10
         activity = min(10, trend_counts.get(provider_id, 0) // 100)
         active = 10 if player.get("active", True) else -20
 
@@ -510,7 +520,7 @@ def recommend_candidates(
                 "bye_week_clash_count": bye_clash_count,
                 "score": score,
                 "factor_scores": factors,
-                "confidence": "high" if search_rank is not None else "medium",
+                "confidence": "high" if numeric_search_rank is not None else "medium",
                 "rationale": "; ".join(reasons).capitalize() + ".",
             }
         )
